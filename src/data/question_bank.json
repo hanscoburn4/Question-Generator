@@ -4856,7 +4856,7 @@
         "c_num": { "values": [1, -1] },
         "c_den": { "values": [2] }
       },
-      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\arcsin({a}) \\)<br>b) \\( \\arccos(\\frac{ {b_num} }{ {b_den} }) \\)<br>c) \\( \\arctan(\\frac{ {c_num}\\sqrt{3} }{ {c_den} }) \\)",
+      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\arcsin({a}) \\)<br>b) \\( \\arccos(\\frac{ {b_num} }{ {b_den} }) \\)<br>c) \\( \\arctan(\\frac{ {c_num|coef}\\sqrt{3} }{ {c_den} }) \\)",
       "answer": "Use the unit circle and inverse function definitions to find exact values in the appropriate domains."
     },
     {
@@ -4871,7 +4871,7 @@
         "c_num": { "values": [1, -1] },
         "sqrt_val": { "values": [2, 3] }
       },
-      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\sin^{-1}(\\frac{ {a_num}\\sqrt{ {sqrt_val} } }{ {a_den} }) \\)<br>b) \\( \\cos^{-1}({b}) \\)<br>c) \\( \\tan^{-1}({c_num}) \\)",
+      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\sin^{-1}(\\frac{ {a_num|coef}\\sqrt{ {sqrt_val} } }{ {a_den} }) \\)<br>b) \\( \\cos^{-1}({b}) \\)<br>c) \\( \\tan^{-1}({c_num}) \\)",
       "answer": "Use the unit circle and inverse function definitions to find exact values in the appropriate domains."
     },
     {
