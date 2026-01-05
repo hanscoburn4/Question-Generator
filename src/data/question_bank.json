@@ -4764,6 +4764,154 @@
       },
       "question": "Write a sinusoidal function that has a maximum at \\( ({x1}, {y1}) \\) and a minimum at \\( ({x2}, {y2}) \\) (assume there are no extrama between these points).",
       "answer": "\\( f(x) = {A}\\sin({B}(x - {C})) {D|sign} \\) where:<br> - Amplitude \\( A = {y1} - {y2} \\)<br> - Period \\( P = {x2} - {x1} \\)<br> - Frequency \\( B = \\frac{2\\pi}{ {P} } \\)<br> - Phase Shift \\( C = {x1} + \\frac{P}{4} \\)<br> - Vertical Shift \\( D = \\frac{ {y1} {y2|sign} }{2} \\)"
+    },
+    {
+      "id": "PC-4.5-B1",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "values": [2, 3, 4, 6] },
+        "period_tan": { "formula": "Math.PI / b" },
+        "period_cot": { "formula": "Math.PI / a" }
+      },
+      "question": "Find the period and identify the vertical asymptotes for one period of the following functions:<br><br>a) \\( f(x) = \\tan({b}x) \\)<br>b) \\( g(x) = \\cot({a}x) \\)",
+      "answer": "a) Period: \\( \\frac{\\pi}{ {b} } \\), Asymptotes at \\( x = \\frac{\\pi}{ {b|twice} } + \\frac{n\\pi}{ {b} } \\) for integer \\( n \\)<br>b) Period: \\( \\frac{\\pi}{ {a} } \\), Asymptotes at \\( x = \\frac{n\\pi}{ {a} } \\) for integer \\( n \\)"
+    },
+    {
+      "id": "PC-4.5-B2",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "values": [2, 3, 4, 6] },
+        "period_sec": { "formula": "(2 * Math.PI) / b" },
+        "period_csc": { "formula": "(2 * Math.PI) / a" }
+      },
+      "question": "Find the period and identify the vertical asymptotes in one period for the following functions:<br><br>a) \\( f(x) = \\sec({b}x) \\)<br>b) \\( g(x) = \\csc({a}x) \\)",
+      "answer": "a) Period: \\( \\frac{2\\pi}{ {b} } \\), Asymptotes where \\( \\cos({b}x) = 0 \\), i.e., at \\( x = \\frac{\\pi}{ {b|twice} } + \\frac{n\\pi}{ {b} } \\)<br>b) Period: \\( \\frac{2\\pi}{ {a} } \\), Asymptotes where \\( \\sin({a}x) = 0 \\), i.e., at \\( x = \\frac{n\\pi}{ {a} } \\)"
+    },
+    {
+      "id": "PC-4.5-I1",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "d": { "min": 1, "max": 3 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "Math.PI / b" },
+        "phase_shift": { "formula": "-(c * Math.PI) / (b * e)" },
+        "vert_shift": { "formula": "d" }
+      },
+      "question": "For the function \\( f(x) = {a}\\tan({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\), determine:<br><br>a) Period<br>b) Phase shift<br>c) Vertical shift<br>d) First two positive asymptotes",
+      "answer": "a) Period: \\( \\frac{\\pi}{ {b} } \\)<br>b) Phase shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\)<br>c) Vertical shift: \\( {d} \\)<br>d) The asymptotes occur at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = \\frac{\\pi}{2} + n\\pi \\) for integers \\( n \\)"
+    },
+    {
+      "id": "PC-4.5-I2",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "d": { "min": 1, "max": 3 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "(2 * Math.PI) / b" },
+        "phase_shift": { "formula": "-(c * Math.PI) / (b * e)" }
+      },
+      "question": "For the function \\( f(x) = {a}\\csc({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\), determine:<br><br>a) Period<br>b) Phase shift<br>c) Vertical shift<br>d) Location of asymptotes",
+      "answer": "a) Period: \\( \\frac{2\\pi}{ {b} } \\)<br>b) Phase shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\)<br>c) Vertical shift: \\( {d} \\)<br>d) Asymptotes where \\( \\sin({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) = 0 \\)"
+    },
+    {
+      "id": "PC-4.5-A1",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "d": { "min": 1, "max": 4 },
+        "e": { "values": [2, 4, 6] },
+        "period": { "formula": "Math.PI / b" }
+      },
+      "question": "Sketch one full period of \\( f(x) = {a}\\tan({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\). Clearly indicate:<br><br>a) The period<br>b) All vertical asymptotes within the period<br>c) The midline<br>d) At least 3 key points on the curve",
+      "answer": "Period: \\( \\frac{\\pi}{ {b} } \\)<br>Asymptotes at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = \\pm\\frac{\\pi}{2} \\)<br>Midline: \\( y = {d} \\)<br>Key points include the center point at \\( x = -\\frac{ {c}\\pi }{ {b} {e} } \\) where \\( f(x) = {d} \\)"
+    },
+    {
+      "id": "PC-4.6-B1",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [0, 1, -1] },
+        "b_num": { "values": [1, -1] },
+        "b_den": { "values": [2] },
+        "c_num": { "values": [1, -1] },
+        "c_den": { "values": [2] }
+      },
+      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\arcsin({a}) \\)<br>b) \\( \\arccos(\\frac{ {b_num} }{ {b_den} }) \\)<br>c) \\( \\arctan(\\frac{ {c_num}\\sqrt{3} }{ {c_den} }) \\)",
+      "answer": "Use the unit circle and inverse function definitions to find exact values in the appropriate domains."
+    },
+    {
+      "id": "PC-4.6-B2",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a_num": { "values": [1, -1] },
+        "a_den": { "values": [2] },
+        "b": { "values": [0, 1, -1] },
+        "c_num": { "values": [1, -1] },
+        "sqrt_val": { "values": [2, 3] }
+      },
+      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\sin^{-1}(\\frac{ {a_num}\\sqrt{ {sqrt_val} } }{ {a_den} }) \\)<br>b) \\( \\cos^{-1}({b}) \\)<br>c) \\( \\tan^{-1}({c_num}) \\)",
+      "answer": "Use the unit circle and inverse function definitions to find exact values in the appropriate domains."
+    },
+    {
+      "id": "PC-4.6-I1",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 3, "max": 12 },
+        "b": { "min": 13, "max": 20 },
+        "c_squared": { "formula": "b*b - a*a" }
+      },
+      "question": "If \\( \\sin(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in Quadrant I, find the exact value of:<br><br>a) \\( \\cos(\\theta) \\)<br>b) \\( \\tan(\\theta) \\)<br>c) \\( \\theta \\) in terms of inverse trigonometric functions",
+      "answer": "a) \\( \\cos(\\theta) = \\frac{\\sqrt{ {c_squared} }}{ {b} } \\)<br>b) \\( \\tan(\\theta) = \\frac{ {a} }{\\sqrt{ {c_squared} }} = \\frac{ {a}\\sqrt{ {c_squared} } }{ {c_squared} } \\)<br>c) \\( \\theta = \\arcsin(\\frac{ {a} }{ {b} }) \\)"
+    },
+    {
+      "id": "PC-4.6-I2",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 3, "max": 8 },
+        "b": { "min": 10, "max": 15 },
+        "c_squared": { "formula": "b*b - a*a" }
+      },
+      "question": "Evaluate without a calculator:<br><br>\\( \\sin(\\arccos(\\frac{ {a} }{ {b} })) \\)",
+      "answer": "Let \\( \\theta = \\arccos(\\frac{ {a} }{ {b} }) \\). Then \\( \\cos(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in \\( [0, \\pi] \\).<br>Using the Pythagorean identity: \\( \\sin(\\theta) = \\sqrt{1 - \\cos^2(\\theta)} = \\sqrt{1 - \\frac{ {a}^2 }{ {b}^2 }} = \\frac{\\sqrt{ {c_squared} }}{ {b} } \\)"
+    },
+    {
+      "id": "PC-4.6-I3",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 8 },
+        "b": { "min": 2, "max": 8, "exclude": ["a"] },
+        "sum_squared": { "formula": "a*a + b*b" }
+      },
+      "question": "Evaluate without a calculator:<br><br>\\( \\cos(\\arctan(\\frac{ {a} }{ {b} })) \\)",
+      "answer": "Let \\( \\theta = \\arctan(\\frac{ {a} }{ {b} }) \\). Then \\( \\tan(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in \\( (-\\frac{\\pi}{2}, \\frac{\\pi}{2}) \\).<br>Using a right triangle with opposite = \\( {a} \\) and adjacent = \\( {b} \\), the hypotenuse = \\( \\sqrt{ {sum_squared} } \\).<br>Therefore, \\( \\cos(\\theta) = \\frac{ {b} }{\\sqrt{ {sum_squared} }} = \\frac{ {b}\\sqrt{ {sum_squared} } }{ {sum_squared} } \\)"
     }
     ]
   }
