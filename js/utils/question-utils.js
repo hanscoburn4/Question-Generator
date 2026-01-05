@@ -214,14 +214,69 @@ function approximateFraction(x, maxDenominator = 1000, eps = 1e-12) {
 
 /**
  * Main display formatter — now detects exact fractions from formulas
+ * @param {number} num - The numeric value to format
+ * @param {string|null} formula - The formula string (for exact fraction detection)
+ * @param {object|null} vars - Variable context for formula evaluation
+ * @param {string} format - Display format: 'auto' (default), 'fraction', 'decimal', 'radical'
  */
-function formatNumberForDisplay(num, formula = null, vars = null) {
+function formatNumberForDisplay(num, formula = null, vars = null, format = 'auto') {
   if (num === null || num === undefined || !isFinite(num)) return String(num);
 
-  // 1. Exact integer (also catches computed ints from formulas)
+  // 1. Exact integer (always display as integer regardless of format)
   if (Math.abs(num - Math.round(num)) < 1e-10) return String(Math.round(num));
 
-  // 2. Exact fraction from integer division like (a*d + c)/b
+  // 2. EXPLICIT DECIMAL FORMAT - force decimal display
+  if (format === 'decimal') {
+    let s = num.toFixed(12);
+    s = s.replace(/0+$/, "");            // strip trailing zeros
+    if (s.endsWith(".")) s = s.slice(0, -1);
+    return s === "" ? "0" : s;
+  }
+
+  // 3. EXPLICIT FRACTION FORMAT - force fraction (even if approximate)
+  if (format === 'fraction') {
+    // Try exact fraction first
+    if (formula && vars) {
+      const exact = tryParseIntegerDivision(formula, vars);
+      if (exact) {
+        let n = exact.n;
+        let d = exact.d;
+        const g = gcd(Math.abs(n), d);
+        n /= g;
+        d /= g;
+        if (d < 0) { n = -n; d = -d; }
+        if (d === 1) return String(n);
+        return `\\frac{${n}}{${d}}`;
+      }
+    }
+    // Fall back to approximate fraction
+    const frac = approximateFraction(num, 1000, 1e-12);
+    if (frac) {
+      let {n, d} = frac;
+      if (d < 0) { n = -n; d = -d; }
+      if (d === 1) return String(n);
+      return `\\frac{${n}}{${d}}`;
+    }
+    // If fraction approximation fails, still return decimal
+    let s = num.toFixed(12);
+    s = s.replace(/0+$/, "");
+    if (s.endsWith(".")) s = s.slice(0, -1);
+    return s === "" ? "0" : s;
+  }
+
+  // 4. EXPLICIT RADICAL FORMAT - force radical detection
+  if (format === 'radical') {
+    const radical = detectSimplifiedRadical(num);
+    if (radical) return radical;
+    // Fall back to decimal if no radical found
+    let s = num.toFixed(12);
+    s = s.replace(/0+$/, "");
+    if (s.endsWith(".")) s = s.slice(0, -1);
+    return s === "" ? "0" : s;
+  }
+
+  // 5. AUTO FORMAT (default behavior) - try fraction, then radical, then decimal
+  // Exact fraction from integer division like (a*d + c)/b
   if (formula && vars) {
     const exact = tryParseIntegerDivision(formula, vars);
     if (exact) {
@@ -236,11 +291,11 @@ function formatNumberForDisplay(num, formula = null, vars = null) {
     }
   }
 
-  // 3. Simplified radical  (cleaned & inner only)
+  // Simplified radical  (cleaned & inner only)
   const radical = detectSimplifiedRadical(num);
-  if (radical) return radical;   // detect function also fixed below
+  if (radical) return radical;
 
-  // 4. Approximate clean fraction (fallback)
+  // Approximate clean fraction (fallback)
   const frac = approximateFraction(num, 1000, 1e-12);
   if (frac && frac.d !== 1) {
     let {n, d} = frac;
@@ -248,7 +303,7 @@ function formatNumberForDisplay(num, formula = null, vars = null) {
     return `\\frac{${n}}{${d}}`;
   }
 
-  // 5. Clean decimal as last resort
+  // Clean decimal as last resort
   let s = num.toFixed(12);
   s = s.replace(/0+$/, "");            // strip trailing zeros
   if (s.endsWith(".")) s = s.slice(0, -1);
@@ -330,7 +385,8 @@ function generateQuestionVariables(questionTemplate) {
 
     if (typeof value === "number" && isFinite(value)) {
       const formulaForExact = constraints.formula || null;   // only formula vars get exact fraction detection
-      displayVars[key] = formatNumberForDisplay(value, formulaForExact, vars);
+      const format = constraints.format || 'auto';           // get explicit format or default to 'auto'
+      displayVars[key] = formatNumberForDisplay(value, formulaForExact, vars, format);
     } else {
       displayVars[key] = String(value);
     }

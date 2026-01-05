@@ -1,0 +1,189 @@
+{
+  "description": "Examples demonstrating fraction simplification and format control",
+  "features": [
+    "Auto format detection (default behavior)",
+    "Explicit fraction format",
+    "Explicit decimal format",
+    "Explicit radical format"
+  ],
+
+  "examples": {
+    "example1_auto": {
+      "description": "AUTO FORMAT (default) - Original behavior, automatically detects fractions",
+      "template": {
+        "id": "ALG2-3.1-I1",
+        "type": "template",
+        "objective": "Graphing Quadratic Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -3, "max": 3, "exclude": [0, 1, -1] },
+          "b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+          "c": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+          "h": { "formula": "-b/(2*a)" },
+          "k": { "formula": "a*h*h + b*h + c" }
+        },
+        "question": "Identify the vertex, axis of symmetry, and then sketch the graph. Use a calculator approximation when needed. \\( f(x) = {a}x^2 {b|signedCoef}x {c|sign} \\).",
+        "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
+      },
+      "sample_output": {
+        "description": "With a=2, b=3, c=5",
+        "h_numeric": -0.75,
+        "h_display": "\\frac{-3}{4}",
+        "k_numeric": 3.875,
+        "k_display": "\\frac{31}{8}",
+        "answer": "Vertex: \\( (\\frac{-3}{4}, \\frac{31}{8}) \\); Axis of Symmetry: \\( x = \\frac{-3}{4} \\)."
+      }
+    },
+
+    "example2_explicit_fraction": {
+      "description": "EXPLICIT FRACTION - Force fraction display even for approximate values",
+      "template": {
+        "id": "ALG2-3.1-I2",
+        "type": "template",
+        "objective": "Graphing Quadratic Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -3, "max": 3, "exclude": [0, 1, -1] },
+          "b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+          "c": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+          "h": { "formula": "-b/(2*a)", "format": "fraction" },
+          "k": { "formula": "a*h*h + b*h + c", "format": "fraction" }
+        },
+        "question": "Identify the vertex in exact form. \\( f(x) = {a}x^2 {b|signedCoef}x {c|sign} \\).",
+        "answer": "Vertex: \\( ({h}, {k}) \\)"
+      },
+      "sample_output": {
+        "description": "With a=2, b=3, c=5",
+        "h_numeric": -0.75,
+        "h_display": "\\frac{-3}{4}",
+        "k_numeric": 3.875,
+        "k_display": "\\frac{31}{8}",
+        "note": "Even if the computation involved floats, format='fraction' forces fraction display"
+      }
+    },
+
+    "example3_explicit_decimal": {
+      "description": "EXPLICIT DECIMAL - Force decimal display even when exact fractions exist",
+      "template": {
+        "id": "ALG2-3.1-I3",
+        "type": "template",
+        "objective": "Graphing Quadratic Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -3, "max": 3, "exclude": [0, 1, -1] },
+          "b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+          "c": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+          "h": { "formula": "-b/(2*a)", "format": "decimal" },
+          "k": { "formula": "a*h*h + b*h + c", "format": "decimal" }
+        },
+        "question": "Identify the vertex using decimal approximations. \\( f(x) = {a}x^2 {b|signedCoef}x {c|sign} \\).",
+        "answer": "Vertex: \\( ({h}, {k}) \\)"
+      },
+      "sample_output": {
+        "description": "With a=2, b=3, c=5",
+        "h_numeric": -0.75,
+        "h_display": "-0.75",
+        "k_numeric": 3.875,
+        "k_display": "3.875",
+        "note": "format='decimal' ensures decimal output, useful for calculator approximations"
+      }
+    },
+
+    "example4_mixed_formats": {
+      "description": "MIXED FORMATS - Different variables with different format requirements",
+      "template": {
+        "id": "TRIG-1.1-A1",
+        "type": "template",
+        "objective": "Trigonometric Values",
+        "difficulty": "advanced",
+        "variables": {
+          "angle": { "values": [30, 45, 60] },
+          "sin_exact": { "formula": "Math.sin(angle * Math.PI / 180)", "format": "radical" },
+          "sin_approx": { "formula": "Math.sin(angle * Math.PI / 180)", "format": "decimal" },
+          "ratio": { "formula": "angle / 90", "format": "fraction" }
+        },
+        "question": "For an angle of {angle}°, find sin({angle}°) in exact form and as a decimal.",
+        "answer": "Exact: \\( \\sin({angle}°) = {sin_exact} \\); Decimal: \\( \\approx {sin_approx} \\); Ratio to right angle: \\( {ratio} \\)"
+      },
+      "sample_output": {
+        "description": "With angle=60",
+        "sin_exact_display": "\\frac{\\sqrt{3}}{2}",
+        "sin_approx_display": "0.866025403784",
+        "ratio_display": "\\frac{2}{3}",
+        "note": "Each variable can have its own format specification"
+      }
+    },
+
+    "example5_radical_format": {
+      "description": "RADICAL FORMAT - Detect and display simplified radicals",
+      "template": {
+        "id": "GEOM-2.1-I1",
+        "type": "template",
+        "objective": "Distance and Midpoint",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": { "min": 0, "max": 5 },
+          "y1": { "min": 0, "max": 5 },
+          "x2": { "min": 6, "max": 10 },
+          "y2": { "min": 6, "max": 10 },
+          "dx": { "formula": "x2 - x1" },
+          "dy": { "formula": "y2 - y1" },
+          "distance": { "formula": "Math.sqrt(dx*dx + dy*dy)", "format": "radical" }
+        },
+        "question": "Find the exact distance between points ({x1}, {y1}) and ({x2}, {y2}).",
+        "answer": "Distance: \\( {distance} \\)"
+      },
+      "sample_output": {
+        "description": "With points (1,1) and (7,9)",
+        "dx": 6,
+        "dy": 8,
+        "distance_numeric": 10,
+        "distance_display": "10",
+        "note": "Radical format attempts to simplify sqrt expressions when possible"
+      }
+    }
+  },
+
+  "format_options": {
+    "auto": {
+      "description": "Default behavior - automatically detects and displays fractions, radicals, or decimals",
+      "priority": ["integer", "exact_fraction", "radical", "approximate_fraction", "decimal"],
+      "use_when": "You want intelligent automatic formatting"
+    },
+    "fraction": {
+      "description": "Force fraction display - uses exact fractions when possible, falls back to approximate",
+      "behavior": "Always attempts to display as a fraction (even approximate)",
+      "use_when": "You need exact fractional answers or want to avoid decimals"
+    },
+    "decimal": {
+      "description": "Force decimal display - always shows decimal representation",
+      "behavior": "Displays numbers in decimal form with trailing zeros removed",
+      "use_when": "You want calculator-style decimal approximations"
+    },
+    "radical": {
+      "description": "Force radical detection - attempts to find simplified radical form",
+      "behavior": "Tries to express as k*sqrt(m) or (p/q)*sqrt(m), falls back to decimal",
+      "use_when": "Working with geometric problems involving distances, hypotenuses, etc."
+    }
+  },
+
+  "technical_details": {
+    "fraction_simplification": {
+      "method": "GCD-based reduction",
+      "exact_detection": "Parses formulas like (a*d + c)/b to detect exact integer division",
+      "approximate": "Uses continued fractions algorithm with configurable max denominator",
+      "max_denominator": 1000
+    },
+    "radical_simplification": {
+      "method": "Factor extraction from radicand",
+      "detects": "Forms like k*sqrt(m) and (p/q)*sqrt(m)",
+      "max_radicand": 200,
+      "precision": "1e-10"
+    },
+    "backward_compatibility": {
+      "status": "Fully maintained",
+      "default_behavior": "Auto format (existing behavior)",
+      "migration": "Existing questions work without modification"
+    }
+  }
+}

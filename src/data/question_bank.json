@@ -2931,8 +2931,55 @@
         "h": { "formula": "-b/(2*a)" },
         "k": { "formula": "a*h*h + b*h + c" }
       },
-      "question": "Identify the vertex, axis of symmetry, and then sketch the graph. Use a calculator approximation when needed. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",        
+      "question": "Identify the vertex, axis of symmetry, and then sketch the graph. Use a calculator approximation when needed. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
       "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
+    },
+    {
+      "id": "ALG2-3.1-I1-FRACTION",
+      "type": "template",
+      "objective": "Graphing Quadratic Functions (Exact Form)",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
+        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "h": { "formula": "-b/(2*a)", "format": "fraction" },
+        "k": { "formula": "a*h*h + b*h + c", "format": "fraction" }
+      },
+      "question": "Identify the vertex in exact form. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
+      "answer": "Vertex: \\( ({h}, {k}) \\)"
+    },
+    {
+      "id": "ALG2-3.1-I1-DECIMAL",
+      "type": "template",
+      "objective": "Graphing Quadratic Functions (Decimal Form)",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
+        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "h": { "formula": "-b/(2*a)", "format": "decimal" },
+        "k": { "formula": "a*h*h + b*h + c", "format": "decimal" }
+      },
+      "question": "Identify the vertex using decimal approximations. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
+      "answer": "Vertex: \\( ({h}, {k}) \\)"
+    },
+    {
+      "id": "ALG2-3.1-I1-MIXED",
+      "type": "template",
+      "objective": "Graphing Quadratic Functions (Mixed Format)",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
+        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "h_exact": { "formula": "-b/(2*a)", "format": "fraction" },
+        "h_approx": { "formula": "-b/(2*a)", "format": "decimal" },
+        "k_exact": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "fraction" },
+        "k_approx": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "decimal" }
+      },
+      "question": "Identify the vertex in both exact and approximate form. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
+      "answer": "Exact Vertex: \\( ({h_exact}, {k_exact}) \\); Approximate: \\( ({h_approx}, {k_approx}) \\)"
     },
     {
       "id": "ALG2-3.1-A1",
