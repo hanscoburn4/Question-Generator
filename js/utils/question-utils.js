@@ -32,15 +32,23 @@ function validateVariableValue(value, constraints, allVars) {
 }
 
 function generateVariableValue(key, constraints, allVars, maxAttempts = 50) {
+  // Handle textValue: pick a random string from the array
+  if (constraints.textValue && Array.isArray(constraints.textValue)) {
+    return constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
+  }
+
   let attempts = 0;
   let value;
 
   do {
     if (constraints.values) {
+      // Pick from predefined values
       value = constraints.values[Math.floor(Math.random() * constraints.values.length)];
     } else if (typeof constraints.min === "number" && typeof constraints.max === "number") {
+      // Generate within range
       value = Math.floor(Math.random() * (constraints.max - constraints.min + 1)) + constraints.min;
     } else {
+      // Fallback
       value = constraints.default !== undefined ? constraints.default : 0;
     }
 
@@ -118,47 +126,52 @@ function tryParseIntegerDivision(formula, vars) {
 /**
  * Detect simplified radical: k * sqrt(m) or (p/q) * sqrt(m)
  */
-function detectSimplifiedRadical(value, maxM = 100, maxDen = 100, eps = 1e-10) {
+function detectSimplifiedRadical(value, maxM = 200, maxDen = 100, eps = 1e-10) {
   if (!isFinite(value) || value === 0) return null;
-  const signStr = value < 0 ? "-" : "";
+
+  const sign = value < 0 ? "-" : "";
   const absVal = Math.abs(value);
 
   for (let m = 2; m <= maxM; m++) {
     const sqrtM = Math.sqrt(m);
-    if (Math.abs(sqrtM - Math.round(sqrtM)) < 1e-12) continue;
+    if (Math.abs(sqrtM - Math.round(sqrtM)) < 1e-12) continue; // perfect square → skip
 
     const kFloat = absVal / sqrtM;
     const frac = approximateFraction(kFloat, maxDen, eps);
-    if (frac) {
-      const candidate = (frac.n / frac.d) * sqrtM;
-      if (Math.abs(candidate - absVal) < eps) {
-        let radical = m;
-        let coeffNum = frac.n;
-        for (let i = 2; i * i <= radical; i++) {
-          while (radical % (i * i) === 0) {
-            coeffNum *= i;
-            radical /= (i * i);
-          }
-        }
-        const g = gcd(Math.abs(coeffNum), frac.d);
-        coeffNum /= g;
-        const finalD = frac.d / g;
+    if (!frac) continue;
 
-        const absN = Math.abs(coeffNum);
-        const signCoeff = coeffNum < 0 ? "-" : "";
-        let coeffPart = "";
-        if (absN === 1 && finalD === 1) {
-          coeffPart = "";
-        } else if (finalD === 1) {
-          coeffPart = String(absN);
-        } else {
-          coeffPart = `\\frac{${absN}}{${finalD}}`;
-        }
-        const radicalPart = radical === 1 ? "" : `\\sqrt{${radical}}`;
-        const expr = coeffPart + radicalPart;
-        return `${signStr}${signCoeff}\\( ${expr} \\)`.replace(/^\-\(\s*-/, '\\( -').replace(/\(\s*$/, '\\(');
+    let coeff = frac.n;      // positive
+    let den = frac.d;
+
+    let radical = m;
+    for (let i = 2; i * i <= radical; i++) {
+      while (radical % (i * i) === 0) {
+        coeff *= i;
+        radical /= (i * i);
       }
     }
+
+    const g = gcd(coeff, den);
+    coeff /= g;
+    den /= g;
+
+    const candidate = (coeff / den) * Math.sqrt(m);
+    if (Math.abs(candidate - absVal) > eps) continue;
+
+    // Build string
+    let coeffStr = "";
+    if (coeff !== 1 || den !== 1) {
+      coeffStr = den === 1 ? String(coeff) : `\\frac{${coeff}}{${den}}`;
+    }
+
+    const radicalStr = radical === 1 ? "" : `\\sqrt{${radical}}`;
+
+    // Omit 1 in front of radical (but keep - if negative)
+    if (coeff === 1 && radical !== 1) coeffStr = "";
+
+    const expr = coeffStr + radicalStr;
+
+    return sign + (expr || "1");   // "1" only if everything collapsed (should not happen)
   }
   return null;
 }
@@ -203,44 +216,43 @@ function approximateFraction(x, maxDenominator = 1000, eps = 1e-12) {
  * Main display formatter — now detects exact fractions from formulas
  */
 function formatNumberForDisplay(num, formula = null, vars = null) {
-  if (num === null || num === undefined || Number.isNaN(num)) return String(num);
-  if (!isFinite(num)) return String(num);
+  if (num === null || num === undefined || !isFinite(num)) return String(num);
 
-  // 1. Integer
-  if (Number.isInteger(num)) return String(num);
+  // 1. Exact integer (also catches computed ints from formulas)
+  if (Math.abs(num - Math.round(num)) < 1e-10) return String(Math.round(num));
 
-  // 2. Exact fraction from integer division (e.g. (a*d+c)/b)
+  // 2. Exact fraction from integer division like (a*d + c)/b
   if (formula && vars) {
     const exact = tryParseIntegerDivision(formula, vars);
     if (exact) {
       let n = exact.n;
       let d = exact.d;
-      const sign = n < 0 ? -1 : 1;
-      n = Math.abs(n);
-      d = Math.abs(d);
-      const g = gcd(n, d);
+      const g = gcd(Math.abs(n), d);
       n /= g;
       d /= g;
-      n *= sign;
+      if (d < 0) { n = -n; d = -d; }
       if (d === 1) return String(n);
-      return `\\( \\frac{${n < 0 ? '-' + (-n) : n}}{${d}} \\)`;
+      return `\\frac{${n}}{${d}}`;   // ← inner only
     }
   }
 
-  // 3. Simplified radical
+  // 3. Simplified radical  (cleaned & inner only)
   const radical = detectSimplifiedRadical(num);
-  if (radical) return radical;
+  if (radical) return radical;   // detect function also fixed below
 
-  // 4. Approximate fraction (fallback)
+  // 4. Approximate clean fraction (fallback)
   const frac = approximateFraction(num, 1000, 1e-12);
-  if (frac && frac.d !== 1 && Math.abs(frac.n / frac.d - num) < 1e-12) {
-    return `\\( \\frac{${frac.n}}{${frac.d}} \\)`;
+  if (frac && frac.d !== 1) {
+    let {n, d} = frac;
+    if (d < 0) { n = -n; d = -d; }
+    return `\\frac{${n}}{${d}}`;
   }
 
-  // 5. Clean decimal (last resort)
-  let s = num.toFixed(8);
-  s = s.replace(/\.?0+$/, '');
-  return s || '0';
+  // 5. Clean decimal as last resort
+  let s = num.toFixed(12);
+  s = s.replace(/0+$/, "");            // strip trailing zeros
+  if (s.endsWith(".")) s = s.slice(0, -1);
+  return s === "" ? "0" : s;
 }
 
 /* -----------------------------
@@ -252,71 +264,88 @@ function generateQuestionVariables(questionTemplate) {
   const displayVars = {};
   const variableDefinitions = questionTemplate.variables || {};
 
-  // Pass 1: Base variables
+  // Pass 1: Base variables (textValue, direct numbers, min/max/values, …)
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
-    if (typeof constraints === 'number') {
+    if (typeof constraints === "number") {
       vars[key] = constraints;
       continue;
     }
-    if (!constraints || constraints.formula) continue;
+
+    if (!constraints) continue;
+
+    // textValue → random string (e.g. names, units, …)
+    if (constraints.textValue && Array.isArray(constraints.textValue)) {
+      const value = constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
+      vars[key] = value;
+      displayVars[key] = value;               // strings are displayed as-is
+      continue;
+    }
+
+    // Skip formulas for Pass 2
+    if (constraints.formula) continue;
+
+    // Normal numeric variable
     vars[key] = generateVariableValue(key, constraints, vars);
   }
 
-  // Pass 2: Formula variables
-  let formulaKeys = Object.keys(variableDefinitions).filter(k => variableDefinitions[k]?.formula);
-  let maxIterations = 20;
+  // ==================================================================
+  // Pass 2: Evaluate formula variables (repeat until no change – handles dependencies)
+  // ==================================================================
+  let maxFormulaPasses = 10;
+  let changed = true;
+  while (changed && maxFormulaPasses--) {
+    changed = false;
+    for (const [key, constraints] of Object.entries(variableDefinitions)) {
+      if (vars[key] !== undefined) continue;   // already computed
 
-  while (formulaKeys.length > 0 && maxIterations > 0) {
-    const resolved = [];
-    for (const key of formulaKeys) {
-      const constraints = variableDefinitions[key];
-      try {
-        const numericVars = { ...vars };
-        const rawResult = evaluateJSExpression(constraints.formula, numericVars);
-        const value = typeof rawResult === 'number' ? rawResult : Number(rawResult);
-
-        if (!Number.isNaN(value)) {
-          vars[key] = value;
-          resolved.push(key);
+      if (constraints.formula) {
+        try {
+          const value = evaluateJSExpression(constraints.formula, vars);
+          if (isFinite(value)) {
+            vars[key] = value;
+            changed = true;
+          }
+        } catch (e) {
+          // dependency not ready yet → will try again next loop
         }
-      } catch (err) {
-        // skip
       }
     }
-    formulaKeys = formulaKeys.filter(k => !resolved.includes(k));
-    if (resolved.length === 0 && formulaKeys.length > 0) {
-      console.error(`Unresolved formulas: ${formulaKeys.join(', ')}`);
-      formulaKeys.forEach(k => {
-        vars[k] = NaN;
-        displayVars[k] = "NaN";
-      });
-      break;
-    }
-    maxIterations--;
   }
 
-  if (maxIterations <= 0) {
-    console.error('Max iterations reached');
-  }
-
-  // Build display map
+  // Final fallback – if a formula still isn't resolved → NaN / error (optional)
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
-    const numeric = vars[key];
-    if (constraints && constraints.formula) {
-      displayVars[key] = formatNumberForDisplay(numeric, constraints.formula, vars);
-    } else if (constraints && constraints.display === 'math') {
-      displayVars[key] = formatNumberForDisplay(numeric);
-    } else {
-      displayVars[key] = (numeric === undefined) ? '' : String(numeric);
+    if (constraints.formula && !isFinite(vars[key])) {
+      console.error(`Formula for "${key}" could not be resolved: ${constraints.formula}`);
+      vars[key] = NaN;
     }
   }
 
-  Object.defineProperty(vars, '__display', {
+  // ==================================================================
+  // Build display values – now works for base vars AND formula vars
+  // ==================================================================
+  for (const [key, constraints] of Object.entries(variableDefinitions)) {
+    if (displayVars[key] !== undefined) continue;   // textValue already done
+
+    const value = vars[key];
+
+    if (typeof value === "number" && isFinite(value)) {
+      const formulaForExact = constraints.formula || null;   // only formula vars get exact fraction detection
+      displayVars[key] = formatNumberForDisplay(value, formulaForExact, vars);
+    } else {
+      displayVars[key] = String(value);
+    }
+  }
+
+  Object.defineProperty(vars, "__display", {
     value: displayVars,
     enumerable: false,
     configurable: true,
     writable: true,
   });
+
+  // DEBUG – you can keep or remove
+  console.log("Final vars:", vars);
+  console.log("Final displayVars:", displayVars);
 
   return vars;
 }
@@ -330,9 +359,14 @@ function replaceTemplateVariables(text, variables) {
   const replacements = {};
   const keys = Object.keys(variables).filter(k => k !== '__display');
 
+  console.log('replaceTemplateVariables called with:', { text, varsKeys: keys, displayVars: variables.__display }); // DEBUG
+
   for (const key of keys) {
     const display = variables.__display?.[key];
+    const varValue = variables[key];
+    console.log(`Processing key "${key}": display="${display}", varValue="${varValue}"`); // DEBUG
     replacements[key] = display !== undefined && display !== '' ? display : String(variables[key]);
+    console.log(`  -> replacements["${key}"] = "${replacements[key]}"`); // DEBUG
   }
 
   const sorted = Object.entries(replacements).sort((a, b) => b[0].length - a[0].length);
@@ -340,6 +374,7 @@ function replaceTemplateVariables(text, variables) {
   let result = text;
   for (const [key, value] of sorted) {
     const regex = new RegExp(`\\{${escapeRegExp(key)}\\}`, "g");
+    console.log(`Replacing {${key}} with "${value}"`); // DEBUG
     result = result.replace(regex, value);
   }
 
