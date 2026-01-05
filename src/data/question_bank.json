@@ -182,10 +182,11 @@
         "a": { "min": -20, "max": 20, "exclude":[0] },
         "b": { "min": 2, "max": 20, "exclude":["a"] },
         "c": { "min": -20, "max": 20, "exclude":["a","b",0] },
-        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] }
+        "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
+        "result": { "formula": "(a + b) * c - d" }
       },
       "question": "Evaluate: \\( [{a} + ({b})] \\cdot ({c}) - ({d}) \\).",
-      "answerExpression": "(a + b) * c - d"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.1-B2",
@@ -198,10 +199,11 @@
         "c": { "min": 1, "max": 10, "exclude":["b"] },
         "d": { "min": 2, "max": 5 },
         "e": { "min": 2, "max": 10 },
-        "f": { "min": 2, "max": 20, "exclude":["d","e"] }
+        "f": { "min": 2, "max": 20, "exclude":["d","e"] },
+        "result": { "formula": "a + (b - c)**2 - d * e + f" }
       },
       "question": "Evaluate: \\( {a} +({b}-{c})^2 - {d}\\cdot{e} + ({f}) \\).",
-      "answerExpression": "a + (b - c)^2 - d * e + f"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.1-I1",
@@ -214,10 +216,11 @@
         "c": { "min": 2, "max": 5, "exclude":["a"] },
         "d": { "min": 2, "max": 8, "exclude":[0] },
         "e": { "min":2, "max": 5, "exclude":["b","c"] },
-        "f": { "min": 2, "max": 10, "exclude":["d"] }
+        "f": { "min": 2, "max": 10, "exclude":["d"] },
+        "result": { "formula": "(a/c) + (b/e)**2 - d + f" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + (\\frac{{{b}}}{{{e}}})^2 - {d} + {f} \\).",
-      "answerExpression": "(a/ c) + (b/e)^2 - d + f"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.1-I2",
@@ -230,10 +233,11 @@
         "c": { "min": -3, "max": 3, "exclude":[0] },
         "d": { "min": 2, "max": 5 },
         "e": { "min": 2, "max": 6 },
-        "f": { "min": 2, "max": 5, "exclude":["e"]}
+        "f": { "min": 2, "max": 5, "exclude":["e"]},
+        "result": { "formula": "(a/b) - (c + 1/d) + (e/f)" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c} + \\frac{1}{{{d}}}) + \\frac{{{e}}}{{{f}}} \\).",
-      "answerExpression": "(a/ b) - (c + 1/d) + (e/ f)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.1-A1",
@@ -247,10 +251,11 @@
         "d": { "min": 2, "max": 10, "exclude":["c"] },
         "e": { "min": 2, "max": 7, "exclude":["d"] },
         "f": { "min": 2, "max": 5, "exclude":["e"] },
-        "g": { "min": 2, "max": 15 }
+        "g": { "min": 2, "max": 15 },
+        "result": { "formula": "(a/b) + (c/d)**2 - (e/f) * g" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + (\\frac{{{c}}}{{{d}}})^2 - \\frac{{{e}}}{{{f}}} \\cdot {g} \\).",
-      "answerExpression": "(a / b) + (c / d)^2 - (e / f) * g"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.1-A2",
@@ -264,10 +269,11 @@
         "d": { "min": 2, "max": 8 },
         "e": { "min": 2, "max": 8, "exclude":["d"] },
         "f": { "min": 2, "max": 10 },
-        "g": { "min": 2, "max": 10, "exclude":["f"] }
+        "g": { "min": 2, "max": 10, "exclude":["f"] },
+        "result": { "formula": "(a/b) - (c/d + 1/e) + (f/g)**2" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - (\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\).",
-      "answerExpression": "(a / b) - (c / d + 1 / e) + (f / g)^2"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-B1",
@@ -277,10 +283,11 @@
       "variables": {
         "x": { "min": 1, "max": 5 },
         "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 }
+        "b": { "min": 1, "max": 10 },
+        "result": { "formula": "a * x + b" }
       },
       "question": "Evaluate: \\( {a}x + {b} \\) when \\( x = {x} \\).",
-      "answerExpression": "(a * x + b)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-B2",
@@ -291,10 +298,11 @@
         "x": { "min": -7, "max": 7, "exclude": [0] },
         "a": { "min": 2, "max": 10 },
         "b": { "min": 2, "max": 10, "exclude":["a"] },
-        "c": { "min": 2, "max": 10, "exclude":["a","b"] }
+        "c": { "min": 2, "max": 10, "exclude":["a","b"] },
+        "result": { "formula": "a * x**2 + b * x + c" }
       },
       "question": "Evaluate: \\( {a}x^2 + {b}x + {c} \\) when \\( x = {x} \\).",
-      "answerExpression": "(a * x^2 + b * x + c)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-I1",
@@ -306,10 +314,11 @@
         "y": { "min": -3, "max": 3, "exclude": [0] },
         "a": { "min": 2, "max": 10 },
         "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 10, "exclude":["a","b"] }
+        "c": { "min": 2, "max": 10, "exclude":["a","b"] },
+        "result": { "formula": "a * (x - b)**2 + c * y" }
       },
       "question": "Evaluate: \\( {a}(x - {b})^2 + {c}y \\) when \\( x = {x}, y = {y} \\).",
-      "answerExpression": "(a * (x - b)^2 + c * y)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-I2",
@@ -321,10 +330,13 @@
         "y": { "min": -5, "max": 5, "exclude": [0,1] },
         "a": { "min": 2, "max": 10, "exclude":["x"] },
         "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 10, "exclude":["a","b"] }
+        "c": { "min": 2, "max": 10, "exclude":["a","b"] },
+        "numerator": { "formula": "x - a" },
+        "denominator": { "formula": "b + c * y" },
+        "result": { "formula": "(x - a) / (b + c * y)" }
       },
       "question": "Evaluate: \\( \\frac{x - {a}}{{b}+{c}y} \\) when \\( x = {x}, y = {y} \\).",
-      "answerExpression": "format(fraction(x - a, b + c * y)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-A1",
@@ -336,10 +348,11 @@
         "y": { "min": -5, "max": 5, "exclude": [0] },
         "a": { "min": 2, "max": 5 },
         "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        "c": { "min": 2, "max": 5, "exclude":["a","b"] },
+        "result": { "formula": "a * x**2 + b * x * y + c * y**2" }
       },
       "question": "Evaluate: \\( {a}x^2 + {b}xy + {c}y^2 \\) when \\( x = {x}, y = {y} \\).",
-      "answerExpression": "(a * x^2 + b * x * y + c * y^2)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.2-A2",
@@ -351,10 +364,11 @@
         "y": { "min": -5, "max": 5, "exclude": [0] },
         "a": { "min": 2, "max": 5 },
         "b": { "min": 2, "max": 5, "exclude":["a"] },
-        "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        "c": { "min": 2, "max": 5, "exclude":["a","b"] },
+        "result": { "formula": "(a * y + b * x + c) / (x * y)" }
       },
       "question": "Evaluate: \\( \\frac{{a}}{ x } + \\frac{{b}}{ y } + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
-      "answerExpression": "format(fraction(a * y + b * x + c, x * y)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.3-B1",
@@ -495,10 +509,11 @@
         "a": { "min": -10, "max": 10, "exclude": [0] },
         "b": { "min": -10, "max": 10, "exclude": [0] },
         "c": { "min": -10, "max": 10, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0] }
+        "d": { "min": -10, "max": 10, "exclude": [0] },
+        "result": { "formula": "abs(a) - abs(b + c) * d" }
       },
       "question": "Evaluate: \\( | {a} | - | {b} + ({c}) |\\cdot {d} \\).",
-      "answerExpression": "abs(a) - abs(b + c) * d"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.5-B2",
@@ -509,10 +524,11 @@
         "a": { "min": -10, "max": 10, "exclude": [0,1] },
         "b": { "min": 2, "max": 10, "exclude": [0,1] },
         "c": { "min": 2, "max": 10 },
-        "d": { "min": 2, "max": 5, "exclude": ["c"] }
+        "d": { "min": 2, "max": 5, "exclude": ["c"] },
+        "result": { "formula": "abs(a - b) + (c / d)" }
       },
       "question": "Evaluate: \\( | {a} - {b} | + \\frac{{{c}}}{{{d}}} \\).",
-      "answerExpression": "abs(a - b) + (c / d)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.5-I1",
@@ -525,10 +541,11 @@
         "c": { "min": -5, "max": 7, "exclude": [0,1,-1,"a"] },
         "y": { "min": -5, "max": 7, "exclude": [0,1,-1] },
         "z": { "min": -7, "max": 7, "exclude": [0,1,-1] },
-        "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] }
+        "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] },
+        "result": { "formula": "abs(x - abs(a/c - y)) + (z/f)" }
       },
       "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
-      "answerExpression": "abs(x - abs(a/c - y)) + (z/f)"
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG1-1.5-I2",
@@ -541,10 +558,11 @@
         "c": { "min": -5, "max": 5, "exclude": [0,1,-1] },
         "y": { "min": -5, "max": 5, "exclude": [0,1,-1,"c"] },
         "z": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-        "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] }
+        "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] },
+        "result": { "formula": "abs(a - x) + abs(c/y + z/f)" }
       },
       "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
-      "answerExpression": "abs(a - x) + abs(c/y + z/f)"
+      "answer": "\\({result}\\)"
     }
   ],
   "Module 8": [
