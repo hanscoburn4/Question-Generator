@@ -634,10 +634,15 @@
         "f": { "min": 2, "max": 5, "exclude": ["c"] },
         "g": { "min": 2, "max": 5 },
         "m": { "values": [-6, -4, -2, 2, 4, 6] },
-        "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] }
+        "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] },
+        "coef_num": { "formula": "m**g" },
+        "coef_den": { "formula": "n**g" },
+        "exp_x": { "formula": "(a - d)*g" },
+        "exp_y": { "formula": "(b - e)*g" },
+        "exp_z": { "formula": "(c - f)*g" }
       },
       "question": "Simplify: \\( \\bigg( \\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
-      "answer": "oh no!"
+      "answer": "\\( \\frac{coef_num}{coef_den} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
     },
     {
       "id": "ALG1-8.3-B1",
@@ -689,10 +694,12 @@
         "c": { "min": 1, "max": 6, "exclude": ["a"] },
         "d": { "min": 2, "max": 4, "exclude": ["b"] },
         "base1": { "formula": "a**b" },
-        "base2": { "formula": "c**b" }
+        "base2": { "formula": "c**b" },
+        "num_result": { "formula": "a**d" },
+        "den_result": { "formula": "c**d" }
       },
       "question": "Simplify: \\( \\Big(\\frac{{base1}}{{base2}}\\Big)^{\\tfrac{ {d} }{ {b} }} \\).",
-      "answer": "\\( \\frac{ {a}^{ {d} } }{ {c}^{ {d} } } \\) or \\( \\sqrt[{b}] { \\tfrac{ {a}^{ {d} } }{ {c}^{ {d} } } } \\)"
+      "answer": "\\( \\frac{num_result}{den_result} \\) or \\( \\sqrt[{b}]{ \\frac{num_result}{den_result} } \\)"
     },
     {
       "id": "ALG1-8.4-I1",
@@ -705,10 +712,14 @@
         "c": { "min": 2, "max": 9, "exclude": ["a"] },
         "d": { "min": 2, "max": 9, "exclude": ["c"] },
         "e": { "min": 2, "max": 4 },
-        "f": { "min": 2, "max": 4 }
+        "f": { "min": 2, "max": 4 },
+        "coef": { "formula": "f**e" },
+        "exp_rational": { "formula": "(a/b + c/d)*e" },
+        "radical_index": { "formula": "b*d" },
+        "exp_integer": { "formula": "(a*d + b*c)*e" }
       },
       "question": "Simplify by writing your answer in radical form: \\( \\big({f}x^{\\tfrac{{a}}{{b}}} \\cdot x^{\\tfrac{{c}}{{d}}}\\big)^{ {e} } \\).",
-      "answer": "\\( {f}^{e} x^{ ({a}/{b} + {c}/{d})\\cdot{e} } \\) or \\( \\sqrt[{ {b}\\cdot{d} }] { x^{ ({a}\\cdot{d} + {b}\\cdot{c})\\cdot{e} } } \\)"
+      "answer": "\\( {coef} x^{exp_rational} \\) or \\( \\sqrt[radical_index]{ x^{exp_integer} } \\)"
     },
     {
       "id": "ALG1-8.5-B1",
