@@ -4647,7 +4647,7 @@
       "variables": {
         "opp": { "min": -20, "max": 20, "exclude": [0,1,-1,2,-2] },
         "randint": { "min": 5, "max": 12 },
-        "hypo": { "formula": "|opp|+randint" },
+        "hypo": { "formula": "math.abs(opp)+randint" },
         "adj": { "formula": "hypo*hypo - opp*opp"  }
       },
       "question": "Given that \\( \\sin(\\theta) = \\frac{ {opp} }{ {hypo} } \\) and \\( \\cos(\\theta) < 0 \\), find the exact values of \\( \\cos \\theta \\) and \\( \\tan \\theta \\).",
@@ -4674,7 +4674,7 @@
       "variables": {
         "adj": { "min": -20, "max": 20, "exclude": [0,1,-1,2,-2] },
         "randint": { "min": 5, "max": 12 },
-        "hypo": { "formula": "|adj|+randint" },
+        "hypo": { "formula": "math.abs(adj)+randint" },
         "opp": { "formula": "hypo*hypo - adj*adj"  }
       },
       "question": "Given that \\( \\cos(\\theta) = \\frac{ {adj} }{ {hypo} } \\) and \\( \\csc(\\theta) < 0 \\), find the exact values of \\( \\tan \\theta \\) and \\( \\csc \\theta \\).",
@@ -4693,7 +4693,7 @@
         "e": { "values": [2, 3, 4, 6] },
         "f": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "State the amplitude, period, and any phase shift or vertical shift for the functions:<br> \\( f(x) = {a}\\sin( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
+      "question": "State the amplitude, period, and any phase shift or vertical shift for the functions:<br> \\( f(x) = {a|coef}\\sin( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
       "answer": "a) Amplitude: \\( |{a}| \\), Period: \\( \\frac{2\\pi}{ {b} } \\), Phase Shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\), Vertical Shift: \\( {f} \\)."
     },
     {
@@ -4709,7 +4709,7 @@
         "e": { "values": [2, 3, 4, 6] },
         "f": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "State the amplitude, period, and any phase shift or vertical shift for the functions:<br> \\( f(x) = {a}\\cos( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
+      "question": "State the amplitude, period, and any phase shift or vertical shift for the functions:<br> \\( f(x) = {a|coef}\\cos( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
       "answer": "a) Amplitude: \\( |{a}| \\), Period: \\( \\frac{2\\pi}{ {b} } \\), Phase Shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\), Vertical Shift: \\( {f} \\)."
     },
     {
@@ -4725,7 +4725,7 @@
         "e": { "values": [2, 3, 4, 6] },
         "f": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "Sketch two full periods of the graph identifying its key features:<br> \\( f(x) = {a}\\sin( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
+      "question": "Sketch two full periods of the graph identifying its key features:<br> \\( f(x) = {a|coef}\\sin( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
       "answer": "a) Amplitude: \\( |{a}| \\), Period: \\( \\frac{2\\pi}{ {b} } \\), Phase Shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\), Vertical Shift: \\( {f} \\)."
     },
     {
@@ -4741,7 +4741,7 @@
         "e": { "values": [2, 3, 4, 6] },
         "f": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "Sketch two full periods of the graph identifying its key features:<br> \\( f(x) = {a}\\cos( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
+      "question": "Sketch two full periods of the graph identifying its key features:<br> \\( f(x) = {a|coef}\\cos( {b}x {c|signedCoef}\\frac{ {d}\\pi }{ {e} } ) {f|sign} \\).",
       "answer": "a) Amplitude: \\( |{a}| \\), Period: \\( \\frac{2\\pi}{ {b} } \\), Phase Shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\), Vertical Shift: \\( {f} \\)."
     },
     {
