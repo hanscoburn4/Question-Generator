@@ -2928,8 +2928,8 @@
         "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
         "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
         "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
-        "h": { "formula": "-b/(2*a)" },
-        "k": { "formula": "a*h*h + b*h + c" }
+        "h": { "formula": "-b/(2*a)", "format": "fraction" },
+        "k": { "formula": "a*h*h + b*h + c", "format": "fraction" }
       },
       "question": "Identify the vertex, axis of symmetry, and then sketch the graph. Use a calculator approximation when needed. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
       "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
