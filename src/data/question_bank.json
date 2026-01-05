@@ -548,10 +548,12 @@
         "b": { "min": 2, "max": 5, "exclude":["a"] },
         "c": { "min": 2, "max": 5 },
         "m": { "min": -5, "max": 5, "exclude":[0,1,-1] },
-        "n": { "min": 2, "max": 5, "exclude":["m"] }
+        "n": { "min": 2, "max": 5, "exclude":["m"] },
+        "coef": { "formula": "m*n" },
+        "expo": { "formula": "a + b + c"}
       },
       "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
-      "answer": "\\({m * n}x^{ a + b + c }\\)"
+      "answer": "\\({coef}x^{expo}\\)"
     },
     {
       "id": "ALG1-8.1-I1",
