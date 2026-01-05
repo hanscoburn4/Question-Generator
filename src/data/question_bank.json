@@ -398,10 +398,11 @@
         "b": { "min": 2, "max": 20, "exclude":["a"] },
         "c": { "min": 2, "max": 20, "exclude":["a","b"] },
         "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] }
+        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
+        "result": { "formula": "d - e + 1" }
       },
       "question": "Evaluate and identify the property use at each step: \\( \\bigl({d} + {a} + \\frac{{b}}{{c}}\\cdot\\frac{{c}}{{b}}\\bigr) - ({a} + {e}) \\).",
-      "answer": "\\({d - e + 1}\\) <br>Properties used: Commutative Property of Addition, Multiplicative Inverse Property, Additive Inverse Property"
+      "answer": "\\({result}\\) <br>Properties used: Commutative Property of Addition, Multiplicative Inverse Property, Additive Inverse Property"
     },
     {
       "id": "ALG1-1.3-I2",
@@ -426,10 +427,12 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10 }
+        "c": { "min": 2, "max": 10 },
+        "coef_x": { "formula": "a*b" },
+        "constant": { "formula": "a*c" }
       },
       "question": "Use the distributive property to simplify: \\( {a}({b}x+{c}) \\).",
-      "answer": "\\({a * b}x + {a * c}\\)"
+      "answer": "\\({coef_x}x + {constant}\\)"
     },
     {
       "id": "ALG1-1.4-B2",
@@ -439,10 +442,12 @@
       "variables": {
         "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 10 }
+        "c": { "min": 2, "max": 10 },
+        "coef_xy": { "formula": "a*b" },
+        "coef_y": { "formula": "-a*c" }
       },
       "question": "Use the distributive property to simplify: \\( ({b}x-{c})\\cdot{a}y \\).",
-      "answer": "\\({a * b}xy + {-a * c}y\\)"
+      "answer": "\\({coef_xy}xy + {coef_y}y\\)"
     },
     {
       "id": "ALG1-1.4-I1",
@@ -455,10 +460,13 @@
         "c": { "min": -10, "max": 10, "exclude": [0] },
         "d": { "min": 3, "max": 15 },
         "e": { "min": 2, "max": 15 },
-        "f": { "min": 2, "max": 15 }
+        "f": { "min": 2, "max": 15 },
+        "coef_x": { "formula": "a + b*c" },
+        "coef_y": { "formula": "b*d" },
+        "constant": { "formula": "-b*e - f" }
       },
       "question": "Simplify by distributing and combining like terms: \\( {a}x + {b}({c}x+{d}y-{e}) - {f} \\).",
-      "answer": "\\({a + b*c}x + {b*d}y + {-b*e - f}\\)"
+      "answer": "\\({coef_x}x + {coef_y}y + {constant}\\)"
     },
     {
       "id": "ALG1-1.4-I2",
@@ -471,10 +479,12 @@
         "c": { "min": 2, "max": 7},
         "d": { "min": -5, "max": 5, "exclude": [0] },
         "e": { "min": 2, "max": 7 },
-        "f": { "min": 2, "max": 7 }
+        "f": { "min": 2, "max": 7 },
+        "coef_x": { "formula": "a + c*d" },
+        "constant": { "formula": "a*b - c*e + f" }
       },
       "question": "Simplify by distributing and combining like terms: \\( {a}(x+{b}) + {c}({d}x-{e}) + {f} \\).",
-      "answer": "\\({a + c*d}x + {a*b - c*e + f}\\)"
+      "answer": "\\({coef_x}x + {constant}\\)"
     },
     {
       "id": "ALG1-1.5-B1",
@@ -564,10 +574,12 @@
         "a": { "min": 2, "max": 10 },
         "b": { "min": 2, "max": 5, "exclude":["a"] },
         "m": { "min": -5, "max": 5, "exclude":[0,1] },
-        "n": { "min": -5, "max": 5, "exclude":[0,1,"m"] }
+        "n": { "min": -5, "max": 5, "exclude":[0,1,"m"] },
+        "coef": { "formula": "m*n" },
+        "expo": { "formula": "a + b" }
       },
       "question": "Calculate. Leave your answer in scientific notation: \\( ({m}\\times10^{a}) \\cdot ({n}\\times10^{b}) \\).",
-      "answer": "\\({m * n}\\times10^{ a + b }\\) (You may need to manually convert to proper S.N.)"
+      "answer": "\\({coef}\\times10^{expo}\\) (You may need to manually convert to proper S.N.)"
     },
     {
       "id": "ALG1-8.1-A1",
@@ -583,10 +595,14 @@
         "f": { "min": 2, "max": 3 },
         "g": { "min": 2, "max": 5 },
         "m": { "min": -3, "max": 4, "exclude":[0,1] },
-        "n": { "min": -3, "max": 4, "exclude":[0,1,"m"] }
+        "n": { "min": -3, "max": 4, "exclude":[0,1,"m"] },
+        "coef": { "formula": "m**c * n**f" },
+        "exp_x": { "formula": "a*c + f" },
+        "exp_y": { "formula": "b*c + d*f" },
+        "exp_z": { "formula": "e*f" }
       },
       "question": "Simplify: \\( ({m}x^{ {a} }y^{b})^{c}({n}xy^{d}z^{e})^{f} \\).",
-      "answer": "\\({m^c * n^f}x^{ a * c + f }y^{ b * c + d * f }z^{ e * f }\\)"
+      "answer": "\\({coef}x^{exp_x}y^{exp_y}z^{exp_z}\\)"
     },
     {
       "id": "ALG1-8.2-B1",
@@ -598,10 +614,11 @@
         "b": { "min": 2, "max": 5 },
         "c": { "min": 2, "max": 5 },
         "m": { "values": [-6,-4,-2,2,4,6] },
-        "n": { "values": [-6,-4,-2,2,4,6], "exclude":["m"] } 
+        "n": { "values": [-6,-4,-2,2,4,6], "exclude":["m"] },
+        "expo": { "formula": "a + b - c" }
       },
       "question": "Simplify: \\( \\frac{{m}x^{a} \\cdot x^{b}}{{n}x^{c}} \\).",
-      "answer": "\\( {m} x^{a + b - c} / {n}\\)"
+      "answer": "\\( {m} x^{expo} / {n}\\)"
     },
     {
       "id": "ALG1-8.2-I1",
@@ -631,10 +648,12 @@
         "a": { "min": -10, "max": 7 },
         "b": { "min": -10, "max": 7 },
         "c": { "min": -10, "max": 7, "exclude":["a"] },
-        "d": { "min": -10, "max": 7, "exclude":["b"] }
+        "d": { "min": -10, "max": 7, "exclude":["b"] },
+        "exp_x": { "formula": "a - c" },
+        "exp_y": { "formula": "b - d" }
       },
       "question": "Simplify so that there are no negative exponents: \\( \\frac{x^{a}y^{b}}{x^{c}y^{d}} \\).",
-      "answer": "\\( x^{a - c} y^{b - d} \\)"
+      "answer": "\\( x^{exp_x} y^{exp_y} \\)"
     },
     {
       "id": "ALG1-8.3-I1",
@@ -650,11 +669,14 @@
         "f": { "min": -7, "max": 7 },
         "g": { "min": -7, "max": 7 },
         "h": { "min": -7, "max": 7 },
-        "i": { "min": -3, "max": -1 }
-
+        "i": { "min": -3, "max": -1 },
+        "coef_base": { "formula": "a/b" },
+        "exp_x": { "formula": "(c - f)*i" },
+        "exp_y": { "formula": "(d - g)*i" },
+        "exp_z": { "formula": "(e - h)*i" }
       },
       "question": "Simplify so that there are no negative exponents: \\( \\big(\\frac{{a}x^{c}y^{d}z^{e} }{ {b}x^{f}y^{g}z^{h} }\\big)^{i} \\).",
-      "answer": "\\( {a/b}^{i} x^{(c - f) * i} y^{(d - g) * i} z^{(e - h) * i} \\)"
+      "answer": "\\( {coef_base}^{i} x^{exp_x} y^{exp_y} z^{exp_z} \\)"
     },
     {
       "id": "ALG1-8.4-B1",
@@ -705,10 +727,11 @@
         "num4": { "formula": "e * e" },
         "g": { "min": 2, "max": 6, "exclude":["a","b","c"] },
         "i": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["g"] },
-        "num5": { "formula": "g * g * i" }
+        "num5": { "formula": "g * g * i" },
+        "coef_c": { "formula": "a * b" }
       },
       "question": "Simplify each expression: <br> a) \\( \\sqrt{{num5}} \\) <br> b) \\( \\sqrt{{num3}} \\cdot \\sqrt{{num4}} \\) <br> c) \\( \\sqrt{{num1}} \\cdot \\sqrt{{num2}} \\).",
-      "answer": "a) \\( {g} \\sqrt{i} \\) <br> b) No real numbers <br> c) \\( {a * b} \\sqrt{c} \\)"
+      "answer": "a) \\( {g} \\sqrt{{i}} \\) <br> b) No real numbers <br> c) \\( {coef_c} \\sqrt{{c}} \\)"
     },
     {
       "id": "ALG1-8.5-I1",
@@ -723,10 +746,13 @@
         "e": { "min": 2, "max": 8 },
         "f": { "min": 2, "max": 8 },
         "num": { "formula": "a * a * c" },
-        "den": { "formula": "b * b" }
+        "den": { "formula": "b * b" },
+        "exp_x": { "formula": "d/2" },
+        "exp_y": { "formula": "e/2" },
+        "exp_z": { "formula": "f/2" }
       },
       "question": "Simplify: \\( \\sqrt{ \\tfrac{ {num}x^{d}y^{e}z^{f} }{ {den} } } \\).",
-      "answer": "\\( \\tfrac{ {a} }{ {b} } x^{ d/2 } y^{ e/2 } z^{ f/2 } \\)"
+      "answer": "\\( \\tfrac{ {a} }{ {b} } x^{exp_x} y^{exp_y} z^{exp_z} \\)"
     },
     {
       "id": "ALG1-8.5-A1",
@@ -741,10 +767,13 @@
         "e": { "min": 2, "max": 7, "exclude": ["c", "d"] },
         "f": { "min": 2, "max": 7, "exclude": ["c", "d", "e"] },
         "num1": { "formula": "a * b" },
-        "num2": { "formula": "a * b * b" }
+        "num2": { "formula": "a * b * b" },
+        "coef": { "formula": "a * b" },
+        "exp_x": { "formula": "(c + e)/3" },
+        "exp_y": { "formula": "(d + f)/3" }
       },
       "question": "Simplify: \\( \\sqrt[3]{ {num1}x^{c}y^{d} } \\cdot \\sqrt[3]{ {num2}x^{e}y^{f} } \\).",
-      "answer": "\\( {a * b} x^{ (c + e) / 3 } y^{ (d + f) / 3 } \\)"
+      "answer": "\\( {coef} x^{exp_x} y^{exp_y} \\)"
     },
     {
       "id": "ALG1-8.6-B1",
@@ -757,10 +786,12 @@
         "c": { "min": 2, "max": 10 },
         "d": { "values": [2,3,5,7,11,13], "exclude": ["b"] },
         "e": { "min": 2, "max": 10, "exclude": ["a"] },
-        "f": { "min": 2, "max": 10, "exclude": ["c"] }
+        "f": { "min": 2, "max": 10, "exclude": ["c"] },
+        "coef_b": { "formula": "a + e" },
+        "coef_d": { "formula": "f - c" }
       },
       "question": "Simplify: \\( {a}\\sqrt{{b}}-{c}\\sqrt{{d}}+{e}\\sqrt{{b}}+{f}\\sqrt{{d}}\\)",
-      "answer": "\\( {a+e}\\sqrt{{b}}+({f-c}\\sqrt{{d}})\\)"
+      "answer": "\\( {coef_b}\\sqrt{{b}} + {coef_d}\\sqrt{{d}} \\)"
     },
     {
       "id": "ALG1-8.6-I1",
@@ -775,10 +806,12 @@
         "e": { "min": 2, "max": 5, "exclude": ["a"] },
         "f": { "values": [2,3,5,7,11], "exclude": ["b","d"] },
         "num1": { "formula": "b*d" },
-        "num2": { "formula": "b*f" }
+        "num2": { "formula": "b*f" },
+        "coef_d": { "formula": "a*c*b" },
+        "coef_f": { "formula": "a*e*b" }
       },
       "question": "Simplify: \\( {a}\\sqrt{{b}}\\big({c}\\sqrt{{num1}} - {e}\\sqrt{{num2}}\\big) \\)",
-      "answer": "\\( {a*c*b}\\sqrt{{d}} - {a*e*b}\\sqrt{{f}} \\)"
+      "answer": "\\( {coef_d}\\sqrt{{d}} - {coef_f}\\sqrt{{f}} \\)"
     },
     {
       "id": "ALG1-8.6-A1",
@@ -795,10 +828,11 @@
         "z": { "min": 2, "max": 7, "exclude": ["x","y"] },
         "num1": { "formula": "x*x*d" },
         "num2": { "formula": "y*y*d" },
-        "num3": { "formula": "z*z*d" }
+        "num3": { "formula": "z*z*d" },
+        "coef": { "formula": "a*x - b*y + c*z" }
       },
       "question": "Simplify: \\( {a}\\sqrt{{num1}} - {b}\\sqrt{{num2}} + {c}\\sqrt{{num3}}\\)",
-      "answer": "\\({a*x-b*y+c*z}\\sqrt{{d}}\\)"
+      "answer": "\\({coef}\\sqrt{{d}}\\)"
     }
   ],
   "Module 2": [
