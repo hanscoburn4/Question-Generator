@@ -43,6 +43,59 @@ h1 {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
+/* PDF Download Button */
+.pdf-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
+  white-space: nowrap;
+}
+
+.pdf-download-btn:hover {
+  background: #229954;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.pdf-download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(39, 174, 96, 0.2);
+}
+
+.pdf-download-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pdf-download-btn svg {
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pdf-download-btn .spinning {
+  animation: spin 1s linear infinite;
+}
+
 .row { 
   display: flex; 
   gap: 12px; 
@@ -352,9 +405,15 @@ canvas {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   #customTitle {
     max-width: none;
+  }
+
+  .pdf-download-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
   }
   
   .row {
@@ -392,10 +451,11 @@ canvas {
   :root {
     --question-spacing: 15pt; /* Default print spacing */
   }
-  
+
   .header-section,
   .section:not(#output),
-  .assignment-controls {
+  .assignment-controls,
+  .pdf-download-btn {
     display: none !important;
   }
   
