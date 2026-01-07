@@ -2253,9 +2253,7 @@
         "b": {"values":[0]},
         "c": { "min": 1, "max": 5, "exclude": ["a"] }
       },
-      "question": "Find the domain and range of the function \\( f(x) = {a}x^2 - {b} \\).",
-      "draw": "linearGraph",
-      "shwGraphInQuestion": true,
+      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a}x^2 - {b} \\). Find the domain and range of the function.",
       "answer": "Domain: all real numbers; Range: \\( y \\geq {-b} \\) if \\( {a} > 0 \\), \\( y \\leq {-b} \\) if \\( {a} < 0 \\)."
     },
     {
@@ -2270,9 +2268,7 @@
         "xMin": { "min": -3, "max": -1 },
         "xMax": { "min": 1, "max": 3 }
       },
-      "question": "Find the domain and range of the function \\( f(x) = {a}(x - {h})^2 + {k} \\).",
-      "draw": "parabola",
-      "shwGraphInQuestion": true,
+      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a}(x - {h})^2 + {k} \\). Find the domain and range of the function.",
       "answer": "Domain: all real numbers; Range: \\( y \\geq {k} \\) if \\( {a} > 0 \\), \\( y \\leq {k} \\) if \\( {a} < 0 \\)."
     },
     {
@@ -2285,93 +2281,70 @@
         "b": { "min": 1, "max": 3 },
         "c": { "min": -1, "max": 1, "exclude": [0,"a"] }
       },
-      "question": "Find the domain and range of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, for -3 < x < 0 \\\\ {c}x^2 + {b}, for 0 \\leq x \\leq 4 \\end{cases} \\).",
-      "draw": {
-        "type": "piecewise",
-        "segments": [
-          {
-            "type": "parabola",
-            "vars": { "a": 1, "b": 0, "c": 0 },
-            "xMin": -3,
-            "xMax": 0,
-            "leftClosed": false,
-            "rightClosed": false
-          },
-          {
-            "type": "parabola",
-            "vars": { "a": -1, "b": 0, "c": 0 },
-            "xMin": 0,
-            "xMax": 4,
-            "leftClosed": true,
-            "rightClosed": true
-          }
-        ]
-      },
-      "showGraphInQuestion": true,
-      "answer": ""
+      "question": "Use a graphing calculator to view the graph of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, \\text{ for } -3 < x < 0 \\\\ {c}x^2 + {b}, \\text{ for } 0 \\leq x \\leq 4 \\end{cases} \\). Find the domain and range of the function.",
+      "answer": "Domain: \\( -3 < x \\leq 4 \\); Range will vary based on values of \\( a \\), \\( b \\), and \\( c \\). Use the graphing calculator to determine the minimum and maximum y-values."
     },
     {
       "id": "ALG2-1.2a-B1",
-      "type": "linearGraph",
+      "type": "template",
       "objective": "Identify Intercepts of Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "m": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "min": -6, "max": 6, "exclude":[0] }
+        "b": { "min": -6, "max": 6, "exclude":[0] },
+        "xIntercept": { "formula": "-b/m", "format": "fraction" },
+        "yIntercept": { "formula": "b" }
       },
-      "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = {m}x + {b}\\).",
-      "answerExpression": "`{ xIntercept: -b/m, yIntercept: b }`",
-      "draw": "linearGraph",
-      "showGraphInQuestion": true
+      "question": "Use a graphing calculator to view the graph of \\( y = {m}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
       "id": "ALG2-1.2a-B2",
-      "type": "quadraticGraph",
+      "type": "template",
       "objective": "Identify Intercepts of Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -4, "max": 4, "exclude": [0] },
         "r2": { "min": -4, "max": 4, "exclude": ["r1", 0] },
         "a":  { "values": [1, -1] },
-        "b": { "formula": "{-a*(r1 + r2)}" },
-        "c": { "formula": "a*r1*r2"}
-
+        "b": { "formula": "-a*(r1 + r2)" },
+        "c": { "formula": "a*r1*r2" },
+        "yIntercept": { "formula": "a*r1*r2" }
       },
-      "question": "Use the graph to find the \\(x\\)- and \\(y\\)-intercepts of the function.",
-      "answerExpression": "({ xIntercepts: [r1, r2], yIntercept: a*r1*r2 })",
-      "draw": "parabola",
-      "showGraphInQuestion": true
+      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|signedCoef} \\). Find the \\( x \\)-intercepts and \\( y \\)-intercept of the function.",
+      "answer": "\\( x \\)-intercepts: \\( ({r1}, 0) \\) and \\( ({r2}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
       "id": "ALG2-1.2a-I1",
-      "type": "linearGraph",
+      "type": "template",
       "objective": "Identify Intercepts of Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
         "slopeDen": { "min": 2, "max": 10, "exclude": [0, "slopeNum"] },
-        "m": { "formula": "a/b" },
-        "b": { "min": -10, "max": 10, "exclude": [0] }
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "xIntercept": { "formula": "-(b * slopeDen) / slopeNum", "format": "fraction" },
+        "yIntercept": { "formula": "b" }
       },
-      "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = \\frac{{slopeNum}}{{slopeDen}}x + {b}\\).",
-      "answerExpression": "({ xIntercept: -(b * slopeDen) / slopeNum, yIntercept: b })",
-      "draw": "linearGraph"
+      "question": "Use a graphing calculator to view the graph of \\( y = \\frac{{slopeNum}}{{slopeDen}}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
 
     {
       "id": "ALG2-1.2a-I2",
-      "type": "linearGraph",
+      "type": "template",
       "objective": "Identify Intercepts of Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min":-10, "max":10, "exclude":[0]},
         "b": { "min": -5, "max": 5, "exclude":[0] },
         "c": { "min": 2, "max": 8, "exclude":["b",0] },
-        "d": { "min": -10, "max": 10, "exclude":[0]}
+        "d": { "min": -10, "max": 10, "exclude":[0]},
+        "xIntercept": { "formula": "d - c*a/b", "format": "fraction" },
+        "yIntercept": { "formula": "a + b*d/c", "format": "fraction" }
       },
-      "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y-{a} = \frac{b}{c}(x - {d})\\).",
-      "answer": "`{ xIntercept: d - c*a/b, yIntercept: a + b*d/c }`"
-  
+      "question": "Use a graphing calculator to view the graph of \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
       "id": "ALG2-1.2b-B1",
@@ -2436,7 +2409,7 @@
         "a": { "values": [1, -1, 2, -2] },
         "b": { "min": -3, "max": 3, "exclude":[0] }
       },
-      "question": "Describe the end behavior of the function \\( y = {a}x^2 + {b}x \\) as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
+      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^2 {b|signedCoef}x \\). Describe the end behavior of the function as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
       "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\)."
     },
     {
@@ -2449,7 +2422,7 @@
         "b": { "min": -3, "max": 3, "exclude":[0] },
         "c": { "min": -2, "max": 2, "exclude":[0] }
       },
-      "question": "Describe the end behavior of the function \\( y = {a}x^3 + {b}x^2 + {c}x \\) as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
+      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x \\). Describe the end behavior of the function as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
       "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '-\\infty' : '\\infty'} \\)."
     },
     {
@@ -2460,10 +2433,12 @@
       "variables": {
         "a": { "values": [1, -1, 2, -2] },
         "b": { "min": -3, "max": 3, "exclude":[0] },
-        "c": { "min": -2, "max": 2, "exclude":[0] }
+        "c": { "min": -2, "max": 2, "exclude":[0] },
+        "h": { "formula": "-b/(2*a)", "format": "fraction" },
+        "k": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "fraction" }
       },
-      "question": "Find the coordinates of any extrema for the function \\( y = {a}x^2 + {b}x + {c} \\).",
-      "answer": "Vertex at \\( \\left( {-b/(2*a)}, {a*(-b/(2*a))**2 + b*(-b/(2*a)) + c} \\right) \\)."
+      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^2 {b|signedCoef}x {c|signedCoef} \\). Find the coordinates of any extrema for the function.",
+      "answer": "Vertex at \\( ({h}, {k}) \\)."
     },
     {
       "id": "ALG2-1.3b-I1",
@@ -2476,8 +2451,8 @@
         "c": { "min": -2, "max": 2, "exclude":[0] },
         "d": { "min": -1, "max": 1, "exclude":[0] }
       },
-      "question": "Find the coordinates of any extrema for the function \\( y = {a}x^3 + {b}x^2 + {c}x + {d} \\).",
-      "answer": "Use graphing calculator to evaluate the extrema."
+      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|signedCoef} \\). Find the coordinates of any extrema for the function.",
+      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
     },
     {
       "id": "ALG2-1.7-B1",
@@ -2491,11 +2466,8 @@
         "h": { "min": -5, "max": 5, "exclude": [0]},
         "k": { "min": -5, "max": 5, "exclude": [0]}
       },
-      "question": "Given the parent function \\( f(x) = x^2\\), graph the function based on the transformations: \\( g(x) = (x - ({h}))^2 + ({k})\\)",
-      "draw": "parabola",
-      "showGraphInQuestion": true,
-      "showGraphInAnswer": true,
-      "answer": "Teacher will need to manually draw the transformation for \\( g(x) = (x - ({h}))^2 + ({k})\\)"
+      "question": "Given the parent function \\( f(x) = x^2 \\), use a graphing calculator to graph the transformed function \\( g(x) = (x - {h})^2 {k|sign} \\). Describe the transformations applied.",
+      "answer": "The graph is shifted {h} units {h > 0 ? 'right' : 'left'} and {k} units {k > 0 ? 'up' : 'down'}. Vertex is at \\( ({h}, {k}) \\)."
     },
     {
       "id": "ALG2-1.7-I1",
@@ -2509,11 +2481,8 @@
         "h": { "min": 1, "max": 5 },
         "k": { "min": 1, "max": 5 }
       },
-      "question": "Given the parent function \\( f(x) = |x|\\), graph the function based on the transformations: \\( g(x) = {a}|x - {h}| + {k}\\)",
-      "draw": "absoluteValue",
-      "showGraphInQuestion": true,
-      "showGraphInAnswer": true,
-      "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {a}|x - {h}| + {k}\\)"
+      "question": "Given the parent function \\( f(x) = |x| \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}|x - {h}| {k|sign} \\). Describe the transformations applied.",
+      "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Vertex is at \\( ({h}, {k}) \\)."
     },
     {
       "id": "ALG2-1.7-A1",
@@ -2527,11 +2496,8 @@
         "h": { "min": 1, "max": 5, "exclude": [0]},
         "k": { "min": 1, "max": 5, "exclude": [0]}
       },
-      "question": "Given the parent function \\( f(x) = \\sqrt{x}\\), graph the function based on the transformations: \\( g(x) = {a}\\sqrt{(x - {h}} + {k}\\)",
-      "draw": "squareRoot",
-      "showGraphInQuestion": true,
-      "showGraphInAnswer": true,
-      "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {a}\\sqrt{(x - {h}} + {k}\\)"
+      "question": "Given the parent function \\( f(x) = \\sqrt{x} \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}\\sqrt{x - {h}} {k|sign} \\). Describe the transformations applied.",
+      "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Starting point is at \\( ({h}, {k}) \\)."
     }
 
   ],
