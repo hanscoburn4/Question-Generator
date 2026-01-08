@@ -217,7 +217,7 @@
         "d": { "min": 2, "max": 8, "exclude":[0] },
         "e": { "min":2, "max": 5, "exclude":["b","c"] },
         "f": { "min": 2, "max": 10, "exclude":["d"] },
-        "result": { "formula": "(a/c) + (b/e)**2 - d + f" }
+        "result": { "formula": "(a/c) + (b/e)**2 - d + f", "format": "auto" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + (\\frac{{{b}}}{{{e}}})^2 - {d} + {f} \\).",
       "answer": "\\({result}\\)"
@@ -234,7 +234,7 @@
         "d": { "min": 2, "max": 5 },
         "e": { "min": 2, "max": 6 },
         "f": { "min": 2, "max": 5, "exclude":["e"]},
-        "result": { "formula": "(a/b) - (c + 1/d) + (e/f)" }
+        "result": { "formula": "(a/b) - (c + 1/d) + (e/f)", "format": "auto" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c} + \\frac{1}{{{d}}}) + \\frac{{{e}}}{{{f}}} \\).",
       "answer": "\\({result}\\)"
@@ -252,7 +252,7 @@
         "e": { "min": 2, "max": 7, "exclude":["d"] },
         "f": { "min": 2, "max": 5, "exclude":["e"] },
         "g": { "min": 2, "max": 15 },
-        "result": { "formula": "(a/b) + (c/d)**2 - (e/f) * g" }
+        "result": { "formula": "(a/b) + (c/d)**2 - (e/f) * g", "format": "auto" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + (\\frac{{{c}}}{{{d}}})^2 - \\frac{{{e}}}{{{f}}} \\cdot {g} \\).",
       "answer": "\\({result}\\)"
@@ -270,7 +270,7 @@
         "e": { "min": 2, "max": 8, "exclude":["d"] },
         "f": { "min": 2, "max": 10 },
         "g": { "min": 2, "max": 10, "exclude":["f"] },
-        "result": { "formula": "(a/b) - (c/d + 1/e) + (f/g)**2" }
+        "result": { "formula": "(a/b) - (c/d + 1/e) + (f/g)**2", "format": "auto" }
       },
       "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - (\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\).",
       "answer": "\\({result}\\)"
@@ -286,7 +286,7 @@
         "b": { "min": 1, "max": 10 },
         "result": { "formula": "a * x + b" }
       },
-      "question": "Evaluate: \\( {a}x + {b} \\) when \\( x = {x} \\).",
+      "question": "Evaluate: \\( {a|coef}x {b|sign} \\) when \\( x = {x} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -301,7 +301,7 @@
         "c": { "min": 2, "max": 10, "exclude":["a","b"] },
         "result": { "formula": "a * x**2 + b * x + c" }
       },
-      "question": "Evaluate: \\( {a}x^2 + {b}x + {c} \\) when \\( x = {x} \\).",
+      "question": "Evaluate: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} \\) when \\( x = {x} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -317,7 +317,7 @@
         "c": { "min": 2, "max": 10, "exclude":["a","b"] },
         "result": { "formula": "a * (x - b)**2 + c * y" }
       },
-      "question": "Evaluate: \\( {a}(x - {b})^2 + {c}y \\) when \\( x = {x}, y = {y} \\).",
+      "question": "Evaluate: \\( {a|coef}(x - {b})^2 {c|signedCoef}y \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -333,9 +333,9 @@
         "c": { "min": 2, "max": 10, "exclude":["a","b"] },
         "numerator": { "formula": "x - a" },
         "denominator": { "formula": "b + c * y" },
-        "result": { "formula": "(x - a) / (b + c * y)" }
+        "result": { "formula": "(x - a) / (b + c * y)", "format": "auto" }
       },
-      "question": "Evaluate: \\( \\frac{x - {a}}{{b}+{c}y} \\) when \\( x = {x}, y = {y} \\).",
+      "question": "Evaluate: \\( \\frac{x - {a}}{{b}{c|signedCoef}y} \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -351,7 +351,7 @@
         "c": { "min": 2, "max": 5, "exclude":["a","b"] },
         "result": { "formula": "a * x**2 + b * x * y + c * y**2" }
       },
-      "question": "Evaluate: \\( {a}x^2 + {b}xy + {c}y^2 \\) when \\( x = {x}, y = {y} \\).",
+      "question": "Evaluate: \\( {a|coef}x^2 {b|signedCoef}xy {c|signedCoef}y^2 \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -365,9 +365,9 @@
         "a": { "min": 2, "max": 5 },
         "b": { "min": 2, "max": 5, "exclude":["a"] },
         "c": { "min": 2, "max": 5, "exclude":["a","b"] },
-        "result": { "formula": "(a * y + b * x + c) / (x * y)" }
+        "result": { "formula": "(a * y + b * x + c) / (x * y)", "format": "auto" }
       },
-      "question": "Evaluate: \\( \\frac{{a}}{ x } + \\frac{{b}}{ y } + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
+      "question": "Evaluate: \\( \\frac{{a|coef}}{ x } + \\frac{{b|coef}}{ y } + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -387,7 +387,7 @@
       "answer": "<ul> <li><strong>\\(\\frac{{a}}{{b}} \\cdot \\frac{{b}}{{a}} = 1\\)</strong>: Multiplicative Inverse Property</li>\\ <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
     },
     {
-      "id": "ALG1-1.3-B1",
+      "id": "ALG1-1.3-B2",
       "type": "template",
       "objective": "Evaluate Numerical Expressions by Applying Properties",
       "difficulty": "basic",
@@ -445,8 +445,8 @@
         "coef_x": { "formula": "a*b" },
         "constant": { "formula": "a*c" }
       },
-      "question": "Use the distributive property to simplify: \\( {a}({b}x+{c}) \\).",
-      "answer": "\\({coef_x}x + {constant}\\)"
+      "question": "Use the distributive property to simplify: \\( {a}({b|signedCoef}x{c|sign}) \\).",
+      "answer": "\\({coef_x|coef}x {constant|sign}\\)"
     },
     {
       "id": "ALG1-1.4-B2",
@@ -460,8 +460,8 @@
         "coef_xy": { "formula": "a*b" },
         "coef_y": { "formula": "-a*c" }
       },
-      "question": "Use the distributive property to simplify: \\( ({b}x-{c})\\cdot{a}y \\).",
-      "answer": "\\({coef_xy}xy + {coef_y}y\\)"
+      "question": "Use the distributive property to simplify: \\( ({b|signedCoef}x-{c})\\cdot{a|coef}y \\).",
+      "answer": "\\({coef_xy|coef}xy {coef_y|signedCoef}y\\)"
     },
     {
       "id": "ALG1-1.4-I1",
@@ -479,8 +479,8 @@
         "coef_y": { "formula": "b*d" },
         "constant": { "formula": "-b*e - f" }
       },
-      "question": "Simplify by distributing and combining like terms: \\( {a}x + {b}({c}x+{d}y-{e}) - {f} \\).",
-      "answer": "\\({coef_x}x + {coef_y}y + {constant}\\)"
+      "question": "Simplify by distributing and combining like terms: \\( {a|signedCoef}x {b|sign}({c|signedCoef}x{d|sign}y-{e}) - {f} \\).",
+      "answer": "\\({coef_x|coef}x {coef_y|signedCoef}y {constant|sign}\\)"
     },
     {
       "id": "ALG1-1.4-I2",
@@ -497,8 +497,8 @@
         "coef_x": { "formula": "a + c*d" },
         "constant": { "formula": "a*b - c*e + f" }
       },
-      "question": "Simplify by distributing and combining like terms: \\( {a}(x+{b}) + {c}({d}x-{e}) + {f} \\).",
-      "answer": "\\({coef_x}x + {constant}\\)"
+      "question": "Simplify by distributing and combining like terms: \\( {a}(x{b|sign}) {c|sign}({d|signedCoef}x-{e}) {f|sign} \\).",
+      "answer": "\\({coef_x|coef}x {constant|sign}\\)"
     },
     {
       "id": "ALG1-1.5-B1",
@@ -525,7 +525,7 @@
         "b": { "min": 2, "max": 10, "exclude": [0,1] },
         "c": { "min": 2, "max": 10 },
         "d": { "min": 2, "max": 5, "exclude": ["c"] },
-        "result": { "formula": "abs(a - b) + (c / d)" }
+        "result": { "formula": "abs(a - b) + (c / d)", "format": "auto" }
       },
       "question": "Evaluate: \\( | {a} - {b} | + \\frac{{{c}}}{{{d}}} \\).",
       "answer": "\\({result}\\)"
@@ -542,7 +542,7 @@
         "y": { "min": -5, "max": 7, "exclude": [0,1,-1] },
         "z": { "min": -7, "max": 7, "exclude": [0,1,-1] },
         "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] },
-        "result": { "formula": "abs(x - abs(a/c - y)) + (z/f)" }
+        "result": { "formula": "abs(x - abs(a/c - y)) + (z/f)", "format": "auto" }
       },
       "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
       "answer": "\\({result}\\)"
@@ -559,7 +559,7 @@
         "y": { "min": -5, "max": 5, "exclude": [0,1,-1,"c"] },
         "z": { "min": -5, "max": 5, "exclude": [0,1,-1] },
         "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] },
-        "result": { "formula": "abs(a - x) + abs(c/y + z/f)" }
+        "result": { "formula": "abs(a - x) + abs(c/y + z/f)", "format": "auto" }
       },
       "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
       "answer": "\\({result}\\)"
