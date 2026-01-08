@@ -77,6 +77,13 @@ h1 {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+  opacity: 0.5;
+}
+
+.pdf-download-btn:disabled:hover {
+  background: #95a5a6;
+  transform: none;
+  box-shadow: none;
 }
 
 .pdf-download-btn svg {

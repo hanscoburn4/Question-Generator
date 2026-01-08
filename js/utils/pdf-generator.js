@@ -73,7 +73,6 @@
   function resetDownloadButton() {
     const btn = document.getElementById('downloadPdfBtn');
     if (btn) {
-      btn.disabled = false;
       btn.innerHTML = `
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -82,6 +81,7 @@
         </svg>
         Download PDF
       `;
+      updateButtonState();
     }
   }
 
@@ -152,6 +152,55 @@
   }
 
   /**
+   * Checks if output div has content
+   * @returns {boolean} - True if content exists
+   */
+  function hasAssignmentContent() {
+    const outputDiv = document.getElementById('output');
+    return outputDiv && outputDiv.innerHTML.trim().length > 0;
+  }
+
+  /**
+   * Updates button state based on content availability
+   */
+  function updateButtonState() {
+    const btn = document.getElementById('downloadPdfBtn');
+    if (!btn) return;
+
+    if (hasAssignmentContent()) {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+      btn.title = 'Download assignment as PDF';
+    } else {
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+      btn.title = 'Generate an assignment first';
+    }
+  }
+
+  /**
+   * Sets up observer to watch for changes in output div
+   */
+  function setupContentObserver() {
+    const outputDiv = document.getElementById('output');
+    if (!outputDiv) return;
+
+    const observer = new MutationObserver(() => {
+      updateButtonState();
+    });
+
+    observer.observe(outputDiv, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    updateButtonState();
+  }
+
+  /**
    * Initialize PDF download functionality
    */
   function initPdfDownload() {
@@ -159,7 +208,10 @@
 
     if (downloadBtn) {
       downloadBtn.addEventListener('click', generatePDF);
+      updateButtonState();
     }
+
+    setupContentObserver();
 
     if (typeof window !== 'undefined') {
       window.generatePDF = generatePDF;
