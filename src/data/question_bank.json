@@ -1702,10 +1702,12 @@
       "objective": "Shapes of Graphs",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -1, "max": 1, "exclude": [0] },
-        "b": { "min": -3, "max": 3, "exclude": [0]  },
-        "c": { "min": -4, "max": 4, "exclude": [0]  },
-        "d": { "min": -5, "max": 5, "exclude": [0]  },
+        "a": { "values": [2] },
+        "r1": { "min": -2, "max": 2, "exclude": [0]  },
+        "r2": { "min": -2, "max": 2, "exclude": [0]  },
+        "b": { "formula": "-3*(r1 + r2)" },
+        "c": { "formula": "6*r1*r2" },
+        "d": { "min": -2, "max": 2, "exclude": [0]  },
         "x1": { "min": -3, "max": 3  },
         "x2": { "min": -3, "max": 3, "exclude": ["x1"]  },
         "x3": { "min": -3, "max": 3, "exclude": ["x1","x2"]  },
@@ -1724,16 +1726,16 @@
       "objective": "Shapes of Graphs",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -2, "max": 2, "exclude": [0] },
-        "r1": { "min": -2, "max": 2, "exclude": [0]  },
-        "randint": { "min": 1, "max": 3 },
-        "r2": { "formula": "randint*2 - r1" },
-        "b": { "formula": "-a*(r1 + r2)" },
-        "c": { "formula": "r1*r2" },
-        "vertex_x": { "formula": "(r1 + r2)/2" }
+        "a": { "min": -1, "max": 1, "exclude": [0] },
+        "h": { "min": -3, "max": 3, "exclude": [0]  },
+        "k": { "formula": "-a*4" },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a * h**2 + k" },
+        "z1": { "formula": "h - 2"  },
+        "z2": { "formula": "h + 2"  }
     },
       "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
-      "answer": "a) It will change from increasing to decreasing at \\( x = {vertex_x} \\) <br> b) It will change from positive to negative at \\( x = {r1} \\) and \\( x = {r2} \\)."
+      "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
     }
   ]
 },
@@ -2249,11 +2251,10 @@
       "objective": "Identify Domain and Range of Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1] },
-        "b": {"values":[0]},
-        "c": { "min": 1, "max": 5, "exclude": ["a"] }
+        "a": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a}x^2 - {b} \\). Find the domain and range of the function.",
+      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}x^2 {b|sign} \\). Find the domain and range of the function.",
       "answer": "Domain: all real numbers; Range: \\( y \\geq {-b} \\) if \\( {a} > 0 \\), \\( y \\leq {-b} \\) if \\( {a} < 0 \\)."
     },
     {
@@ -2262,13 +2263,11 @@
       "objective": "Identify Domain and Range of Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min":  -0.5, "max": 0.5, "exclude": [0] },
-        "h": { "min": 1, "max": 3 },
-        "k": { "min": 1, "max": 3 },
-        "xMin": { "min": -3, "max": -1 },
-        "xMax": { "min": 1, "max": 3 }
+        "a": { "min": -1, "max": 1, "exclude": [0] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a}(x - {h})^2 + {k} \\). Find the domain and range of the function.",
+      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}(x {h|sign})^2 {k|sign} \\). Find the domain and range of the function.",
       "answer": "Domain: all real numbers; Range: \\( y \\geq {k} \\) if \\( {a} > 0 \\), \\( y \\leq {k} \\) if \\( {a} < 0 \\)."
     },
     {
@@ -2281,7 +2280,7 @@
         "b": { "min": 1, "max": 3 },
         "c": { "min": -1, "max": 1, "exclude": [0,"a"] }
       },
-      "question": "Use a graphing calculator to view the graph of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, \\text{ for } -3 < x < 0 \\\\ {c}x^2 + {b}, \\text{ for } 0 \\leq x \\leq 4 \\end{cases} \\). Find the domain and range of the function.",
+      "question": "Find the domain and range of the function: \\( f(x) = \\begin{cases} {a|coef}x^2 {b|sign}, \\text{ for } -3 < x < 0 \\\\ {c|coef}x^2 {b|sign}, \\text{ for } 0 \\leq x \\leq 4 \\end{cases} \\)",
       "answer": "Domain: \\( -3 < x \\leq 4 \\); Range will vary based on values of \\( a \\), \\( b \\), and \\( c \\). Use the graphing calculator to determine the minimum and maximum y-values."
     },
     {
@@ -2295,7 +2294,7 @@
         "xIntercept": { "formula": "-b/m", "format": "fraction" },
         "yIntercept": { "formula": "b" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = {m}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
+      "question": "Use a graphing calculator to view the graph of \\( y = {m|coef}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
       "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
@@ -2343,7 +2342,7 @@
         "xIntercept": { "formula": "d - c*a/b", "format": "fraction" },
         "yIntercept": { "formula": "a + b*d/c", "format": "fraction" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
+      "question": "Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line algebraically: \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\)",
       "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
@@ -2352,7 +2351,7 @@
       "objective": "Identify Linear and Nonlinear Functions",
       "difficulty": "basic",
       "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> \\(y = -5x + 7\\), \\(y = -6\\), \\(y = x\\), \\(y = 2x^2 + 5\\).",
+      "question": "For each equation below, determine whether it is linear: <br> a) \\(y = -5x + 7\\), <br> b) \\(y = -6\\), <br> c) \\(y = x\\), <br> d) \\(y = 2x^2 + 5\\).",
       "answer": "Only \\(y = 2x^2 + 5\\) is not linear."
     },
     {
@@ -2361,7 +2360,7 @@
       "objective": "Identify Linear and Nonlinear Functions",
       "difficulty": "basic",
       "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> \\(x + 6y = 5\\), \\(y = 7x + 6xy\\), \\(-\\frac{6}{x} = 5y - 4\\), \\(3x - y = 2\\).",
+      "question": "For each equation below, determine whether it is linear: <br> a) \\(x + 6y = 5\\), <br> b) \\(y = 7x + 6xy\\), <br> c) \\(-\\frac{6}{x} = 5y - 4\\), <br> d) \\(3x - y = 2\\).",
       "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
     },
     {
@@ -2370,7 +2369,7 @@
       "objective": "Identify Linear and Nonlinear Functions",
       "difficulty": "intermediate",
       "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> \\(y = 4x - 7\\), \\(y = 3x^2 + 5\\), \\(y = -2x + 4\\), \\(y = \\frac{1}{x} + 6\\).",
+      "question": "For each equation below, determine whether it is linear: <br> a) \\(y = 4x - 7\\), <br> b) \\(y = 3x^2 + 5\\), <br> c) \\(y = -2x + 4\\), <br> d) \\(y = \\frac{1}{x} + 6\\).",
       "answer": "Only \\(y = 3x^2 + 5\\) and \\(y = \\frac{1}{x} + 6\\) are not linear."
     },
     {
@@ -2379,7 +2378,7 @@
       "objective": "Identify Linear and Nonlinear Functions",
       "difficulty": "intermediate",
       "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> \\(2x + 3y = 6\\), \\(xy + 4y = 5\\), \\(\\frac{3}{x} + y = 7\\), \\(5x - y = 10\\).",
+      "question": "For each equation below, determine whether it is linear: <br> a) \\(2x + 3y = 6\\), <br> b) \\(xy + 4y = 5\\), <br> c) \\(\\frac{3}{x} + y = 7\\), <br> d) \\(5x - y = 10\\).",
       "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
     },
     {
@@ -2388,7 +2387,7 @@
       "objective": "Identify symmetry from equations",
       "difficulty": "basic",
       "variables": {},
-      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> \\(y = x^2 - 4\\), \\(y = x^3 - x\\), \\(y = x^2 + x - 6\\), \\(y = x^3 + x^2 - x - 1\\).",
+      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> a) \\(y = x^2 - 4\\), <br> b) \\(y = x^3 - x\\), <br> c) \\(y = x^2 + x - 6\\), <br> d) \\(y = x^3 + x^2 - x - 1\\).",
       "answer": "\\(y = x^2 - 4\\) is symmetric about the y-axis; \\(y = x^3 - x\\) is symmetric about the origin; the other two have."
     },
     {
@@ -2397,7 +2396,7 @@
       "objective": "Identify symmetry from equations",
       "difficulty": "intermediate",
       "variables": {},
-      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> \\(y = x^2 - 3\\), \\(y = x^3 + x\\), \\(y = x^2 + 2x + 1\\), \\(y = x^3 - x^2 + x - 1\\).",
+      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br>  a) \\(y = x^2 - 3\\), <br> b) \\(y = x^3 + x\\), <br> c) \\(y = x^2 + 2x + 1\\), <br> d) \\(y = x^3 - x^2 + x - 1\\).",
       "answer": "\\(y = x^2 - 3\\) is symmetric about the y-axis; \\(y = x^3 + x\\) is symmetric about the origin; the other two have no symmetry."
     },
     {
@@ -2446,9 +2445,11 @@
       "objective": "Identify Extrema of Graphs and Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "values": [1, -1, 2, -2] },
-        "b": { "min": -3, "max": 3, "exclude":[0] },
-        "c": { "min": -2, "max": 2, "exclude":[0] },
+        "a": { "values": [2, -2] },
+        "r1": { "min": -4, "max": 4, "exclude": [0] },
+        "r2": { "min": -4, "max": 4, "exclude": ["r1",0] },
+        "b": { "formula": "-3*a*(r1 + r2)/2" },
+        "c": { "formula": "3*a*r1*r2" },
         "d": { "min": -1, "max": 1, "exclude":[0] }
       },
       "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|signedCoef} \\). Find the coordinates of any extrema for the function.",
@@ -2464,10 +2465,11 @@
         "b": { "values": [0] },
         "c": { "values": [0]},
         "h": { "min": -5, "max": 5, "exclude": [0]},
+        "neg_h": { "formula": "-h" },
         "k": { "min": -5, "max": 5, "exclude": [0]}
       },
-      "question": "Given the parent function \\( f(x) = x^2 \\), use a graphing calculator to graph the transformed function \\( g(x) = (x - {h})^2 {k|sign} \\). Describe the transformations applied.",
-      "answer": "The graph is shifted {h} units {h > 0 ? 'right' : 'left'} and {k} units {k > 0 ? 'up' : 'down'}. Vertex is at \\( ({h}, {k}) \\)."
+      "question": "Given the parent function \\( f(x) = x^2 \\), use a graphing calculator to graph the transformed function \\( g(x) = (x {h|sign})^2 {k|sign} \\). Describe the transformations applied.",
+      "answer": "The graph is shifted {neg_h} units horizontally and {k} units vertically. Vertex is at \\( ({neg_h}, {k}) \\)."
     },
     {
       "id": "ALG2-1.7-I1",
@@ -2475,13 +2477,11 @@
       "objective": "Transform Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1]},
-        "b": { "values": [0] },
-        "c": { "values": [0]},
-        "h": { "min": 1, "max": 5 },
-        "k": { "min": 1, "max": 5 }
+        "a": { "min": -3, "max": 3, "exclude": [0]},
+        "h": { "min": -5, "max": 5, "exclude": [0]},
+        "k": { "min": -5, "max": 5, "exclude": [0]}
       },
-      "question": "Given the parent function \\( f(x) = |x| \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}|x - {h}| {k|sign} \\). Describe the transformations applied.",
+      "question": "Given the parent function \\( f(x) = |x| \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}|x {h|sign}| {k|sign} \\). Describe the transformations applied.",
       "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Vertex is at \\( ({h}, {k}) \\)."
     },
     {
@@ -2490,16 +2490,13 @@
       "objective": "Transform Graphs of Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1]},
-        "b": { "values": [0] },
-        "c": { "values": [0]},
-        "h": { "min": 1, "max": 5, "exclude": [0]},
-        "k": { "min": 1, "max": 5, "exclude": [0]}
+        "a": { "min": -3, "max": 3, "exclude": [0]},
+        "h": { "min": -5, "max": 5, "exclude": [0]},
+        "k": { "min": -5, "max": 5, "exclude": [0]}
       },
-      "question": "Given the parent function \\( f(x) = \\sqrt{x} \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}\\sqrt{x - {h}} {k|sign} \\). Describe the transformations applied.",
+      "question": "Given the parent function \\( f(x) = \\sqrt{x} \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}\\sqrt{x {h|sign}} {k|sign} \\). Describe the transformations applied.",
       "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Starting point is at \\( ({h}, {k}) \\)."
     }
-
   ],
   "Module 2": [
     {
@@ -2901,53 +2898,6 @@
       "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
     },
     {
-      "id": "ALG2-3.1-I1-FRACTION",
-      "type": "template",
-      "objective": "Graphing Quadratic Functions (Exact Form)",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
-        "h": { "formula": "-b/(2*a)", "format": "fraction" },
-        "k": { "formula": "a*h*h + b*h + c", "format": "fraction" }
-      },
-      "question": "Identify the vertex in exact form. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
-      "answer": "Vertex: \\( ({h}, {k}) \\)"
-    },
-    {
-      "id": "ALG2-3.1-I1-DECIMAL",
-      "type": "template",
-      "objective": "Graphing Quadratic Functions (Decimal Form)",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
-        "h": { "formula": "-b/(2*a)", "format": "decimal" },
-        "k": { "formula": "a*h*h + b*h + c", "format": "decimal" }
-      },
-      "question": "Identify the vertex using decimal approximations. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
-      "answer": "Vertex: \\( ({h}, {k}) \\)"
-    },
-    {
-      "id": "ALG2-3.1-I1-MIXED",
-      "type": "template",
-      "objective": "Graphing Quadratic Functions (Mixed Format)",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
-        "h_exact": { "formula": "-b/(2*a)", "format": "fraction" },
-        "h_approx": { "formula": "-b/(2*a)", "format": "decimal" },
-        "k_exact": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "fraction" },
-        "k_approx": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "decimal" }
-      },
-      "question": "Identify the vertex in both exact and approximate form. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
-      "answer": "Exact Vertex: \\( ({h_exact}, {k_exact}) \\); Approximate: \\( ({h_approx}, {k_approx}) \\)"
-    },
-    {
       "id": "ALG2-3.1-A1",
       "type": "template",
       "objective": "Graphing Quadratic Functions",
@@ -2999,7 +2949,7 @@
       "id": "ALG2-3.2-A1",
       "type": "template",
       "objective": "Solving Quadratic Equations by Graphing",
-      "difficulty": "Advanced",
+      "difficulty": "advanced",
       "variables": {
         "x": { "min": 3, "max": 8 },
         "a": { "min": -2, "max": 5, "exclude": [0] },
@@ -4814,7 +4764,7 @@
       "variables": {
         "a": { "min": 2, "max": 4 },
         "b": { "values": [2, 3, 4] },
-        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
         "d": { "min": 1, "max": 3 },
         "e": { "values": [2, 3, 4, 6] },
         "period": { "formula": "Math.PI / b" },
@@ -4832,7 +4782,7 @@
       "variables": {
         "a": { "min": 2, "max": 4 },
         "b": { "values": [2, 3, 4] },
-        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
         "d": { "min": 1, "max": 3 },
         "e": { "values": [2, 3, 4, 6] },
         "period": { "formula": "(2 * Math.PI) / b" },
@@ -4842,6 +4792,41 @@
       "answer": "a) Period: \\( \\frac{2\\pi}{ {b} } \\)<br>b) Phase shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\)<br>c) Vertical shift: \\( {d} \\)<br>d) Asymptotes where \\( \\sin({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) = 0 \\)"
     },
     {
+      "id": "PC-4.5-I3",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "d": { "min": 1, "max": 3 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "(2 * Math.PI) / b" },
+        "phase_shift": { "formula": "-(c * Math.PI) / (b * e)" }
+      },
+      "question": "For the function \\( f(x) = {a}\\sec({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\), determine:<br><br>a) Period<br>b) Phase shift<br>c) Vertical shift<br>d) Location of asymptotes",
+      "answer": "a) Period: \\( \\frac{2\\pi}{ {b} } \\)<br>b) Phase shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\)<br>c) Vertical shift: \\( {d} \\)<br>d) Asymptotes where \\( \\cos({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) = 0 \\)"
+    },
+    {
+      "id": "PC-4.5-I4",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "d": { "min": 1, "max": 3 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "Math.PI / b" },
+        "phase_shift": { "formula": "-(c * Math.PI) / (b * e)" },
+        "vert_shift": { "formula": "d" }
+      },
+      "question": "For the function \\( f(x) = {a}\\cot({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\), determine:<br><br>a) Period<br>b) Phase shift<br>c) Vertical shift<br>d) First two positive asymptotes",
+      "answer": "a) Period: \\( \\frac{\\pi}{ {b} } \\)<br>b) Phase shift: \\( -\\frac{ {c}\\pi }{ {b} {e} } \\)<br>c) Vertical shift: \\( {d} \\)<br>d) The asymptotes occur at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = n\\pi \\) for integers \\( n \\)"
+    },
+    {
       "id": "PC-4.5-A1",
       "type": "template",
       "objective": "Graphing Other Trigonometric Functions",
@@ -4849,13 +4834,58 @@
       "variables": {
         "a": { "min": 2, "max": 4 },
         "b": { "values": [2, 3, 4] },
-        "c": { "min": -2, "max": 2, "exclude": [0] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
         "d": { "min": 1, "max": 4 },
-        "e": { "values": [2, 4, 6] },
+        "e": { "values": [2, 3, 4, 6] },
         "period": { "formula": "Math.PI / b" }
       },
       "question": "Sketch one full period of \\( f(x) = {a}\\tan({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\). Clearly indicate:<br><br>a) The period<br>b) All vertical asymptotes within the period<br>c) The midline<br>d) At least 3 key points on the curve",
       "answer": "Period: \\( \\frac{\\pi}{ {b} } \\)<br>Asymptotes at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = \\pm\\frac{\\pi}{2} \\)<br>Midline: \\( y = {d} \\)<br>Key points include the center point at \\( x = -\\frac{ {c}\\pi }{ {b} {e} } \\) where \\( f(x) = {d} \\)"
+    },{
+      "id": "PC-4.5-A2",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "d": { "min": 1, "max": 4 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "Math.PI / b" }
+      },
+      "question": "Sketch one full period of \\( f(x) = {a}\\cot({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\). Clearly indicate:<br><br>a) The period<br>b) All vertical asymptotes within the period<br>c) The midline<br>d) At least 3 key points on the curve",
+      "answer": "Period: \\( \\frac{\\pi}{ {b} } \\)<br>Asymptotes at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = n\\pi \\) for integers \\( n \\)<br>Midline: \\( y = {d} \\)<br>Key points include the center point at \\( x = -\\frac{ {c}\\pi }{ {b} {e} } \\) where \\( f(x) = {d} \\)"
+    },{
+      "id": "PC-4.5-A1",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "d": { "min": 1, "max": 4 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "Math.PI / b" }
+      },
+      "question": "Sketch one full period of \\( f(x) = {a}\\csc({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\). Clearly indicate:<br><br>a) The period<br>b) All vertical asymptotes within the period<br>c) The midline<br>d) At least 3 key points on the curve",
+      "answer": "Period: \\( \\frac{ 2 \\pi }{ {b} } \\)<br>Asymptotes at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = n\\pi \\) for integers \\( n \\)<br>Midline: \\( y = {d} \\)<br>Key points include the center point at \\( x = -\\frac{ {c}\\pi }{ {b} {e} } \\) where \\( f(x) = {d} \\)"
+    },{
+      "id": "PC-4.5-A1",
+      "type": "template",
+      "objective": "Graphing Other Trigonometric Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 4 },
+        "b": { "values": [2, 3, 4] },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "d": { "min": 1, "max": 4 },
+        "e": { "values": [2, 3, 4, 6] },
+        "period": { "formula": "Math.PI / b" }
+      },
+      "question": "Sketch one full period of \\( f(x) = {a}\\sec({b}x {c|signedCoef}\\frac{\\pi}{ {e} }) {d|sign} \\). Clearly indicate:<br><br>a) The period<br>b) All vertical asymptotes within the period<br>c) The midline<br>d) At least 3 key points on the curve",
+      "answer": "Period: \\( \\frac{ 2\\pi }{ {b} } \\)<br>Asymptotes at \\( {b}x {c|signedCoef}\\frac{\\pi}{ {e} } = \\frac{\\pi}{2} + n\\pi \\) for integers \\( n \\)<br>Midline: \\( y = {d} \\)<br>Key points include the center point at \\( x = -\\frac{ {c}\\pi }{ {b} {e} } \\) where \\( f(x) = {d} \\)"
     },
     {
       "id": "PC-4.6-B1",
@@ -4866,10 +4896,10 @@
         "a": { "values": [0, 1, -1] },
         "b_num": { "values": [1, -1] },
         "b_den": { "values": [2] },
-        "c_num": { "values": [1, -1] },
-        "c_den": { "values": [2] }
+        "c_coef": { "values": [1, -1] },
+        "c": { "values": [2, 3] }
       },
-      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\arcsin({a}) \\)<br>b) \\( \\arccos(\\frac{ {b_num} }{ {b_den} }) \\)<br>c) \\( \\arctan(\\frac{ {c_num|coef}\\sqrt{3} }{ {c_den} }) \\)",
+      "question": "Evaluate the following inverse trigonometric functions. Give exact answers in radians:<br><br>a) \\( \\arcsin({a}) \\)<br>b) \\( \\arccos(\\frac{ {b_num} }{ {b_den} }) \\)<br>c) \\( \\arctan({c_coef|coef}\\sqrt{ {c} } }) \\)",
       "answer": "Use the unit circle and inverse function definitions to find exact values in the appropriate domains."
     },
     {
@@ -4893,12 +4923,12 @@
       "objective": "Inverse Trigonometric Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 3, "max": 12 },
-        "b": { "min": 13, "max": 20 },
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": 10, "max": 15 },
         "c_squared": { "formula": "b*b - a*a" }
       },
-      "question": "If \\( \\sin(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in Quadrant I, find the exact value of:<br><br>a) \\( \\cos(\\theta) \\)<br>b) \\( \\tan(\\theta) \\)<br>c) \\( \\theta \\) in terms of inverse trigonometric functions",
-      "answer": "a) \\( \\cos(\\theta) = \\frac{\\sqrt{ {c_squared} }}{ {b} } \\)<br>b) \\( \\tan(\\theta) = \\frac{ {a} }{\\sqrt{ {c_squared} }} = \\frac{ {a}\\sqrt{ {c_squared} } }{ {c_squared} } \\)<br>c) \\( \\theta = \\arcsin(\\frac{ {a} }{ {b} }) \\)"
+      "question": "Evaluate without a calculator:<br><br>\\( \\tan(\\sin^{-1}(\\frac{ {a} }{ {b} })) \\)",
+      "answer": "Let \\( \\theta = \\sin^{-1}(\\frac{ {a} }{ {b} }) \\). Then \\( \\sin(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\) \\)"
     },
     {
       "id": "PC-4.6-I2",
@@ -4906,7 +4936,7 @@
       "objective": "Inverse Trigonometric Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 3, "max": 8 },
+        "a": { "min": -8, "max": 8, "exclude": [0] },
         "b": { "min": 10, "max": 15 },
         "c_squared": { "formula": "b*b - a*a" }
       },
@@ -4919,12 +4949,36 @@
       "objective": "Inverse Trigonometric Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 8 },
+        "a": { "min": -8, "max": 8, "exclude": [0] },
         "b": { "min": 2, "max": 8, "exclude": ["a"] },
         "sum_squared": { "formula": "a*a + b*b" }
       },
       "question": "Evaluate without a calculator:<br><br>\\( \\cos(\\arctan(\\frac{ {a} }{ {b} })) \\)",
       "answer": "Let \\( \\theta = \\arctan(\\frac{ {a} }{ {b} }) \\). Then \\( \\tan(\\theta) = \\frac{ {a} }{ {b} } \\) and \\( \\theta \\) is in \\( (-\\frac{\\pi}{2}, \\frac{\\pi}{2}) \\).<br>Using a right triangle with opposite = \\( {a} \\) and adjacent = \\( {b} \\), the hypotenuse = \\( \\sqrt{ {sum_squared} } \\).<br>Therefore, \\( \\cos(\\theta) = \\frac{ {b} }{\\sqrt{ {sum_squared} }} = \\frac{ {b}\\sqrt{ {sum_squared} } }{ {sum_squared} } \\)"
+    },
+    {
+      "id": "PC-4.6-I4",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [2, 3] },
+        "sign": { "values": [1, -1] }
+      },
+      "question": "Evaluate without a calculator:<br><br>\\( \\arcsin(\\cos(\\frac{ {sign}\\sqrt{ {a} } }{ {2} })) \\)",
+      "answer": "Let \\( \\theta = \\arcsin(\\cos(\\frac{ {sign}\\sqrt{ {a} } }{ {2} })) \\). Then \\( \\sin(\\theta) = \\cos(\\frac{ {sign}\\sqrt{ {a} } }{ {2} }) \\) and \\( \\theta \\) is in \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\).<br>Using the co-function identity: \\( \\sin(\\theta) = \\cos(\\frac{ {sign}\\sqrt{ {a} } }{ {2} }) = \\sin(\\frac{\\pi}{2} - \\frac{ {sign}\\sqrt{ {a} } }{ {2} }) \\)"
+    },
+    {
+      "id": "PC-4.6-I5",
+      "type": "template",
+      "objective": "Inverse Trigonometric Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [1] },
+        "sign": { "values": [1, -1] }
+      },
+      "question": "Evaluate without a calculator:<br><br>\\( \\arccos(\\sin(\\frac{ {sign}{a} }{ {2} })) \\)",
+      "answer": "Let \\( \\theta = \\arccos(\\sin(\\frac{ {sign}{a} }{ {2} })) \\). Then \\( \\cos(\\theta) = \\sin(\\frac{ {sign}{a} }{ {2} }) \\) and \\( \\theta \\) is in \\( [0, \\pi] \\).<br>Using the co-function identity: \\( \\cos(\\theta) = \\sin(\\frac{ {sign}{a} }{ {2} }) = \\cos(\\frac{\\pi}{2} - \\frac{ {sign}{a} }{ {2} }) \\)"
     }
     ]
   }
