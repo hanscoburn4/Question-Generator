@@ -4979,6 +4979,706 @@
       "question": "Evaluate without a calculator:<br><br>\\( \\arccos(\\sin(\\frac{ {sign}{a} }{ {2} })) \\)",
       "answer": "Let \\( \\theta = \\arccos(\\sin(\\frac{ {sign}{a} }{ {2} })) \\). Then \\( \\cos(\\theta) = \\sin(\\frac{ {sign}{a} }{ {2} }) \\) and \\( \\theta \\) is in \\( [0, \\pi] \\).<br>Using the co-function identity: \\( \\cos(\\theta) = \\sin(\\frac{ {sign}{a} }{ {2} }) = \\cos(\\frac{\\pi}{2} - \\frac{ {sign}{a} }{ {2} }) \\)"
     }
+    ],
+    "Chapter 5": [
+    {
+      "id": "PC-5.1-B1",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [2, 3, 4, 6] },
+        "sign": { "values": [1, -1] }
+      },
+      "question": "Use the Pythagorean identity to simplify: \\( \\sin^2(\\theta) + \\cos^2(\\theta) \\).",
+      "answer": "\\( 1 \\)"
+    },
+    {
+      "id": "PC-5.1-B2",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\sin(\\theta) = \\frac{3}{5} \\) and \\( \\theta \\) is in Quadrant I, find \\( \\cos(\\theta) \\) using the Pythagorean identity.",
+      "answer": "Using \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\):<br>\\( \\cos^2(\\theta) = 1 - \\sin^2(\\theta) = 1 - \\frac{9}{25} = \\frac{16}{25} \\)<br>Since \\( \\theta \\) is in Quadrant I, \\( \\cos(\\theta) = \\frac{4}{5} \\)"
+    },
+    {
+      "id": "PC-5.1-B3",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "basic",
+      "variables": {
+        "num": { "min": 1, "max": 10 },
+        "den": { "min": 11, "max": 20 }
+      },
+      "question": "Simplify using a Pythagorean identity: \\( 1 - \\sin^2(\\alpha) \\).",
+      "answer": "\\( \\cos^2(\\alpha) \\)"
+    },
+    {
+      "id": "PC-5.1-I1",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\tan(\\theta) = -\\frac{4}{3} \\) and \\( \\theta \\) is in Quadrant II, find \\( \\sin(\\theta) \\) and \\( \\cos(\\theta) \\) using fundamental identities.",
+      "answer": "Using \\( 1 + \\tan^2(\\theta) = \\sec^2(\\theta) \\):<br>\\( \\sec^2(\\theta) = 1 + \\frac{16}{9} = \\frac{25}{9} \\)<br>\\( \\cos^2(\\theta) = \\frac{9}{25} \\)<br>Since \\( \\theta \\) is in Quadrant II, \\( \\cos(\\theta) = -\\frac{3}{5} \\)<br>\\( \\sin(\\theta) = \\tan(\\theta) \\cdot \\cos(\\theta) = -\\frac{4}{3} \\cdot (-\\frac{3}{5}) = \\frac{4}{5} \\)"
+    },
+    {
+      "id": "PC-5.1-I2",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Simplify the expression: \\( \\frac{\\sin(\\theta)}{\\cos(\\theta)} + \\frac{\\cos(\\theta)}{\\sin(\\theta)} \\).",
+      "answer": "\\( \\frac{\\sin^2(\\theta) + \\cos^2(\\theta)}{\\sin(\\theta)\\cos(\\theta)} = \\frac{1}{\\sin(\\theta)\\cos(\\theta)} \\)"
+    },
+    {
+      "id": "PC-5.1-I3",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Use fundamental identities to simplify: \\( \\tan(\\theta) \\cdot \\cos(\\theta) \\).",
+      "answer": "\\( \\tan(\\theta) \\cdot \\cos(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\cos(\\theta) = \\sin(\\theta) \\)"
+    },
+    {
+      "id": "PC-5.1-A1",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Prove the identity: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\).",
+      "answer": "Starting with the left side:<br>\\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\frac{\\sin^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\)<br>This equals the right side, so the identity is proven."
+    },
+    {
+      "id": "PC-5.1-A2",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Simplify completely: \\( \\frac{\\sec^2(\\theta) - 1}{\\sec^2(\\theta)} \\).",
+      "answer": "\\( \\frac{\\sec^2(\\theta) - 1}{\\sec^2(\\theta)} = \\frac{\\tan^2(\\theta)}{\\sec^2(\\theta)} = \\frac{\\sin^2(\\theta)/\\cos^2(\\theta)}{1/\\cos^2(\\theta)} = \\sin^2(\\theta) \\)"
+    },
+    {
+      "id": "PC-5.2-B1",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\cos(\\theta) \\cdot \\sec(\\theta) = 1 \\).",
+      "answer": "\\( \\cos(\\theta) \\cdot \\sec(\\theta) = \\cos(\\theta) \\cdot \\frac{1}{\\cos(\\theta)} = 1 \\) ✓"
+    },
+    {
+      "id": "PC-5.2-B2",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\tan(\\theta) \\cdot \\cot(\\theta) = 1 \\).",
+      "answer": "\\( \\tan(\\theta) \\cdot \\cot(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\frac{\\cos(\\theta)}{\\sin(\\theta)} = 1 \\) ✓"
+    },
+    {
+      "id": "PC-5.2-B3",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\sin(\\theta) \\cdot \\csc(\\theta) = 1 \\).",
+      "answer": "\\( \\sin(\\theta) \\cdot \\csc(\\theta) = \\sin(\\theta) \\cdot \\frac{1}{\\sin(\\theta)} = 1 \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I1",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\sin(\\theta)}{1 + \\cos(\\theta)} + \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} = \\frac{2}{\\sin(\\theta)} \\).",
+      "answer": "Left side: \\( \\frac{\\sin^2(\\theta) + (1 + \\cos(\\theta))^2}{\\sin(\\theta)(1 + \\cos(\\theta))} \\)<br>\\( = \\frac{\\sin^2(\\theta) + 1 + 2\\cos(\\theta) + \\cos^2(\\theta)}{\\sin(\\theta)(1 + \\cos(\\theta))} \\)<br>\\( = \\frac{2 + 2\\cos(\\theta)}{\\sin(\\theta)(1 + \\cos(\\theta))} = \\frac{2(1 + \\cos(\\theta))}{\\sin(\\theta)(1 + \\cos(\\theta))} = \\frac{2}{\\sin(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I2",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{1 - \\sin(\\theta)}{\\cos(\\theta)} = \\frac{\\cos(\\theta)}{1 + \\sin(\\theta)} \\).",
+      "answer": "Multiply the right side by \\( \\frac{1 - \\sin(\\theta)}{1 - \\sin(\\theta)} \\):<br>\\( \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{(1 + \\sin(\\theta))(1 - \\sin(\\theta))} = \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{1 - \\sin^2(\\theta)} \\)<br>\\( = \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{\\cos^2(\\theta)} = \\frac{1 - \\sin(\\theta)}{\\cos(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I3",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( (\\sin(\\theta) + \\cos(\\theta))^2 = 1 + 2\\sin(\\theta)\\cos(\\theta) \\).",
+      "answer": "Left side: \\( (\\sin(\\theta) + \\cos(\\theta))^2 = \\sin^2(\\theta) + 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta) \\)<br>\\( = (\\sin^2(\\theta) + \\cos^2(\\theta)) + 2\\sin(\\theta)\\cos(\\theta) = 1 + 2\\sin(\\theta)\\cos(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-A1",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\tan(\\theta) + \\cot(\\theta)}{\\tan(\\theta)} = \\csc^2(\\theta) \\).",
+      "answer": "Left side: \\( \\frac{\\tan(\\theta) + \\cot(\\theta)}{\\tan(\\theta)} = 1 + \\frac{\\cot(\\theta)}{\\tan(\\theta)} \\)<br>\\( = 1 + \\frac{\\cos(\\theta)/\\sin(\\theta)}{\\sin(\\theta)/\\cos(\\theta)} = 1 + \\frac{\\cos^2(\\theta)}{\\sin^2(\\theta)} \\)<br>\\( = \\frac{\\sin^2(\\theta) + \\cos^2(\\theta)}{\\sin^2(\\theta)} = \\frac{1}{\\sin^2(\\theta)} = \\csc^2(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-A2",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{1}{1 - \\sin(\\theta)} - \\frac{1}{1 + \\sin(\\theta)} = \\frac{2\\tan(\\theta)}{\\cos(\\theta)} \\).",
+      "answer": "Left side: \\( \\frac{(1 + \\sin(\\theta)) - (1 - \\sin(\\theta))}{(1 - \\sin(\\theta))(1 + \\sin(\\theta))} = \\frac{2\\sin(\\theta)}{1 - \\sin^2(\\theta)} \\)<br>\\( = \\frac{2\\sin(\\theta)}{\\cos^2(\\theta)} = \\frac{2\\sin(\\theta)}{\\cos(\\theta) \\cdot \\cos(\\theta)} = \\frac{2\\tan(\\theta)}{\\cos(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.3-B1",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\sin(\\theta) = \\frac{1}{2} \\).",
+      "answer": "\\( \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6} \\)"
+    },
+    {
+      "id": "PC-5.3-B2",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\cos(\\theta) = -1 \\).",
+      "answer": "\\( \\theta = \\pi \\)"
+    },
+    {
+      "id": "PC-5.3-B3",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\tan(\\theta) = 1 \\).",
+      "answer": "\\( \\theta = \\frac{\\pi}{4}, \\frac{5\\pi}{4} \\)"
+    },
+    {
+      "id": "PC-5.3-I1",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( 2\\sin^2(\\theta) - \\sin(\\theta) - 1 = 0 \\).",
+      "answer": "Factor: \\( (2\\sin(\\theta) + 1)(\\sin(\\theta) - 1) = 0 \\)<br>\\( \\sin(\\theta) = -\\frac{1}{2} \\) or \\( \\sin(\\theta) = 1 \\)<br>\\( \\theta = \\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6} \\)"
+    },
+    {
+      "id": "PC-5.3-I2",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\cos(2\\theta) = \\frac{1}{2} \\).",
+      "answer": "\\( 2\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}, \\frac{7\\pi}{3}, \\frac{11\\pi}{3} \\)<br>\\( \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6} \\)"
+    },
+    {
+      "id": "PC-5.3-I3",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\sin(\\theta)\\cos(\\theta) = \\frac{1}{4} \\).",
+      "answer": "Multiply both sides by 2: \\( 2\\sin(\\theta)\\cos(\\theta) = \\frac{1}{2} \\)<br>Using double angle identity: \\( \\sin(2\\theta) = \\frac{1}{2} \\)<br>\\( 2\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{13\\pi}{6}, \\frac{17\\pi}{6} \\)<br>\\( \\theta = \\frac{\\pi}{12}, \\frac{5\\pi}{12}, \\frac{13\\pi}{12}, \\frac{17\\pi}{12} \\)"
+    },
+    {
+      "id": "PC-5.3-A1",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 5 }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\tan^2(\\theta) - 3\\tan(\\theta) + 2 = 0 \\).",
+      "answer": "Let \\( u = \\tan(\\theta) \\): \\( u^2 - 3u + 2 = 0 \\)<br>Factor: \\( (u - 1)(u - 2) = 0 \\)<br>\\( \\tan(\\theta) = 1 \\) or \\( \\tan(\\theta) = 2 \\)<br>\\( \\theta = \\frac{\\pi}{4}, \\frac{5\\pi}{4}, \\arctan(2), \\pi + \\arctan(2) \\)"
+    },
+    {
+      "id": "PC-5.3-A2",
+      "type": "template",
+      "objective": "Solving Trigonometric Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 5 }
+      },
+      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\cos(\\theta) + \\sin(\\theta) = 1 \\).",
+      "answer": "Square both sides: \\( \\cos^2(\\theta) + 2\\sin(\\theta)\\cos(\\theta) + \\sin^2(\\theta) = 1 \\)<br>\\( 1 + 2\\sin(\\theta)\\cos(\\theta) = 1 \\)<br>\\( \\sin(2\\theta) = 0 \\)<br>\\( 2\\theta = 0, \\pi, 2\\pi, 3\\pi \\)<br>\\( \\theta = 0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2} \\)<br>Check: \\( \\theta = 0, \\frac{\\pi}{2} \\) are valid solutions."
+    },
+    {
+      "id": "PC-5.4-B1",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the sum identity to find the exact value of \\( \\sin(75^\\circ) \\). (Hint: \\( 75^\\circ = 45^\\circ + 30^\\circ \\))",
+      "answer": "\\( \\sin(75^\\circ) = \\sin(45^\\circ + 30^\\circ) = \\sin(45^\\circ)\\cos(30^\\circ) + \\cos(45^\\circ)\\sin(30^\\circ) \\)<br>\\( = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4} \\)"
+    },
+    {
+      "id": "PC-5.4-B2",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the difference identity to find the exact value of \\( \\cos(15^\\circ) \\). (Hint: \\( 15^\\circ = 45^\\circ - 30^\\circ \\))",
+      "answer": "\\( \\cos(15^\\circ) = \\cos(45^\\circ - 30^\\circ) = \\cos(45^\\circ)\\cos(30^\\circ) + \\sin(45^\\circ)\\sin(30^\\circ) \\)<br>\\( = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4} \\)"
+    },
+    {
+      "id": "PC-5.4-B3",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the sum identity to find the exact value of \\( \\tan(105^\\circ) \\). (Hint: \\( 105^\\circ = 60^\\circ + 45^\\circ \\))",
+      "answer": "\\( \\tan(105^\\circ) = \\tan(60^\\circ + 45^\\circ) = \\frac{\\tan(60^\\circ) + \\tan(45^\\circ)}{1 - \\tan(60^\\circ)\\tan(45^\\circ)} \\)<br>\\( = \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3}} \\)<br>Rationalize: \\( = \\frac{(\\sqrt{3} + 1)(1 + \\sqrt{3})}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\frac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3} \\)"
+    },
+    {
+      "id": "PC-5.4-I1",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\sin(\\alpha) = \\frac{3}{5} \\) with \\( \\alpha \\) in Quadrant I, and \\( \\cos(\\beta) = \\frac{5}{13} \\) with \\( \\beta \\) in Quadrant I, find \\( \\sin(\\alpha + \\beta) \\).",
+      "answer": "First find \\( \\cos(\\alpha) = \\frac{4}{5} \\) and \\( \\sin(\\beta) = \\frac{12}{13} \\)<br>\\( \\sin(\\alpha + \\beta) = \\sin(\\alpha)\\cos(\\beta) + \\cos(\\alpha)\\sin(\\beta) \\)<br>\\( = \\frac{3}{5} \\cdot \\frac{5}{13} + \\frac{4}{5} \\cdot \\frac{12}{13} = \\frac{15}{65} + \\frac{48}{65} = \\frac{63}{65} \\)"
+    },
+    {
+      "id": "PC-5.4-I2",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\sin(\\alpha) = \\frac{4}{5} \\) with \\( \\alpha \\) in Quadrant II, and \\( \\cos(\\beta) = -\\frac{3}{5} \\) with \\( \\beta \\) in Quadrant III, find \\( \\cos(\\alpha - \\beta) \\).",
+      "answer": "First find \\( \\cos(\\alpha) = -\\frac{3}{5} \\) and \\( \\sin(\\beta) = -\\frac{4}{5} \\)<br>\\( \\cos(\\alpha - \\beta) = \\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) \\)<br>\\( = (-\\frac{3}{5})(-\\frac{3}{5}) + (\\frac{4}{5})(-\\frac{4}{5}) = \\frac{9}{25} - \\frac{16}{25} = -\\frac{7}{25} \\)"
+    },
+    {
+      "id": "PC-5.4-I3",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Use sum and difference identities to simplify: \\( \\sin(x + y)\\cos(y) - \\cos(x + y)\\sin(y) \\).",
+      "answer": "This is the sine difference identity:<br>\\( \\sin(x + y)\\cos(y) - \\cos(x + y)\\sin(y) = \\sin((x + y) - y) = \\sin(x) \\)"
+    },
+    {
+      "id": "PC-5.4-A1",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Prove that \\( \\sin(x + y) + \\sin(x - y) = 2\\sin(x)\\cos(y) \\).",
+      "answer": "\\( \\sin(x + y) = \\sin(x)\\cos(y) + \\cos(x)\\sin(y) \\)<br>\\( \\sin(x - y) = \\sin(x)\\cos(y) - \\cos(x)\\sin(y) \\)<br>Adding: \\( \\sin(x + y) + \\sin(x - y) = 2\\sin(x)\\cos(y) \\) ✓"
+    },
+    {
+      "id": "PC-5.4-A2",
+      "type": "template",
+      "objective": "Sum and Difference Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\tan(\\alpha) = 2 \\) and \\( \\tan(\\beta) = 3 \\), find the exact value of \\( \\tan(\\alpha + \\beta) \\).",
+      "answer": "\\( \\tan(\\alpha + \\beta) = \\frac{\\tan(\\alpha) + \\tan(\\beta)}{1 - \\tan(\\alpha)\\tan(\\beta)} = \\frac{2 + 3}{1 - 2 \\cdot 3} = \\frac{5}{1 - 6} = \\frac{5}{-5} = -1 \\)"
+    },
+    {
+      "id": "PC-5.5-B1",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the double angle identity to find \\( \\sin(2\\theta) \\) if \\( \\sin(\\theta) = \\frac{3}{5} \\) and \\( \\theta \\) is in Quadrant I.",
+      "answer": "First find \\( \\cos(\\theta) = \\frac{4}{5} \\)<br>\\( \\sin(2\\theta) = 2\\sin(\\theta)\\cos(\\theta) = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25} \\)"
+    },
+    {
+      "id": "PC-5.5-B2",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the double angle identity to find \\( \\cos(2\\theta) \\) if \\( \\cos(\\theta) = \\frac{5}{13} \\) and \\( \\theta \\) is in Quadrant I.",
+      "answer": "\\( \\cos(2\\theta) = 2\\cos^2(\\theta) - 1 = 2(\\frac{5}{13})^2 - 1 = 2 \\cdot \\frac{25}{169} - 1 = \\frac{50}{169} - \\frac{169}{169} = -\\frac{119}{169} \\)"
+    },
+    {
+      "id": "PC-5.5-B3",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, 2, 3] }
+      },
+      "question": "Use the half angle identity to find \\( \\sin(\\frac{\\pi}{8}) \\). (Use \\( \\cos(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2} \\))",
+      "answer": "\\( \\sin(\\frac{\\pi}{8}) = \\sqrt{\\frac{1 - \\cos(\\frac{\\pi}{4})}{2}} = \\sqrt{\\frac{1 - \\frac{\\sqrt{2}}{2}}{2}} = \\sqrt{\\frac{2 - \\sqrt{2}}{4}} = \\frac{\\sqrt{2 - \\sqrt{2}}}{2} \\)"
+    },
+    {
+      "id": "PC-5.5-I1",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\tan(\\theta) = -\\frac{3}{4} \\) and \\( \\theta \\) is in Quadrant II, find \\( \\tan(2\\theta) \\).",
+      "answer": "\\( \\tan(2\\theta) = \\frac{2\\tan(\\theta)}{1 - \\tan^2(\\theta)} = \\frac{2(-\\frac{3}{4})}{1 - (-\\frac{3}{4})^2} = \\frac{-\\frac{3}{2}}{1 - \\frac{9}{16}} = \\frac{-\\frac{3}{2}}{\\frac{7}{16}} = -\\frac{3}{2} \\cdot \\frac{16}{7} = -\\frac{24}{7} \\)"
+    },
+    {
+      "id": "PC-5.5-I2",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Use the power reduction identity to express \\( \\sin^2(x) \\) in terms of \\( \\cos(2x) \\).",
+      "answer": "From \\( \\cos(2x) = 1 - 2\\sin^2(x) \\):<br>\\( 2\\sin^2(x) = 1 - \\cos(2x) \\)<br>\\( \\sin^2(x) = \\frac{1 - \\cos(2x)}{2} \\)"
+    },
+    {
+      "id": "PC-5.5-I3",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "If \\( \\sin(\\theta) = \\frac{12}{13} \\) and \\( \\frac{\\pi}{2} < \\theta < \\pi \\), find \\( \\cos(\\frac{\\theta}{2}) \\).",
+      "answer": "First find \\( \\cos(\\theta) = -\\frac{5}{13} \\) (Quadrant II)<br>Since \\( \\frac{\\pi}{2} < \\theta < \\pi \\), we have \\( \\frac{\\pi}{4} < \\frac{\\theta}{2} < \\frac{\\pi}{2} \\), so \\( \\cos(\\frac{\\theta}{2}) > 0 \\)<br>\\( \\cos(\\frac{\\theta}{2}) = \\sqrt{\\frac{1 + \\cos(\\theta)}{2}} = \\sqrt{\\frac{1 - \\frac{5}{13}}{2}} = \\sqrt{\\frac{8}{26}} = \\sqrt{\\frac{4}{13}} = \\frac{2}{\\sqrt{13}} = \\frac{2\\sqrt{13}}{13} \\)"
+    },
+    {
+      "id": "PC-5.5-A1",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Prove the triple angle identity: \\( \\sin(3\\theta) = 3\\sin(\\theta) - 4\\sin^3(\\theta) \\).",
+      "answer": "\\( \\sin(3\\theta) = \\sin(2\\theta + \\theta) = \\sin(2\\theta)\\cos(\\theta) + \\cos(2\\theta)\\sin(\\theta) \\)<br>\\( = 2\\sin(\\theta)\\cos^2(\\theta) + (1 - 2\\sin^2(\\theta))\\sin(\\theta) \\)<br>\\( = 2\\sin(\\theta)(1 - \\sin^2(\\theta)) + \\sin(\\theta) - 2\\sin^3(\\theta) \\)<br>\\( = 2\\sin(\\theta) - 2\\sin^3(\\theta) + \\sin(\\theta) - 2\\sin^3(\\theta) \\)<br>\\( = 3\\sin(\\theta) - 4\\sin^3(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.5-A2",
+      "type": "template",
+      "objective": "Multiple Angle Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Use multiple angle identities to simplify: \\( \\frac{\\sin(4x)}{\\sin(x)} \\).",
+      "answer": "\\( \\sin(4x) = \\sin(2 \\cdot 2x) = 2\\sin(2x)\\cos(2x) \\)<br>\\( = 2 \\cdot 2\\sin(x)\\cos(x) \\cdot \\cos(2x) = 4\\sin(x)\\cos(x)\\cos(2x) \\)<br>Therefore: \\( \\frac{\\sin(4x)}{\\sin(x)} = \\frac{4\\sin(x)\\cos(x)\\cos(2x)}{\\sin(x)} = 4\\cos(x)\\cos(2x) \\)"
+    },
+    {
+      "id": "PC-5.6-B1",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "basic",
+      "variables": {
+        "A": { "min": 30, "max": 60 },
+        "B": { "min": 40, "max": 70 },
+        "a": { "min": 10, "max": 20 },
+        "b": { "formula": "a * Math.sin(B * Math.PI/180) / Math.sin(A * Math.PI/180)" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), \\( \\angle B = {B}^\\circ \\), and side \\( a = {a} \\). Use the Law of Sines to find side \\( b \\). Round to two decimal places.",
+      "answer": "Using \\( \\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)} \\):<br>\\( b = \\frac{a \\sin(B)}{\\sin(A)} = \\frac{ {a} \\sin({B}^\\circ)}{\\sin({A}^\\circ)} \\approx {b} \\)"
+    },
+    {
+      "id": "PC-5.6-B2",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "basic",
+      "variables": {
+        "A": { "min": 35, "max": 55 },
+        "a": { "min": 15, "max": 25 },
+        "b": { "min": 10, "max": 20 },
+        "sinB": { "formula": "b * Math.sin(A * Math.PI/180) / a" },
+        "B": { "formula": "Math.asin(sinB) * 180/Math.PI" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), side \\( a = {a} \\), and side \\( b = {b} \\). Use the Law of Sines to find \\( \\angle B \\). Round to two decimal places.",
+      "answer": "Using \\( \\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)} \\):<br>\\( \\sin(B) = \\frac{b \\sin(A)}{a} = \\frac{ {b} \\sin({A}^\\circ)}{ {a} } \\)<br>\\( B = \\arcsin(\\frac{ {b} \\sin({A}^\\circ)}{ {a} }) \\approx {B}^\\circ \\)"
+    },
+    {
+      "id": "PC-5.6-B3",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "basic",
+      "variables": {
+        "A": { "min": 40, "max": 60 },
+        "B": { "min": 45, "max": 70 },
+        "a": { "min": 12, "max": 20 },
+        "C": { "formula": "180 - A - B" },
+        "c": { "formula": "a * Math.sin(C * Math.PI/180) / Math.sin(A * Math.PI/180)" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), \\( \\angle B = {B}^\\circ \\), and side \\( a = {a} \\). Find side \\( c \\). Round to two decimal places.",
+      "answer": "First find \\( \\angle C = 180^\\circ - {A}^\\circ - {B}^\\circ = {C}^\\circ \\)<br>Using \\( \\frac{a}{\\sin(A)} = \\frac{c}{\\sin(C)} \\):<br>\\( c = \\frac{a \\sin(C)}{\\sin(A)} \\approx {c} \\)"
+    },
+    {
+      "id": "PC-5.6-I1",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "intermediate",
+      "variables": {
+        "A": { "min": 35, "max": 55 },
+        "a": { "min": 15, "max": 25 },
+        "b": { "min": 26, "max": 35 }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), side \\( a = {a} \\), and side \\( b = {b} \\). Determine if this is the ambiguous case and find all possible values for \\( \\angle B \\).",
+      "answer": "Calculate \\( h = b\\sin(A) \\). If \\( a < h \\), no triangle exists. If \\( a = h \\), one right triangle. If \\( h < a < b \\), two triangles (ambiguous case). If \\( a \\geq b \\), one triangle.<br>For this problem, check the conditions and solve accordingly."
+    },
+    {
+      "id": "PC-5.6-I2",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "intermediate",
+      "variables": {
+        "A": { "min": 40, "max": 60 },
+        "B": { "min": 50, "max": 70 },
+        "a": { "min": 15, "max": 25 },
+        "C": { "formula": "180 - A - B" },
+        "b": { "formula": "a * Math.sin(B * Math.PI/180) / Math.sin(A * Math.PI/180)" },
+        "c": { "formula": "a * Math.sin(C * Math.PI/180) / Math.sin(A * Math.PI/180)" }
+      },
+      "question": "Solve triangle \\( \\triangle ABC \\) completely given \\( \\angle A = {A}^\\circ \\), \\( \\angle B = {B}^\\circ \\), and side \\( a = {a} \\). Round to two decimal places.",
+      "answer": "\\( \\angle C = 180^\\circ - {A}^\\circ - {B}^\\circ = {C}^\\circ \\)<br>\\( b = \\frac{a \\sin(B)}{\\sin(A)} \\approx {b} \\)<br>\\( c = \\frac{a \\sin(C)}{\\sin(A)} \\approx {c} \\)"
+    },
+    {
+      "id": "PC-5.6-I3",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "intermediate",
+      "variables": {
+        "A": { "min": 45, "max": 65 },
+        "B": { "min": 50, "max": 70 },
+        "a": { "min": 20, "max": 30 },
+        "R": { "formula": "a / (2 * Math.sin(A * Math.PI/180))" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\) and side \\( a = {a} \\). Find the radius \\( R \\) of the circumscribed circle. Round to two decimal places.",
+      "answer": "Using extended Law of Sines: \\( \\frac{a}{\\sin(A)} = 2R \\)<br>\\( R = \\frac{a}{2\\sin(A)} = \\frac{ {a} }{2\\sin({A}^\\circ)} \\approx {R} \\)"
+    },
+    {
+      "id": "PC-5.6-A1",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "advanced",
+      "variables": {
+        "A": { "min": 35, "max": 50 },
+        "a": { "min": 15, "max": 20 },
+        "b": { "min": 21, "max": 28 },
+        "sinB": { "formula": "b * Math.sin(A * Math.PI/180) / a" },
+        "B1": { "formula": "Math.asin(sinB) * 180/Math.PI" },
+        "B2": { "formula": "180 - (Math.asin(sinB) * 180/Math.PI)" },
+        "C1": { "formula": "180 - A - (Math.asin(sinB) * 180/Math.PI)" },
+        "C2": { "formula": "180 - A - (180 - (Math.asin(sinB) * 180/Math.PI))" },
+        "c1": { "formula": "a * Math.sin(C1 * Math.PI/180) / Math.sin(A * Math.PI/180)" },
+        "c2": { "formula": "a * Math.sin(C2 * Math.PI/180) / Math.sin(A * Math.PI/180)" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), side \\( a = {a} \\), and side \\( b = {b} \\). This is an ambiguous case. Find both possible triangles. Round to two decimal places.",
+      "answer": "\\( \\sin(B) = \\frac{ {b} \\sin({A}^\\circ)}{ {a} } \\)<br>Triangle 1: \\( B_1 \\approx {B1}^\\circ \\), \\( C_1 \\approx {C1}^\\circ \\), \\( c_1 \\approx {c1} \\)<br>Triangle 2: \\( B_2 \\approx {B2}^\\circ \\), \\( C_2 \\approx {C2}^\\circ \\), \\( c_2 \\approx {c2} \\)"
+    },
+    {
+      "id": "PC-5.6-A2",
+      "type": "template",
+      "objective": "Law of Sines",
+      "difficulty": "advanced",
+      "variables": {
+        "A": { "min": 40, "max": 60 },
+        "B": { "min": 50, "max": 70 },
+        "a": { "min": 20, "max": 30 },
+        "C": { "formula": "180 - A - B" },
+        "b": { "formula": "a * Math.sin(B * Math.PI/180) / Math.sin(A * Math.PI/180)" },
+        "c": { "formula": "a * Math.sin(C * Math.PI/180) / Math.sin(A * Math.PI/180)" },
+        "Area": { "formula": "0.5 * a * b * Math.sin(C * Math.PI/180)" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), \\( \\angle A = {A}^\\circ \\), \\( \\angle B = {B}^\\circ \\), and side \\( a = {a} \\). Find the area of the triangle. Round to two decimal places.",
+      "answer": "First find all sides:<br>\\( C = {C}^\\circ \\), \\( b \\approx {b} \\), \\( c \\approx {c} \\)<br>Area \\( = \\frac{1}{2}ab\\sin(C) \\approx {Area} \\)"
+    },
+    {
+      "id": "PC-5.7-B1",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 8, "max": 15 },
+        "b": { "min": 10, "max": 18 },
+        "C": { "min": 45, "max": 90 },
+        "c": { "formula": "Math.sqrt(a*a + b*b - 2*a*b*Math.cos(C * Math.PI/180))" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), side \\( a = {a} \\), side \\( b = {b} \\), and \\( \\angle C = {C}^\\circ \\). Use the Law of Cosines to find side \\( c \\). Round to two decimal places.",
+      "answer": "Using \\( c^2 = a^2 + b^2 - 2ab\\cos(C) \\):<br>\\( c = \\sqrt{ {a}^2 + {b}^2 - 2({a})({b})\\cos({C}^\\circ)} \\approx {c} \\)"
+    },
+    {
+      "id": "PC-5.7-B2",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 12, "max": 20 },
+        "b": { "min": 15, "max": 25 },
+        "c": { "min": 10, "max": 18 },
+        "cosC": { "formula": "(a*a + b*b - c*c)/(2*a*b)" },
+        "C": { "formula": "Math.acos(cosC) * 180/Math.PI" }
+      },
+      "question": "In triangle \\( \\triangle ABC \\), side \\( a = {a} \\), side \\( b = {b} \\), and side \\( c = {c} \\). Use the Law of Cosines to find \\( \\angle C \\). Round to two decimal places.",
+      "answer": "Using \\( c^2 = a^2 + b^2 - 2ab\\cos(C) \\):<br>\\( \\cos(C) = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{ {a}^2 + {b}^2 - {c}^2}{2({a})({b})} \\)<br>\\( C = \\arccos(\\frac{a^2 + b^2 - c^2}{2ab}) \\approx {C}^\\circ \\)"
+    },
+    {
+      "id": "PC-5.7-B3",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 10, "max": 20 },
+        "b": { "min": 12, "max": 22 },
+        "c": { "min": 8, "max": 18 }
+      },
+      "question": "Determine if a triangle with sides \\( a = {a} \\), \\( b = {b} \\), and \\( c = {c} \\) is acute, right, or obtuse.",
+      "answer": "Compare \\( c^2 \\) with \\( a^2 + b^2 \\):<br>If \\( c^2 < a^2 + b^2 \\), triangle is acute.<br>If \\( c^2 = a^2 + b^2 \\), triangle is right.<br>If \\( c^2 > a^2 + b^2 \\), triangle is obtuse."
+    },
+    {
+      "id": "PC-5.7-I1",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 15, "max": 25 },
+        "b": { "min": 18, "max": 28 },
+        "c": { "min": 12, "max": 22 },
+        "cosA": { "formula": "(b*b + c*c - a*a)/(2*b*c)" },
+        "cosB": { "formula": "(a*a + c*c - b*b)/(2*a*c)" },
+        "cosC": { "formula": "(a*a + b*b - c*c)/(2*a*b)" },
+        "A": { "formula": "Math.acos(cosA) * 180/Math.PI" },
+        "B": { "formula": "Math.acos(cosB) * 180/Math.PI" },
+        "C": { "formula": "Math.acos(cosC) * 180/Math.PI" }
+      },
+      "question": "Solve triangle \\( \\triangle ABC \\) completely given sides \\( a = {a} \\), \\( b = {b} \\), and \\( c = {c} \\). Round to two decimal places.",
+      "answer": "Using Law of Cosines for each angle:<br>\\( A \\approx {A}^\\circ \\)<br>\\( B \\approx {B}^\\circ \\)<br>\\( C \\approx {C}^\\circ \\)"
+    },
+    {
+      "id": "PC-5.7-I2",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "intermediate",
+      "variables": {
+        "b": { "min": 12, "max": 20 },
+        "c": { "min": 15, "max": 25 },
+        "A": { "min": 60, "max": 100 },
+        "a": { "formula": "Math.sqrt(b*b + c*c - 2*b*c*Math.cos(A * Math.PI/180))" },
+        "cosB": { "formula": "(a*a + c*c - b*b)/(2*a*c)" },
+        "B": { "formula": "Math.acos(cosB) * 180/Math.PI" },
+        "C": { "formula": "180 - A - (Math.acos(cosB) * 180/Math.PI)" }
+      },
+      "question": "Solve triangle \\( \\triangle ABC \\) completely given \\( \\angle A = {A}^\\circ \\), side \\( b = {b} \\), and side \\( c = {c} \\) (SAS case). Round to two decimal places.",
+      "answer": "Using Law of Cosines: \\( a \\approx {a} \\)<br>Then: \\( B \\approx {B}^\\circ \\), \\( C \\approx {C}^\\circ \\)"
+    },
+    {
+      "id": "PC-5.7-I3",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 18, "max": 28 },
+        "b": { "min": 20, "max": 30 },
+        "c": { "min": 15, "max": 25 },
+        "s": { "formula": "(a + b + c)/2" },
+        "Area": { "formula": "Math.sqrt(s * (s-a) * (s-b) * (s-c))" }
+      },
+      "question": "Find the area of triangle \\( \\triangle ABC \\) with sides \\( a = {a} \\), \\( b = {b} \\), and \\( c = {c} \\) using Heron's formula. Round to two decimal places.",
+      "answer": "Semi-perimeter: \\( s = \\frac{a + b + c}{2} = {s} \\)<br>Area \\( = \\sqrt{s(s-a)(s-b)(s-c)} \\approx {Area} \\)"
+    },
+    {
+      "id": "PC-5.7-A1",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 20, "max": 30 },
+        "b": { "min": 25, "max": 35 },
+        "C": { "min": 75, "max": 105 },
+        "c": { "formula": "Math.sqrt(a*a + b*b - 2*a*b*Math.cos(C * Math.PI/180))" },
+        "cosA": { "formula": "(b*b + c*c - a*a)/(2*b*c)" },
+        "A": { "formula": "Math.acos(cosA) * 180/Math.PI" },
+        "B": { "formula": "180 - (Math.acos(cosA) * 180/Math.PI) - C" },
+        "Area": { "formula": "0.5 * a * b * Math.sin(C * Math.PI/180)" }
+      },
+      "question": "Solve triangle \\( \\triangle ABC \\) completely and find its area given \\( \\angle C = {C}^\\circ \\), side \\( a = {a} \\), and side \\( b = {b} \\). Round to two decimal places.",
+      "answer": "\\( c \\approx {c} \\)<br>\\( A \\approx {A}^\\circ \\)<br>\\( B \\approx {B}^\\circ \\)<br>Area \\( = \\frac{1}{2}ab\\sin(C) \\approx {Area} \\)"
+    },
+    {
+      "id": "PC-5.7-A2",
+      "type": "template",
+      "objective": "Law of Cosines",
+      "difficulty": "advanced",
+      "variables": {
+        "P1x": { "min": 0, "max": 10 },
+        "P1y": { "min": 0, "max": 10 },
+        "P2x": { "min": 15, "max": 25 },
+        "P2y": { "min": 5, "max": 15 },
+        "P3x": { "min": 5, "max": 15 },
+        "P3y": { "min": 18, "max": 28 },
+        "a": { "formula": "Math.sqrt((P2x - P3x)**2 + (P2y - P3y)**2)" },
+        "b": { "formula": "Math.sqrt((P1x - P3x)**2 + (P1y - P3y)**2)" },
+        "c": { "formula": "Math.sqrt((P1x - P2x)**2 + (P1y - P2y)**2)" },
+        "cosA": { "formula": "(b*b + c*c - a*a)/(2*b*c)" },
+        "A": { "formula": "Math.acos(cosA) * 180/Math.PI" }
+      },
+      "question": "Three points form a triangle: \\( P_1({P1x}, {P1y}) \\), \\( P_2({P2x}, {P2y}) \\), and \\( P_3({P3x}, {P3y}) \\). Find the angle at vertex \\( P_1 \\). Round to two decimal places.",
+      "answer": "Find distances: \\( a \\approx {a} \\), \\( b \\approx {b} \\), \\( c \\approx {c} \\)<br>Using Law of Cosines at \\( P_1 \\): \\( \\angle P_1 \\approx {A}^\\circ \\)"
+    }
     ]
   }
 }
