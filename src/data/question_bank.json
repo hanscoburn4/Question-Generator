@@ -3247,6 +3247,419 @@
       "answer": "\\( (\\frac{ {p} }{ {leadingCoef} }, {y1}) \\) or \\( ({q}, {y2}) \\)"
     }
 
+  ],
+  "Module 4": [
+    {
+      "id": "ALG2-4.1-B1",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0] },
+        "c": { "min": -10, "max": 10 },
+        "d": { "min": -5, "max": 5 }
+      },
+      "question": "Identify the degree and leading coefficient of the polynomial function: \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\).",
+      "answer": "Degree: 3; Leading coefficient: \\( {a} \\)"
+    },
+    {
+      "id": "ALG2-4.1-B2",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": -10, "max": 10 },
+        "e": { "min": -5, "max": 5 }
+      },
+      "question": "Write the polynomial function in standard form and identify the degree: \\( f(x) = {a|coef}x^2({b|signedCoef}x^2 {c|signedCoef}) {d|signedCoef}x {e|sign} \\).",
+      "answer": "Standard form: \\( f(x) = {a*b|coef}x^4 {a*c|signedCoef}x^2 {d|signedCoef}x {e|sign} \\); Degree: 4"
+    },
+    {
+      "id": "ALG2-4.1-I1",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "x": { "min": -3, "max": 3, "exclude": [0] }
+      },
+      "question": "Evaluate the polynomial function \\( f(x) = {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 - 5x + 7 \\) when \\( x = {x} \\).",
+      "answer": "\\( f({x}) = {a*x**4 + b*x**3 + c*x**2 - 5*x + 7} \\)"
+    },
+    {
+      "id": "ALG2-4.1-I2",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
+        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] },
+        "a": { "min": 1, "max": 3 }
+      },
+      "question": "Write a polynomial function in standard form with zeros at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\), and leading coefficient \\( {a} \\).",
+      "answer": "\\( f(x) = {a|coef}(x - ({p}))(x - ({q}))(x - ({r})) \\) which expands to \\( f(x) = {a|coef}x^3 {-a*(p+q+r)|signedCoef}x^2 {a*(p*q + p*r + q*r)|signedCoef}x {-a*p*q*r|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.1-A1",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "h": { "min": 10, "max": 30 },
+        "w": { "min": 5, "max": 15 },
+        "d": { "min": 8, "max": 20 },
+        "x": { "min": 1, "max": 3 }
+      },
+      "question": "A rectangular box has dimensions \\( {h} \\times {w} \\times {d} \\) inches. If each dimension is increased by \\( x \\) inches, write a polynomial function \\( V(x) \\) that represents the volume of the new box. Then find the volume when \\( x = {x} \\).",
+      "answer": "\\( V(x) = ({h} + x)({w} + x)({d} + x) \\) which expands to \\( V(x) = x^3 + {h+w+d}x^2 + {h*w + h*d + w*d}x + {h*w*d} \\). When \\( x = {x} \\), \\( V = {(h+x)*(w+x)*(d+x)} \\) cubic inches."
+    },
+    {
+      "id": "ALG2-4.1-A2",
+      "type": "template",
+      "objective": "Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "p": { "min": -4, "max": 4, "exclude": [0] },
+        "mult": { "values": [2, 3] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
+      },
+      "question": "Write a polynomial function with a zero at \\( x = {p} \\) with multiplicity {mult} and a zero at \\( x = {q} \\) with multiplicity 1. Use a leading coefficient of 1.",
+      "answer": "\\( f(x) = (x - ({p}))^{mult}(x - ({q})) \\)"
+    },
+    {
+      "id": "ALG2-4.2-B1",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "deg": { "values": [2, 3, 4, 5] }
+      },
+      "question": "Describe the end behavior of the polynomial function \\( f(x) = {a|coef}x^{deg} \\).",
+      "answer": "As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\) (even degree) or \\( f(x) \\to -\\infty \\) (odd degree). As \\( x \\to \\infty \\), \\( f(x) \\to \\infty \\) (positive leading coefficient)."
+    },
+    {
+      "id": "ALG2-4.2-B2",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -5, "max": -1 },
+        "deg": { "values": [3, 5, 7] }
+      },
+      "question": "Describe the end behavior of the polynomial function \\( f(x) = {a|coef}x^{deg} \\).",
+      "answer": "Since the leading coefficient is negative and the degree is odd: As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\). As \\( x \\to \\infty \\), \\( f(x) \\to -\\infty \\)."
+    },
+    {
+      "id": "ALG2-4.2-I1",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
+        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] }
+      },
+      "question": "A polynomial function has zeros at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\), each with multiplicity 1. Describe the behavior of the graph at each zero.",
+      "answer": "The graph crosses the x-axis at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\) because each zero has odd multiplicity (1)."
+    },
+    {
+      "id": "ALG2-4.2-I2",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
+      },
+      "question": "A polynomial function \\( f(x) \\) has a zero at \\( x = {p} \\) with multiplicity 2 and a zero at \\( x = {q} \\) with multiplicity 1. Describe the behavior of the graph at each zero.",
+      "answer": "The graph touches the x-axis and turns around at \\( x = {p} \\) (even multiplicity 2). The graph crosses the x-axis at \\( x = {q} \\) (odd multiplicity 1)."
+    },
+    {
+      "id": "ALG2-4.2-A1",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "p": { "min": -4, "max": 4, "exclude": [0] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
+        "r": { "min": -3, "max": 3, "exclude": [0, "p", "q"] }
+      },
+      "question": "Sketch the general shape of the polynomial function \\( f(x) = {a}(x - ({p}))^2(x - ({q}))(x - ({r})) \\). Describe the degree, end behavior, zeros, and the behavior at each zero.",
+      "answer": "Degree: 4 (even); Leading coefficient: {a} (positive). End behavior: Both ends go to \\( \\infty \\). Zeros: \\( x = {p} \\) (touches, multiplicity 2), \\( x = {q} \\) (crosses, multiplicity 1), \\( x = {r} \\) (crosses, multiplicity 1)."
+    },
+    {
+      "id": "ALG2-4.2-A2",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -3, "max": -1 },
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
+      },
+      "question": "Analyze the polynomial function \\( f(x) = {a}(x - ({p}))^3(x - ({q}))^2 \\). Determine the degree, end behavior, zeros with multiplicity, and turning points (maximum number).",
+      "answer": "Degree: 5 (odd); Leading coefficient: {a} (negative). End behavior: As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\); As \\( x \\to \\infty \\), \\( f(x) \\to -\\infty \\). Zeros: \\( x = {p} \\) (multiplicity 3, crosses), \\( x = {q} \\) (multiplicity 2, touches). Maximum turning points: 4."
+    },
+    {
+      "id": "ALG2-4.3-B1",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "basic",
+      "variables": {
+        "a1": { "min": 1, "max": 5 },
+        "b1": { "min": -6, "max": 6, "exclude": [0] },
+        "c1": { "min": -8, "max": 8, "exclude": [0] },
+        "a2": { "min": 1, "max": 5 },
+        "b2": { "min": -6, "max": 6, "exclude": [0] },
+        "c2": { "min": -8, "max": 8, "exclude": [0] }
+      },
+      "question": "Add the polynomials: \\( ({a1|coef}x^2 {b1|signedCoef}x {c1|sign}) + ({a2|coef}x^2 {b2|signedCoef}x {c2|sign}) \\).",
+      "answer": "\\( {a1+a2|coef}x^2 {b1+b2|signedCoef}x {c1+c2|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.3-B2",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "basic",
+      "variables": {
+        "a1": { "min": 1, "max": 5 },
+        "b1": { "min": -6, "max": 6, "exclude": [0] },
+        "c1": { "min": -8, "max": 8, "exclude": [0] },
+        "a2": { "min": 1, "max": 5 },
+        "b2": { "min": -6, "max": 6, "exclude": [0] },
+        "c2": { "min": -8, "max": 8, "exclude": [0] }
+      },
+      "question": "Subtract the polynomials: \\( ({a1|coef}x^2 {b1|signedCoef}x {c1|sign}) - ({a2|coef}x^2 {b2|signedCoef}x {c2|sign}) \\).",
+      "answer": "\\( {a1-a2|coef}x^2 {b1-b2|signedCoef}x {c1-c2|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.3-I1",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "Multiply the polynomials: \\( ({a|coef}x {b|sign})({c|coef}x^2 {d|signedCoef}x + 3) \\).",
+      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {3*a+b*d|signedCoef}x {3*b|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.3-I2",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 4 },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": 1, "max": 4 },
+        "d": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "Multiply the binomials: \\( ({a|coef}x {b|sign})({c|coef}x {d|sign}) \\).",
+      "answer": "\\( {a*c|coef}x^2 {a*d+b*c|signedCoef}x {b*d|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.3-A1",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": 1, "max": 3 },
+        "d": { "min": -4, "max": 4, "exclude": [0] },
+        "e": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "Multiply and simplify: \\( ({a|coef}x^2 {b|signedCoef}x - 2)({c|coef}x^2 {d|signedCoef}x {e|sign}) \\).",
+      "answer": "\\( {a*c|coef}x^4 {a*d+b*c|signedCoef}x^3 {a*e+b*d-2*c|signedCoef}x^2 {b*e-2*d|signedCoef}x {-2*e|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.3-A2",
+      "type": "template",
+      "objective": "Operations with Polynomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "min": -3, "max": 3, "exclude": [0] },
+        "c": { "min": 2, "max": 5 },
+        "d": { "min": -3, "max": 3, "exclude": [0] },
+        "e": { "min": 2, "max": 5 }
+      },
+      "question": "Given \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 + 5x \\) and \\( g(x) = {c|coef}x^2 {d|signedCoef}x - {e} \\), find \\( f(x) \\cdot g(x) \\).",
+      "answer": "\\( {a*c|coef}x^5 {a*d+b*c|signedCoef}x^4 {b*d+5*c-a*e|signedCoef}x^3 {5*d-b*e|signedCoef}x^2 {-5*e|signedCoef}x \\)"
+    },
+    {
+      "id": "ALG2-4.4-B1",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 8 },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": 1, "max": 4 }
+      },
+      "question": "Divide using long division: \\( \\frac{ {a|coef}x^2 {b|signedCoef}x {c|sign} }{ {d|coef}x } \\).",
+      "answer": "\\( {a/d}x {b/d|signedCoef} + \\frac{ {c} }{ {d|coef}x } \\)"
+    },
+    {
+      "id": "ALG2-4.4-B2",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "basic",
+      "variables": {
+        "q": { "min": -5, "max": 5, "exclude": [0] },
+        "a": { "min": 1, "max": 3 },
+        "r": { "min": -10, "max": 10 }
+      },
+      "question": "Use synthetic division to divide \\( {a|coef}x^2 - 5x {r|sign} \\) by \\( x - ({q}) \\).",
+      "answer": "Quotient: \\( {a|coef}x {a*q-5|signedCoef} \\); Remainder: \\( {a*q*q - 5*q + r} \\)"
+    },
+    {
+      "id": "ALG2-4.4-I1",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "p": { "min": -4, "max": 4, "exclude": [0] },
+        "q": { "min": -4, "max": 4, "exclude": [0, "p"] },
+        "b": { "formula": "-a*(p + q)" },
+        "c": { "formula": "a*p*q" }
+      },
+      "question": "Divide using long division: \\( \\frac{ {a|coef}x^2 {b|signedCoef}x {c|sign} }{ x - ({p}) } \\).",
+      "answer": "Quotient: \\( {a|coef}x {-a*q|signedCoef} \\); Remainder: 0"
+    },
+    {
+      "id": "ALG2-4.4-I2",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -8, "max": 8, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] }
+      },
+      "question": "Use synthetic division to divide \\( {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\) by \\( x - ({k}) \\).",
+      "answer": "Quotient: \\( {a|coef}x^2 {a*k+b|signedCoef}x {(a*k+b)*k+c|signedCoef} \\); Remainder: \\( {a*k**3 + b*k**2 + c*k + d} \\)"
+    },
+    {
+      "id": "ALG2-4.4-A1",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 2 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": -6, "max": 6, "exclude": [0] },
+        "e": { "min": -8, "max": 8 }
+      },
+      "question": "Divide using long division: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 + 1 } \\).",
+      "answer": "Use polynomial long division. Quotient: \\( {a|coef}x^2 {b|signedCoef}x {c-a|signedCoef} \\); Remainder: \\( {d-b|signedCoef}x {e-c+a|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.4-A2",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 2 },
+        "p": { "min": -3, "max": 3, "exclude": [0] },
+        "q": { "min": -3, "max": 3, "exclude": [0, "p"] },
+        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] }
+      },
+      "question": "Use the Remainder Theorem to find the remainder when \\( f(x) = {a|coef}x^3 - 5x^2 + 3x - 7 \\) is divided by \\( x - ({r}) \\). Then verify by calculating \\( f({r}) \\).",
+      "answer": "By the Remainder Theorem, the remainder is \\( f({r}) = {a*r**3 - 5*r**2 + 3*r - 7} \\)"
+    },
+    {
+      "id": "ALG2-4.5-B1",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "b": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "Expand using the binomial theorem or Pascal's triangle: \\( ({a|coef}x {b|sign})^2 \\).",
+      "answer": "\\( {a*a|coef}x^2 {2*a*b|signedCoef}x {b*b|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.5-B2",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 1, "max": 4 },
+        "b": { "min": -4, "max": 4, "exclude": [0] }
+      },
+      "question": "Expand: \\( ({a|coef}x {b|sign})^3 \\).",
+      "answer": "\\( {a**3|coef}x^3 {3*a*a*b|signedCoef}x^2 {3*a*b*b|signedCoef}x {b**3|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.5-I1",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "b": { "min": -3, "max": 3, "exclude": [0] }
+      },
+      "question": "Use the binomial theorem to expand: \\( ({a|coef}x {b|sign})^4 \\).",
+      "answer": "\\( {a**4|coef}x^4 {4*a**3*b|signedCoef}x^3 {6*a*a*b*b|signedCoef}x^2 {4*a*b**3|signedCoef}x {b**4|sign} \\)"
+    },
+    {
+      "id": "ALG2-4.5-I2",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 3 },
+        "b": { "min": 1, "max": 3 }
+      },
+      "question": "Find the coefficient of the \\( x^2 \\) term in the expansion of \\( ({a|coef}x + {b})^5 \\).",
+      "answer": "Using binomial theorem: \\( \\binom{5}{3} \\cdot {a}^2 \\cdot {b}^3 = 10 \\cdot {a*a} \\cdot {b**3} = {10*a*a*b**3} \\)"
+    },
+    {
+      "id": "ALG2-4.5-A1",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 2 },
+        "b": { "min": -2, "max": 2, "exclude": [0] },
+        "n": { "values": [5, 6] }
+      },
+      "question": "Use the binomial theorem to find the middle term(s) in the expansion of \\( ({a|coef}x {b|sign})^{n} \\).",
+      "answer": "For \\( n = {n} \\), the middle term is at position \\( k = {n/2} \\) (if even) or positions \\( k = {Math.floor(n/2)} \\) and \\( k = {Math.ceil(n/2)} \\) (if odd). Calculate using \\( \\binom{ {n} }{k} \\cdot ({a}x)^{n-k} \\cdot ({b})^k \\)."
+    },
+    {
+      "id": "ALG2-4.5-A2",
+      "type": "template",
+      "objective": "Powers of Binomials",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 1, "max": 2 },
+        "k": { "min": 2, "max": 4 },
+        "n": { "values": [7, 8] }
+      },
+      "question": "Find the coefficient of the \\( x^{k} \\) term in the expansion of \\( ({a}x - 1)^{n} \\).",
+      "answer": "Using binomial theorem: \\( \\binom{ {n} }{ {k} } \\cdot ({a})^{k} \\cdot (-1)^{n-k} \\). Calculate: \\( \\binom{ {n} }{ {k} } = \\) (use combination formula), then multiply by \\( {a**k} \\cdot {(-1)**(n-k)} \\)."
+    }
   ]
 },
 
