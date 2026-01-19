@@ -1737,6 +1737,315 @@
       "question": "Use a graphing calculator to see the graph of \\(f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign}\\) <br> a) Identify the intervals (if any) where the function is increasing and decreasing. <br> b) Identify the intervalswhere the function is positive and negative.",
       "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
     }
+  ],
+  "Module 4&5": [
+    {
+      "id": "ALG1-4.1-B1",
+      "type": "template",
+      "objective": "Graphing Linear Functions and Rate of Change",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "xIntercept": { "formula": "-b/m", "format": "fraction" },
+        "yIntercept": { "formula": "b" }
+      },
+      "question": "Find the \\( x \\)-intercept and \\( y \\)-intercept of the line \\( y = {m|coef}x {b|sign} \\).",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+    },
+    {
+      "id": "ALG1-4.1-B2",
+      "type": "template",
+      "objective": "Graphing Linear Functions and Rate of Change",
+      "difficulty": "basic",
+      "variables": {
+        "x1": { "min": -5, "max": 5, "exclude": [0] },
+        "y1": { "min": -5, "max": 5, "exclude": [0] },
+        "x2": { "min": -5, "max": 5, "exclude": [0, "x1"] },
+        "y2": { "min": -5, "max": 5, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1" }
+      },
+      "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
+      "answer": "\\( m = \\frac{{mnum}}{{mden}} \\)"
+    },
+    {
+      "id": "ALG1-4.1-I1",
+      "type": "template",
+      "objective": "Graphing Linear Functions and Rate of Change",
+      "difficulty": "intermediate",
+      "variables": {
+        "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
+        "slopeDen": { "min": 2, "max": 10, "exclude": [0, "slopeNum"] },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "xIntercept": { "formula": "-(b * slopeDen) / slopeNum", "format": "fraction" },
+        "yIntercept": { "formula": "b" }
+      },
+      "question": "Find the \\( x \\)-intercept and \\( y \\)-intercept of the line \\( y = \\frac{{slopeNum}}{{slopeDen}}x {b|sign} \\).",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+    },
+    {
+      "id": "ALG1-4.1-I2",
+      "type": "template",
+      "objective": "Graphing Linear Functions and Rate of Change",
+      "difficulty": "intermediate",
+      "variables": {
+        "distance": { "min": 100, "max": 300 },
+        "time": { "min": 2, "max": 5 },
+        "rate": { "formula": "distance/time" }
+      },
+      "question": "A car travels \\( {distance} \\) miles in \\( {time} \\) hours. Find the average rate of change (speed) in miles per hour.",
+      "answer": "\\( {rate} \\) miles per hour"
+    },
+    {
+      "id": "ALG1-4.3-B1",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0] }
+      },
+      "question": "Write the equation of a line with slope \\( m = {m} \\) and \\( y \\)-intercept \\( b = {b} \\) in slope-intercept form.",
+      "answer": "\\( y = {m|coef}x {b|sign} \\)"
+    },
+    {
+      "id": "ALG1-4.3-B2",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -4, "max": 4, "exclude": [0] },
+        "x1": { "min": -5, "max": 5, "exclude": [0] },
+        "y1": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "formula": "y1 - m*x1" }
+      },
+      "question": "Write the equation in slope-intercept form of the line with slope \\( m = {m} \\) that passes through the point \\( ({x1}, {y1}) \\).",
+      "answer": "\\( y = {m|coef}x {b|sign} \\)"
+    },
+    {
+      "id": "ALG1-4.3-I1",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "intermediate",
+      "variables": {
+        "x1": { "min": -8, "max": 8, "exclude": [0] },
+        "y1": { "min": -8, "max": 8, "exclude": [0] },
+        "x2": { "min": -8, "max": 8, "exclude": [0, "x1"] },
+        "y2": { "min": -8, "max": 8, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1" },
+        "b": { "formula": "y1 - (mnum/mden)*x1" }
+      },
+      "question": "Write the equation in slope-intercept form of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
+      "answer": "\\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\)"
+    },
+    {
+      "id": "ALG1-4.3-I2",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "m": { "formula": "-a/b" },
+        "yint": { "formula": "c/b" }
+      },
+      "question": "Rewrite the equation \\( {a|coef}x {b|signedCoef}y = {c} \\) in slope-intercept form.",
+      "answer": "\\( y = \\frac{{-a}}{{b}}x {yint|sign} \\)"
+    },
+    {
+      "id": "ALG1-4.3-A1",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "advanced",
+      "variables": {
+        "x1": { "min": -10, "max": 10, "exclude": [0] },
+        "y1": { "min": -10, "max": 10, "exclude": [0] },
+        "x2": { "min": -10, "max": 10, "exclude": [0, "x1"] },
+        "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1" },
+        "b": { "formula": "y1 - (mnum/mden)*x1", "format": "fraction" }
+      },
+      "question": "A line passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Write the equation of the line in slope-intercept form.",
+      "answer": "\\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\)"
+    },
+    {
+      "id": "ALG1-4.3-A2",
+      "type": "template",
+      "objective": "Writing Equations in Slope-Intercept Form",
+      "difficulty": "advanced",
+      "variables": {
+        "m1": { "min": -4, "max": 4, "exclude": [0] },
+        "b1": { "min": -8, "max": 8, "exclude": [0] },
+        "x1": { "min": -5, "max": 5, "exclude": [0] },
+        "m2": { "formula": "m1" },
+        "y1": { "formula": "m1*x1 + b1 + 3" },
+        "b2": { "formula": "y1 - m2*x1" }
+      },
+      "question": "Write the equation of a line that is parallel to \\( y = {m1|coef}x {b1|sign} \\) and passes through the point \\( ({x1}, {y1}) \\).",
+      "answer": "\\( y = {m2|coef}x {b2|sign} \\)"
+    },
+    {
+      "id": "ALG1-5.2-B1",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "negb": { "formula": "-1*b" },
+        "nega": { "formula": "-1*a" },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] }
+      },
+      "question": "Write the equation of the line that passes through the point \\( ({a}, {b}) \\) with slope \\( m = \\frac{{c}}{{d}} \\) in point-slope form.",
+      "answer": "\\( y {negb|sign} = \\frac{{c}}{{d}}(x {nega|sign}) \\)"
+    },
+    {
+      "id": "ALG1-5.2-B2",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+        "c": { "min": -15, "max": 15, "exclude": [0] }
+      },
+      "question": "Write the equation \\( {a|coef}x {b|signedCoef}y = {c} \\) in standard form \\( Ax + By = C \\) where \\( A \\), \\( B \\), and \\( C \\) are integers.",
+      "answer": "\\( {a|coef}x {b|signedCoef}y = {c} \\)"
+    },
+    {
+      "id": "ALG1-5.2-I1",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "min": 2, "max": 7, "exclude": ["a"] },
+        "negb": { "formula": "-1*b" },
+        "x1": { "min": -10, "max": 10, "exclude": [0] },
+        "y1": { "min": -10, "max": 10, "exclude": [0] },
+        "yint": { "formula": "(a/b)*x1-y1" },
+        "c": { "formula": "b*y1 - a*x1" }
+      },
+      "question": "Rewrite the equation in point-slope form \\( y {y1|sign} = \\frac{{a}}{{b}}(x {x1|sign}) \\) in standard form.",
+      "answer": "Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\)"
+    },
+    {
+      "id": "ALG1-5.2-I2",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "intermediate",
+      "variables": {
+        "x1": { "min": -8, "max": 8, "exclude": [0] },
+        "negx1": { "formula": "-1*x1" },
+        "y1": { "min": -8, "max": 8, "exclude": [0] },
+        "negy1": { "formula": "-1*y1" },
+        "x2": { "min": -8, "max": 8, "exclude": [0, "x1"] },
+        "y2": { "min": -8, "max": 8, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1" }
+      },
+      "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in point-slope form.",
+      "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\)"
+    },
+    {
+      "id": "ALG1-5.2-A1",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "advanced",
+      "variables": {
+        "x1": { "min": -10, "max": 10, "exclude": [0] },
+        "negx1": { "formula": "-1*x1" },
+        "y1": { "min": -10, "max": 10, "exclude": [0] },
+        "negy1": { "formula": "-1*y1" },
+        "x2": { "min": -10, "max": 10, "exclude": [0, "x1"] },
+        "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1" },
+        "negmden": { "formula": "-1*mden" },
+        "b": { "formula": "y1 - (mnum/mden)*x1" },
+        "c": { "formula": "mden*y1 - mnum*x1" }
+      },
+      "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in Point-Slope, Slope-Intercept, and Standard Form.",
+      "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)"
+    },
+    {
+      "id": "ALG1-5.2-A2",
+      "type": "template",
+      "objective": "Writing Equations in Standard and Point-Slope Forms",
+      "difficulty": "advanced",
+      "variables": {
+        "m": { "min": -4, "max": 4, "exclude": [0, 1, -1] },
+        "b1": { "min": -8, "max": 8, "exclude": [0] },
+        "x1": { "min": -6, "max": 6, "exclude": [0] },
+        "mperpnum": { "formula": "-1" },
+        "mperpden": { "formula": "m" },
+        "y1": { "formula": "m*x1 + b1 + 2" },
+        "b2": { "formula": "y1 - (mperpnum/mperpden)*x1" },
+        "negx1": { "formula": "-x1" },
+        "negy1": { "formula": "-y1" }
+      },
+      "question": "Write the equation of a line perpendicular to \\( y = {m|coef}x {b1|sign} \\) that passes through the point \\( ({x1}, {y1}) \\). Write your answer in point-slope form.",
+      "answer": "\\( y {negy1|sign} = \\frac{{mperpnum}}{{mperpden}}(x {negx1|sign}) \\)"
+    },
+    {
+      "id": "ALG1-6.5-B1",
+      "type": "template",
+      "objective": "Graphing Inequalities in Two Variables",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade.",
+      "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (dashed); Shade the region above the line."
+    },
+    {
+      "id": "ALG1-6.5-B2",
+      "type": "template",
+      "objective": "Graphing Inequalities in Two Variables",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "min": -6, "max": 6, "exclude": [0] }
+      },
+      "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade.",
+      "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (solid); Shade the region below the line (including the line)."
+    },
+    {
+      "id": "ALG1-6.5-I1",
+      "type": "template",
+      "objective": "Graphing Inequalities in Two Variables",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "negb": { "formula": "-b" },
+        "m": { "formula": "-a/b" },
+        "yint": { "formula": "c/b" }
+      },
+      "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). First, rewrite in slope-intercept form, then graph.",
+      "answer": "Rewrite as \\( y > \\frac{{-a}}{{b}}x {yint|sign} \\) if \\( {b} > 0 \\), or \\( y < \\frac{{-a}}{{b}}x {yint|sign} \\) if \\( {b} < 0 \\); Boundary line is dashed; Shade appropriately."
+    },
+    {
+      "id": "ALG1-6.5-I2",
+      "type": "template",
+      "objective": "Graphing Inequalities in Two Variables",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -3, "max": 3, "exclude": [0] },
+        "y": { "min": -3, "max": 3, "exclude": [0] },
+        "m": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "formula": "y - m*x" }
+      },
+      "question": "Determine if the point \\( ({x}, {y}) \\) is a solution to the inequality \\( y \\geq {m|coef}x {b|sign} \\).",
+      "answer": "Yes, \\( ({x}, {y}) \\) is a solution because \\( {y} \\geq {m}({x}) {b|sign} \\) simplifies to \\( {y} \\geq {y} \\), which is true."
+    }
   ]
 },
 
