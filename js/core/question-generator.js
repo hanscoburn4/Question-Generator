@@ -36,6 +36,9 @@ class QuestionGenerator {
 
       const options = opts ? opts.slice(1).split('|') : [];
 
+      // If no formatter options, let Step 2 handle it with display values
+      if (options.length === 0) return match;
+
       if (options.includes('signedCoef')) {
         if (value === 0) return '+0';
         const sign = value >= 0 ? '+' : '-';
