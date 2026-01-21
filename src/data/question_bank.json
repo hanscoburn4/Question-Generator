@@ -1738,9 +1738,9 @@
       "answer": "a) It will change from increasing to decreasing at \\( x = {h} \\) <br> b) It will change from positive to negative at \\( x = {z1} \\) and \\( x = {z2} \\)."
     }
   ],
-  "Module 4&5": [
+  "Module 4 & 5": [
     {
-      "id": "ALG1-4.1-B1",
+      "id": "ALG1-4.1 & 4.2-B1",
       "type": "template",
       "objective": "Graphing Linear Functions and Rate of Change",
       "difficulty": "basic",
@@ -1750,14 +1750,29 @@
         "xIntercept": { "formula": "-b/m", "format": "fraction" },
         "yIntercept": { "formula": "b" }
       },
-      "question": "Find the \\( x \\)-intercept and \\( y \\)-intercept of the line \\( y = {m|coef}x {b|sign} \\).",
+      "question": "Use intercepts or a table to sketch the graph of \\( y = {m|coef}x {b|sign} \\).",
       "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
-      "id": "ALG1-4.1-B2",
+      "id": "ALG1-4.1 & 4.2-B1",
       "type": "template",
       "objective": "Graphing Linear Functions and Rate of Change",
       "difficulty": "basic",
+      "variables": {
+        "a": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "c": { "min": -3, "max": 3, "exclude": [0] },
+        "xIntercept": { "formula": "c/a", "format": "fraction" },
+        "yIntercept": { "formula": "c/b", "format": "fraction" }
+      },
+      "question": "Use intercepts or a table to sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\).",
+      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+    },
+    {
+      "id": "ALG1-4.1 & 4.2-I1",
+      "type": "template",
+      "objective": "Graphing Linear Functions and Rate of Change",
+      "difficulty": "intermediate",
       "variables": {
         "x1": { "min": -5, "max": 5, "exclude": [0] },
         "y1": { "min": -5, "max": 5, "exclude": [0] },
@@ -1768,34 +1783,6 @@
       },
       "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
       "answer": "\\( m = \\frac{{mnum}}{{mden}} \\)"
-    },
-    {
-      "id": "ALG1-4.1-I1",
-      "type": "template",
-      "objective": "Graphing Linear Functions and Rate of Change",
-      "difficulty": "intermediate",
-      "variables": {
-        "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
-        "slopeDen": { "min": 2, "max": 10, "exclude": [0, "slopeNum"] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "xIntercept": { "formula": "-(b * slopeDen) / slopeNum", "format": "fraction" },
-        "yIntercept": { "formula": "b" }
-      },
-      "question": "Find the \\( x \\)-intercept and \\( y \\)-intercept of the line \\( y = \\frac{{slopeNum}}{{slopeDen}}x {b|sign} \\).",
-      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
-    },
-    {
-      "id": "ALG1-4.1-I2",
-      "type": "template",
-      "objective": "Graphing Linear Functions and Rate of Change",
-      "difficulty": "intermediate",
-      "variables": {
-        "distance": { "min": 100, "max": 300 },
-        "time": { "min": 2, "max": 5 },
-        "rate": { "formula": "distance/time" }
-      },
-      "question": "A car travels \\( {distance} \\) miles in \\( {time} \\) hours. Find the average rate of change (speed) in miles per hour.",
-      "answer": "\\( {rate} \\) miles per hour"
     },
     {
       "id": "ALG1-4.3-B1",
@@ -5709,10 +5696,8 @@
       "objective": "Fundamental Identities",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [2, 3, 4, 6] },
-        "sign": { "values": [1, -1] }
       },
-      "question": "Use the Pythagorean identity to simplify: \\( \\sin^2(\\theta) + \\cos^2(\\theta) \\).",
+      "question": "Simplify: \\( \\frac{ \\sin(\\theta) - \\cos(\\theta) }{ \\sin(\\theta) } + \\cot(\\theta) \\).",
       "answer": "\\( 1 \\)"
     },
     {
@@ -5721,10 +5706,9 @@
       "objective": "Fundamental Identities",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "If \\( \\sin(\\theta) = \\frac{3}{5} \\) and \\( \\theta \\) is in Quadrant I, find \\( \\cos(\\theta) \\) using the Pythagorean identity.",
-      "answer": "Using \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\):<br>\\( \\cos^2(\\theta) = 1 - \\sin^2(\\theta) = 1 - \\frac{9}{25} = \\frac{16}{25} \\)<br>Since \\( \\theta \\) is in Quadrant I, \\( \\cos(\\theta) = \\frac{4}{5} \\)"
+      "question": "Simplify: \\( \\frac{\\sin(\\theta)}{\\cos(\\theta)} + \\frac{\\cos(\\theta)}{\\sin(\\theta)} \\).",
+      "answer": "\\( \\frac{\\sin^2(\\theta) + \\cos^2(\\theta)}{\\sin(\\theta)\\cos(\\theta)} = \\frac{1}{\\sin(\\theta)\\cos(\\theta)} \\)"   
     },
     {
       "id": "PC-5.1-B3",
@@ -5732,11 +5716,9 @@
       "objective": "Fundamental Identities",
       "difficulty": "basic",
       "variables": {
-        "num": { "min": 1, "max": 10 },
-        "den": { "min": 11, "max": 20 }
       },
-      "question": "Simplify using a Pythagorean identity: \\( 1 - \\sin^2(\\alpha) \\).",
-      "answer": "\\( \\cos^2(\\alpha) \\)"
+      "question": "Simplify: \\( \\frac{ \\sec(\\theta) }{ \\cos(\\theta) } - \\frac{ \\tan(\\theta) }{ \\cot(\\theta) } \\).",
+      "answer": "\\( 1 \\)"    
     },
     {
       "id": "PC-5.1-I1",
@@ -5744,10 +5726,9 @@
       "objective": "Fundamental Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "If \\( \\tan(\\theta) = -\\frac{4}{3} \\) and \\( \\theta \\) is in Quadrant II, find \\( \\sin(\\theta) \\) and \\( \\cos(\\theta) \\) using fundamental identities.",
-      "answer": "Using \\( 1 + \\tan^2(\\theta) = \\sec^2(\\theta) \\):<br>\\( \\sec^2(\\theta) = 1 + \\frac{16}{9} = \\frac{25}{9} \\)<br>\\( \\cos^2(\\theta) = \\frac{9}{25} \\)<br>Since \\( \\theta \\) is in Quadrant II, \\( \\cos(\\theta) = -\\frac{3}{5} \\)<br>\\( \\sin(\\theta) = \\tan(\\theta) \\cdot \\cos(\\theta) = -\\frac{4}{3} \\cdot (-\\frac{3}{5}) = \\frac{4}{5} \\)"
+      "question": "Simplify: \\( \\tan^3x - \\cot(\\frac{\\pi}{2} -x)\\sec^2x \\).",
+      "answer": "\\( -\\tan(x) \\)"
     },
     {
       "id": "PC-5.1-I2",
@@ -5755,10 +5736,9 @@
       "objective": "Fundamental Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Simplify the expression: \\( \\frac{\\sin(\\theta)}{\\cos(\\theta)} + \\frac{\\cos(\\theta)}{\\sin(\\theta)} \\).",
-      "answer": "\\( \\frac{\\sin^2(\\theta) + \\cos^2(\\theta)}{\\sin(\\theta)\\cos(\\theta)} = \\frac{1}{\\sin(\\theta)\\cos(\\theta)} \\)"
+      "question": "Simplify: \\( \\frac{\\cos x}{\\sec x + \\tan x} \\).",
+      "answer": "\\( 1 - \\sin(x) \\)"
     },
     {
       "id": "PC-5.1-I3",
@@ -5766,10 +5746,9 @@
       "objective": "Fundamental Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Use fundamental identities to simplify: \\( \\tan(\\theta) \\cdot \\cos(\\theta) \\).",
-      "answer": "\\( \\tan(\\theta) \\cdot \\cos(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\cos(\\theta) = \\sin(\\theta) \\)"
+      "question": "Simplify: \\( \\frac{\\tan^2 x\\sin x}{\\sec x - 1} \\).",
+      "answer": "\\( \\tan x +\\sin x \\)"
     },
     {
       "id": "PC-5.1-A1",
@@ -5777,21 +5756,29 @@
       "objective": "Fundamental Identities",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Prove the identity: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\).",
-      "answer": "Starting with the left side:<br>\\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\frac{\\sin^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\)<br>This equals the right side, so the identity is proven."
+      "question": "Simplify: \\( \\frac{\\sin x}{1 + \\cos x} + \\frac{1 + \\cos x}{\\sin x} \\).",
+      "answer": "\\( 2 \\csc x \\)"
     },
     {
       "id": "PC-5.1-A2",
       "type": "template",
       "objective": "Fundamental Identities",
       "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
+       "variables": {
       },
-      "question": "Simplify completely: \\( \\frac{\\sec^2(\\theta) - 1}{\\sec^2(\\theta)} \\).",
-      "answer": "\\( \\frac{\\sec^2(\\theta) - 1}{\\sec^2(\\theta)} = \\frac{\\tan^2(\\theta)}{\\sec^2(\\theta)} = \\frac{\\sin^2(\\theta)/\\cos^2(\\theta)}{1/\\cos^2(\\theta)} = \\sin^2(\\theta) \\)"
+      "question": "Simplify: \\( \\frac{\\cos x}{\\sec x + 1} + \\frac{\\cos x}{\\sec x - 1} \\).",
+      "answer": "\\( 2 \\cot^2 x \\)"
+    },
+    {
+      "id": "PC-5.1-A3",
+      "type": "template",
+      "objective": "Fundamental Identities",
+      "difficulty": "advanced",
+       "variables": {
+      },
+      "question": "Simplify: \\( \\frac{1}{\\csc x - 1} + \\frac{1}{\\csc x + 1} \\).",
+      "answer": "\\( 2 \\tan x \\sec x \\)"
     },
     {
       "id": "PC-5.2-B1",
