@@ -5869,6 +5869,127 @@
       "answer": "Left side: \\( \\frac{(1 + \\sin(\\theta)) - (1 - \\sin(\\theta))}{(1 - \\sin(\\theta))(1 + \\sin(\\theta))} = \\frac{2\\sin(\\theta)}{1 - \\sin^2(\\theta)} \\)<br>\\( = \\frac{2\\sin(\\theta)}{\\cos^2(\\theta)} = \\frac{2\\sin(\\theta)}{\\cos(\\theta) \\cdot \\cos(\\theta)} = \\frac{2\\tan(\\theta)}{\\cos(\\theta)} \\) ✓"
     },
     {
+      "id": "PC-5.2-B4",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\).",
+      "answer": "Using the quotient identity directly:<br>\\( \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.2-B5",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\).",
+      "answer": "This is the fundamental Pythagorean identity. For any angle \\(\\theta\\) on the unit circle, the sum of the squares of sine and cosine equals 1. ✓"
+    },
+    {
+      "id": "PC-5.2-B6",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\cos(-\\theta) = \\cos(\\theta) \\).",
+      "answer": "Cosine is an even function, meaning \\( \\cos(-\\theta) = \\cos(\\theta) \\) for all values of \\(\\theta\\). ✓"
+    },
+    {
+      "id": "PC-5.2-B7",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\sin\\left(\\frac{\\pi}{2} - \\theta\\right) = \\cos(\\theta) \\).",
+      "answer": "This is a cofunction identity. The sine of an angle equals the cosine of its complement:<br>\\( \\sin\\left(\\frac{\\pi}{2} - \\theta\\right) = \\cos(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I4",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\tan(\\theta)}{\\sec(\\theta)} = \\sin(\\theta) \\).",
+      "answer": "Left side: \\( \\frac{\\tan(\\theta)}{\\sec(\\theta)} = \\frac{\\sin(\\theta)/\\cos(\\theta)}{1/\\cos(\\theta)} \\)<br>\\( = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\cos(\\theta) = \\sin(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I5",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\).",
+      "answer": "Left side: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\frac{\\sin^2(\\theta)}{\\sin(\\theta)} \\) (using Pythagorean identity)<br>\\( = \\sin(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I6",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\sec(\\theta) - \\cos(\\theta)}{\\sec(\\theta)} = \\sin^2(\\theta) \\).",
+      "answer": "Left side: \\( \\frac{\\sec(\\theta) - \\cos(\\theta)}{\\sec(\\theta)} = 1 - \\frac{\\cos(\\theta)}{\\sec(\\theta)} \\)<br>\\( = 1 - \\frac{\\cos(\\theta)}{1/\\cos(\\theta)} = 1 - \\cos^2(\\theta) = \\sin^2(\\theta) \\) ✓"
+    },
+    {
+      "id": "PC-5.2-I7",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\sec^2(\\theta) - \\tan^2(\\theta) = 1 \\).",
+      "answer": "This is a Pythagorean identity. Starting from \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\), divide both sides by \\( \\cos^2(\\theta) \\):<br>\\( \\frac{\\sin^2(\\theta)}{\\cos^2(\\theta)} + \\frac{\\cos^2(\\theta)}{\\cos^2(\\theta)} = \\frac{1}{\\cos^2(\\theta)} \\)<br>\\( \\tan^2(\\theta) + 1 = \\sec^2(\\theta) \\)<br>Therefore, \\( \\sec^2(\\theta) - \\tan^2(\\theta) = 1 \\) ✓"
+    },
+    {
+      "id": "PC-5.2-A3",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\sin(\\theta)}{1 - \\cos(\\theta)} = \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} \\).",
+      "answer": "Multiply the left side by \\( \\frac{1 + \\cos(\\theta)}{1 + \\cos(\\theta)} \\):<br>\\( \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{(1 - \\cos(\\theta))(1 + \\cos(\\theta))} = \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{1 - \\cos^2(\\theta)} \\)<br>\\( = \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{\\sin^2(\\theta)} = \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.2-A4",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( \\frac{\\sec(\\theta) + \\tan(\\theta)}{\\sec(\\theta) - \\tan(\\theta)} = \\frac{1 + \\sin(\\theta)}{1 - \\sin(\\theta)} \\).",
+      "answer": "Left side: \\( \\frac{\\sec(\\theta) + \\tan(\\theta)}{\\sec(\\theta) - \\tan(\\theta)} = \\frac{\\frac{1}{\\cos(\\theta)} + \\frac{\\sin(\\theta)}{\\cos(\\theta)}}{\\frac{1}{\\cos(\\theta)} - \\frac{\\sin(\\theta)}{\\cos(\\theta)}} \\)<br>\\( = \\frac{\\frac{1 + \\sin(\\theta)}{\\cos(\\theta)}}{\\frac{1 - \\sin(\\theta)}{\\cos(\\theta)}} = \\frac{1 + \\sin(\\theta)}{1 - \\sin(\\theta)} \\) ✓"
+    },
+    {
+      "id": "PC-5.2-A5",
+      "type": "template",
+      "objective": "Verifying Trigonometric Identities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 }
+      },
+      "question": "Verify the identity: \\( (\\sin(\\theta) + \\cos(\\theta))^2 + (\\sin(\\theta) - \\cos(\\theta))^2 = 2 \\).",
+      "answer": "Left side: \\( (\\sin(\\theta) + \\cos(\\theta))^2 + (\\sin(\\theta) - \\cos(\\theta))^2 \\)<br>\\( = (\\sin^2(\\theta) + 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta)) + (\\sin^2(\\theta) - 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta)) \\)<br>\\( = 2\\sin^2(\\theta) + 2\\cos^2(\\theta) = 2(\\sin^2(\\theta) + \\cos^2(\\theta)) = 2(1) = 2 \\) ✓"
+    },
+    {
       "id": "PC-5.3-B1",
       "type": "template",
       "objective": "Solving Trigonometric Equations",
