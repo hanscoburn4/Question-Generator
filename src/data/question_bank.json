@@ -1785,50 +1785,21 @@
       "answer": "\\( m = \\frac{{mnum}}{{mden}} \\)"
     },
     {
-      "id": "ALG1-4.3-B1",
+      "id": "ALG1-4.3 & 5.1-B1",
       "type": "template",
       "objective": "Writing Equations in Slope-Intercept Form",
       "difficulty": "basic",
       "variables": {
-        "m": { "min": -5, "max": 5, "exclude": [0] },
+        "m_num": { "min": -5, "max": 5, "exclude": [0] },
+        "m_den": { "min": 2, "max": 5, "exclude": ["m_num"] },
+        "m": { "formula": "m_num/m_den", "format": "fraction" },
         "b": { "min": -8, "max": 8, "exclude": [0] }
       },
-      "question": "Write the equation of a line with slope \\( m = {m} \\) and \\( y \\)-intercept \\( b = {b} \\) in slope-intercept form.",
+      "question": "Draw the graph of the line \\( y = \\frac{{m_num}}{{m_den}}x {b|sign} \\).",
       "answer": "\\( y = {m|coef}x {b|sign} \\)"
     },
     {
-      "id": "ALG1-4.3-B2",
-      "type": "template",
-      "objective": "Writing Equations in Slope-Intercept Form",
-      "difficulty": "basic",
-      "variables": {
-        "m": { "min": -4, "max": 4, "exclude": [0] },
-        "x1": { "min": -5, "max": 5, "exclude": [0] },
-        "y1": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "formula": "y1 - m*x1" }
-      },
-      "question": "Write the equation in slope-intercept form of the line with slope \\( m = {m} \\) that passes through the point \\( ({x1}, {y1}) \\).",
-      "answer": "\\( y = {m|coef}x {b|sign} \\)"
-    },
-    {
-      "id": "ALG1-4.3-I1",
-      "type": "template",
-      "objective": "Writing Equations in Slope-Intercept Form",
-      "difficulty": "intermediate",
-      "variables": {
-        "x1": { "min": -8, "max": 8, "exclude": [0] },
-        "y1": { "min": -8, "max": 8, "exclude": [0] },
-        "x2": { "min": -8, "max": 8, "exclude": [0, "x1"] },
-        "y2": { "min": -8, "max": 8, "exclude": [0, "y1"] },
-        "mnum": { "formula": "y2 - y1" },
-        "mden": { "formula": "x2 - x1" },
-        "b": { "formula": "y1 - (mnum/mden)*x1" }
-      },
-      "question": "Write the equation in slope-intercept form of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
-      "answer": "\\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\)"
-    },
-    {
-      "id": "ALG1-4.3-I2",
+      "id": "ALG1-4.3 & 5.1-I1",
       "type": "template",
       "objective": "Writing Equations in Slope-Intercept Form",
       "difficulty": "intermediate",
@@ -1836,14 +1807,14 @@
         "a": { "min": -5, "max": 5, "exclude": [0] },
         "b": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
         "c": { "min": -10, "max": 10, "exclude": [0] },
-        "m": { "formula": "-a/b" },
-        "yint": { "formula": "c/b" }
+        "m": { "formula": "-a/b", "format": "fraction" },
+        "yint": { "formula": "c/b", "format": "fraction" }
       },
       "question": "Rewrite the equation \\( {a|coef}x {b|signedCoef}y = {c} \\) in slope-intercept form.",
-      "answer": "\\( y = \\frac{{-a}}{{b}}x {yint|sign} \\)"
+      "answer": "\\( y = {m|coef}x {yint|sign} \\)"
     },
     {
-      "id": "ALG1-4.3-A1",
+      "id": "ALG1-4.3 & 5.1-A1",
       "type": "template",
       "objective": "Writing Equations in Slope-Intercept Form",
       "difficulty": "advanced",
@@ -1854,26 +1825,11 @@
         "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1" },
+        "m": { "formula": "mnum/mden", "format": "fraction" },
         "b": { "formula": "y1 - (mnum/mden)*x1", "format": "fraction" }
       },
       "question": "A line passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Write the equation of the line in slope-intercept form.",
-      "answer": "\\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\)"
-    },
-    {
-      "id": "ALG1-4.3-A2",
-      "type": "template",
-      "objective": "Writing Equations in Slope-Intercept Form",
-      "difficulty": "advanced",
-      "variables": {
-        "m1": { "min": -4, "max": 4, "exclude": [0] },
-        "b1": { "min": -8, "max": 8, "exclude": [0] },
-        "x1": { "min": -5, "max": 5, "exclude": [0] },
-        "m2": { "formula": "m1" },
-        "y1": { "formula": "m1*x1 + b1 + 3" },
-        "b2": { "formula": "y1 - m2*x1" }
-      },
-      "question": "Write the equation of a line that is parallel to \\( y = {m1|coef}x {b1|sign} \\) and passes through the point \\( ({x1}, {y1}) \\).",
-      "answer": "\\( y = {m2|coef}x {b2|sign} \\)"
+      "answer": "\\( y = {m|coef}x {b|sign} \\)"
     },
     {
       "id": "ALG1-5.2-B1",
