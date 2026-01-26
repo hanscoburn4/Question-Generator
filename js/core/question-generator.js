@@ -39,9 +39,26 @@ class QuestionGenerator {
       // If no formatter options, let Step 2 handle it with display values
       if (options.length === 0) return match;
 
+      // Get display value (e.g., fraction) if it exists
+      const displayValue = variables.__display?.[varName];
+
+      // Helper to get absolute value of display string (remove leading minus in LaTeX fractions)
+      const getAbsDisplayValue = (dispVal) => {
+        if (!dispVal || typeof dispVal !== 'string') return dispVal;
+        // Handle \frac{-n}{d} -> \frac{n}{d}
+        return dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
+      };
+
       if (options.includes('signedCoef')) {
         if (value === 0) return '+0';
         const sign = value >= 0 ? '+' : '-';
+
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && Math.abs(value) !== 1) {
+          const absDisplay = getAbsDisplayValue(displayValue);
+          return `${sign}${absDisplay}`;
+        }
+
         const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
         return `${sign}${coef}`;
       }
@@ -61,9 +78,19 @@ class QuestionGenerator {
       const absVal = Math.abs(value);
 
       if (useCoef) {
-        coef = absVal === 1 ? '' : String(absVal);
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && absVal !== 1) {
+          coef = getAbsDisplayValue(displayValue);
+        } else {
+          coef = absVal === 1 ? '' : String(absVal);
+        }
       } else {
-        coef = String(absVal);
+        // Use display value if available, otherwise numeric value
+        if (displayValue && absVal !== 1) {
+          coef = getAbsDisplayValue(displayValue);
+        } else {
+          coef = String(absVal);
+        }
       }
 
       return `${sign}${coef}`;
