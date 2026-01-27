@@ -42,11 +42,16 @@ class QuestionGenerator {
       // Get display value (e.g., fraction) if it exists
       const displayValue = variables.__display?.[varName];
 
-      // Helper to get absolute value of display string (remove leading minus in LaTeX fractions)
+      // Helper to get absolute value of display string (remove leading minus in LaTeX fractions and plain numbers)
       const getAbsDisplayValue = (dispVal) => {
         if (!dispVal || typeof dispVal !== 'string') return dispVal;
         // Handle \frac{-n}{d} -> \frac{n}{d}
-        return dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
+        dispVal = dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
+        // Handle plain negative numbers: -3 -> 3
+        if (dispVal.startsWith('-')) {
+          dispVal = dispVal.substring(1);
+        }
+        return dispVal;
       };
 
       if (options.includes('signedCoef')) {
