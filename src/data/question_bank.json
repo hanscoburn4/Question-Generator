@@ -1842,10 +1842,11 @@
         "negb": { "formula": "-1*b" },
         "nega": { "formula": "-1*a" },
         "c": { "min": -10, "max": 10, "exclude": [0] },
-        "d": { "min": 2, "max": 10, "exclude": ["c"] }
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "m": { "formula": "c/d", "format": "fraction" }
       },
-      "question": "Write the equation of the line that passes through the point \\( ({a}, {b}) \\) with slope \\( m = \\frac{{c}}{{d}} \\) in point-slope form.",
-      "answer": "\\( y {negb|sign} = \\frac{{c}}{{d}}(x {nega|sign}) \\)"
+      "question": "Write the equation of the line that passes through the point \\( ({a}, {b}) \\) with slope \\( m = {m} \\) in point-slope form.",
+      "answer": "\\( y {negb|sign} = {m|coef}(x {nega|sign}) \\)"
     },
     {
       "id": "ALG1-5.2-B2",
@@ -1853,12 +1854,14 @@
       "objective": "Writing Equations in Standard and Point-Slope Forms",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -8, "max": 8, "exclude": [0] },
-        "b": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
-        "c": { "min": -15, "max": 15, "exclude": [0] }
+        "x1": { "min": -8, "max": 8, "exclude": [0] },
+        "y1": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+        "m_num": { "min": -5, "max": 5, "exclude": [0] },
+        "m_den": { "min": 2, "max": 6, "exclude": ["m_num"] },
+        "m": { "formula": "m_num/m_den", "format": "fraction"  }
       },
-      "question": "Write the equation \\( {a|coef}x {b|signedCoef}y = {c} \\) in standard form \\( Ax + By = C \\) where \\( A \\), \\( B \\), and \\( C \\) are integers.",
-      "answer": "\\( {a|coef}x {b|signedCoef}y = {c} \\)"
+      "question": "Graph the equation without rewriting: \\( y {y1|sign} = {m|coef}(x {x1|sign}) \\).",
+      "answer": "Graph not currently available."
     },
     {
       "id": "ALG1-5.2-I1",
@@ -1868,14 +1871,15 @@
       "variables": {
         "a": { "min": -4, "max": 4, "exclude": [0] },
         "b": { "min": 2, "max": 7, "exclude": ["a"] },
+        "m": { "formula": "a/b", "format": "fraction" },
         "negb": { "formula": "-1*b" },
         "x1": { "min": -10, "max": 10, "exclude": [0] },
         "y1": { "min": -10, "max": 10, "exclude": [0] },
         "yint": { "formula": "(a/b)*x1-y1" },
         "c": { "formula": "b*y1 - a*x1" }
       },
-      "question": "Rewrite the equation in point-slope form \\( y {y1|sign} = \\frac{{a}}{{b}}(x {x1|sign}) \\) in standard form.",
-      "answer": "Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\)"
+      "question": "Rewrite the equation into standard form and slope-intercept form: <br>\\( y {y1|sign} = {m|coef}(x {x1|sign}) \\) ",
+      "answer": "Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\) <br> Slope-Intercept Form: \\( y = {m|coef}x {yint|sign} \\)"
     },
     {
       "id": "ALG1-5.2-I2",
@@ -1910,7 +1914,7 @@
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1" },
         "negmden": { "formula": "-1*mden" },
-        "b": { "formula": "y1 - (mnum/mden)*x1" },
+        "b": { "formula": "y1 - (mnum/mden)*x1", "format": "fraction" },
         "c": { "formula": "mden*y1 - mnum*x1" }
       },
       "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in Point-Slope, Slope-Intercept, and Standard Form.",
@@ -1922,18 +1926,20 @@
       "objective": "Writing Equations in Standard and Point-Slope Forms",
       "difficulty": "advanced",
       "variables": {
-        "m": { "min": -4, "max": 4, "exclude": [0, 1, -1] },
-        "b1": { "min": -8, "max": 8, "exclude": [0] },
+        "a": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0] },
+        "c": { "min": -4, "max": 4, "exclude": [0] },
+        "m1": { "formula": "-a/b", "format": "fraction" },
         "x1": { "min": -6, "max": 6, "exclude": [0] },
-        "mperpnum": { "formula": "-1" },
-        "mperpden": { "formula": "m" },
-        "y1": { "formula": "m*x1 + b1 + 2" },
-        "b2": { "formula": "y1 - (mperpnum/mperpden)*x1" },
+        "m2": { "formula": "b/a", "format": "fraction" },
+        "y1": { "min": -6, "max": 6, "exclude": [0] },
+        "b2": { "formula": "y1 - (m2)*x1", "format": "fraction" },
         "negx1": { "formula": "-x1" },
-        "negy1": { "formula": "-y1" }
+        "negy1": { "formula": "-y1" },
+        "c2": { "formula": "a*y1 + b*x1" }
       },
-      "question": "Write the equation of a line perpendicular to \\( y = {m|coef}x {b1|sign} \\) that passes through the point \\( ({x1}, {y1}) \\). Write your answer in point-slope form.",
-      "answer": "\\( y {negy1|sign} = \\frac{{mperpnum}}{{mperpden}}(x {negx1|sign}) \\)"
+      "question": "Write the equation of a line perpendicular to \\( {a|coef}x {b|signedCoef}y = {c} \\) that passes through the point \\( ({x1}, {y1}) \\). Write your answer in all three forms.",
+      "answer": "Point-Slope: \\( y {negy1|sign} = {m2|coef}(x {negx1|sign}) \\) <br> Slope-Intercept: \\( y = {m2|coef}x {b2|sign} \\) <br> Standard Form: \\( {b|coef}x {a|signedCoef}y = {c2} \\)"
     },
     {
       "id": "ALG1-6.5-B1",
@@ -1941,10 +1947,12 @@
       "objective": "Graphing Inequalities in Two Variables",
       "difficulty": "basic",
       "variables": {
-        "m": { "min": -3, "max": 3, "exclude": [0] },
+        "m_num": { "min": -3, "max": 3, "exclude": [0] },
+        "m_den": { "min": 2, "max": 6, "exclude": ["m_num"] },
+        "m": { "formula": "m_num/m_den", "format": "fraction" },
         "b": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade.",
+      "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
       "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (dashed); Shade the region above the line."
     },
     {
@@ -1953,10 +1961,12 @@
       "objective": "Graphing Inequalities in Two Variables",
       "difficulty": "basic",
       "variables": {
-        "m": { "min": -4, "max": 4, "exclude": [0] },
-        "b": { "min": -6, "max": 6, "exclude": [0] }
+        "m_num": { "min": -3, "max": 3, "exclude": [0] },
+        "m_den": { "min": 2, "max": 6, "exclude": ["m_num"] },
+        "m": { "formula": "m_num/m_den", "format": "fraction" },
+        "b": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade.",
+      "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
       "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (solid); Shade the region below the line (including the line)."
     },
     {
@@ -1969,25 +1979,11 @@
         "b": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
         "c": { "min": -10, "max": 10, "exclude": [0] },
         "negb": { "formula": "-b" },
-        "m": { "formula": "-a/b" },
-        "yint": { "formula": "c/b" }
+        "m": { "formula": "-a/b", "format": "fraction" },
+        "yint": { "formula": "c/b", "format": "fraction" }
       },
-      "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). First, rewrite in slope-intercept form, then graph.",
-      "answer": "Rewrite as \\( y > \\frac{{-a}}{{b}}x {yint|sign} \\) if \\( {b} > 0 \\), or \\( y < \\frac{{-a}}{{b}}x {yint|sign} \\) if \\( {b} < 0 \\); Boundary line is dashed; Shade appropriately."
-    },
-    {
-      "id": "ALG1-6.5-I2",
-      "type": "template",
-      "objective": "Graphing Inequalities in Two Variables",
-      "difficulty": "intermediate",
-      "variables": {
-        "x": { "min": -3, "max": 3, "exclude": [0] },
-        "y": { "min": -3, "max": 3, "exclude": [0] },
-        "m": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "formula": "y - m*x" }
-      },
-      "question": "Determine if the point \\( ({x}, {y}) \\) is a solution to the inequality \\( y \\geq {m|coef}x {b|sign} \\).",
-      "answer": "Yes, \\( ({x}, {y}) \\) is a solution because \\( {y} \\geq {m}({x}) {b|sign} \\) simplifies to \\( {y} \\geq {y} \\), which is true."
+      "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
+      "answer": "Rewrite as \\( y > {m|coef}x {yint|sign} \\) if \\( {b} > 0 \\), or \\( y < {m|coef}x {yint|sign} \\) if \\( {b} < 0 \\); Boundary line is dashed; Shade appropriately."
     }
   ]
 },
@@ -3507,13 +3503,16 @@
       "objective": "Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "min": -8, "max": 8, "exclude": [0] },
-        "c": { "min": -10, "max": 10 },
-        "d": { "min": -5, "max": 5 }
+        "a": { "min": 2, "max": 4 },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": -3, "max": 3, "exclude": [0] },
+        "e": { "min": -6, "max": 6, "exclude": [0] },
+        "deg": { "formula": "a + 2" },
+        "leadingCoef": { "formula": "b * d" }
       },
-      "question": "Identify the degree and leading coefficient of the polynomial function: \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\).",
-      "answer": "Degree: 3; Leading coefficient: \\( {a} \\)"
+      "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = x^{a|coef} ({b|coef}x {c|sign})({d|coef}x {e|sign}) \\).",
+      "answer": "Standard form: \\( f(x) = {leadingCoef|coef}x^{deg|coef} {b*c|signedCoef}x^{deg-1|coef} {c*d|signedCoef}x^{deg-2|coef} \\); Degree: {deg}; Leading coefficient: {leadingCoef}"
     },
     {
       "id": "ALG2-4.1-B2",
@@ -3527,7 +3526,7 @@
         "d": { "min": -10, "max": 10 },
         "e": { "min": -5, "max": 5 }
       },
-      "question": "Write the polynomial function in standard form and identify the degree: \\( f(x) = {a|coef}x^2({b|signedCoef}x^2 {c|signedCoef}) {d|signedCoef}x {e|sign} \\).",
+      "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = {a|coef}x^2({b|coef}x^2 {c|sign}) {d|signedCoef}x {e|sign} \\).",
       "answer": "Standard form: \\( f(x) = {a*b|coef}x^4 {a*c|signedCoef}x^2 {d|signedCoef}x {e|sign} \\); Degree: 4"
     },
     {
@@ -3536,13 +3535,14 @@
       "objective": "Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 },
+        "a": { "min": -5, "max": 5 },
         "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
-        "x": { "min": -3, "max": 3, "exclude": [0] }
+        "d": { "min": -3, "max": 3, "exclude": [0] },
+        "e": { "min": -6, "max": 6, "exclude": [0] }
       },
-      "question": "Evaluate the polynomial function \\( f(x) = {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 - 5x + 7 \\) when \\( x = {x} \\).",
-      "answer": "\\( f({x}) = {a*x**4 + b*x**3 + c*x**2 - 5*x + 7} \\)"
+      "question": "Describe the end-behavior of \\( f(x) = {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} \\).",
+      "answer": "Since the leading coefficient is {a|sign} and the degree is even, as \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\) and as \\( x \\to \\infty \\), \\( f(x) \\to \\infty \\)."
     },
     {
       "id": "ALG2-4.1-I2",
@@ -3550,13 +3550,16 @@
       "objective": "Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
-        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] },
-        "a": { "min": 1, "max": 3 }
+        "a": { "min": -5, "max": 5 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -3, "max": 3, "exclude": [0] },
+        "n": { "min": 3, "max": 5 },
+        "m": { "formula": "n - 1" },
+        "o": { "formula": "n - 2"  }
       },
-      "question": "Write a polynomial function in standard form with zeros at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\), and leading coefficient \\( {a} \\).",
-      "answer": "\\( f(x) = {a|coef}(x - ({p}))(x - ({q}))(x - ({r})) \\) which expands to \\( f(x) = {a|coef}x^3 {-a*(p+q+r)|signedCoef}x^2 {a*(p*q + p*r + q*r)|signedCoef}x {-a*p*q*r|sign} \\)"
+      "question": "Describe the end-behavior of \\( f(x) = {a|coef}x^{n} {b|signedCoef}x^{m} {c|signedCoef}x^{o|coef} {d|sign} \\).",
+      "answer": "Check the leading coefficient and degree."
     },
     {
       "id": "ALG2-4.1-A1",
@@ -3564,14 +3567,14 @@
       "objective": "Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 3 },
-        "h": { "min": 10, "max": 30 },
-        "w": { "min": 5, "max": 15 },
-        "d": { "min": 8, "max": 20 },
-        "x": { "min": 1, "max": 3 }
+        "a": { "min": -3, "max": 3, "exclude": [0] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "w": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": -10, "max": 10, "exclude": [0] },
+        "e": { "min": -6, "max": 6, "exclude": [0] }
       },
-      "question": "A rectangular box has dimensions \\( {h} \\times {w} \\times {d} \\) inches. If each dimension is increased by \\( x \\) inches, write a polynomial function \\( V(x) \\) that represents the volume of the new box. Then find the volume when \\( x = {x} \\).",
-      "answer": "\\( V(x) = ({h} + x)({w} + x)({d} + x) \\) which expands to \\( V(x) = x^3 + {h+w+d}x^2 + {h*w + h*d + w*d}x + {h*w*d} \\). When \\( x = {x} \\), \\( V = {(h+x)*(w+x)*(d+x)} \\) cubic inches."
+      "question": "Use a calculator to find all the extrema, then state the end-behavior of the polynomial function: \\( f(x) = {a|coef}x^4 {h|signedCoef}x^3 {w|signedCoef}x^2 {d|signedCoef}x {e|sign} \\).",
+      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
     },
     {
       "id": "ALG2-4.1-A2",
@@ -3579,12 +3582,13 @@
       "objective": "Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "p": { "min": -4, "max": 4, "exclude": [0] },
-        "mult": { "values": [2, 3] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
+        "a": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "Write a polynomial function with a zero at \\( x = {p} \\) with multiplicity {mult} and a zero at \\( x = {q} \\) with multiplicity 1. Use a leading coefficient of 1.",
-      "answer": "\\( f(x) = (x - ({p}))^{mult}(x - ({q})) \\)"
+      "question": "Use a calculator to find all the extrema, then state the end-behavior of the polynomial function: \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\).",
+      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
     },
     {
       "id": "ALG2-4.2-B1",
@@ -3592,48 +3596,32 @@
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 1, "max": 5 },
-        "deg": { "values": [2, 3, 4, 5] }
+        "a": { "min": -2, "max": 2, "exclude": [0] },
+        "deg": { "values": [3, 4, 5, 6, 7] },
+        "expo": { "formula": "deg - 2" },
+        "extrema": { "formula": "deg - 1" },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Describe the end behavior of the polynomial function \\( f(x) = {a|coef}x^{deg} \\).",
-      "answer": "As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\) (even degree) or \\( f(x) \\to -\\infty \\) (odd degree). As \\( x \\to \\infty \\), \\( f(x) \\to \\infty \\) (positive leading coefficient)."
-    },
-    {
-      "id": "ALG2-4.2-B2",
-      "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": -5, "max": -1 },
-        "deg": { "values": [3, 5, 7] }
-      },
-      "question": "Describe the end behavior of the polynomial function \\( f(x) = {a|coef}x^{deg} \\).",
-      "answer": "Since the leading coefficient is negative and the degree is odd: As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\). As \\( x \\to \\infty \\), \\( f(x) \\to -\\infty \\)."
+      "question": "Without graphing, state the degree, maximum number of possible extrema, and maximum number of possible real zeros or: <br> \\( f(x) = {a|coef}x^{deg} {b|signedCoef}x^{expo} {c|sign} \\).",
+      "answer": "Degree: {deg}; Maximum number of possible extrema: {extrema}; Maximum number of possible real zeros: {deg}."
     },
     {
       "id": "ALG2-4.2-I1",
       "type": "template",
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "intermediate",
-      "variables": {
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
-        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] }
+       "variables": {
+        "a": { "min": -5, "max": 5 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -3, "max": 3, "exclude": [0] },
+        "n": { "min": 3, "max": 5 },
+        "m": { "formula": "n - 1" },
+        "o": { "formula": "n - 2"  }
       },
-      "question": "A polynomial function has zeros at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\), each with multiplicity 1. Describe the behavior of the graph at each zero.",
-      "answer": "The graph crosses the x-axis at \\( x = {p} \\), \\( x = {q} \\), and \\( x = {r} \\) because each zero has odd multiplicity (1)."
-    },
-    {
-      "id": "ALG2-4.2-I2",
-      "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
-      "difficulty": "intermediate",
-      "variables": {
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
-      },
-      "question": "A polynomial function \\( f(x) \\) has a zero at \\( x = {p} \\) with multiplicity 2 and a zero at \\( x = {q} \\) with multiplicity 1. Describe the behavior of the graph at each zero.",
-      "answer": "The graph touches the x-axis and turns around at \\( x = {p} \\) (even multiplicity 2). The graph crosses the x-axis at \\( x = {q} \\) (odd multiplicity 1)."
+      "question": "Use technology to find the real zeros of \\( f(x) = {a|coef}x^{n} {b|signedCoef}x^{m} {c|signedCoef}x^{o|coef} {d|sign} \\).",
+      "answer": "The real zeros are approximately at the x-values where the graph intersects the x-axis. (Answers will vary based on specific values.)"
     },
     {
       "id": "ALG2-4.2-A1",
@@ -3641,13 +3629,12 @@
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 3 },
-        "p": { "min": -4, "max": 4, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
-        "r": { "min": -3, "max": 3, "exclude": [0, "p", "q"] }
+        "length": { "min": 6, "max": 10 },
+        "width": { "min": 2, "max": 5},
+        "x": { "formula": "(length+width+sqrt((length+width)^2 - 3*length*width))/6"}
       },
-      "question": "Sketch the general shape of the polynomial function \\( f(x) = {a}(x - ({p}))^2(x - ({q}))(x - ({r})) \\). Describe the degree, end behavior, zeros, and the behavior at each zero.",
-      "answer": "Degree: 4 (even); Leading coefficient: {a} (positive). End behavior: Both ends go to \\( \\infty \\). Zeros: \\( x = {p} \\) (touches, multiplicity 2), \\( x = {q} \\) (crosses, multiplicity 1), \\( x = {r} \\) (crosses, multiplicity 1)."
+      "question": "A flat piece of cardboard has the dimensions {length} inches by {width} inches. Squares of side length x inches are cut from each corner, and the sides are folded up to form an open box. If the volume of the box is given by \\( V(x) \\), find the value of x that maximizes the volume.",
+      "answer": "x = {x} inches."
     },
     {
       "id": "ALG2-4.2-A2",
@@ -3656,11 +3643,14 @@
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -3, "max": -1 },
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] }
+        "b": { "min": 1, "max": 3 },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": 2, "max": 5, "exclude": ["a"] },
+        "e": { "min": -5, "max": -1, "exclude": ["b"] },
+        "f": { "min": -5, "max": 5, "exclude": [0, "c"] }
       },
-      "question": "Analyze the polynomial function \\( f(x) = {a}(x - ({p}))^3(x - ({q}))^2 \\). Determine the degree, end behavior, zeros with multiplicity, and turning points (maximum number).",
-      "answer": "Degree: 5 (odd); Leading coefficient: {a} (negative). End behavior: As \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\); As \\( x \\to \\infty \\), \\( f(x) \\to -\\infty \\). Zeros: \\( x = {p} \\) (multiplicity 3, crosses), \\( x = {q} \\) (multiplicity 2, touches). Maximum turning points: 4."
+      "question": "Profit \\( P(x) \\) can be modeled by \\( R(x) - C(x)\\) where R is the revenue function and C is the cost function. If \\( R(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\) and \\( C(x) = {d|coef}x^2 {e|signedCoef}x {f|sign} \\), find where the profit breaks even (where there is zero profit).",
+      "answer": "Solve \\( P(x) = 0 \\) to find the break-even points. (Answers will vary based on specific values.)"
     },
     {
       "id": "ALG2-4.3-B1",
@@ -3668,10 +3658,10 @@
       "objective": "Operations with Polynomials",
       "difficulty": "basic",
       "variables": {
-        "a1": { "min": 1, "max": 5 },
+        "a1": { "min": -5, "max": 5, "exclude": [0] },
         "b1": { "min": -6, "max": 6, "exclude": [0] },
         "c1": { "min": -8, "max": 8, "exclude": [0] },
-        "a2": { "min": 1, "max": 5 },
+        "a2": { "min": -5, "max": 5, "exclude": [0] },
         "b2": { "min": -6, "max": 6, "exclude": [0] },
         "c2": { "min": -8, "max": 8, "exclude": [0] }
       },
@@ -3684,10 +3674,10 @@
       "objective": "Operations with Polynomials",
       "difficulty": "basic",
       "variables": {
-        "a1": { "min": 1, "max": 5 },
+        "a1": { "min": -5, "max": 5, "exclude": [0] },
         "b1": { "min": -6, "max": 6, "exclude": [0] },
         "c1": { "min": -8, "max": 8, "exclude": [0] },
-        "a2": { "min": 1, "max": 5 },
+        "a2": { "min": -5, "max": 5, "exclude": [0] },
         "b2": { "min": -6, "max": 6, "exclude": [0] },
         "c2": { "min": -8, "max": 8, "exclude": [0] }
       },
@@ -3703,10 +3693,11 @@
         "a": { "min": 2, "max": 5 },
         "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
-        "d": { "min": -5, "max": 5, "exclude": [0] }
+        "d": { "min": -5, "max": 5, "exclude": [0] },
+        "e": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Multiply the polynomials: \\( ({a|coef}x {b|sign})({c|coef}x^2 {d|signedCoef}x + 3) \\).",
-      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {3*a+b*d|signedCoef}x {3*b|sign} \\)"
+      "question": "Multiply the polynomials: \\( ({a|coef}x {b|sign})({c|coef}x^2 {d|signedCoef}x {e|sign}) \\).",
+      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {a*e+b*d|signedCoef}x {b*e|sign} \\)"
     },
     {
       "id": "ALG2-4.3-I2",
@@ -3717,10 +3708,11 @@
         "a": { "min": 1, "max": 4 },
         "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": 1, "max": 4 },
-        "d": { "min": -5, "max": 5, "exclude": [0] }
+        "d": { "min": -5, "max": 5, "exclude": [0] },
+        "neg_d": { "formula": "-1*d" }
       },
-      "question": "Multiply the binomials: \\( ({a|coef}x {b|sign})({c|coef}x {d|sign}) \\).",
-      "answer": "\\( {a*c|coef}x^2 {a*d+b*c|signedCoef}x {b*d|sign} \\)"
+      "question": "Multiply the binomials: \\( ({a|coef}x {b|sign})({c|coef}x {d|sign})({c|coef}x {neg_d|sign}) \\).",
+      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {a*e+b*d|signedCoef}x {b*e|sign} \\)"
     },
     {
       "id": "ALG2-4.3-A1",
@@ -3761,23 +3753,10 @@
         "a": { "min": 2, "max": 8 },
         "b": { "min": -6, "max": 6, "exclude": [0] },
         "c": { "min": -8, "max": 8, "exclude": [0] },
-        "d": { "min": 1, "max": 4 }
+        "d": { "min": 2, "max": 6 }
       },
-      "question": "Divide using long division: \\( \\frac{ {a|coef}x^2 {b|signedCoef}x {c|sign} }{ {d|coef}x } \\).",
-      "answer": "\\( {a/d}x {b/d|signedCoef} + \\frac{ {c} }{ {d|coef}x } \\)"
-    },
-    {
-      "id": "ALG2-4.4-B2",
-      "type": "template",
-      "objective": "Dividing Polynomials",
-      "difficulty": "basic",
-      "variables": {
-        "q": { "min": -5, "max": 5, "exclude": [0] },
-        "a": { "min": 1, "max": 3 },
-        "r": { "min": -10, "max": 10 }
-      },
-      "question": "Use synthetic division to divide \\( {a|coef}x^2 - 5x {r|sign} \\) by \\( x - ({q}) \\).",
-      "answer": "Quotient: \\( {a|coef}x {a*q-5|signedCoef} \\); Remainder: \\( {a*q*q - 5*q + r} \\)"
+      "question": "Divide: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^2 {c|sign} }{ {d|coef}x } \\).",
+      "answer": "\\( {a/d}x^3 {b/d|signedCoef}x + \\frac{ {c} }{ {d|coef}x } \\)"
     },
     {
       "id": "ALG2-4.4-I1",
@@ -3787,15 +3766,29 @@
       "variables": {
         "a": { "min": 1, "max": 3 },
         "p": { "min": -4, "max": 4, "exclude": [0] },
-        "q": { "min": -4, "max": 4, "exclude": [0, "p"] },
-        "b": { "formula": "-a*(p + q)" },
-        "c": { "formula": "a*p*q" }
+        "b": { "min": -3, "max": 3, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Divide using long division: \\( \\frac{ {a|coef}x^2 {b|signedCoef}x {c|sign} }{ x - ({p}) } \\).",
-      "answer": "Quotient: \\( {a|coef}x {-a*q|signedCoef} \\); Remainder: 0"
+      "question": "Divide: \\( \\frac{ {a|coef}x^3 {b|signedCoef}x^2 {c|sign} }{ x {p|sign} } \\).",
+      "answer": "Quotient: \\( {a|coef}x^2 {a*p+b|signedCoef}x + \\frac{ {c} }{ x {p|sign} } \\)"
     },
     {
       "id": "ALG2-4.4-I2",
+      "type": "template",
+      "objective": "Dividing Polynomials",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 1, "max": 1 },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -8, "max": 8, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] }
+      },
+      "question": "Divide \\( {a|coef}x^4 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\) by \\( x {k|sign} \\).",
+      "answer": "Quotient: \\( {a|coef}x^3 {a*k+b|signedCoef}x^2 {a*k*k+c|signedCoef}x {a*k*k*k+d|signedCoef} \\); Remainder: 0"
+    },
+    {
+      "id": "ALG2-4.4-I3",
       "type": "template",
       "objective": "Dividing Polynomials",
       "difficulty": "intermediate",
@@ -3806,8 +3799,8 @@
         "d": { "min": -8, "max": 8, "exclude": [0] },
         "k": { "min": -3, "max": 3, "exclude": [0] }
       },
-      "question": "Use synthetic division to divide \\( {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\) by \\( x - ({k}) \\).",
-      "answer": "Quotient: \\( {a|coef}x^2 {a*k+b|signedCoef}x {(a*k+b)*k+c|signedCoef} \\); Remainder: \\( {a*k**3 + b*k**2 + c*k + d} \\)"
+      "question": "Divide \\( {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x {d|sign} \\) by \\( x {k|sign} \\).",
+      "answer": "Quotient: \\( {a|coef}x^3 {a*k+b|signedCoef}x^2 {a*k*k+c|signedCoef}x {a*k*k*k+d|signedCoef} \\); Remainder: 0"
     },
     {
       "id": "ALG2-4.4-A1",
@@ -3815,14 +3808,21 @@
       "objective": "Dividing Polynomials",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 2 },
-        "b": { "min": -4, "max": 4, "exclude": [0] },
-        "c": { "min": -5, "max": 5, "exclude": [0] },
-        "d": { "min": -6, "max": 6, "exclude": [0] },
-        "e": { "min": -8, "max": 8 }
+        "q1": { "min": -4, "max": 4, "exclude": [0] },
+        "q2": { "min": -5, "max": 5 },
+        "q3": { "min": -6, "max": 6 },
+        "q4": { "min": -7, "max": 7 },
+        "r": { "min": -5, "max": 5 },
+        "a": { "formula": "f*q1" },
+        "b": { "formula": "f*q2 - g*q1" },
+        "c": { "formula": "f*q3 - g*q2" },
+        "d": { "formula": "f*q4 - g*q3" },
+        "e": { "formula": "r - g*q4" },
+        "f": { "min": 2, "max": 3 },
+        "g": { "min": -1, "max": 1, "exclude": [0] }
       },
-      "question": "Divide using long division: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 + 1 } \\).",
-      "answer": "Use polynomial long division. Quotient: \\( {a|coef}x^2 {b|signedCoef}x {c-a|signedCoef} \\); Remainder: \\( {d-b|signedCoef}x {e-c+a|sign} \\)"
+      "question": "Divide: \\( \\frac{ {a}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ {f}x {g|sign} } \\).",
+      "answer": "\\( {q1}x^3 {q2|signedCoef}x^2 {q3|signedCoef}x {q4|signedCoef} + \\frac{ {r} }{ {f}x {g|sign} } \\)"
     },
     {
       "id": "ALG2-4.4-A2",
@@ -3830,13 +3830,15 @@
       "objective": "Dividing Polynomials",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 2 },
-        "p": { "min": -3, "max": 3, "exclude": [0] },
-        "q": { "min": -3, "max": 3, "exclude": [0, "p"] },
-        "r": { "min": -4, "max": 4, "exclude": [0, "p", "q"] }
+        "a": { "min": 1, "max": 1 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": -6, "max": 6, "exclude": [0] },
+        "e": { "min": -8, "max": 8, "exclude": [0] },
+        "g": { "min": -1, "max": 1, "exclude": [0] }
       },
-      "question": "Use the Remainder Theorem to find the remainder when \\( f(x) = {a|coef}x^3 - 5x^2 + 3x - 7 \\) is divided by \\( x - ({r}) \\). Then verify by calculating \\( f({r}) \\).",
-      "answer": "By the Remainder Theorem, the remainder is \\( f({r}) = {a*r**3 - 5*r**2 + 3*r - 7} \\)"
+      "question": "Divide: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 {g|sign} } \\).",
+      "answer": "\\( {a|coef}x^2 {b|signedCoef}x {c|signedCoef} + \\frac{ {d|signedCoef}x + {e|sign} }{ x^2 {g|sign} } \\)"
     },
     {
       "id": "ALG2-4.5-B1",
@@ -5742,32 +5744,9 @@
       "objective": "Verifying Trigonometric Identities",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Verify the identity: \\( \\cos(\\theta) \\cdot \\sec(\\theta) = 1 \\).",
-      "answer": "\\( \\cos(\\theta) \\cdot \\sec(\\theta) = \\cos(\\theta) \\cdot \\frac{1}{\\cos(\\theta)} = 1 \\) ✓"
-    },
-    {
-      "id": "PC-5.2-B2",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\tan(\\theta) \\cdot \\cot(\\theta) = 1 \\).",
-      "answer": "\\( \\tan(\\theta) \\cdot \\cot(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\frac{\\cos(\\theta)}{\\sin(\\theta)} = 1 \\) ✓"
-    },
-    {
-      "id": "PC-5.2-B3",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\sin(\\theta) \\cdot \\csc(\\theta) = 1 \\).",
-      "answer": "\\( \\sin(\\theta) \\cdot \\csc(\\theta) = \\sin(\\theta) \\cdot \\frac{1}{\\sin(\\theta)} = 1 \\) ✓"
+      "question": "Verify the identity: \\( \\sin^2 x - \\cos^2 x = 2\\sin^2 x - 1 \\).",
+      "answer": "\\( \\sin^2 x - \\cos^2 x = \\sin^2 x - (1 - \\sin^2 x) = 2\\sin^2 x - 1 \\) ✓"
     },
     {
       "id": "PC-5.2-I1",
@@ -5775,32 +5754,20 @@
       "objective": "Verifying Trigonometric Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Verify the identity: \\( \\frac{\\sin(\\theta)}{1 + \\cos(\\theta)} + \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} = \\frac{2}{\\sin(\\theta)} \\).",
-      "answer": "Left side: \\( \\frac{\\sin^2(\\theta) + (1 + \\cos(\\theta))^2}{\\sin(\\theta)(1 + \\cos(\\theta))} \\)<br>\\( = \\frac{\\sin^2(\\theta) + 1 + 2\\cos(\\theta) + \\cos^2(\\theta)}{\\sin(\\theta)(1 + \\cos(\\theta))} \\)<br>\\( = \\frac{2 + 2\\cos(\\theta)}{\\sin(\\theta)(1 + \\cos(\\theta))} = \\frac{2(1 + \\cos(\\theta))}{\\sin(\\theta)(1 + \\cos(\\theta))} = \\frac{2}{\\sin(\\theta)} \\) ✓"
+      "question": "Verify the identity: \\( \\frac{\\csc x + 1 }{\\cot x} - \\frac{ \\cot x}{\\csc x -1} = 0 \\).",
+      "answer": "Multiply both sides by \\( \\cot x (\\csc x - 1) \\):<br>\\( (\\csc x + 1)(\\csc x - 1) - \\cot^2 x = 0 \\)<br>\\( \\csc^2 x - 1 - \\cot^2 x = 0 \\)<br>Using the identity \\( \\csc^2 x - \\cot^2 x = 1 \\):<br>\\( 1 - 1 = 0 \\) ✓"
     },
+    
     {
       "id": "PC-5.2-I2",
       "type": "template",
       "objective": "Verifying Trigonometric Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Verify the identity: \\( \\frac{1 - \\sin(\\theta)}{\\cos(\\theta)} = \\frac{\\cos(\\theta)}{1 + \\sin(\\theta)} \\).",
-      "answer": "Multiply the right side by \\( \\frac{1 - \\sin(\\theta)}{1 - \\sin(\\theta)} \\):<br>\\( \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{(1 + \\sin(\\theta))(1 - \\sin(\\theta))} = \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{1 - \\sin^2(\\theta)} \\)<br>\\( = \\frac{\\cos(\\theta)(1 - \\sin(\\theta))}{\\cos^2(\\theta)} = \\frac{1 - \\sin(\\theta)}{\\cos(\\theta)} \\) ✓"
-    },
-    {
-      "id": "PC-5.2-I3",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( (\\sin(\\theta) + \\cos(\\theta))^2 = 1 + 2\\sin(\\theta)\\cos(\\theta) \\).",
-      "answer": "Left side: \\( (\\sin(\\theta) + \\cos(\\theta))^2 = \\sin^2(\\theta) + 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta) \\)<br>\\( = (\\sin^2(\\theta) + \\cos^2(\\theta)) + 2\\sin(\\theta)\\cos(\\theta) = 1 + 2\\sin(\\theta)\\cos(\\theta) \\) ✓"
+      "question": "Verify the identity: \\( \\frac{1}{1 - \\sin x} - \\frac{1}{1 + \\sin x} = 2\\tan x\\sec x \\).",
+      "answer": "Left side: \\( \\frac{(1 + \\sin x) - (1 - \\sin x)}{(1 - \\sin x)(1 + \\sin x)} = \\frac{2\\sin x}{1 - \\sin^2 x} \\)<br>\\( = \\frac{2\\sin x}{\\cos^2 x} = \\frac{2\\sin x}{\\cos x \\cdot \\cos x} = \\frac{2\\tan x}{\\cos x} = 2\\tan x\\sec x \\) ✓"
     },
     {
       "id": "PC-5.2-A1",
@@ -5808,10 +5775,9 @@
       "objective": "Verifying Trigonometric Identities",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Verify the identity: \\( \\frac{\\tan(\\theta) + \\cot(\\theta)}{\\tan(\\theta)} = \\csc^2(\\theta) \\).",
-      "answer": "Left side: \\( \\frac{\\tan(\\theta) + \\cot(\\theta)}{\\tan(\\theta)} = 1 + \\frac{\\cot(\\theta)}{\\tan(\\theta)} \\)<br>\\( = 1 + \\frac{\\cos(\\theta)/\\sin(\\theta)}{\\sin(\\theta)/\\cos(\\theta)} = 1 + \\frac{\\cos^2(\\theta)}{\\sin^2(\\theta)} \\)<br>\\( = \\frac{\\sin^2(\\theta) + \\cos^2(\\theta)}{\\sin^2(\\theta)} = \\frac{1}{\\sin^2(\\theta)} = \\csc^2(\\theta) \\) ✓"
+      "question": "Verify the identity: \\( \\frac{\\tan^2x}{\\csc x}+\\frac{\\cot^2x}{\\sec x} = \\frac{\\sin^5x+\\cos^5x}{\\sin^2 x\\cos^2 x} \\).",
+      "answer": "Left side: \\( \\frac{\\tan^2x}{\\csc x}+\\frac{\\cot^2x}{\\sec x} = \\frac{\\sin^2x}{\\csc x}+\\frac{\\cos^2x}{\\sec x} = \\sin^3x + \\cos^3x \\)<br>Right side: \\( \\frac{\\sin^5x+\\cos^5x}{\\sin^2 x\\cos^2 x} = \\frac{(\\sin^3x + \\cos^3x)(\\sin^2x - \\sin x \\cos x + \\cos^2x)}{\\sin^2 x\\cos^2 x} = (\\sin^3x + \\cos^3x) \\cdot 1 = \\sin^3x + \\cos^3x \\) ✓"
     },
     {
       "id": "PC-5.2-A2",
@@ -5819,131 +5785,9 @@
       "objective": "Verifying Trigonometric Identities",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 10 }
       },
-      "question": "Verify the identity: \\( \\frac{1}{1 - \\sin(\\theta)} - \\frac{1}{1 + \\sin(\\theta)} = \\frac{2\\tan(\\theta)}{\\cos(\\theta)} \\).",
-      "answer": "Left side: \\( \\frac{(1 + \\sin(\\theta)) - (1 - \\sin(\\theta))}{(1 - \\sin(\\theta))(1 + \\sin(\\theta))} = \\frac{2\\sin(\\theta)}{1 - \\sin^2(\\theta)} \\)<br>\\( = \\frac{2\\sin(\\theta)}{\\cos^2(\\theta)} = \\frac{2\\sin(\\theta)}{\\cos(\\theta) \\cdot \\cos(\\theta)} = \\frac{2\\tan(\\theta)}{\\cos(\\theta)} \\) ✓"
-    },
-    {
-      "id": "PC-5.2-B4",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\).",
-      "answer": "Using the quotient identity directly:<br>\\( \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\) ✓"
-    },
-    {
-      "id": "PC-5.2-B5",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\).",
-      "answer": "This is the fundamental Pythagorean identity. For any angle \\(\\theta\\) on the unit circle, the sum of the squares of sine and cosine equals 1. ✓"
-    },
-    {
-      "id": "PC-5.2-B6",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\cos(-\\theta) = \\cos(\\theta) \\).",
-      "answer": "Cosine is an even function, meaning \\( \\cos(-\\theta) = \\cos(\\theta) \\) for all values of \\(\\theta\\). ✓"
-    },
-    {
-      "id": "PC-5.2-B7",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\sin\\left(\\frac{\\pi}{2} - \\theta\\right) = \\cos(\\theta) \\).",
-      "answer": "This is a cofunction identity. The sine of an angle equals the cosine of its complement:<br>\\( \\sin\\left(\\frac{\\pi}{2} - \\theta\\right) = \\cos(\\theta) \\) ✓"
-    },
-    {
-      "id": "PC-5.2-I4",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\frac{\\tan(\\theta)}{\\sec(\\theta)} = \\sin(\\theta) \\).",
-      "answer": "Left side: \\( \\frac{\\tan(\\theta)}{\\sec(\\theta)} = \\frac{\\sin(\\theta)/\\cos(\\theta)}{1/\\cos(\\theta)} \\)<br>\\( = \\frac{\\sin(\\theta)}{\\cos(\\theta)} \\cdot \\cos(\\theta) = \\sin(\\theta) \\) ✓"
-    },
-    {
-      "id": "PC-5.2-I5",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\sin(\\theta) \\).",
-      "answer": "Left side: \\( \\frac{1 - \\cos^2(\\theta)}{\\sin(\\theta)} = \\frac{\\sin^2(\\theta)}{\\sin(\\theta)} \\) (using Pythagorean identity)<br>\\( = \\sin(\\theta) \\) ✓"
-    },
-    {
-      "id": "PC-5.2-I6",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\frac{\\sec(\\theta) - \\cos(\\theta)}{\\sec(\\theta)} = \\sin^2(\\theta) \\).",
-      "answer": "Left side: \\( \\frac{\\sec(\\theta) - \\cos(\\theta)}{\\sec(\\theta)} = 1 - \\frac{\\cos(\\theta)}{\\sec(\\theta)} \\)<br>\\( = 1 - \\frac{\\cos(\\theta)}{1/\\cos(\\theta)} = 1 - \\cos^2(\\theta) = \\sin^2(\\theta) \\) ✓"
-    },
-    {
-      "id": "PC-5.2-I7",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\sec^2(\\theta) - \\tan^2(\\theta) = 1 \\).",
-      "answer": "This is a Pythagorean identity. Starting from \\( \\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\), divide both sides by \\( \\cos^2(\\theta) \\):<br>\\( \\frac{\\sin^2(\\theta)}{\\cos^2(\\theta)} + \\frac{\\cos^2(\\theta)}{\\cos^2(\\theta)} = \\frac{1}{\\cos^2(\\theta)} \\)<br>\\( \\tan^2(\\theta) + 1 = \\sec^2(\\theta) \\)<br>Therefore, \\( \\sec^2(\\theta) - \\tan^2(\\theta) = 1 \\) ✓"
-    },
-    {
-      "id": "PC-5.2-A3",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\frac{\\sin(\\theta)}{1 - \\cos(\\theta)} = \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} \\).",
-      "answer": "Multiply the left side by \\( \\frac{1 + \\cos(\\theta)}{1 + \\cos(\\theta)} \\):<br>\\( \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{(1 - \\cos(\\theta))(1 + \\cos(\\theta))} = \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{1 - \\cos^2(\\theta)} \\)<br>\\( = \\frac{\\sin(\\theta)(1 + \\cos(\\theta))}{\\sin^2(\\theta)} = \\frac{1 + \\cos(\\theta)}{\\sin(\\theta)} \\) ✓"
-    },
-    {
-      "id": "PC-5.2-A4",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( \\frac{\\sec(\\theta) + \\tan(\\theta)}{\\sec(\\theta) - \\tan(\\theta)} = \\frac{1 + \\sin(\\theta)}{1 - \\sin(\\theta)} \\).",
-      "answer": "Left side: \\( \\frac{\\sec(\\theta) + \\tan(\\theta)}{\\sec(\\theta) - \\tan(\\theta)} = \\frac{\\frac{1}{\\cos(\\theta)} + \\frac{\\sin(\\theta)}{\\cos(\\theta)}}{\\frac{1}{\\cos(\\theta)} - \\frac{\\sin(\\theta)}{\\cos(\\theta)}} \\)<br>\\( = \\frac{\\frac{1 + \\sin(\\theta)}{\\cos(\\theta)}}{\\frac{1 - \\sin(\\theta)}{\\cos(\\theta)}} = \\frac{1 + \\sin(\\theta)}{1 - \\sin(\\theta)} \\) ✓"
-    },
-    {
-      "id": "PC-5.2-A5",
-      "type": "template",
-      "objective": "Verifying Trigonometric Identities",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Verify the identity: \\( (\\sin(\\theta) + \\cos(\\theta))^2 + (\\sin(\\theta) - \\cos(\\theta))^2 = 2 \\).",
-      "answer": "Left side: \\( (\\sin(\\theta) + \\cos(\\theta))^2 + (\\sin(\\theta) - \\cos(\\theta))^2 \\)<br>\\( = (\\sin^2(\\theta) + 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta)) + (\\sin^2(\\theta) - 2\\sin(\\theta)\\cos(\\theta) + \\cos^2(\\theta)) \\)<br>\\( = 2\\sin^2(\\theta) + 2\\cos^2(\\theta) = 2(\\sin^2(\\theta) + \\cos^2(\\theta)) = 2(1) = 2 \\) ✓"
+      "question": "Verify the identity: \\( \\tan x - \\frac{ \\sin^2 x}{ \\csc x \\cos x} = \\frac{\\sec^2 x -1}{\\sec^2 x\\tan x} \\).",
+      "answer": "Left side: \\( \\tan x - \\frac{\\sin^2 x}{\\csc x \\cos x} = \\frac{\\sin x}{\\cos x} - \\frac{\\sin^2 x}{\\frac{1}{\\sin x} \\cdot \\cos x} = \\frac{\\sin x}{\\cos x} - \\frac{\\sin^3 x}{\\cos x} = \\frac{\\sin x - \\sin^3 x}{\\cos x} = \\frac{\\sin x(1 - \\sin^2 x)}{\\cos x} = \\frac{\\sin^3 x}{\\cos x} = \\tan^3x. \\)<br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get: <br>Right side: Using the identity, we get:"
     },
     {
       "id": "PC-5.3-B1",
@@ -5951,10 +5795,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1, 2, 3] }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\sin(\\theta) = \\frac{1}{2} \\).",
-      "answer": "\\( \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6} \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 2\\sin(x) + 1 = 0 \\).",
+      "answer": "\\( x = \\frac{7\\pi}{6}, \\frac{11\\pi}{6} \\)"
     },
     {
       "id": "PC-5.3-B2",
@@ -5962,10 +5805,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1, 2, 3] }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\cos(\\theta) = -1 \\).",
-      "answer": "\\( \\theta = \\pi \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( \\sqrt{3}\\cot(x) + 3 = 0 \\).",
+      "answer": "\\( x = \\frac{5\\pi}{6}, \\frac{11\\pi}{6} \\)"
     },
     {
       "id": "PC-5.3-B3",
@@ -5973,10 +5815,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1, 2, 3] }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\tan(\\theta) = 1 \\).",
-      "answer": "\\( \\theta = \\frac{\\pi}{4}, \\frac{5\\pi}{4} \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 2\\sin x\\cos x + \\sin x = 0 \\).",
+      "answer": "\\( x = 0, \\frac{2\\pi}{3}, \\pi, \\frac{4\\pi}{3} \\)"
     },
     {
       "id": "PC-5.3-I1",
@@ -5984,10 +5825,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( 2\\sin^2(\\theta) - \\sin(\\theta) - 1 = 0 \\).",
-      "answer": "Factor: \\( (2\\sin(\\theta) + 1)(\\sin(\\theta) - 1) = 0 \\)<br>\\( \\sin(\\theta) = -\\frac{1}{2} \\) or \\( \\sin(\\theta) = 1 \\)<br>\\( \\theta = \\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6} \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 2\\tan x\\sin x  = \\sqrt{2}\\tan x \\).",
+      "answer": "\\( x = 0, \\frac{\\pi}{4}, \\pi, \\frac{3\\pi}{4} \\)"
     },
     {
       "id": "PC-5.3-I2",
@@ -5995,10 +5835,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\cos(2\\theta) = \\frac{1}{2} \\).",
-      "answer": "\\( 2\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}, \\frac{7\\pi}{3}, \\frac{11\\pi}{3} \\)<br>\\( \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6} \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 2\\cos^2 x - \\sqrt{2}\\cos x = 0 \\).",
+      "answer": "\\( x = \\frac{\\pi}{4}, \\frac{\\pi}{2}, \\frac{3\\pi}{2}, \\frac{7\\pi}{4} \\)"    
     },
     {
       "id": "PC-5.3-I3",
@@ -6006,11 +5845,9 @@
       "objective": "Solving Trigonometric Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\sin(\\theta)\\cos(\\theta) = \\frac{1}{4} \\).",
-      "answer": "Multiply both sides by 2: \\( 2\\sin(\\theta)\\cos(\\theta) = \\frac{1}{2} \\)<br>Using double angle identity: \\( \\sin(2\\theta) = \\frac{1}{2} \\)<br>\\( 2\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{13\\pi}{6}, \\frac{17\\pi}{6} \\)<br>\\( \\theta = \\frac{\\pi}{12}, \\frac{5\\pi}{12}, \\frac{13\\pi}{12}, \\frac{17\\pi}{12} \\)"
-    },
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 1 - \\sin x = \\cos x \\).",
+      "answer": "\\( x = 0, \\frac{\\pi}{2} \\)"    },
     {
       "id": "PC-5.3-A1",
       "type": "template",
@@ -6019,8 +5856,8 @@
       "variables": {
         "a": { "min": 2, "max": 5 }
       },
-      "question": "Solve for \\( \\theta \\) in the interval \\( [0, 2\\pi) \\): \\( \\tan^2(\\theta) - 3\\tan(\\theta) + 2 = 0 \\).",
-      "answer": "Let \\( u = \\tan(\\theta) \\): \\( u^2 - 3u + 2 = 0 \\)<br>Factor: \\( (u - 1)(u - 2) = 0 \\)<br>\\( \\tan(\\theta) = 1 \\) or \\( \\tan(\\theta) = 2 \\)<br>\\( \\theta = \\frac{\\pi}{4}, \\frac{5\\pi}{4}, \\arctan(2), \\pi + \\arctan(2) \\)"
+      "question": "Solve for \\( x \\) in the interval \\( [0, 2\\pi) \\): <br> \\( 2\\cos^2 x +3\\cos x +1 = 0 \\).",
+      "answer": "Let \\( u = \\cos(x) \\): \\( 2u^2 + 3u + 1 = 0 \\)<br>Factor: \\( (2u + 1)(u + 1) = 0 \\)<br>\\( u = -\\frac{1}{2} \\) or \\( u = -1 \\)<br>\\( x = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}, \\pi \\)"
     },
     {
       "id": "PC-5.3-A2",
@@ -6041,7 +5878,7 @@
       "variables": {
         "a": { "values": [1, 2, 3] }
       },
-      "question": "Use the sum identity to find the exact value of \\( \\sin(75^\\circ) \\). (Hint: \\( 75^\\circ = 45^\\circ + 30^\\circ \\))",
+      "question": "Use the sum identity to find the exact value of \\( \\sin(75^\\circ) \\).",
       "answer": "\\( \\sin(75^\\circ) = \\sin(45^\\circ + 30^\\circ) = \\sin(45^\\circ)\\cos(30^\\circ) + \\cos(45^\\circ)\\sin(30^\\circ) \\)<br>\\( = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4} \\)"
     },
     {
@@ -6052,7 +5889,7 @@
       "variables": {
         "a": { "values": [1, 2, 3] }
       },
-      "question": "Use the difference identity to find the exact value of \\( \\cos(15^\\circ) \\). (Hint: \\( 15^\\circ = 45^\\circ - 30^\\circ \\))",
+      "question": "Use the difference identity to find the exact value of \\( \\cos(\\frac{\\pi}{12}) \\).",
       "answer": "\\( \\cos(15^\\circ) = \\cos(45^\\circ - 30^\\circ) = \\cos(45^\\circ)\\cos(30^\\circ) + \\sin(45^\\circ)\\sin(30^\\circ) \\)<br>\\( = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4} \\)"
     },
     {
@@ -6063,7 +5900,7 @@
       "variables": {
         "a": { "values": [1, 2, 3] }
       },
-      "question": "Use the sum identity to find the exact value of \\( \\tan(105^\\circ) \\). (Hint: \\( 105^\\circ = 60^\\circ + 45^\\circ \\))",
+      "question": "Use the sum identity to find the exact value of \\( \\tan(\\frac{5\\pi}{12}) \\).",
       "answer": "\\( \\tan(105^\\circ) = \\tan(60^\\circ + 45^\\circ) = \\frac{\\tan(60^\\circ) + \\tan(45^\\circ)}{1 - \\tan(60^\\circ)\\tan(45^\\circ)} \\)<br>\\( = \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3}} \\)<br>Rationalize: \\( = \\frac{(\\sqrt{3} + 1)(1 + \\sqrt{3})}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\frac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3} \\)"
     },
     {
@@ -6072,32 +5909,16 @@
       "objective": "Sum and Difference Identities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 10 }
+        "a": { "min": 2, "max": 9 },
+        "b": { "min": 10, "max": 15 },
+        "c": { "min": 2, "max": 9, "exclude": ["a"] },
+        "d": { "min":10, "max":15, "exclude": ["c"] },
+        "f": { "formula": "a*c" },
+        "g": { "formula": "(b*b - a*a)*(e*e - c*c)" },
+        "h": { "formula": "b*d" }
       },
-      "question": "If \\( \\sin(\\alpha) = \\frac{3}{5} \\) with \\( \\alpha \\) in Quadrant I, and \\( \\cos(\\beta) = \\frac{5}{13} \\) with \\( \\beta \\) in Quadrant I, find \\( \\sin(\\alpha + \\beta) \\).",
-      "answer": "First find \\( \\cos(\\alpha) = \\frac{4}{5} \\) and \\( \\sin(\\beta) = \\frac{12}{13} \\)<br>\\( \\sin(\\alpha + \\beta) = \\sin(\\alpha)\\cos(\\beta) + \\cos(\\alpha)\\sin(\\beta) \\)<br>\\( = \\frac{3}{5} \\cdot \\frac{5}{13} + \\frac{4}{5} \\cdot \\frac{12}{13} = \\frac{15}{65} + \\frac{48}{65} = \\frac{63}{65} \\)"
-    },
-    {
-      "id": "PC-5.4-I2",
-      "type": "template",
-      "objective": "Sum and Difference Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "If \\( \\sin(\\alpha) = \\frac{4}{5} \\) with \\( \\alpha \\) in Quadrant II, and \\( \\cos(\\beta) = -\\frac{3}{5} \\) with \\( \\beta \\) in Quadrant III, find \\( \\cos(\\alpha - \\beta) \\).",
-      "answer": "First find \\( \\cos(\\alpha) = -\\frac{3}{5} \\) and \\( \\sin(\\beta) = -\\frac{4}{5} \\)<br>\\( \\cos(\\alpha - \\beta) = \\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) \\)<br>\\( = (-\\frac{3}{5})(-\\frac{3}{5}) + (\\frac{4}{5})(-\\frac{4}{5}) = \\frac{9}{25} - \\frac{16}{25} = -\\frac{7}{25} \\)"
-    },
-    {
-      "id": "PC-5.4-I3",
-      "type": "template",
-      "objective": "Sum and Difference Identities",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "Use sum and difference identities to simplify: \\( \\sin(x + y)\\cos(y) - \\cos(x + y)\\sin(y) \\).",
-      "answer": "This is the sine difference identity:<br>\\( \\sin(x + y)\\cos(y) - \\cos(x + y)\\sin(y) = \\sin((x + y) - y) = \\sin(x) \\)"
+      "question": "If \\( \\sin(\\alpha) = \\frac{{a}}{{b}} \\) with \\( \\alpha \\) in Quadrant I, and \\( \\cos(\\beta) = \\frac{{c}}{{d}} \\) with \\( \\beta \\) in Quadrant I, find \\( \\sin(\\alpha + \\beta) \\).",
+      "answer": "\\( \\frac{{f} + \\sqrt{{g}}}{{h}} \\)"
     },
     {
       "id": "PC-5.4-A1",
@@ -6107,19 +5928,8 @@
       "variables": {
         "a": { "min": 2, "max": 10 }
       },
-      "question": "Prove that \\( \\sin(x + y) + \\sin(x - y) = 2\\sin(x)\\cos(y) \\).",
-      "answer": "\\( \\sin(x + y) = \\sin(x)\\cos(y) + \\cos(x)\\sin(y) \\)<br>\\( \\sin(x - y) = \\sin(x)\\cos(y) - \\cos(x)\\sin(y) \\)<br>Adding: \\( \\sin(x + y) + \\sin(x - y) = 2\\sin(x)\\cos(y) \\) ✓"
-    },
-    {
-      "id": "PC-5.4-A2",
-      "type": "template",
-      "objective": "Sum and Difference Identities",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": 2, "max": 10 }
-      },
-      "question": "If \\( \\tan(\\alpha) = 2 \\) and \\( \\tan(\\beta) = 3 \\), find the exact value of \\( \\tan(\\alpha + \\beta) \\).",
-      "answer": "\\( \\tan(\\alpha + \\beta) = \\frac{\\tan(\\alpha) + \\tan(\\beta)}{1 - \\tan(\\alpha)\\tan(\\beta)} = \\frac{2 + 3}{1 - 2 \\cdot 3} = \\frac{5}{1 - 6} = \\frac{5}{-5} = -1 \\)"
+      "question": "Solve for x on \\([0, 2\\pi)\\) showing your steps \\( \\sin(x - \\frac{\\pi}{6}) +\\sin(x +\\frac{7\\pi}{6}) = \\frac{1}{2} \\).",
+      "answer": "\\( x = \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\)"
     },
     {
       "id": "PC-5.5-B1",
