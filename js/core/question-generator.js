@@ -1,0 +1,174 @@
+/**
+ * Core question generation and template processing
+ */
+class QuestionGenerator {
+  constructor() {
+    this.questionBank = {};
+  }
+
+  async loadQuestionBank() {
+    try {
+      const response = await fetch('src/data/question_bank.json');
+      this.questionBank = await response.json();
+      return true;
+    } catch (error) {
+      console.error("Failed to load question bank:", error);
+      this.questionBank = {};
+      return false;
+    }
+  }
+
+  /**
+   * Unified text processing – now correctly uses __display for plain {var}
+   */
+  processTemplateText(text, variables) {
+    if (!text) return "";
+
+    let result = text;
+
+    /* --------------------------------------------------------------
+       Step 1 – {var|option…}  (your original formatter)
+       -------------------------------------------------------------- */
+    result = result.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(\|[a-zA-Z0-9:_-]+)*\}/g, (match, varName, opts) => {
+      const value = variables[varName];
+      if (value === undefined || value === null) return match;
+
+      const options = opts ? opts.slice(1).split('|') : [];
+
+      // If no formatter options, let Step 2 handle it with display values
+      if (options.length === 0) return match;
+
+      // Get display value (e.g., fraction) if it exists
+      const displayValue = variables.__display?.[varName];
+
+      // Helper to get absolute value of display string (remove leading minus in LaTeX fractions and plain numbers)
+      const getAbsDisplayValue = (dispVal) => {
+        if (!dispVal || typeof dispVal !== 'string') return dispVal;
+        // Handle \frac{-n}{d} -> \frac{n}{d}
+        dispVal = dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
+        // Handle plain negative numbers: -3 -> 3
+        if (dispVal.startsWith('-')) {
+          dispVal = dispVal.substring(1);
+        }
+        return dispVal;
+      };
+
+      if (options.includes('signedCoef')) {
+        if (value === 0) return '+0';
+        const sign = value >= 0 ? '+' : '-';
+
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && Math.abs(value) !== 1) {
+          const absDisplay = getAbsDisplayValue(displayValue);
+          return `${sign}${absDisplay}`;
+        }
+
+        const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
+        return `${sign}${coef}`;
+      }
+
+      const useSign = options.includes('sign');
+      const useCoef = options.includes('coef');
+
+      let sign = '';
+      let coef = '';
+
+      if (useSign) {
+        sign = value >= 0 ? '+' : '-';
+      } else if (value < 0) {
+        sign = '-';
+      }
+
+      const absVal = Math.abs(value);
+
+      if (useCoef) {
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && absVal !== 1) {
+          coef = getAbsDisplayValue(displayValue);
+        } else {
+          coef = absVal === 1 ? '' : String(absVal);
+        }
+      } else {
+        // Use display value if available, otherwise numeric value
+        if (displayValue && absVal !== 1) {
+          coef = getAbsDisplayValue(displayValue);
+        } else {
+          coef = String(absVal);
+        }
+      }
+
+      return `${sign}${coef}`;
+    });
+
+    /* --------------------------------------------------------------
+       Step 2 – plain {var}
+       -------------------------------------------------------------- */
+    result = window.QuestionUtils.replaceTemplateVariables(result, variables);
+
+    /* --------------------------------------------------------------
+       Step 3 – wrap simple exponents x^2 → x^{2}
+       -------------------------------------------------------------- */
+    result = result.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+      return `${base}^{${exp}}`;
+    });
+
+    return result;
+  }
+
+  /* -----------------------------------------------------------------
+     The rest of the class is unchanged – only the method above matters
+     ----------------------------------------------------------------- */
+  getCourses() {
+    return Object.keys(this.questionBank);
+  }
+
+  getChapters(course) {
+    return this.questionBank[course] ? Object.keys(this.questionBank[course]) : [];
+  }
+
+  getQuestionsFromChapters(course, chapters) {
+    if (!this.questionBank[course]) return [];
+    return chapters.flatMap(chapter =>
+      this.questionBank[course][chapter] || []
+    );
+  }
+
+  filterQuestions(questions, filters) {
+    return questions.filter(question => {
+      if (filters.objective && question.objective !== filters.objective) return false;
+      if (filters.difficulty && question.difficulty !== filters.difficulty) return false;
+      return true;
+    });
+  }
+
+  generateQuestion(template) {
+    const question = JSON.parse(JSON.stringify(template));
+    const variables = window.QuestionUtils.generateQuestionVariables(question);
+
+    const questionText = this.processTemplateText(question.question || "", variables);
+    const answerText   = this.processTemplateText(question.answer   || "", variables);
+
+    return {
+      ...question,
+      questionText,
+      answer: answerText,
+      variables,
+      variableErrors: variables.__errors || [],
+      generatedAt: new Date().toISOString()
+    };
+  }
+
+  getObjectives(questions) {
+    const set = new Set();
+    questions.forEach(q => q.objective && set.add(q.objective));
+    return Array.from(set);
+  }
+
+  getDifficulties(questions) {
+    const set = new Set();
+    questions.forEach(q => q.difficulty && set.add(q.difficulty));
+    return Array.from(set).sort();
+  }
+}
+
+window.QuestionGenerator = new QuestionGenerator();
