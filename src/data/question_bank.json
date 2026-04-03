@@ -2401,9 +2401,9 @@
       "objective": "Transforming Quadratic Functions",
       "difficulty": "basic",
       "variables": {
-        "h": { "min": -5, "max": 5 },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
         "negh": { "formula": "-h" },
-        "k": { "min": -5, "max": 5 },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
         "a": { "min": -1, "max": 1, "exclude": [0] },
         "b": { "formula": "-2*a*h", "format": "fraction" },
         "c": { "formula": "a*h**2 + k", "format": "fraction" }
@@ -2424,9 +2424,9 @@
       "objective": "Transforming Quadratic Functions",
       "difficulty": "intermediate",
       "variables": {
-        "h": { "min": -5, "max": 5 },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
         "negh": { "formula": "-h" },
-        "k": { "min": -3, "max": 3 },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
         "a": { "min": -3, "max": 3, "exclude": [0] },
         "b": { "formula": "-2*a*h", "format": "fraction" },
         "c": { "formula": "a*h**2 + k", "format": "fraction" }
@@ -2452,7 +2452,7 @@
         "k": { "min": -3, "max": 3, "exclude": [0] },
         "x": { "min": -5, "max": 5, "exclude": [0] },
         "y": { "min": -5, "max": 5, "exclude": [0] },
-        "a": { "formula": "((y - k)/math.abs(y - k)) * math.abs(((y - k) / (x - h)**2))", "format": "fraction" }
+        "a": { "formula": "(y - k) / (x - h)**2)", "format": "fraction" }
       },
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -7, "yMax": 7 },
