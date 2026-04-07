@@ -2450,8 +2450,8 @@
         "h": { "min": -5, "max": 5, "exclude": [0] },
         "negh": { "formula": "-h" },
         "k": { "min": -3, "max": 3, "exclude": [0] },
-        "x": { "min": -5, "max": 5, "exclude": [0] },
-        "y": { "min": -5, "max": 5, "exclude": [0] },
+        "x": { "min": -5, "max": 5, "exclude": [0, "h"] },
+        "y": { "min": -5, "max": 5, "exclude": [0, "k"] },
         "a": { "formula": "(y - k) / (x - h)**2)", "format": "fraction" }
       },
       "draw": {
@@ -2496,7 +2496,7 @@
       "variables": {
         "a": { "values": [-3, -2, 2, 3] },
         "h": { "min": -5, "max": 5, "exclude": [0] },
-        "randsquare": { "values": [1, 4, -1, -4] },
+        "randsquare": { "values": [1, 0, -1, -4] },
         "k": { "formula": "a*randsquare" },
         "x1": { "formula": "h - math.sqrt(-k/a)", "format": "fraction" },
         "x2": { "formula": "h + math.sqrt(-k/a)", "format": "fraction" },
@@ -2691,7 +2691,7 @@
     }
    ]
 },
-"Geometry": {
+"Under Construction (Geometry)": {
   "Module 1": [
     {
       "id": "Geo-1.2-B1",
@@ -7759,8 +7759,8 @@
           "b": { "min": 1, "max": 10 },
           "bsquared": { "formula": "b*b"}
         },
-        "question": "Convert the equation and verify with a graphing calculator: <br> a) convert to polar \\( (x - {a})^2 + y^2 = {asquared}^2 \\) <br> b) convert to rectangular \\( xy = {bsquared} \\)",
-        "answer": "a) \\( r = {a2}\\cos\\theta \\)<br> b) \\( r = \\pm{b}\\sqrt{\\sec\\theta \\csc\\theta} \\), which is a circle passing through the origin."
+        "question": "Convert the equation and verify with a graphing calculator: <br> a) convert to polar \\( (x - {a})^2 + y^2 = {asquared} \\) <br> b) convert to rectangular \\( r = \\pm{b}\\sqrt{\\sec\\theta \\csc\\theta} \\)",
+        "answer": "a) \\( r = {a2}\\cos\\theta \\)<br> b) \\( xy = {bsquared} \\), which is a rectangular hyperbola."
       },
       {
         "id": "PC-6.5-B1",
