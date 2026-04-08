@@ -5124,7 +5124,7 @@
       "variables": {
         "b1": { "min": 2, "max": 7 },
         "b2": { "min": 2, "max": 7, "exclude": ["b1"] },
-        "a": { "min": -5, "max": 5 },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -4, "max": 4, "exclude": [0] },
         "neg_c": { "formula": "-c" },
 
@@ -5141,7 +5141,7 @@
       "variables": {
         "b1": { "min": 2, "max": 9 },
         "b2": { "min": 2, "max": 9, "exclude": ["b1"] },
-        "a": { "min": -5, "max": 5 },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -10, "max": 10, "exclude": [0] },
         "d": { "min": -5, "max": 5, "exclude": [0] },
         "neg_c": { "formula": "-c" },
@@ -8019,6 +8019,119 @@
         "answer": "Each root has modulus \\( {rootMag} \\), with arguments \\( \\theta_k = \\frac{360k}{{n}}^\\circ \\) for \\( k = 0,1,\\dots,{nMinus1} \\). <br> Use roots through \\( w_{nMinus1} \\): <br> \\( w_0 = {a0} {b0|signedCoef}i \\). <br> \\( w_1 = {a1} {b1|signedCoef}i \\). <br> \\( w_2 = {a2} {b2|signedCoef}i \\). <br> \\( w_3 = {a3} {b3|signedCoef}i \\). <br> \\( w_4 = {a4} {b4|signedCoef}i \\). <br> \\( w_5 = {a5} {b5|signedCoef}i \\)."
       }
       
+    ],
+    "Chapter 7": [
+      {
+        "id": "PC-7.1-B1",
+        "type": "template",
+        "objective": "Systems of Equations",
+        "difficulty": "basic",
+        "variables": {
+          "a1": { "min": -5, "max": 5, "exclude": [0] },
+          "b1": { "min": -5, "max": 5, "exclude": [0] },
+          "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
+          "b2": { "min": -5, "max": 5, "exclude": [0, "b1"] },
+          "c1": { "min": -20, "max": 20 },
+          "c2": { "min": -20, "max": 20, "exclude": ["c1"] },
+          "xNum": { "formula": "b2*c1 - b1*c2" },
+          "xDen": { "formula": "a1*b2 - a2*b1" },
+          "yNum": { "formula": "a2*c1 - a1*c2" },
+          "yDen": { "formula": "a2*b1 - a1*b2" }
+        },
+        "question": "Solve the system of equations in standard form:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+        "answer": "\\( x = \\frac{{xNum}}{{xDen}},\\; y = \\frac{{yNum}}{{yDen}} \\)"
+      },
+      {
+        "id": "PC-7.1-I1",
+        "type": "template",
+        "objective": "Systems of Nonlinear Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "m": { "values": [-3, -2, -1, 1, 2, 3] },
+          "b": { "min": -8, "max": 8, "exclude": [0] },
+          "a": { "values": [-3, -2, -1, 1, 2, 3] },
+          "x1": { "min": -4, "max": 1 },
+          "gap": { "values": [2, 3, 4, 5] },
+          "x2": { "formula": "x1 + gap" },
+          "sumRoots": { "formula": "x1 + x2" },
+          "prodRoots": { "formula": "x1*x2" },
+          "quadB": { "formula": "m - a*sumRoots" },
+          "quadC": { "formula": "b + a*prodRoots" },
+          "y1": { "formula": "m*x1 + b" },
+          "y2": { "formula": "m*x2 + b" }
+        },
+        "question": "Solve the system:<br>\\( y = {m|coef}x {b|sign} \\)<br>\\( y = {a|coef}x^2 {quadB|signedCoef}x {quadC|sign} \\)",
+        "answer": "Solutions: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\)"
+      },
+      {
+        "id": "PC-7.1-I2",
+        "type": "template",
+        "objective": "Systems of Nonlinear Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "m": { "values": [-3, -2, -1, 1, 2, 3] },
+          "x1": { "min": -4, "max": 1 },
+          "gap": { "values": [2, 3, 4] },
+          "x2": { "formula": "x1 + gap" },
+          "hOffset": { "values": [3, 4] },
+          "h": { "formula": "x2 + hOffset" },
+          "negH": { "formula": "-h" },
+          "b": { "formula": "m*(h - x1 - x2)" },
+          "k": { "formula": "-m*(h - x1)*(h - x2)" },
+          "y1": { "formula": "m*x1 + b" },
+          "y2": { "formula": "m*x2 + b" }
+        },
+        "question": "Solve the system (with domain restriction \\(x \\ne {h}\\)):<br>\\( y = {m|coef}x {b|sign} \\)<br>\\( y = \\frac{{k}}{x {negH|sign}} \\)",
+        "answer": "Solutions: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\)"
+      },
+      {
+        "id": "PC-7.1-I3",
+        "type": "template",
+        "objective": "Systems of Nonlinear Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "base": { "values": [2, 3, 4] },
+          "x1": { "values": [-2, -1, 0, 1] },
+          "gap": { "values": [1, 2, 3] },
+          "x2": { "formula": "x1 + gap" },
+          "y1": { "formula": "Math.pow(base, x1)", "format": "fraction" },
+          "y2": { "formula": "Math.pow(base, x2)", "format": "fraction" },
+          "m": { "formula": "(Math.pow(base, x2) - Math.pow(base, x1)) / (x2 - x1)", "format": "fraction" },
+          "b": { "formula": "Math.pow(base, x1) - ((Math.pow(base, x2) - Math.pow(base, x1)) / (x2 - x1)) * x1", "format": "fraction" }
+        },
+        "question": "Solve the system:<br>\\( y = {base}^{x} \\)<br>\\( y = {m|coef}x {b|sign} \\)",
+        "answer": "Solutions: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\)"
+      },
+      {
+        "id": "PC-7.1-A1",
+        "type": "template",
+        "objective": "Systems of Equations in Three Variables",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "min": -5, "max": 5, "exclude": [0] },
+          "y": { "min": -5, "max": 5, "exclude": [0] },
+          "z": { "min": -5, "max": 5, "exclude": [0] },
+
+          "a1": { "min": -5, "max": 5, "exclude": [0] },
+          "b1": { "min": -5, "max": 5, "exclude": [0] },
+          "c1": { "min": -5, "max": 5, "exclude": [0] },
+
+          "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
+          "b2": { "min": -5, "max": 5, "exclude": [0, "b1"] },
+          "c2": { "min": -5, "max": 5, "exclude": [0, "c1"] },
+
+          "a3": { "min": -5, "max": 5, "exclude": [0, "a1", "a2"] },
+          "b3": { "min": -5, "max": 5, "exclude": [0, "b1", "b2"] },
+          "c3": { "min": -5, "max": 5, "exclude": [0, "c1", "c2"] },
+
+
+          "r1": { "formula": "a1*x + b1*y + c1*z" },
+          "r2": { "formula": "a2*x + b2*y + c2*z" },
+          "r3": { "formula": "a3*x + b3*y + c3*z" }
+        },
+        "question": "Solve the system of linear equations:<br>\\( {a1|coef}x {b1|signedCoef}y {c1|signedCoef}z = {r1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y {c2|signedCoef}z = {r2} \\)<br>\\( {a3|coef}x {b3|signedCoef}y {c3|signedCoef}z = {r3} \\)",
+        "answer": "\\( x = {x},\\; y = {y},\\; z = {z} \\)"
+      }
     ]
   }
 }
