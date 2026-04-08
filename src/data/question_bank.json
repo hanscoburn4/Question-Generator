@@ -5115,7 +5115,63 @@
       },
       "question": "Solve for \\( x \\): <br> \\( \\log_{ {base} }(x {a|sign}) = {c} -\\log_{ {base} }(x {b|sign}) \\).",
       "answer": "\\( \\log_{ {base} }(x {a|sign}) + \\log_{ {base} }(x {b|sign}) = {c} \\Rightarrow \\log_{ {base} }((x {a|sign})(x {b|sign})) = {c} \\Rightarrow (x {a|sign})(x {b|sign}) = {pow_val} \\). <br> \\( x^2 {sum_ab|signedCoef}x {const_term|sign} = 0 \\Rightarrow (x {p|sign})(x {q|sign}) = 0 \\). <br> Candidate solutions: \\( x = {valid_x} \\) and \\( x = {invalid_x} \\). <br> Domain requires \\( x {a|sign} > 0 \\) and \\( x {b|sign} > 0 \\), so \\( x > {domain_cutoff} \\). The valid solution is \\( x = {valid_x} \\)."
+    },
+    {
+      "id": "ALG2-8.3-B1",
+      "type": "template",
+      "objective": "Common Logarithmic and Exponential Equations",
+      "difficulty": "basic",
+      "variables": {
+        "b1": { "min": 2, "max": 7 },
+        "b2": { "min": 2, "max": 7, "exclude": ["b1"] },
+        "a": { "min": -5, "max": 5 },
+        "c": { "min": -4, "max": 4, "exclude": [0] },
+        "neg_c": { "formula": "-c" },
+
+        "x": { "formula": "(Math.log(b2) - c*Math.log(b1))/(a*Math.log(b1))" }
+      },
+      "question": "Solve for x: <br> \\( {b1}^{{a|coef}x {c|sign} } = {b2}\\).",
+      "answer": "\\( x = \\frac{ \\log({b2}) {neg_c|signedCoef} \\log({b1}) }{ {a|coef} \\log({b1}) } \\) <br> \\( x \\approx {x} \\)"
+    },
+    {
+      "id": "ALG2-8.3-I1",
+      "type": "template",
+      "objective": "Common Logarithmic and Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "b1": { "min": 2, "max": 9 },
+        "b2": { "min": 2, "max": 9, "exclude": ["b1"] },
+        "a": { "min": -5, "max": 5 },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "d": { "min": -5, "max": 5, "exclude": [0] },
+        "neg_c": { "formula": "-c" },
+        "neg_d": { "formula": "-d" },
+
+        "x": { "formula": "(-1*c*Math.log(b1))/(a*Math.log(b1) - d*Math.log(b2))" }
+      },
+      "question": "Solve for x: <br> \\( {b1}^{{a|coef}x {c|sign} } = {b2}^{{d|coef}x} \\).",
+      "answer": "\\( x = \\frac{ {neg_c|signedCoef} \\log({b1}) }{ {a|coef} \\log({b1}) {neg_d|signedCoef} \\log({b2}) } \\) <br> \\( x \\approx {x} \\)"
+    },
+    {
+      "id": "ALG2-8.3-I2",
+      "type": "template",
+      "objective": "Common Logarithmic and Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "randint": { "min": 1, "max": 40 },
+        "P": { "formula": "randint*250" },
+        "r_int": { "min": 20, "max": 100 },
+        "r": { "formula": "r_int/10", "format": "decimal" },
+        "n": { "values": [2, 4, 12, 365] },
+        "A_int": { "min": 3, "max": 7 },
+        "A": { "formula": "A_int*500 + P"  },
+
+        "t": { "formula": "Math.log(A/P)/(n*Math.log(1 + r/n))", "format": "decimal" }
+      },
+      "question": "Suppose you have ${P} invested with an APR of {r}% compounded {n} times a year. How many years till the investment has a value of ${A}? Round your answer to 3 decimal places.",
+      "answer": "\\( t \\approx {t} \\) years."
     }
+
   ]
 },
 "Precalculus": {
