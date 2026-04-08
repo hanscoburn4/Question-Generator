@@ -5045,8 +5045,8 @@
         "base": { "min": 2, "max": 5 },
         "a": { "min": -2, "max": 2, "exclude": [0] },
         "b": { "min": -1, "max": 1, "exclude": [0] },
-        "h": { "min": -5, "max": 5 },
-        "k": { "min": -5, "max": 5 }
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
       },
       "draw": {
         "eq1": { "relation": "y = log(x, base)", "showInQuestion": true, "showInAnswer": true },
@@ -5091,7 +5091,7 @@
         "x": { "formula": "rhs - m" }
       },
       "question": "Solve for \\( x \\): <br> \\( \\log_{ {base} }(x {m|sign}) - \\log_{ {base} }({n}) = {a} \\).",
-      "answer": "\\( \\log_{ {base} }\\left(\\frac{x {m|sign}}{ {n} }\\right) = {a} \\Rightarrow x {m|sign} = {rhs} \\Rightarrow x = {x} \\)."
+      "answer": "\\( x = {x} \\)."
     },
     {
       "id": "ALG2-8.2-I1",
@@ -5114,7 +5114,7 @@
         "domain_cutoff": { "formula": "-a" }
       },
       "question": "Solve for \\( x \\): <br> \\( \\log_{ {base} }(x {a|sign}) = {c} -\\log_{ {base} }(x {b|sign}) \\).",
-      "answer": "\\( \\log_{ {base} }(x {a|sign}) + \\log_{ {base} }(x {b|sign}) = {c} \\Rightarrow \\log_{ {base} }((x {a|sign})(x {b|sign})) = {c} \\Rightarrow (x {a|sign})(x {b|sign}) = {pow_val} \\). <br> \\( x^2 {sum_ab|signedCoef}x {const_term|sign} = 0 \\Rightarrow (x {p|sign})(x {q|sign}) = 0 \\). <br> Candidate solutions: \\( x = {valid_x} \\) and \\( x = {invalid_x} \\). <br> Domain requires \\( x {a|sign} > 0 \\) and \\( x {b|sign} > 0 \\), so \\( x > {domain_cutoff} \\). The valid solution is \\( x = {valid_x} \\)."
+      "answer": "The valid solution is \\( x = {valid_x} \\). \\( x = {invalid_x} \\) is an extraneous solution since it makes the argument of a logarithm negative."
     },
     {
       "id": "ALG2-8.3-B1",
@@ -5122,8 +5122,8 @@
       "objective": "Common Logarithmic and Exponential Equations",
       "difficulty": "basic",
       "variables": {
-        "b1": { "min": 2, "max": 7 },
-        "b2": { "min": 2, "max": 7, "exclude": ["b1"] },
+        "b1": { "values": [2, 4, 6, 8, 10] },
+        "b2": { "values": [3, 5, 7, 9, 11] },
         "a": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -4, "max": 4, "exclude": [0] },
         "neg_c": { "formula": "-c" },
@@ -5139,8 +5139,8 @@
       "objective": "Common Logarithmic and Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
-        "b1": { "min": 2, "max": 9 },
-        "b2": { "min": 2, "max": 9, "exclude": ["b1"] },
+        "b1": { "values": [2, 4, 6, 8, 10] },
+        "b2": { "values": [3, 5, 7, 9, 11] },
         "a": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -10, "max": 10, "exclude": [0] },
         "d": { "min": -5, "max": 5, "exclude": [0] },
