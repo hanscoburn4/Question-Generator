@@ -2689,6 +2689,105 @@
       "question": "A rectangular garden has dimentions \\( ( x {r1|sign}) ft \\) by \\( ( x {r2|sign}) ft \\). Find the value of \\( x \\)  and the dimentions of the garden such that the area is equal to the perimeter. Round your answer to the nearest tenth. (Hint: area of a rectangle is given by \\( A = length \\cdot width \\) and the perimeter is given by \\( P = 2(length + width) \\).",
       "answer": "\\( x = {x1} \\) with dimentions \\( {width_1}\\) by \\( {length_1}\\)  or <br> \\( x = {x2} \\) with dimentions \\( {width_2}\\) by \\( {length_2}\\)"
     }
+   ],
+   "Module 9": [
+    {
+      "id": "ALG1-9.1-B1",
+      "type": "template",
+      "objective": "Exponential Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b": { "min": 2, "max": 9 },
+        "x-3": { "formula": "a * b**(-3)" },
+        "x-2": { "formula": "a * b**(-2)" },
+        "x-1": { "formula": "a * b**(-1)" },
+        "x0": { "formula": "a * b**(0)" },
+        "x1": { "formula": "a * b**(1)" },
+        "x2": { "formula": "a * b**(2)" },
+        "x3": { "formula": "a * b**(3)" }
+      },
+      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>-3</td><td>__________</td></tr><tr><td>-2</td><td>__________</td></tr><tr><td>-1</td><td>__________</td></tr><tr><td>0</td><td>__________</td></tr><tr><td>1</td><td>__________</td></tr><tr><td>2</td><td>__________</td></tr><tr><td>3</td><td>__________</td></tr></table>",
+      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>\\(-3\\)</td><td>\\({x-3}\\)</td></tr><tr><td>\\(-2\\)</td><td>\\({x-2}\\)</td></tr><tr><td>\\(-1\\)</td><td>\\({x-1}\\)</td></tr><tr><td>\\(0\\)</td><td>\\({x0}\\)</td></tr><tr><td>\\(1\\)</td><td>\\({x1}\\)</td></tr><tr><td>\\(2\\)</td><td>\\({x2}\\)</td></tr><tr><td>\\(3\\)</td><td>\\({x3}\\)</td></tr></table>"
+    },
+    {
+      "id": "ALG1-9.1-B2",
+      "type": "template",
+      "objective": "Exponential Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "b_den": { "min": 2, "max": 9 },
+        "b": { "formula": "1/b_den", "format": "fraction" },
+        "x-3": { "formula": "a * b**(-3)" },
+        "x-2": { "formula": "a * b**(-2)" },
+        "x-1": { "formula": "a * b**(-1)" },
+        "x0": { "formula": "a * b**(0)" },
+        "x1": { "formula": "a * b**(1)" },
+        "x2": { "formula": "a * b**(2)" },
+        "x3": { "formula": "a * b**(3)" }
+      },
+      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>-3</td><td>__________</td></tr><tr><td>-2</td><td>__________</td></tr><tr><td>-1</td><td>__________</td></tr><tr><td>0</td><td>__________</td></tr><tr><td>1</td><td>__________</td></tr><tr><td>2</td><td>__________</td></tr><tr><td>3</td><td>__________</td></tr></table>",
+      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>\\(-3\\)</td><td>\\({x-3}\\)</td></tr><tr><td>\\(-2\\)</td><td>\\({x-2}\\)</td></tr><tr><td>\\(-1\\)</td><td>\\({x-1}\\)</td></tr><tr><td>\\(0\\)</td><td>\\({x0}\\)</td></tr><tr><td>\\(1\\)</td><td>\\({x1}\\)</td></tr><tr><td>\\(2\\)</td><td>\\({x2}\\)</td></tr><tr><td>\\(3\\)</td><td>\\({x3}\\)</td></tr></table>"
+    },
+    {
+      "id": "ALG1-9.1-I1",
+      "type": "template",
+      "objective": "Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -2, "max": 2, "exclude": [0] },
+        "b": { "min": 2, "max": 5 }
+      },
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = a*(b)^x", 
+          "showInQuestion": false, 
+          "showInAnswer": true }
+      },
+      "question": "Graph the function \\( y = {a|coef}({b})^x \\) and state its domain and range.",
+      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: if \\( a > 0 \\) then \\( y > 0 \\), if \\( a < 0 \\) then \\( y < 0 \\) \\)."
+    },
+    {
+      "id": "ALG1-9.1-I2",
+      "type": "template",
+      "objective": "Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b_den": { "min": 2, "max": 9 },
+        "b": { "formula": "1/b_den", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = (b)^x + a", 
+          "showInQuestion": false, 
+          "showInAnswer": true }
+      },
+      "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
+      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
+    },
+    {
+      "id": "ALG1-9.1-I3",
+      "type": "template",
+      "objective": "Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": 2, "max": 9 }
+      },
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = (b)^x + a", 
+          "showInQuestion": false, 
+          "showInAnswer": true }
+      },
+      "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
+      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
+    }
    ]
 },
 "Under Construction (Geometry)": {
@@ -2723,475 +2822,24 @@
     {
       "id": "Geo-1.3b-B1",
       "type": "template",
-      "objective": "Apply the definition of congruent lines segments",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Currently unavailable.",
-      "answer": "Answer currently unavailable."
-    },
-    {
-      "id": "Geo-1.4-B1",
-      "type": "template",
-      "objective": "Find the distance between two points",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -20, "max": 20 },
-        "x2": { "min": -20, "max": 20, "exclude": ["x1"] }
-      },
-      "question": "Find the distance between \\( {x1} \\) and \\( {x2} \\) on a number line.",
-      "answer": "Distance = \\( |{x2 - x1}| \\)"
-    },
-    {
-      "id": "Geo-1.4-I1",
-      "type": "template",
-      "objective": "Find the distance between two points",
+      "objective": "Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
-        "x1": { "min": -6, "max": 6 },
-        "y1": { "min": -6, "max": 6 },
-        "x2": { "min": -6, "max": 6, "exclude": ["x1"] },
-        "y2": { "min": -6, "max": 6, "exclude": ["y1"] }
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b_den": { "min": 2, "max": 9 },
+        "b": { "formula": "1/b_den", "format": "fraction" }
       },
-      "question": "Find the distance between points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\). Round your answer to the nearest hundredth.",
-      "answerExpression": "sqrt((x2-x1)^2 + (y2-y1)^2)"
-    },
-    {
-      "id": "Geo-1.4-A1",
-      "type": "template",
-      "objective": "Find the distance between two points",
-      "difficulty": "Advanced",
-      "variables": {
-        "x1": { "min": -10, "max": 10 },
-        "y1": { "min": -10, "max": 10 },
-        "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = (b)^x + a", 
+          "showInQuestion": false, 
+          "showInAnswer": true }
       },
-      "question": "Find the distance between points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\). Express your answer in simplified radical form.",
-      "answerExpression": "sqrt((x2-x1)^2 + (y2-y1)^2)"
-    },
-    {
-      "id": "Geo-1.5a-B1",
-      "type": "template",
-      "objective": "Find a point on a line that is a fractional distance from an endpoint",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -20, "max": 20 },
-        "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
-        "a": { "min":2, "max":5 },
-        "b": { "min":5, "max":10, "exclude":["a"] }
-      },
-      "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( {x1} \\) to \\( {x2} \\).",
-      "answer": "Point = \\( {x1 + (a/b)*(x2 - x1)} \\)"
-    },
-    {
-      "id": "Geo-1.5b-B2",
-      "type": "template",
-      "objective": "Find a point that partitions a line by a given ratio",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -20, "max": 20 },
-        "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
-        "a": { "min":2, "max":7 },
-        "b": { "min":2, "max":7, "exclude":["a"] }
-      },
-      "question": "Find the point that partitions the line segment from \\( {x1} \\) to \\( {x2} \\) in the ratio \\( {a}:{b} \\).",
-      "answer": "Point = \\( {(a*x2 + b*x1)/(a + b)} \\)"
-    },
-    {
-      "id": "Geo-1.6a-B1",
-      "type": "template",
-      "objective": "Find a point on a line in two dimentions that is a fractitonal distance from an endpoint",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -10, "max": 10 },
-        "y1": { "min": -10, "max": 10 },
-        "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
-        "a": { "min":2, "max":5 },
-        "b": { "min":5, "max":10, "exclude":["a"] }
-      },
-      "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
-      "answer": "Point = \\( ({x1 + (a/b)*(x2 - x1)}, {y1 + (a/b)*(y2 - y1)}) \\)"
-    },
-    {
-      "id": "Geo-1.6b-B2",
-      "type": "template",
-      "objective": "Find a point that partitions a line in two dimensions by a given ratio",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -10, "max": 10 },
-        "y1": { "min": -10, "max": 10 },
-        "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
-        "a": { "min":2, "max":7 },
-        "b": { "min":2, "max":7, "exclude":["a"] }
-      },
-      "question": "Find the point that partitions the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\) in the ratio \\( {a}:{b} \\).",
-      "answer": "Point = \\( ({(a*x2 + b*x1)/(a + b)}, {(a*y2 + b*y1)/(a + b)}) \\)"
-    },
-    {
-      "id": "Geo-1.7-B1",
-      "type": "template",
-      "objective": "Find the coordinate of a midpoint",
-      "difficulty": "basic",
-      "variables": { 
-        "x1": { "min": -10, "max": 10, "exclude": [0] },
-        "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] }
-      },
-      "question": "Find the midpoint of the line segment from \\( {x1} \\) to \\( {x2} \\).",
-      "answer": "Midpoint = \\( {(x1 + x2)/2} \\)"      
-    },
-    {
-      "id": "Geo-1.7-I1",
-      "type": "template",
-      "objective": "Find the coordinate of a midpoint",
-      "difficulty": "intermediate",
-      "variables": { 
-        "x1": { "min": -10, "max": 10, "exclude": [0] },
-        "y1": { "min": -10, "max": 10, "exclude": [0] },
-        "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": [0,"y1"] }
-      },
-      "question": "Find the midpoint of the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
-      "answer": "Midpoint = \\( ({(x1 + x2)/2}, {(y1 + y2)/2}) \\)"
-    },
-    {
-      "id": "Geo-1.7-A1",
-      "type": "template",
-      "objective": "Find the coordinate of a midpoint",
-      "difficulty": "advanced",
-      "variables": { 
-        "x1": { "min": -10, "max": 10, "exclude": [0] },
-        "y1": { "min": -10, "max": 10, "exclude": [0] },
-        "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": [0,"y1"] }
-      },
-      "question": "Find the coordinates of points B given that M is the midpoint of line segment AB and M = \\( ({x1}, {y1}) \\) and A = \\( ({x2}, {y2}) \\).",
-      "answer": "B = \\( ({2*x1 - x2}, {2*y1 - y2}) \\)"
+      "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
+      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
     }
-  ],
-  "Module 2": [
-    {
-      "id": "Geo-2.1-B1",
-      "type": "template",
-      "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
-      "difficulty": "basic",
-      "variables": {
-        "angle1": { "min": 30, "max": 150 }
-      },
-      "question": "Two angles are congruent. If one angle measures \\( {angle1}^\\circ \\), what is the measure of the other angle?",
-      "answer": "\\( {angle1}^\\circ \\)",
-      "draw": "angles"
-    },
-    {
-      "id": "Geo-2.1-I1",
-      "type": "template",
-      "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
-      "difficulty": "intermediate",
-      "variables": {
-        "angle1": { "min": 40, "max": 140 }
-      },
-      "question": "Two lines intersect to form vertical angles. If one angle measures \\( {angle1}^\\circ \\), what is the measure of the vertical angle opposite to it?",
-      "answer": "\\( {angle1}^\\circ \\)",
-      "draw": "verticalAngles"
-    },
-    {
-      "id": "Geo-2.2-B1",
-      "type": "template",
-      "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
-      "difficulty": "basic",
-      "variables": {
-        "angle1": { "min": 20, "max": 70 },
-        "angle2": { "min": 15, "max": 155 }
-      },
-      "question": "(a) If one angle measures \\( {angle1}^\\circ \\), what is the measure of its complement? <br> (b) If one angle measures \\( {angle2}^\\circ \\), what is the measure of its supplementary?",
-      "answer": "(a) \\(= {90 - angle1}^\\circ \\) (b) \\(= {180 - angle2}^\\circ \\)"
-    },
-    {
-      "id": "Geo-2.2-I1",
-      "type": "template",
-      "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
-      "difficulty": "intermediate",
-      "variables": {
-        "t": { "values": [9, 10, 12, 15, 18, 20]},
-        "p": { "min": -3, "max": 3, "exclude": [0]},
-        "a": { "min": 2, "max": 7 },
-        "b": { "formula": "p*t" },
-        "c": { "formula": "t-a" },
-        "x": { "formula": "(180-b)/(a+c)" }
-      },
-      "question": "Two angles are supplementary. If one angle measures \\( ({b}+{a}x)^\\circ \\) and the other angle measures \\( ({c}x)^\\circ \\), what is the measure of each angle?",
-      "answer": "\\( {a*x+b}^\\circ \\) and \\( {c*x}^\\circ \\)"
-    },
-    {
-      "id": "Geo-2.2-I2",
-      "type": "template",
-      "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
-      "difficulty": "intermediate",
-      "variables": {
-        "t": { "values": [9, 10, 15]},
-        "p": { "min": -3, "max": 3, "exclude": [0]},
-        "a": { "min": 1, "max": 7 },
-        "b": { "formula": "p*t" },
-        "c": { "formula": "t-a" },
-        "x": { "formula": "(90-b)/(a+c)" }
-      },
-      "question": "Two angles are complementary. If one angle measures \\( ({a}x)^\\circ \\) and the other angle measures \\( ({b}+{c}x)^\\circ \\), what is the measure of each angle?",
-      "answer": "\\( {a*x}^\\circ \\) and \\( {b+c*x}^\\circ \\)"
-    },
-    {
-      "id": "Geo-2.3-B1",
-      "type": "template",
-      "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
-      "difficulty": "basic",
-      "variables": {
-        "base": { "min": 4, "max": 25 },
-        "height": { "min": 3, "max": 14 },
-        "area": { "formula": "(base*height)/2" }
-      },
-      "question": "If the area of a triangle is \\({area}\\) square units and the base is \\( {base} \\) units find the height.",
-      "answer": "\\( {height} \\) units"
-    },
-    {
-      "id": "Geo-2.3-B2",
-      "type": "template",
-      "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 2, "max": 10 },
-        "b": { "min": 2, "max": 7},
-        "c": { "min": 2, "max": 10, "exclude": ["a"] },
-        "d": { "min": 2, "max": 7 },
-        "x": { "min": 1, "max": 10 },
-        "length": { "formula": "a*x+b" },
-        "width": { "formula": "c*x-d" },
-        "perimeter": { "formula": "2*(length+width)" },
-        "area": { "formula": "length*width" }
-      },
-      "question": "If the length of a rectangle is \\( {a}x + {b} \\) units and the width is \\( {c}x - {d} \\) units, find the area if the perimeter is \\( {perimeter} \\) units.",
-      "answer": "Area: \\({area}\\) square units"
-    },
-    {
-      "id": "Geo-2.3-I1",
-      "type": "template",
-      "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "min": -7, "max": 7 },
-        "b": { "min": -7, "max": 7 },
-        "c": { "min": -7, "max": 7, "exclude": ["a"] },
-        "d": { "min": -7, "max": 7, "exclude": ["b"]  },
-        "x": { "min": 3, "max": 5 },
-        "e": { "formula": "a+x*(d-b)"},
-        "f": { "formula": "b+x*(a-c)"},
-        "g": { "formula": "c+x*(d-b)"},
-        "h": { "formula": "d+x*(a-c)"},
-        "length": { "formula": "x*sqrt(2)" },
-        "width": { "formula": "sqrt((a-c)^2+(b-d)^2)" }
-      },
-      "question": "Find the area and perimeter of the rectangle with verticies \\(({a}, {b})\\), \\(({c}, {d})\\), \\(({e}, {f})\\), \\(({g}, {h})\\)",
-      "answer": " Area: \\( {length}*{width} \\) square units <br> Perimeter: \\( 2*({length+width}) \\) units"
-    },
-    {
-      "id": "Geo-2.3-I2",
-      "type": "template",
-      "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
-      "difficulty": "intermediate",
-      "variables": {
-        "w": { "min": 2, "max": 10 },
-        "l": { "min": 10, "max": 20, "exclude": ["w"] },
-        "h": { "min": 2, "max": 7 },
-        "area": { "formula": "l*w+(w*h)/2" }   
-      },
-      "question": "The composite figure is formed by joining a rectangle and an isosceles triangle on one of the longer sides. The rectangular portion is \\({w} ft. \\) wide, the triangle has a height of \\({h} ft.\\) and the area is \\({area} ft^2\\). Find the length of the rectangular portion of the figure.",
-      "answer": "\\( {l} \\) units "
-    },
-    {
-      "id": "Geo-2.3-A1",
-      "type": "template",
-      "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
-      "difficulty": "advanced",
-      "variables": {
-        "length": {"min": 70, "max": 120 },
-        "width": { "min": 35, "max": 55 },
-        "radius": { "formula": "width/2" }
-      },
-      "question": "A training field is formed by joining a rectangle and two semicicles on each end of the narrow sides. The rectangular portion is \\({length} ft.\\) long and \\({width} ft. \\) wide. Find the area and perimeter of the field.",
-      "answer": "Area: \\( {{2 * radius}\\pi + {length*width}}  \\) square units <br> Perimeter: \\( {2*(\\pi*radius + length)}\\) units"
-    },
-    {
-      "id": "Geo-2.4-B1",
-      "type": "template",
-      "objective": "Calculate the coordinates of vertices of images given a preimage",
-      "difficulty": "basic",
-      "variables": {
-        "x1": { "min": 1, "max": 5 },
-        "y1": { "min": 1, "max": 5 },
-        "tx": { "min": 2, "max": 4 },
-        "ty": { "min": 2, "max": 4 }
-      },
-      "question": "Point A is located at \\( ({x1}, {y1}) \\). If point A is translated \\( {tx} \\) units right and \\( {ty} \\) units up, what are the coordinates of the image A'?",
-      "answer": "\\( ({x1 + tx}, {y1 + ty}) \\)"
-    },
-    {
-      "id": "Geo-2.4-B1",
-      "type": "template",
-      "objective": "Calculate the coordinates of vertices of images given a preimage",
-      "difficulty": "basic",
-      "variables": {
-        "x1": { "min": -4, "max": 4 },
-        "y1": { "min": -4, "max": 4 },
-        "x2": { "min": 4, "max": 6 },
-        "y2": { "min": 1, "max": 3 },
-        "x3": { "min": 2, "max": 4 },
-        "y3": { "min": 3, "max": 5 },
-        "a": { "min": -4, "max": 4, "exclude": [0] },
-        "b": { "min": -4, "max": 4, "exclude": [0] }
-      },
-      "question": "Triangle ABC has vertices A\\( ({x1}, {y1}) \\), B\\( ({x2}, {y2}) \\), and C\\( ({x3}, {y3}) \\). If the triangle is rotated about the orgin \\(90^\\circ\\) counter clockwise and then the result is translated by \\( \\langle {a}, {b}\\rangle \\), what are the coordinates of A', B', and C'?",
-      "answer": "A'\\( ({-y1 + a}, {x1 + b}) \\), B'\\( ({-y2 + a}, {x2 + b}) \\), C'\\( ({-y3 + a}, {x3 + b}) \\)"
-    },
-    {
-      "id": "Geo-2.5-B1",
-      "type": "template",
-      "objective": "Calculate surface areas and volumes",
-      "difficulty": "basic",
-      "variables": {
-        "width": { "min": 3, "max": 8 },
-        "height": { "min": 3, "max": 8 },
-        "depth": { "min": 3, "max": 8 }
-      },
-      "question": "Find the volume of a rectangular prism with length \\( {width} \\) units, width \\( {depth} \\) units, and height \\( {height} \\) units.",
-      "answer": "\\( {width * height * depth} \\) cubic units",
-      "draw": "rectangularPrism"
-    },
-    {
-      "id": "Geo-2.5-I1",
-      "type": "template",
-      "objective": "Calculate surface areas and volumes",
-      "difficulty": "intermediate",
-      "variables": {
-        "radius": { "min": 3, "max": 8 },
-        "height": { "min": 5, "max": 12 }
-      },
-      "question": "Find the volume of a cylinder with radius \\( {radius} \\) units and height \\( {height} \\) units. Use \\( \\pi \\approx 3.14 \\). Round to the nearest hundredth.",
-      "answer": "\\( {(3.14 * radius * radius * height).toFixed(2)} \\) cubic units",
-      "draw": "cylinder"
-    }
-  ],
-  "Module 3": [
-    {
-      "id": "G-3.1-B1",
-      "type": "template",
-      "objective": "Conjectures and Counterexamples",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "formula": "b*c" },
-        "b": { "min": 5, "max": 25 },
-        "c": { "min": 10, "max": 30 }
-      },
-      "question": "Find a counter example for each situation given. <br> (a) Two complementary angles are always \\( 45^\\circ \\). <br> (b) If the area of a rectangle is \\( {a} \\) square in. then the sides must be \\( {b} \\)in. and \\( {c} \\)in. <br> (c) If the measures of \\( \\angle A, \\angle B \\) and \\( \\angle C \\) sum to \\( 180^\\circ \\) then one of them must be obtuse.",
-      "answer": "(a) counter example:\\( 30^\\circ \\) and \\( 60^\\circ \\) <br> (b) Sides of \\( 1in \\) and \\( {a}in \\) give area of \\( {a}in^2 \\). <br> (c) \\( 60^\\circ, 70^\\circ, 50^\\circ \\)"
-    },
-    {
-      "id": "G-3.1-I1",
-      "type": "template",
-      "objective": "Conjectures and Counterexamples",
-      "difficulty": "intermediate",
-      "variables": {
-        "k": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "i": { "min": -10, "max": 10, "exclude": [0,1,-1,"k"] },
-        "a1": { "formula": "k*i" },
-        "a2": { "formula": "k*(i+1)" },
-        "a3": { "formula": "k*(i+2)" },
-        "a4": { "formula": "k*(i+3)" },
-        "a5": { "formula": "k*(i+4)" },
-        "a6": { "formula": "k*(i+5)" }
-      },
-      "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
-      "answer": "Conjecture: The sequence increases by \\( {k} \\) each time. <br> Next three values: \\( {a4}, {a5}, {a6} \\)"
-    },
-    {
-      "id": "G-3.1-I2",
-      "type": "template",
-      "objective": "Conjectures and Counterexamples",
-      "difficulty": "intermediate",
-      "variables": {
-        "k": { "min": -7, "max": 7, "exclude": [0,1,-1] },
-        "i": { "min": -5, "max": 5, "exclude": [0,1,-1,"k"] },
-        "a1": { "formula": "k*i" },
-        "a2": { "formula": "k*k*i" },
-        "a3": { "formula": "k*k*k*i" },
-        "a4": { "formula": "k*k*k*k*i" },
-        "a5": { "formula": "k*k*k*k*k*i" },
-        "a6": { "formula": "k*k*k*k*k*k*i" }
-      },
-      "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
-      "answer": "Conjecture: The sequence multiplies by \\( {k} \\) each time. <br> Next three values: \\( {a4}, {a5}, {a6} \\)"
-    },
-    {
-      "id": "G-3.2-B1",
-      "type": "template",
-      "objective": "Statements, Conditionals, and Biconditionals",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Use the statements to write a compound statement. Then find the truth values of each statement. <br> p: 2 + 9 > 11 <br> q: Vertical angles are congruent. <br> r: A triangle has four sides. <br> (a) p \\( \\land \\) q <br> (b) p \\( \\lor \\) r <br> (c) ~r \\( \\land \\)~q",
-      "answer": "(a) True <br> (b) True <br> (c) False"
-    }
-  ],
-  "Under Construction": [
-    {"id": "G-2.1-B1",
-      "type": "template",
-      "objective": "Find the hypotenuse of a right triangle",
-      "difficulty": "basic",
-      "variables": {
-        "a": { "min": 3, "max": 8 },
-        "b": { "min": 3, "max": 8 }
-      },
-      "question": "Find the hypotenuse of a right triangle with legs {a} and {b}.",
-      "draw": "rightTriangle",
-      "answer": "Hypotenuse = \\( \\sqrt{{a}^2 + {b}^2} = {(sqrt(a*a + b*b)).toFixed(2)} \\)"
-    },
-    {
-      "id": "G-2.1-B1",
-      "type": "template",
-      "objective": "Find the area of a triangle",
-      "difficulty": "basic",
-      "variables": {
-        "base": { "min": 3, "max": 10 },
-        "height": { "min": 3, "max": 10 }
-      },
-      "question": "Find the area of a triangle with base {base} cm and height {height} cm.",
-      "answer": "Area = \\( \\frac{1}{2}({base})({height}) = {0.5*base*height} \\text{ cm}^2 \\)"
-    },
-    {
-      "id": "G-3.1-I1",
-      "type": "template",
-      "objective": "Calculate distance between two points",
-      "difficulty": "intermediate",
-      "variables": {
-        "x1": { "min": -10, "max": 10 },
-        "y1": { "min": -10, "max": 10 },
-        "x2": { "min": -10, "max": 10 },
-        "y2": { "min": -10, "max": 10 }
-      },
-      "question": "Find the distance between the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
-      "answer": "Distance = \\( \\sqrt{{(x2 - x1)}^2 + {(y2 - y1)}^2} = {(sqrt((x2 - x1)**2 + (y2 - y1)**2)).toFixed(2)} \\)"
-    },
-    {
-      "id": "G-2.3-I1",
-      "type": "template",
-      "objective": "Find chord length given radius and distance from center",
-      "difficulty": "intermediate",
-      "question": "A circle has radius {r} and a chord {d} units from the center. Find the length of the chord.",
-      "answer": "Chord length = 2 * sqrt({r}^2 - {d}^2)",
-      "variables": {
-        "r": { "min": 5, "max": 10 },
-        "d": { "min": 1, "max": 4 }
-      },
-      "draw": "circleChord"
-    }
-  ]
+   ]
 },
 "Algebra 2": {
   "Module 1": [
@@ -8044,7 +7692,7 @@
       {
         "id": "PC-7.1-I1",
         "type": "template",
-        "objective": "Systems of Nonlinear Equations",
+        "objective": "Systems of Equations",
         "difficulty": "intermediate",
         "variables": {
           "m": { "values": [-3, -2, -1, 1, 2, 3] },
@@ -8066,7 +7714,7 @@
       {
         "id": "PC-7.1-I2",
         "type": "template",
-        "objective": "Systems of Nonlinear Equations",
+        "objective": "Systems of Equations",
         "difficulty": "intermediate",
         "variables": {
           "m": { "values": [-3, -2, -1, 1, 2, 3] },
@@ -8087,7 +7735,7 @@
       {
         "id": "PC-7.1-I3",
         "type": "template",
-        "objective": "Systems of Nonlinear Equations",
+        "objective": "Systems of Equations",
         "difficulty": "intermediate",
         "variables": {
           "base": { "values": [2, 3, 4] },
@@ -8105,7 +7753,7 @@
       {
         "id": "PC-7.1-A1",
         "type": "template",
-        "objective": "Systems of Equations in Three Variables",
+        "objective": "Systems of Equations",
         "difficulty": "advanced",
         "variables": {
           "x": { "min": -5, "max": 5, "exclude": [0] },
@@ -8131,6 +7779,61 @@
         },
         "question": "Solve the system of linear equations:<br>\\( {a1|coef}x {b1|signedCoef}y {c1|signedCoef}z = {r1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y {c2|signedCoef}z = {r2} \\)<br>\\( {a3|coef}x {b3|signedCoef}y {c3|signedCoef}z = {r3} \\)",
         "answer": "\\( x = {x},\\; y = {y},\\; z = {z} \\)"
+      },
+      {
+        "id": "PC-7.2-B1",
+        "type": "template",
+        "objective": "Matrices",
+        "difficulty": "basic",
+        "variables": {
+          "a11": { "min": -5, "max": 5, "exclude": [0] },
+          "a12": { "min": -5, "max": 5, "exclude": [0] },
+          "a21": { "min": -5, "max": 5, "exclude": [0] },
+          "a22": { "min": -5, "max": 5, "exclude": [0] },
+          "b11": { "min": -5, "max": 5, "exclude": [0] },
+          "b12": { "min": -5, "max": 5, "exclude": [0] },
+          "b21": { "min": -5, "max": 5, "exclude": [0] },
+          "b22": { "min": -5, "max": 5, "exclude": [0] },
+          "k": { "min": -5, "max": 5, "exclude": [0] },
+          "dif11": { "formula": "k*a11 - b11" },
+          "dif12": { "formula": "k*a12 - b12" },
+          "dif21": { "formula": "k*a21 - b21" },
+          "dif22": { "formula": "k*a22 - b22" }
+        
+        },
+        "question": "If \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} {b11} & {b12} \\\\ {b21} & {b22} \\end{bmatrix} \\), compute \\( kA - B \\).",
+        "answer": "\\( kA - B = \\begin{bmatrix} {dif11} & {dif12} \\\\ {dif21} & {dif22} \\end{bmatrix} \\)"
+      },
+      {
+        "id": "PC-7.2-B1",
+        "type": "template",
+        "objective": "Matrices",
+        "difficulty": "basic",
+        "variables": {
+          "a11": { "min": -5, "max": 5, "exclude": [0] },
+          "a12": { "min": -5, "max": 5, "exclude": [0] },
+          "a21": { "min": -5, "max": 5, "exclude": [0] },
+          "a22": { "min": -5, "max": 5, "exclude": [0] },
+          "a31": { "min": -5, "max": 5, "exclude": [0] },
+          "a32": { "min": -5, "max": 5, "exclude": [0] },
+          "b11": { "min": -5, "max": 5, "exclude": [0] },
+          "b12": { "min": -5, "max": 5, "exclude": [0] },
+          "b13": { "min": -5, "max": 5, "exclude": [0] },
+          "b21": { "min": -5, "max": 5, "exclude": [0] },
+          "b22": { "min": -5, "max": 5, "exclude": [0] },
+          "b23": { "min": -5, "max": 5, "exclude": [0] },
+          "product11": { "formula": "a11*b11 + a12*b21" },
+          "product12": { "formula": "a11*b12 + a12*b22" },
+          "product13": { "formula": "a11*b13 + a12*b23" },
+          "product21": { "formula": "a21*b11 + a22*b21" },
+          "product22": { "formula": "a21*b12 + a22*b22" },
+          "product23": { "formula": "a21*b13 + a22*b23" },
+          "product31": { "formula": "a31*b11 + a32*b21" },
+          "product32": { "formula": "a31*b12 + a32*b22" },
+          "product33": { "formula": "a31*b13 + a32*b23" }
+        },
+        "question": "If \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\\\ {a31} & {a32}  \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} {b11} & {b12} & {b13} \\\\ {b21} & {b22} & {b23} \\end{bmatrix} \\), compute \\( AB \\).",
+        "answer": "\\( AB = \\begin{bmatrix} {product11} & {product12} & {product13} \\\\ {product21} & {product22} & {product23} \\\\ {product31} & {product32} & {product33} \\end{bmatrix} \\)"
       }
     ]
   }
