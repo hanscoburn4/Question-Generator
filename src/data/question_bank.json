@@ -2707,8 +2707,8 @@
         "x2": { "formula": "a * b**(2)" },
         "x3": { "formula": "a * b**(3)" }
       },
-      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>-3</td><td>__________</td></tr><tr><td>-2</td><td>__________</td></tr><tr><td>-1</td><td>__________</td></tr><tr><td>0</td><td>__________</td></tr><tr><td>1</td><td>__________</td></tr><tr><td>2</td><td>__________</td></tr><tr><td>3</td><td>__________</td></tr></table>",
-      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>\\(-3\\)</td><td>\\({x-3}\\)</td></tr><tr><td>\\(-2\\)</td><td>\\({x-2}\\)</td></tr><tr><td>\\(-1\\)</td><td>\\({x-1}\\)</td></tr><tr><td>\\(0\\)</td><td>\\({x0}\\)</td></tr><tr><td>\\(1\\)</td><td>\\({x1}\\)</td></tr><tr><td>\\(2\\)</td><td>\\({x2}\\)</td></tr><tr><td>\\(3\\)</td><td>\\({x3}\\)</td></tr></table>"
+      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\) (leave your answers as fractions if necessary).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><td>-3</td><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><th>y</th><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr></table>",
+      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><td>\\(-3\\)</td><td>\\(-2\\)</td><td>\\(-1\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(2\\)</td><td>\\(3\\)</td></tr><tr><th>y</th><td>\\({x-3}\\)</td><td>\\({x-2}\\)</td><td>\\({x-1}\\)</td><td>\\({x0}\\)</td><td>\\({x1}\\)</td><td>\\({x2}\\)</td><td>\\({x3}\\)</td></tr></table>"
     },
     {
       "id": "ALG1-9.1-B2",
@@ -2727,8 +2727,8 @@
         "x2": { "formula": "a * b**(2)" },
         "x3": { "formula": "a * b**(3)" }
       },
-      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>-3</td><td>__________</td></tr><tr><td>-2</td><td>__________</td></tr><tr><td>-1</td><td>__________</td></tr><tr><td>0</td><td>__________</td></tr><tr><td>1</td><td>__________</td></tr><tr><td>2</td><td>__________</td></tr><tr><td>3</td><td>__________</td></tr></table>",
-      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><th>y</th></tr><tr><td>\\(-3\\)</td><td>\\({x-3}\\)</td></tr><tr><td>\\(-2\\)</td><td>\\({x-2}\\)</td></tr><tr><td>\\(-1\\)</td><td>\\({x-1}\\)</td></tr><tr><td>\\(0\\)</td><td>\\({x0}\\)</td></tr><tr><td>\\(1\\)</td><td>\\({x1}\\)</td></tr><tr><td>\\(2\\)</td><td>\\({x2}\\)</td></tr><tr><td>\\(3\\)</td><td>\\({x3}\\)</td></tr></table>"
+      "question": "Fill out the table of values for the function \\( y = {a|coef}\\cdot({b})^x \\) (leave your answers as fractions if necessary).<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><td>-3</td><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><th>y</th><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr></table>",
+      "answer": "Table: <table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>x</th><td>\\(-3\\)</td><td>\\(-2\\)</td><td>\\(-1\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(2\\)</td><td>\\(3\\)</td></tr><tr><th>y</th><td>\\({x-3}\\)</td><td>\\({x-2}\\)</td><td>\\({x-1}\\)</td><td>\\({x0}\\)</td><td>\\({x1}\\)</td><td>\\({x2}\\)</td><td>\\({x3}\\)</td></tr></table>"
     },
     {
       "id": "ALG1-9.1-I1",
@@ -4818,6 +4818,86 @@
       },
       "question": "Suppose you have ${P} invested with an APR of {r}% compounded {n} times a year. How many years till the investment has a value of ${A}? Round your answer to 3 decimal places.",
       "answer": "\\( t \\approx {t} \\) years."
+    },
+    {
+      "id": "ALG2-8.4-B1",
+      "type": "template",
+      "objective": "Natural Logarithms",
+      "difficulty": "basic",
+      "variables": {
+        "b": { "values": [2, 3, 4, 5, 6, 7, 8, 9, 10] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "neg_c": { "formula": "-c" },
+        "x": { "formula": "Math.log(b) - c", "format": "decimal" }
+      },
+      "question": "Solve for \\( x \\): <br> \\( e^{x {c|sign}} = {b} \\).",
+      "answer": "\\( x = \\ln({b}) {neg_c|signedCoef} \\) <br> \\( x \\approx {x} \\)"
+    },
+    {
+      "id": "ALG2-8.4-B2",
+      "type": "template",
+      "objective": "Natural Logarithms",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 7 },
+        "k": { "values": [1, 2, 3, 4] },
+        "x": { "formula": "Math.E**k - a", "format": "decimal" }
+      },
+      "question": "Solve for \\( x \\): <br> \\( \\ln(x + {a}) = {k} \\).",
+      "answer": "\\( x = e^{ {k} } - {a} \\) <br> \\( x \\approx {x} \\)"
+    },
+    {
+      "id": "ALG2-8.4-I1",
+      "type": "template",
+      "objective": "Natural Logarithms",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [2, 3, 4, 5] },
+        "d": { "values": [1, 2, 3, 4], "exclude": ["a"] },
+        "b": { "min": -7, "max": 7, "exclude": [0] },
+        "c": { "values": [2, 3, 5, 6, 7, 10] },
+        "adiff": { "formula": "a - d" },
+        "neg_b": { "formula": "-b" },
+        "x": { "formula": "(Math.log(c) - b)/(a - d)", "format": "decimal" }
+      },
+      "question": "Solve for \\( x \\): <br> \\( e^{{a|coef}x {b|sign}} = {c}e^{{d|coef}x} \\).",
+      "answer": "Divide both sides by \\( e^{{d|coef}x} \\): \\( e^{{adiff|coef}x {b|sign}} = {c} \\).<br>Take natural logs: \\( {adiff|coef}x {b|sign} = \\ln({c}) \\).<br>\\( x = \\frac{\\ln({c}) {neg_b|signedCoef}}{ {adiff} } \\approx {x} \\)."
+    },
+    {
+      "id": "ALG2-8.4-I2",
+      "type": "template",
+      "objective": "Natural Logarithms",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "min": 1, "max": 6 },
+        "q": { "min": 1, "max": 6 },
+        "r": { "values": [1, 2, 3] },
+        "x": { "formula": "(p + q*Math.E**r)/(Math.E**r - 1)", "format": "decimal" }
+      },
+      "question": "Solve for \\( x \\): <br> \\( \\ln(x + {p}) - \\ln(x - {q}) = {r} \\).",
+      "answer": "\\( \\ln\\left(\\frac{x + {p}}{x - {q}}\\right) = {r} \\Rightarrow \\frac{x + {p}}{x - {q}} = e^{ {r} } \\Rightarrow x = \\frac{{p} + {q}e^{ {r} }}{e^{ {r} } - 1} \\).<br>\\( x \\approx {x} \\) (with domain \\( x > {q} \\))."
+    },
+    {
+      "id": "ALG2-8.4-A1",
+      "type": "template",
+      "objective": "Natural Logarithms",
+      "difficulty": "advanced",
+      "variables": {
+        "mode": { "min": 0, "max": 1 },
+        "idx": { "min": 0, "max": 3 },
+        "P0": { "values": [400, 500, 600, 700, 800, 900, 1000] },
+        "t1": { "values": [2, 3, 4, 5] },
+        "extra_time": { "min": 2, "max": 5 },
+        "tq": { "formula": "t1 + extra_time" },
+        "ratio_growth": { "formula": "[1.5, 2, 2.5, 3][idx]" },
+        "ratio_decay": { "formula": "[0.8, 0.7, 0.6, 0.5][idx]" },
+        "ratio": { "formula": "[ratio_growth, ratio_decay][mode]" },
+        "A1": { "formula": "P0*ratio" },
+        "k": { "formula": "Math.log(A1/P0)/t1", "format": "decimal" },
+        "Aq": { "formula": "Math.round(P0*Math.exp(k*tq)*100)/100", "format": "decimal" }
+      },
+      "question": "A population is initially \\( {P0} \\). After \\( {t1} \\) years, the population is \\( {A1} \\). Assume a continuous exponential growth/decay model. <br>a) Write the model for the population by finding the rate of growth. <br>b) Use your model to find the population after \\( {tq} \\) years.",
+      "answer": "\\( k = \\frac{\\ln({A1}/{P0})}{{t1}} \\approx {k} \\), so \\( P(t) = {P0}e^{{k}t} \\).<br>\\( P({tq}) \\approx {Aq} \\)."
     }
 
   ]
@@ -7794,21 +7874,21 @@
           "b12": { "min": -5, "max": 5, "exclude": [0] },
           "b21": { "min": -5, "max": 5, "exclude": [0] },
           "b22": { "min": -5, "max": 5, "exclude": [0] },
-          "k": { "min": -5, "max": 5, "exclude": [0] },
+          "k": { "min": -5, "max": 5, "exclude": [0, 1] },
           "dif11": { "formula": "k*a11 - b11" },
           "dif12": { "formula": "k*a12 - b12" },
           "dif21": { "formula": "k*a21 - b21" },
           "dif22": { "formula": "k*a22 - b22" }
         
         },
-        "question": "If \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} {b11} & {b12} \\\\ {b21} & {b22} \\end{bmatrix} \\), compute \\( kA - B \\).",
-        "answer": "\\( kA - B = \\begin{bmatrix} {dif11} & {dif12} \\\\ {dif21} & {dif22} \\end{bmatrix} \\)"
+        "question": "If \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} {b11} & {b12} \\\\ {b21} & {b22} \\end{bmatrix} \\), compute \\( {k|coef}A - B \\).",
+        "answer": "\\( {k|coef}A - B = \\begin{bmatrix} {dif11} & {dif12} \\\\ {dif21} & {dif22} \\end{bmatrix} \\)"
       },
       {
-        "id": "PC-7.2-B1",
+        "id": "PC-7.2-I1",
         "type": "template",
         "objective": "Matrices",
-        "difficulty": "basic",
+        "difficulty": "intermediate",
         "variables": {
           "a11": { "min": -5, "max": 5, "exclude": [0] },
           "a12": { "min": -5, "max": 5, "exclude": [0] },
