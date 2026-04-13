@@ -2756,7 +2756,7 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b_den": { "min": 2, "max": 9 },
+        "b_den": { "min": 2, "max": 5 },
         "b": { "formula": "1/b_den", "format": "fraction" }
       },
       "draw": {
@@ -2776,7 +2776,7 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "min": 2, "max": 9 }
+        "b": { "min": 2, "max": 5 }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
@@ -4853,7 +4853,7 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [2, 3, 4, 5] },
-        "d": { "values": [1, 2, 3, 4], "exclude": ["a"] },
+        "d": { "values": [2, 3, 4, 5], "exclude": ["a"] },
         "b": { "min": -7, "max": 7, "exclude": [0] },
         "c": { "values": [2, 3, 5, 6, 7, 10] },
         "adiff": { "formula": "a - d" },
