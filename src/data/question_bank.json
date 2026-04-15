@@ -2787,6 +2787,76 @@
       },
       "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
       "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
+    },
+    {
+      "id": "ALG1-9.2-B1",
+      "type": "template",
+      "objective": "Transformations of Exponential Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a_num": { "min": -5, "max": 5, "exclude": [0] },
+        "a_den": { "min": 2, "max": 5 },
+        "a": { "formula": "a_num/a_den", "format": "fraction" },
+        "b": { "min": 2, "max": 5 },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "question": "\\(f(x) = ({b})^x \\) has been transformed into \\(g(x) = {a|coef}({b})^{x {h|sign}} {k|sign}\\). List the transformations that have been applied to the parent function \\(f(x)\\) to get the new function \\(g(x)\\).",
+      "answer": "Transformations: vertical stretch by a factor of \\( |a| \\) (if \\( |a| > 1 \\)) or vertical compression by a factor of \\( |a| \\) (if \\( 0 < |a| < 1 \\)), reflection across the x-axis (if \\( a < 0 \\)), horizontal shift by \\( {h} \\) units, and vertical shift by \\( {k} \\) units."
+    },
+    {
+      "id": "ALG1-9.2-I1",
+      "type": "template",
+      "objective": "Transformations of Exponential Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a_num": { "min": -5, "max": 5, "exclude": [0] },
+        "a_den": { "min": 2, "max": 5 },
+        "a": { "formula": "a_num/a_den", "format": "fraction" },
+        "b": { "min": 2, "max": 5 },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = a*b^(c*(x + h)) + k", 
+          "showInQuestion": false, 
+          "showInAnswer": true 
+        },
+        "eq2": {
+          "relation": "y = b^x",
+          "showInQuestion": true,
+          "showInAnswer": true,
+          "style": { "color": "gray" }
+        }
+      },
+      "question": "\\(f(x) = ({b})^x \\) has been graphed below. List the transformations and sketch the graph of \\(g(x) = {a|coef}({b})^{{c|coef}(x {h|sign})} {k|sign}\\).",
+      "answer": "See graph."
+    },
+    {
+      "id": "ALG1-9.2-A1",
+      "type": "template",
+      "objective": "Transformations of Exponential Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -2, "max": 2, "exclude": [0] },
+        "b": { "min": 2, "max": 5 },
+        "c": { "min": -1, "max": 1, "exclude": [0] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
+      },
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
+        "eq1": { 
+          "relation": "y = a*b^(c*(x + h)) + k", 
+          "showInQuestion": true, 
+          "showInAnswer": true 
+        }
+      },
+      "question": "Use key points from the graph to determine the transformations from the parent function and write the equation for the graph given.",
+      "answer": "\\(g(x) = {a|coef}({b})^{{c|coef}(x {h|sign})} {k|sign}\\)"
     }
    ]
 },
@@ -4672,14 +4742,14 @@
       "variables": {
         "base1": { "min": 2, "max": 5 },
         "base2": { "min": 2, "max": 5, "exclude": ["base1"] },
-        "base3": { "values": [8, 27, 64, 125, 216], "exclude": ["base1", "base2"] },
+        "base3": { "values": [8, 27, 64, 125], "exclude": ["base1", "base2"] },
         "expo1": { "min": -4, "max": 4, "exclude": [0] },
         "expo2": { "min": -4, "max": 4, "exclude": [0, "expo1"] },
         "randint": { "min": -4, "max": 4, "exclude": [0, 3, -3, "expo1", "expo2"] },
         "expo3": { "formula": "randint/3", "exclude": [ "expo1", "expo2"] },
         "a": { "formula": "base1**expo1" },
         "b": { "formula": "base2**expo2" },
-        "c": { "formula": "base3**expo3" }
+        "c": { "formula": "base3**expo3", "format": "fraction" }
       },
       "question": "Evaluate the following without a calculator: <br> a) \\( \\log_{({base1})}({a}) \\)<br> b) \\( \\log_{({base2})}({b}) \\)<br> c) \\( \\log_{({base3})}({c}) \\)",
       "answer": "a) \\( {expo1} \\) b) \\( {expo2} \\) c) \\( {expo3} \\)"
@@ -7914,6 +7984,124 @@
         },
         "question": "If \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\\\ {a31} & {a32}  \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} {b11} & {b12} & {b13} \\\\ {b21} & {b22} & {b23} \\end{bmatrix} \\), compute \\( AB \\).",
         "answer": "\\( AB = \\begin{bmatrix} {product11} & {product12} & {product13} \\\\ {product21} & {product22} & {product23} \\\\ {product31} & {product32} & {product33} \\end{bmatrix} \\)"
+      },
+      {
+        "id": "PC-7.3-B1",
+        "type": "template",
+        "objective": "Gaussian Elimination",
+        "difficulty": "basic",
+        "variables": {
+          "x": { "min": -5, "max": 5, "exclude": [0] },
+          "y": { "min": -5, "max": 5, "exclude": [0] },
+          "a1": { "min": -6, "max": 6, "exclude": [0] },
+          "b1": { "min": -6, "max": 6, "exclude": [0] },
+          "a2": { "min": -7, "max": 7, "exclude": [0, "a1"] },
+          "b2": { "min": -7, "max": 7, "exclude": [0, "b1"] },
+          "c1": { "formula": "a1*x + b1*y" },
+          "c2": { "formula": "a2*x + b2*y" }
+        },
+        "question": "Solve the system using an augmented matrix and Gaussian elimination:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+        "answer": "\\( x = {x},\\; y = {y} \\)"
+      },
+      {
+        "id": "PC-7.3-I1",
+        "type": "template",
+        "objective": "Gaussian Elimination",
+        "difficulty": "intermediate",
+        "variables": {
+          "x": { "min": -5, "max": 5, "exclude": [0] },
+          "y": { "min": -7, "max": 7 },
+          "z": { "min": -7, "max": 7 },
+          "a1": { "min": -6, "max": 6, "exclude": [0] },
+          "b1": { "min": -6, "max": 6, "exclude": [0] },
+          "c1": { "min": -6, "max": 6, "exclude": [0] },
+          "a2": { "min": -7, "max": 7, "exclude": [0, "a1"] },
+          "b2": { "min": -7, "max": 7, "exclude": [0, "b1"] },
+          "c2": { "min": -7, "max": 7, "exclude": [0, "c1"] },
+          "a3": { "min": -8, "max": 8, "exclude": [0, "a1", "a2"] },
+          "b3": { "min": -8, "max": 8, "exclude": [0, "b1", "b2"] },
+          "c3": { "min": -8, "max": 8, "exclude": [0, "c1", "c2"] },
+          "r1": { "formula": "a1*x + b1*y + c1*z" },
+          "r2": { "formula": "a2*x + b2*y + c2*z" },
+          "r3": { "formula": "a3*x + b3*y + c3*z" }
+        },
+        "question": "Solve the system using an augmented matrix and Gaussian elimination:<br>\\( {a1|coef}x {b1|signedCoef}y {c1|signedCoef}z = {r1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y {c2|signedCoef}z = {r2} \\)<br>\\( {a3|coef}x {b3|signedCoef}y {c3|signedCoef}z = {r3} \\)",
+        "answer": "\\( x = {x},\\; y = {y},\\; z = {z} \\)"
+      },
+      {
+        "id": "PC-7.3-A1",
+        "type": "template",
+        "objective": "Gaussian Elimination",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "values": [10.25, 10.50, 10.75, 11.00, 11.25, 11.50, 11.75, 12.00, 12.25, 12.50, 12.75, 13.00, 13.25, 13.50, 13.75, 14.00, 14.25, 14.50, 14.75, 15.00], "format":"decimal" },
+          "y": { "formula": "x - 2.25", "format": "decimal" },
+          "rand_int": { "min": 1, "max": 3, "exclude": [0] },
+          "z": { "formula": "y - rand_int + 0.75", "format": "decimal" },
+          "a1": { "min": 1, "max": 7 },
+          "b1": { "min": 0, "max": 7 },
+          "c1": { "min": 0, "max": 7 },
+          "a2": { "min": 1, "max": 7, "exclude": ["a1"] },
+          "b2": { "min": 0, "max": 7, "exclude": ["b1"] },
+          "c2": { "min": 0, "max": 7, "exclude": ["c1"] },
+          "a3": { "min": 1, "max": 7, "exclude": ["a1", "a2"] },
+          "b3": { "min": 0, "max": 7, "exclude": ["b1", "b2"] },
+          "c3": { "min": 0, "max": 7, "exclude": ["c1", "c2"] },
+          "r1": { "formula": "a1*x + b1*y + c1*z", "format": "decimal" },
+          "r2": { "formula": "a2*x + b2*y + c2*z", "format": "decimal" },
+          "r3": { "formula": "a3*x + b3*y + c3*z", "format": "decimal" }
+        },
+        "question": "A school theater sells three types of tickets: adult, student, and senior. The price of each ticket type stays the same for every show. On Friday the total revenue was ${r1}, on Saturday it was ${r2}, and on Sunday it was ${r3}. The ticket summary is shown below:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Show</th><th>Adult Tickets</th><th>Student Tickets</th><th>Senior Tickets</th></tr><tr><td>Friday</td><td>{a1}</td><td>{b1}</td><td>{c1}</td></tr><tr><td>Saturday</td><td>{a2}</td><td>{b2}</td><td>{c2}</td></tr><tr><td>Sunday</td><td>{a3}</td><td>{b3}</td><td>{c3}</td></tr></table><br><br> Find the price of each ticket type using an augmented matrix and Gaussian elimination (Show your steps).",
+        "answer": "Augmented matrix: \\( \\left[\\begin{array}{ccc|c} {a1} & {b1} & {c1} & {r1} \\\\ {a2} & {b2} & {c2} & {r2} \\\\ {a3} & {b3} & {c3} & {r3} \\end{array}\\right] \\).<br>Solution: \\(x = {x},\\; y = {y},\\; z = {z}\\)."
+      },
+      {
+        "id": "PC-7.3-A2",
+        "type": "template",
+        "objective": "Gaussian Elimination",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "values": [4.50, 4.75, 5.00, 5.25, 5.50, 5.75, 6.00, 6.25, 6.50, 6.75, 7.00, 7.25, 7.50, 7.75, 8.00, 8.25], "format":"decimal" },
+          "y": { "formula": "x + 1.50", "format": "decimal" },
+          "rand_int": { "min": 1, "max": 3, "exclude": [0] },
+          "z": { "formula": "y + rand_int*0.50", "format": "decimal" },
+          "a1": { "min": 1, "max": 8 },
+          "b1": { "min": 1, "max": 8 },
+          "c1": { "min": 1, "max": 8 },
+          "a2": { "min": 1, "max": 8, "exclude": ["a1"] },
+          "b2": { "min": 1, "max": 8, "exclude": ["b1"] },
+          "c2": { "min": 1, "max": 8, "exclude": ["c1"] },
+          "a3": { "min": 1, "max": 8, "exclude": ["a1", "a2"] },
+          "b3": { "min": 1, "max": 8, "exclude": ["b1", "b2"] },
+          "c3": { "min": 1, "max": 8, "exclude": ["c1", "c2"] },
+          "r1": { "formula": "a1*x + b1*y + c1*z", "format": "decimal" },
+          "r2": { "formula": "a2*x + b2*y + c2*z", "format": "decimal" },
+          "r3": { "formula": "a3*x + b3*y + c3*z", "format": "decimal" }
+        },
+        "question": "A print shop sells three products: posters, flyers, and sticker packs. The price of each product stays the same for every order. On Monday the total charge was ${r1}, on Tuesday it was ${r2}, and on Wednesday it was ${r3}. The order summary is shown below:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Order Day</th><th>Posters</th><th>Flyers</th><th>Sticker Packs</th></tr><tr><td>Monday</td><td>{a1}</td><td>{b1}</td><td>{c1}</td></tr><tr><td>Tuesday</td><td>{a2}</td><td>{b2}</td><td>{c2}</td></tr><tr><td>Wednesday</td><td>{a3}</td><td>{b3}</td><td>{c3}</td></tr></table><br><br>Find the price of each product using an augmented matrix and Gaussian elimination (Show your steps).",
+        "answer": "Augmented matrix: \\( \\left[\\begin{array}{ccc|c} {a1} & {b1} & {c1} & {r1} \\\\ {a2} & {b2} & {c2} & {r2} \\\\ {a3} & {b3} & {c3} & {r3} \\end{array}\\right] \\).<br>Solution: \\(x = {x},\\; y = {y},\\; z = {z}\\)."
+      },
+      {
+        "id": "PC-7.3-A3",
+        "type": "template",
+        "objective": "Gaussian Elimination",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "values": [2.50, 2.75, 3.00, 3.25, 3.50, 3.75, 4.00, 4.25, 4.50, 4.75, 5.00], "format":"decimal" },
+          "y": { "formula": "x/2 + 0.75", "format": "decimal" },
+          "rand_int": { "min": 1, "max": 4, "exclude": [0] },
+          "z": { "formula": "y - rand_int*0.25", "format": "decimal" },
+          "m1": { "min": 2, "max": 15 },
+          "t1": { "min": 3, "max": 20 },
+          "m2": { "min": 2, "max": 15, "exclude": ["m1"] },
+          "t2": { "min": 3, "max": 20, "exclude": ["t1"] },
+          "m3": { "min": 2, "max": 15, "exclude": ["m1", "m2"] },
+          "t3": { "min": 3, "max": 20, "exclude": ["t1", "t2"] },
+          "r1": { "formula": "x + m1*y + t1*z", "format": "decimal" },
+          "r2": { "formula": "x + m2*y + t2*z", "format": "decimal" },
+          "r3": { "formula": "x + m3*y + t3*z", "format": "decimal" }
+        },
+        "question": "A rideshare service uses a pricing model with a base fee, a per-mile charge, and a per-minute charge. These rates stay the same for every trip. Trip A cost ${r1}, Trip B cost ${r2}, and Trip C cost ${r3}. The trip summary is shown below:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Trip</th><th>Miles</th><th>Minutes</th></tr><tr><td>A</td><td>{m1}</td><td>{t1}</td></tr><tr><td>B</td><td>{m2}</td><td>{t2}</td></tr><tr><td>C</td><td>{m3}</td><td>{t3}</td></tr></table><br><br>Let \\(x\\) be the base fee, \\(y\\) be the per-mile charge, and \\(z\\) be the per-minute charge. Find the three rates using an augmented matrix and Gaussian elimination (Show your steps).",
+        "answer": "Augmented matrix: \\( \\left[\\begin{array}{ccc|c} 1 & {m1} & {t1} & {r1} \\\\ 1 & {m2} & {t2} & {r2} \\\\ 1 & {m3} & {t3} & {r3} \\end{array}\\right] \\).<br>Solution: \\(x = {x},\\; y = {y},\\; z = {z}\\)."
       }
     ]
   }
