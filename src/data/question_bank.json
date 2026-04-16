@@ -2810,9 +2810,7 @@
       "objective": "Transformations of Exponential Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a_num": { "min": -5, "max": 5, "exclude": [0] },
-        "a_den": { "min": 2, "max": 5 },
-        "a": { "formula": "a_num/a_den", "format": "fraction" },
+        "a": { "min": 2, "max": 5 },
         "b": { "min": 2, "max": 5 },
         "c": { "min": -1, "max": 1, "exclude": [0] },
         "h": { "min": -5, "max": 5, "exclude": [0] },
@@ -2842,7 +2840,7 @@
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -2, "max": 2, "exclude": [0] },
-        "b": { "min": 2, "max": 5 },
+        "b": { "min": 2, "max": 4 },
         "c": { "min": -1, "max": 1, "exclude": [0] },
         "h": { "min": -5, "max": 5, "exclude": [0] },
         "k": { "min": -5, "max": 5, "exclude": [0] }
@@ -2857,6 +2855,69 @@
       },
       "question": "Use key points from the graph to determine the transformations from the parent function and write the equation for the graph given.",
       "answer": "\\(g(x) = {a|coef}({b})^{{c|coef}(x {h|sign})} {k|sign}\\)"
+    },
+    {
+      "id": "ALG1-9.3-B1",
+      "type": "template",
+      "objective": "Writing Exponential Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 6 },
+        "y1": { "formula": "a*b**(-2)", "format": "fraction" },
+        "y2": { "formula": "a*b**(-1)", "format": "fraction" },
+        "y3": { "formula": "a*b**(0)", "format": "fraction" },
+        "y4": { "formula": "a*b**(1)", "format": "fraction" },
+        "y5": { "formula": "a*b**(2)", "format": "fraction" }
+      },
+      "question": "Write an exponential equation for the table given. <br> <br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>\\( x \\)</th><td>\\(-2\\)</td><td>\\(-1\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(2\\)</td></tr><tr><th>\\(y\\)</th><td>\\({y1}\\)</td><td>\\({y2}\\)</td><td>\\({y3}\\)</td><td>\\({y4}\\)</td><td>\\({y5}\\)</td></tr></table>",
+      "answer": "\\( y = {a}\\cdot{b}^x \\)"
+    },
+    {
+      "id": "ALG1-9.3-I1",
+      "type": "template",
+      "objective": "Writing Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 7 },
+        "x1": { "min": -2, "max": 2, "exclude": [0] },
+        "x2": { "min": -3, "max": 3, "exclude": ["x1"] },
+        "y1": { "formula": "a*b**(x1)", "format": "fraction" },
+        "y2": { "formula": "a*b**(x2)", "format": "fraction" }
+      },
+      "question": "Write an exponential equation that passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
+      "answer": "\\( y = {a}\\cdot{b}^x \\)"
+    },
+    {
+      "id": "ALG1-9.3-I2",
+      "type": "template",
+      "objective": "Writing Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "cost": { "values": [20000, 22000, 25000, 31000, 37000, 41000, 45000, 50000] },
+        "r": { "min": 9, "max": 25 },
+        "t": { "min": 2, "max": 7 },
+        "base": { "formula": "1 - r/100" },
+        "A": { "formula": "Math.round(cost*(base)**t * 100)/100", "format": "decimal" }
+      },
+      "question": "You bought a car for ${cost}. The value of the car depreciates by {r}% each year. Write an exponential function to model the value of the car after t years and use it to find the value of the car after {t} years.",
+      "answer": "\\( A(t) = {cost}({base})^t \\) and \\( A({t}) = ${A} \\)"
+    },
+    {
+      "id": "ALG1-9.3-I3",
+      "type": "template",
+      "objective": "Writing Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "cost": { "values": [1000,1250,1500,1750,2000,2250,2500,2750,3000,3250,3500,3750,4000,4250,4500,5000] },
+        "r": { "values": [2.5,2.6,2.7,2.8,2.9,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8], "format": "decimal" },
+        "t": { "min": 2, "max": 7 },
+        "base": { "formula": "1 + r/(400)" },
+        "A": { "formula": "Math.round(cost*(base)**(4*t) * 100)/100", "format": "decimal" }
+      },
+      "question": "You purchace a certificate of deposit (CD) for ${cost} that pays {r}% interest compounded quarterly. Write an exponential function to model the value of the CD after t years and use it to find the value of the CD after {t} years.",
+      "answer": "\\( A(t) = {cost}({base})^t \\) and \\( A({t}) = ${A} \\)"
     }
    ]
 },
