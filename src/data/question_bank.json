@@ -5031,6 +5031,99 @@
       "answer": "\\( k = \\frac{\\ln({A1}/{P0})}{{t1}} \\approx {k} \\), so \\( P(t) = {P0}e^{{k}t} \\).<br>\\( P({tq}) \\approx {Aq} \\)."
     }
 
+  ],
+  "Module 9": [
+    {
+      "id": "ALG2-9.1-B1",
+      "type": "template",
+      "objective": "Multiplying and Dividing Rational Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "formula": "r1 + r2" },
+        "b": { "formula": "r1 * r2" },
+        "c": { "formula": "r1 + r3" },
+        "d": { "formula": "r1 * r3" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ x^2 {a|signedCoef}x {b|sign} }{ x^2 {c|signedCoef}x {d|sign} } \\cdot \\frac{ x }{ x {r2|sign} } \\).",
+      "answer": "\\( \\frac{ x }{ x {r3|sign} } \\)."
+    },
+    {
+      "id": "ALG2-9.1-B2",
+      "type": "template",
+      "objective": "Multiplying and Dividing Rational Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "formula": "r1 + r2" },
+        "b": { "formula": "r1 * r2" },
+        "c": { "formula": "r1 + r3" },
+        "d": { "formula": "r1 * r3" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ x^2 {a|signedCoef}x {b|sign} }{ x^2 {c|signedCoef}x {d|sign} } \\cdot \\frac{ x {r3|sign} }{ x } \\).",
+      "answer": "\\( \\frac{ x {r2|sign} }{ x } \\)."
+    },
+    {
+      "id": "ALG2-9.1-B3",
+      "type": "template",
+      "objective": "Multiplying and Dividing Rational Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "formula": "r1 + r2" },
+        "b": { "formula": "r1 * r2" },
+        "c": { "formula": "r1 + r3" },
+        "d": { "formula": "r1 * r3" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ x^2 {r3|signedCoef}x }{ x^2 } \\cdot \\frac{ x^2 {a|signedCoef}x {b|sign} }{ x^2 {c|signedCoef}x {d|sign} } \\).",
+      "answer": "\\( \\frac{ x {r2|sign} }{ x } \\)."
+    },
+    {
+      "id": "ALG2-9.1-I1",
+      "type": "template",
+      "objective": "Multiplying and Dividing Rational Expressions",
+      "difficulty": "intermediate",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "formula": "r1 + r2" },
+        "b": { "formula": "r1 * r2" },
+        "c": { "formula": "r2 + r3" },
+        "d": { "formula": "r2 * r3" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ \\frac{x^2 {a|signedCoef}x {b|sign}}{x^2 {r3|signedCoef}x} }{ \\frac{x {r1|sign}}{x^3 {c|signedCoef}x^2 {d|signedCoef}x}} \\).",
+      "answer": "\\( (x {r2|sign})^2 \\)."
+    },
+    {
+      "id": "ALG2-9.1-I2",
+      "type": "template",
+      "objective": "Multiplying and Dividing Rational Expressions",
+      "difficulty": "intermediate",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "r4": { "min": -5, "max": 5, "exclude": [0, "r1", "r2", "r3"] },
+        "a": { "formula": "r1 + r3" },
+        "b": { "formula": "r1 * r3" },
+        "c": { "formula": "r2 + r4" },
+        "d": { "formula": "r2 * r4" },
+        "e": { "formula": "r1 + r2" },
+        "f": { "formula": "r1 * r2" },
+        "k": { "min": 2, "max": 5, "exclude": [0] },
+        "g": { "formula": "k*r4 + r3" },
+        "h": { "formula": "r3 * r4" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ \\frac{x^2 {a|signedCoef}x {b|sign}}{x {r2|sign}} }{ \\frac{x^2 {c|signedCoef}x {d|sign}}{{k|coef}x {r3|sign}} }\\cdot\\frac{x^2 {e|signedCoef}x {f|sign}}{{k|coef}x^2 {g|signedCoef}x {h|sign}}\\).",
+      "answer": "\\( \\frac{ (x {r1|sign})^2 (x {r3|sign})}{(x {r2|sign})(x {r4|sign})^2} \\)."
+    }
   ]
 },
 "Precalculus": {

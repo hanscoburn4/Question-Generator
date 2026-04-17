@@ -26,6 +26,42 @@ class QuestionGenerator {
 
     let result = text;
 
+    // Helper to get absolute value of display string (remove leading minus in LaTeX fractions and plain numbers)
+    const getAbsDisplayValue = (dispVal) => {
+      if (!dispVal || typeof dispVal !== 'string') return dispVal;
+      // Handle \frac{-n}{d} -> \frac{n}{d}
+      dispVal = dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
+      // Handle plain negative numbers: -3 -> 3
+      if (dispVal.startsWith('-')) {
+        dispVal = dispVal.substring(1);
+      }
+      return dispVal;
+    };
+
+    /* --------------------------------------------------------------
+       Step 1a - {var|signedCoef}term (remove zero terms cleanly)
+       -------------------------------------------------------------- */
+    result = result.replace(
+      /\{([a-zA-Z_][a-zA-Z0-9_]*)\|signedCoef\}\s*([a-zA-Z][a-zA-Z0-9_]*(?:\^\{?-?\d+\}?)?)/g,
+      (match, varName, attachedTerm) => {
+        const value = variables[varName];
+        if (value === undefined || value === null) return match;
+
+        const displayValue = variables.__display?.[varName];
+        if (value === 0) return '';
+
+        const sign = value >= 0 ? '+' : '-';
+
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && Math.abs(value) !== 1) {
+          return `${sign}${getAbsDisplayValue(displayValue)}${attachedTerm}`;
+        }
+
+        const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
+        return `${sign}${coef}${attachedTerm}`;
+      }
+    );
+
     /* --------------------------------------------------------------
        Step 1 – {var|option…}  (your original formatter)
        -------------------------------------------------------------- */
@@ -40,18 +76,6 @@ class QuestionGenerator {
 
       // Get display value (e.g., fraction) if it exists
       const displayValue = variables.__display?.[varName];
-
-      // Helper to get absolute value of display string (remove leading minus in LaTeX fractions and plain numbers)
-      const getAbsDisplayValue = (dispVal) => {
-        if (!dispVal || typeof dispVal !== 'string') return dispVal;
-        // Handle \frac{-n}{d} -> \frac{n}{d}
-        dispVal = dispVal.replace(/\\frac\{-(\d+)\}/, '\\frac{$1}');
-        // Handle plain negative numbers: -3 -> 3
-        if (dispVal.startsWith('-')) {
-          dispVal = dispVal.substring(1);
-        }
-        return dispVal;
-      };
 
       if (options.includes('signedCoef')) {
         if (value === 0) return '+0';
@@ -104,6 +128,11 @@ class QuestionGenerator {
        Step 2 – plain {var}
        -------------------------------------------------------------- */
     result = window.QuestionUtils.replaceTemplateVariables(result, variables);
+
+    // Clean up spacing artifacts left behind when a zero signed-coefficient term is removed.
+    result = result
+      .replace(/\s{2,}(?=[+\-])/g, ' ')
+      .replace(/\s{2,}(?=\\\))/g, ' ');
 
     /* --------------------------------------------------------------
        Step 3 – wrap simple exponents x^2 → x^{2}
