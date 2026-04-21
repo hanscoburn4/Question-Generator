@@ -65,6 +65,30 @@ class QuestionGenerator {
     /* --------------------------------------------------------------
        Step 1 – {var|option…}  (your original formatter)
        -------------------------------------------------------------- */
+    /* --------------------------------------------------------------
+       Step 1b - {var|coef}term (remove zero terms cleanly)
+       -------------------------------------------------------------- */
+    result = result.replace(
+      /\{([a-zA-Z_][a-zA-Z0-9_]*)\|coef\}\s*([a-zA-Z][a-zA-Z0-9_]*(?:\^\{?-?\d+\}?)?)/g,
+      (match, varName, attachedTerm) => {
+        const value = variables[varName];
+        if (value === undefined || value === null) return match;
+
+        const displayValue = variables.__display?.[varName];
+        if (value === 0) return '';
+
+        const sign = value < 0 ? '-' : '';
+
+        // If we have a display value (e.g., fraction) and value is not ±1, use it
+        if (displayValue && Math.abs(value) !== 1) {
+          return `${sign}${getAbsDisplayValue(displayValue)}${attachedTerm}`;
+        }
+
+        const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
+        return `${sign}${coef}${attachedTerm}`;
+      }
+    );
+
     result = result.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(\|[a-zA-Z0-9:_-]+)*\}/g, (match, varName, opts) => {
       const value = variables[varName];
       if (value === undefined || value === null) return match;
@@ -132,7 +156,8 @@ class QuestionGenerator {
     // Clean up spacing artifacts left behind when a zero signed-coefficient term is removed.
     result = result
       .replace(/\s{2,}(?=[+\-])/g, ' ')
-      .replace(/\s{2,}(?=\\\))/g, ' ');
+      .replace(/\s{2,}(?=\\\))/g, ' ')
+      .replace(/([=(\{]\s*)\+/g, '$1');
 
     /* --------------------------------------------------------------
        Step 3 – wrap simple exponents x^2 → x^{2}
