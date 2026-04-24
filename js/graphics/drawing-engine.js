@@ -531,6 +531,25 @@ class DrawingEngine {
     };
   }
 
+  resolvePointLabel(label, variables = {}) {
+    if (label === undefined || label === null) return "";
+    const rawLabel = String(label);
+    if (!rawLabel.includes("{")) return rawLabel;
+
+    return rawLabel.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(?:\|[^{}]+)?\}/g, (match, name) => {
+      const value = variables?.[name];
+      const asNumber = Number(value);
+      if (!Number.isFinite(asNumber)) return match;
+
+      if (Math.abs(asNumber - Math.round(asNumber)) < 1e-10) {
+        return String(Math.round(asNumber));
+      }
+
+      const rounded = Math.round(asNumber * 1000) / 1000;
+      return String(rounded);
+    });
+  }
+
   drawPointMarker(ctx, px, py, pointConfig = {}, variables = {}, fallbackColor = "#e74c3c") {
     const markerRadius = Math.max(1, this.resolveNumericValue(pointConfig.pointRadius, variables, 4));
     const outlineWidth = Math.max(0, this.resolveNumericValue(pointConfig.outlineWidth, variables, 1.5));
@@ -558,12 +577,13 @@ class DrawingEngine {
       ctx.stroke();
     }
 
-    if (pointConfig.label !== undefined && pointConfig.label !== null && String(pointConfig.label).trim() !== "") {
+    const resolvedLabel = this.resolvePointLabel(pointConfig.label, variables).trim();
+    if (resolvedLabel !== "") {
       ctx.fillStyle = pointConfig.labelColor || fillColor;
       ctx.font = "12px sans-serif";
       ctx.textAlign = "left";
       ctx.textBaseline = "middle";
-      ctx.fillText(String(pointConfig.label), px + labelOffsetX, py + labelOffsetY);
+      ctx.fillText(resolvedLabel, px + labelOffsetX, py + labelOffsetY);
     }
     ctx.restore();
   }

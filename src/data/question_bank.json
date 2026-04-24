@@ -2737,14 +2737,35 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -2, "max": 2, "exclude": [0] },
-        "b": { "min": 2, "max": 5 }
+        "b": { "min": 2, "max": 5 },
+        "p1x": { "formula": "0" },
+        "p1y": { "formula": "a" },
+        "p2x": { "formula": "1" },
+        "p2y": { "formula": "a*b" }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
         "eq1": { 
           "relation": "y = a*(b)^x", 
           "showInQuestion": false, 
-          "showInAnswer": true }
+          "showInAnswer": true
+        },
+        "points": [
+          {
+            "x": "p1x",
+            "y": "p1y",
+            "label": "({p1x}, {p1y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          },
+          {
+            "x": "p2x",
+            "y": "p2y",
+            "label": "({p2x}, {p2y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
       },
       "question": "Graph the function \\( y = {a|coef}({b})^x \\) and state its domain and range.",
       "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: if \\( a > 0 \\) then \\( y > 0 \\), if \\( a < 0 \\) then \\( y < 0 \\) \\)."
@@ -2757,14 +2778,35 @@
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
         "b_den": { "min": 2, "max": 5 },
-        "b": { "formula": "1/b_den", "format": "fraction" }
+        "b": { "formula": "1/b_den", "format": "fraction" },
+        "p1x": { "formula": "-1" },
+        "p1y": { "formula": "b_den + a" },
+        "p2x": { "formula": "0" },
+        "p2y": { "formula": "a + 1" }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
         "eq1": { 
           "relation": "y = (b)^x + a", 
           "showInQuestion": false, 
-          "showInAnswer": true }
+          "showInAnswer": true
+        },
+        "points": [
+          {
+            "x": "p1x",
+            "y": "p1y",
+            "label": "({p1x}, {p1y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          },
+          {
+            "x": "p2x",
+            "y": "p2y",
+            "label": "({p2x}, {p2y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
       },
       "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
       "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
@@ -2776,14 +2818,35 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "min": 2, "max": 5 }
+        "b": { "min": 2, "max": 5 },
+        "p1x": { "formula": "0" },
+        "p1y": { "formula": "a + 1" },
+        "p2x": { "formula": "1" },
+        "p2y": { "formula": "b + a" }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
         "eq1": { 
           "relation": "y = (b)^x + a", 
           "showInQuestion": false, 
-          "showInAnswer": true }
+          "showInAnswer": true
+        },
+        "points": [
+          {
+            "x": "p1x",
+            "y": "p1y",
+            "label": "({p1x}, {p1y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          },
+          {
+            "x": "p2x",
+            "y": "p2y",
+            "label": "({p2x}, {p2y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
       },
       "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
       "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
@@ -2814,7 +2877,15 @@
         "b": { "min": 2, "max": 5 },
         "c": { "min": -1, "max": 1, "exclude": [0] },
         "h": { "min": -5, "max": 5, "exclude": [0] },
-        "k": { "min": -5, "max": 5, "exclude": [0] }
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "parentP1x": { "formula": "0" },
+        "parentP1y": { "formula": "1" },
+        "parentP2x": { "formula": "1" },
+        "parentP2y": { "formula": "b" },
+        "transP1x": { "formula": "-h" },
+        "transP1y": { "formula": "a + k" },
+        "transP2x": { "formula": "-h + c" },
+        "transP2y": { "formula": "a*b + k" }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
@@ -2828,7 +2899,37 @@
           "showInQuestion": true,
           "showInAnswer": true,
           "style": { "color": "gray" }
-        }
+        },
+        "points": [
+          {
+            "x": "parentP1x",
+            "y": "parentP1y",
+            "label": "({parentP1x}, {parentP1y})",
+            "showInQuestion": true,
+            "showInAnswer": true
+          },
+          {
+            "x": "parentP2x",
+            "y": "parentP2y",
+            "label": "({parentP2x}, {parentP2y})",
+            "showInQuestion": true,
+            "showInAnswer": true
+          },
+          {
+            "x": "transP1x",
+            "y": "transP1y",
+            "label": "({transP1x}, {transP1y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          },
+          {
+            "x": "transP2x",
+            "y": "transP2y",
+            "label": "({transP2x}, {transP2y})",
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
       },
       "question": "\\(f(x) = ({b})^x \\) has been graphed below. List the transformations and sketch the graph of \\(g(x) = {a|coef}({b})^{{c|coef}(x {h|sign})} {k|sign}\\).",
       "answer": "See graph."
@@ -2843,15 +2944,35 @@
         "b": { "min": 2, "max": 4 },
         "c": { "min": -1, "max": 1, "exclude": [0] },
         "h": { "min": -5, "max": 5, "exclude": [0] },
-        "k": { "min": -5, "max": 5, "exclude": [0] }
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "p1x": { "formula": "-h" },
+        "p1y": { "formula": "a + k" },
+        "p2x": { "formula": "-h + c" },
+        "p2y": { "formula": "a*b + k" }
       },
       "draw": {
         "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
         "eq1": { 
           "relation": "y = a*b^(c*(x + h)) + k", 
           "showInQuestion": true, 
-          "showInAnswer": true 
-        }
+          "showInAnswer": true
+        },
+        "points": [
+          {
+            "x": "p1x",
+            "y": "p1y",
+            "label": "({p1x}, {p1y})",
+            "showInQuestion": true,
+            "showInAnswer": true
+          },
+          {
+            "x": "p2x",
+            "y": "p2y",
+            "label": "({p2x}, {p2y})",
+            "showInQuestion": true,
+            "showInAnswer": true
+          }
+        ]
       },
       "question": "Use key points from the graph to determine the transformations from the parent function and write the equation for the graph given.",
       "answer": "\\(g(x) = {a|coef}({b})^{{c|coef}(x {h|sign})} {k|sign}\\)"
@@ -5222,6 +5343,178 @@
       },
       "question": "Simplify: <br> \\( \\frac{ \\frac{x^2 {a|signedCoef}x {b|sign}}{x {r2|sign}} }{ \\frac{x^2 {c|signedCoef}x {d|sign}}{{k|coef}x {r3|sign}} }\\cdot\\frac{x^2 {e|signedCoef}x {f|sign}}{{k|coef}x^2 {g|signedCoef}x {h|sign}}\\).",
       "answer": "\\( \\frac{ (x {r1|sign})^2 (x {r3|sign})}{(x {r2|sign})(x {r4|sign})^2} \\)."
+    },
+    {
+      "id": "ALG2-9.2-B1",
+      "type": "template",
+      "objective": "Adding and Subtracting Rational Expressions",
+      "difficulty": "basic",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, "a"] },
+        "c": { "formula": "r1 + r2" },
+        "d": { "formula": "r1*r2" },
+        "e": { "formula": "r1 + r3" },
+        "f": { "formula": "r1*r3" },
+        "p": { "formula": "a + b" },
+        "q": { "formula": "a*r3 + b*r2" }
+      },
+      "question": "Simplify: <br> \\( \\frac{{a}}{x^2 {c|signedCoef}x {d|sign}} + \\frac{{b}}{x^2 {e|signedCoef}x {f|sign}} \\)",
+      "answer": "\\( \\frac{ {p|coef}x {q|sign} }{ (x {r1|sign})(x {r2|sign})(x {r3|sign}) } \\)."
+    },
+    {
+      "id": "ALG2-9.2-I1",
+      "type": "template",
+      "objective": "Adding and Subtracting Rational Expressions",
+      "difficulty": "intermediate",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, "a"] },
+        "c": { "formula": "r1 + r2" },
+        "d": { "formula": "r1*r2" },
+        "e": { "formula": "a + b + r3" },
+        "f": { "formula": "a*r2 + b*c" },
+        "g": { "formula": "b*d" }
+      },
+      "question": "Simplify: <br> \\( \\frac{{a}}{ x^2 {r1|signedCoef}x } + \\frac{ x {r3|sign} }{ x^2 {c|signedCoef}x {d|sign}} + \\frac{{b}}{x^2} \\)",
+      "answer": "\\( \\frac{x^3 {e|signedCoef}x^2 {f|signedCoef}x {g|sign}}{(x^2)(x {r1|sign})(x {r2|sign})} \\)."
+    },
+    {
+      "id": "ALG2-9.2-A1",
+      "type": "template",
+      "objective": "Adding and Subtracting Rational Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, "a"] },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": -5, "max": 5, "exclude": [0, "c"] },
+        "s1": { "formula": "r1 + r2" },
+        "p1": { "formula": "r1 * r2" },
+        "s2": { "formula": "r1 + r3" },
+        "p2": { "formula": "r1 * r3" },
+        "u": { "formula": "a + b" },
+        "v": { "formula": "a * r3 + b * r2" },
+        "m": { "formula": "c - d" },
+        "n": { "formula": "c * r3 - d * r2" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ \\frac{{a}}{x^2 {s1|signedCoef}x {p1|sign}} + \\frac{{b}}{x^2 {s2|signedCoef}x {p2|sign}} }{ \\frac{{c}}{x {r2|sign}} - \\frac{{d}}{x {r3|sign}} } \\).",
+      "answer": "\\( \\frac{{u|signedCoef}x {v|sign}}{(x {r1|sign})({m|signedCoef}x {n|sign})} \\)."
+    },
+    {
+      "id": "ALG2-9.2-A2",
+      "type": "template",
+      "objective": "Adding and Subtracting Rational Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "r1": { "min": -5, "max": 5, "exclude": [0] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+        "r3": { "min": -5, "max": 5, "exclude": [0, "r1", "r2"] },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 5, "exclude": [0, "a"] },
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "d": { "min": 2, "max": 6 },
+        "e": { "min": 2, "max": 6, "exclude": ["d"] },
+        "s1": { "formula": "r1 + r2" },
+        "p1": { "formula": "r1 * r2" },
+        "s2": { "formula": "r1 + r3" },
+        "p2": { "formula": "r1 * r3" },
+        "u": { "formula": "a - b + c * (r2 + r3)" },
+        "v": { "formula": "a * r3 - b * r2 + c * r2 * r3" },
+        "w": { "formula": "d + e" },
+        "z": { "formula": "d * r3 + e * r2" }
+      },
+      "question": "Simplify: <br> \\( \\frac{ \\frac{{a}}{x^2 {s1|signedCoef}x {p1|sign}} - \\frac{{b}}{x^2 {s2|signedCoef}x {p2|sign}} + \\frac{{c}}{x {r1|sign}} }{ \\frac{{d}}{x {r2|sign}} + \\frac{{e}}{x {r3|sign}} } \\).",
+      "answer": "\\( \\frac{{c|coef}x^2 {u|signedCoef}x {v|sign}}{(x {r1|sign})({w|signedCoef}x {z|sign})} \\)."
+    },
+    {
+      "id": "ALG2-9.3-B1",
+      "type": "template",
+      "objective": "Graphing Reciprocal Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "h": { "min": -10, "max": 10, "exclude": [0] },
+        "negh": { "formula": "-h" },
+        "k": { "min": -7, "max": 7, "exclude": [0] },
+        "yint": { "formula": "a/h + k", "format": "fraction" },
+        "xint": { "formula": "a/(-k) - h", "format": "fraction" }
+      },
+      "question": "Idenitify the domain, range, intercepts, and asymptotes for the function: <br> \\( f(x) = \\frac{ {a} }{ x {h|sign} } {k|sign} \\).",
+      "answer": "Domain: \\( x \\neq {h} \\)<br>Range: \\( y \\neq {k} \\)<br>Y-intercept: \\( {yint} \\)<br>X-intercept: \\( {xint} \\)<br>Vertical asymptote: \\( x = {negh} \\)<br>Horizontal asymptote: \\( y = {k} \\)"
+    },
+    {
+      "id": "ALG2-9.3-I1",
+      "type": "template",
+      "objective": "Graphing Reciprocal Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "h": { "min": -8, "max": 8, "exclude": [0] },
+        "negh": { "formula": "-h" },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "yint": { "formula": "a/h + k", "format": "fraction" },
+        "xint": { "formula": "a/(-k) - h", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -14, "xMax": 14, "yMin": -8, "yMax": 8 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = a/(x + h) + k", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "y = k", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "x = -h", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": "{xint}", "y": 0, "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Graph the function and lable the intercepts and asymptotes: <br> \\( f(x) = \\frac{{a} }{ x {h|sign} } {k|sign} \\).",
+      "answer": "See graph with x-int at: \\( {xint} \\), y-int at \\( {yint} \\), vertical asymptote at \\( x = {negh} \\), and horizontal asymptote at \\( y = {k} \\)."
+    },
+    {
+      "id": "ALG2-9.3-A1",
+      "type": "template",
+      "objective": "Graphing Reciprocal Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "h": { "min": -8, "max": 8, "exclude": [0] },
+        "negh": { "formula": "-h" },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "yint": { "formula": "a/h + k", "format": "fraction" },
+        "xint": { "formula": "a/(-k) - h", "format": "fraction" },
+        "x1": { "formula": "negh + 1" },
+        "y1": { "formula": "a/(x1 + h) + k", "format": "fraction" },
+        "x2": { "formula": "negh - 1" },
+        "y2": { "formula": "a/(x2 + h) + k", "format": "fraction" },
+        "x3": { "formula": "negh + a" },
+        "y3": { "formula": "a/(x3 + h) + k", "format": "fraction" },
+        "x4": { "formula": "negh - a", "format": "fraction" },
+        "y4": { "formula": "a/(x4 + h) + k", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -14, "xMax": 14, "yMin": -8, "yMax": 8 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = a/(x + h) + k", "showInQuestion": true, "showInAnswer": true },
+        "eq2": { "relation": "y = k", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "x = -h", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": "{x1}", "y": "{y1}", "showInQuestion": true, "showInAnswer": true },
+          { "x": "{x2}", "y": "{y2}", "showInQuestion": true, "showInAnswer": true },
+          { "x": "{x3}", "y": "{y3}", "showInQuestion": true, "showInAnswer": true },
+          { "x": "{x4}", "y": "{y4}", "showInQuestion": true, "showInAnswer": true }
+        ]
+      },
+      "question": "Write the equation for the graph shown below:",
+      "answer": "\\( f(x) = \\frac{{a} }{ x {h|sign} } {k|sign} \\)."
     }
   ]
 },
@@ -8424,6 +8717,115 @@
         },
         "question": "Use Cramer's rule to solve the system: <br> \\( {a1|coef}x {b1|signedCoef}y {c1|signedCoef}z = {r1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y {c2|signedCoef}z = {r2} \\)<br>\\( {a3|coef}x {b3|signedCoef}y {c3|signedCoef}z = {r3} \\)",
         "answer": "\\( Det(A) = {detA}, Det(A_x) = {detAx}, Det(A_y) = {detAy}, Det(A_z) = {detAz} \\). <br> Solution: \\( x = {x},\\; y = {y},\\; z = {z} \\)"
+      },
+      {
+        "id": "PC-7.5-B1",
+        "type": "template",
+        "objective": "Inverse Matrices",
+        "difficulty": "basic",
+        "variables": {
+          "m": { "min": -4, "max": 4, "exclude": [0] },
+          "n": { "min": -4, "max": 4, "exclude": [0] },
+          "a11": { "formula": "1 + m*n" },
+          "a12": { "formula": "m" },
+          "a21": { "formula": "n" },
+          "a22": 1,
+          "b11": 1,
+          "b12": { "formula": "-m" },
+          "b21": { "formula": "-n" },
+          "b22": { "formula": "1 + m*n" },
+          "ab11": { "formula": "a11*b11 + a12*b21" },
+          "ab12": { "formula": "a11*b12 + a12*b22" },
+          "ab21": { "formula": "a21*b11 + a22*b21" },
+          "ab22": { "formula": "a21*b12 + a22*b22" },
+          "ba11": { "formula": "b11*a11 + b12*a21" },
+          "ba12": { "formula": "b11*a12 + b12*a22" },
+          "ba21": { "formula": "b21*a11 + b22*a21" },
+          "ba22": { "formula": "b21*a12 + b22*a22" }
+        },
+        "question": "Verify that the matrices are inverses by computing both products \\( AB \\) and \\( BA \\). Show all your work.<br>\\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\end{bmatrix},\\; B = \\begin{bmatrix} {b11} & {b12} \\\\ {b21} & {b22} \\end{bmatrix} \\)",
+        "answer": "\\( AB = \\begin{bmatrix} {ab11} & {ab12} \\\\ {ab21} & {ab22} \\end{bmatrix},\\; BA = \\begin{bmatrix} {ba11} & {ba12} \\\\ {ba21} & {ba22} \\end{bmatrix} = I_2 \\)."
+      },
+      {
+        "id": "PC-7.5-I1",
+        "type": "template",
+        "objective": "Inverse Matrices",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "values": [-4, -3, -2, 2, 3, 4] },
+          "b": { "values": [-3, -2, -1, 1, 2, 3] },
+          "c": { "min": -5, "max": 5, "exclude": [0] },
+          "t": { "values": [-4, -3, -2, 2, 3, 4] },
+          "a11": { "formula": "a" },
+          "a12": { "formula": "a*b" },
+          "a21": { "formula": "c" },
+          "a22": { "formula": "c*b + t" },
+          "detA": { "formula": "a11*a22 - a12*a21" },
+          "negA12": { "formula": "-a12" },
+          "negA21": { "formula": "-a21" },
+          "invA11": { "formula": "a22/detA" },
+          "invA12": { "formula": "negA12/detA" },
+          "invA21": { "formula": "negA21/detA" },
+          "invA22": { "formula": "a11/detA" },
+          "p": { "values": [-4, -3, -2, 2, 3, 4] },
+          "q": { "values": [-4, -3, -2, 2, 3, 4] },
+          "r": { "values": [-3, -2, -1, 1, 2, 3] },
+          "s": { "values": [-5, -4, -3, -2, 2, 3, 4, 5] },
+          "b11": { "formula": "p" },
+          "b12": { "formula": "q" },
+          "b21": { "formula": "p*r + s" },
+          "b22": { "formula": "q*r" },
+          "detB": { "formula": "b11*b22 - b12*b21" },
+          "negB12": { "formula": "-b12" },
+          "negB21": { "formula": "-b21" },
+          "invB11": { "formula": "b22/detB" },
+          "invB12": { "formula": "negB12/detB" },
+          "invB21": { "formula": "negB21/detB" },
+          "invB22": { "formula": "b11/detB" }
+        },
+        "question": "Find the inverse of each 2x2 matrix. Show all your work.<br>a) \\( A = \\begin{bmatrix} {a11} & {a12} \\\\ {a21} & {a22} \\end{bmatrix} \\)<br>b) \\( B = \\begin{bmatrix} {b11} & {b12} \\\\ {b21} & {b22} \\end{bmatrix} \\)",
+        "answer": "a) \\( A^{-1} = \\frac{1}{{detA}}\\begin{bmatrix} {a22} & {negA12} \\\\ {negA21} & {a11} \\end{bmatrix} = \\begin{bmatrix} {invA11} & {invA12} \\\\ {invA21} & {invA22} \\end{bmatrix} \\)<br>b) \\( B^{-1} = \\frac{1}{{detB}}\\begin{bmatrix} {b22} & {negB12} \\\\ {negB21} & {b11} \\end{bmatrix} = \\begin{bmatrix} {invB11} & {invB12} \\\\ {invB21} & {invB22} \\end{bmatrix} \\)"
+      },
+      {
+        "id": "PC-7.5-A1",
+        "type": "template",
+        "objective": "Inverse Matrices",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "min": -4, "max": 4, "exclude": [0] },
+          "y": { "min": -4, "max": 4, "exclude": [0] },
+          "z": { "min": -4, "max": 4, "exclude": [0] },
+          "a": { "values": [-2, -1, 1, 2] },
+          "b": { "values": [-2, -1, 1, 2] },
+          "c": { "values": [-2, -1, 1, 2] },
+          "u": { "values": [-2, -1, 1, 2] },
+          "v": { "values": [-2, -1, 1, 2] },
+          "w": { "values": [-2, -1, 1, 2] },
+          "a11": 1,
+          "a12": { "formula": "a" },
+          "a13": { "formula": "b" },
+          "a21": { "formula": "u" },
+          "a22": { "formula": "u*a + 1" },
+          "a23": { "formula": "u*b + c" },
+          "a31": { "formula": "v" },
+          "a32": { "formula": "v*a + w" },
+          "a33": { "formula": "v*b + w*c + 1" },
+          "r1": { "formula": "a11*x + a12*y + a13*z" },
+          "r2": { "formula": "a21*x + a22*y + a23*z" },
+          "r3": { "formula": "a31*x + a32*y + a33*z" },
+          "detA": { "formula": "a11*(a22*a33 - a23*a32) - a12*(a21*a33 - a23*a31) + a13*(a21*a32 - a22*a31)" },
+          "inv11": { "formula": "1 + a*u + (a*c - b)*(u*w - v)" },
+          "inv12": { "formula": "-a - w*(a*c - b)" },
+          "inv13": { "formula": "a*c - b" },
+          "inv21": { "formula": "-u - c*(u*w - v)" },
+          "inv22": { "formula": "1 + c*w" },
+          "inv23": { "formula": "-c" },
+          "inv31": { "formula": "u*w - v" },
+          "inv32": { "formula": "-w" },
+          "inv33": 1
+        },
+        "question": "Solve the system using an inverse matrix. First build the coefficient matrix \\(A\\) and constant matrix \\(\\mathbf{b}\\), then solve.<br>\\( {a11|coef}x {a12|signedCoef}y {a13|signedCoef}z = {r1} \\)<br>\\( {a21|coef}x {a22|signedCoef}y {a23|signedCoef}z = {r2} \\)<br>\\( {a31|coef}x {a32|signedCoef}y {a33|signedCoef}z = {r3} \\)",
+        "answer": "From the system, \\( A = \\begin{bmatrix} {a11} & {a12} & {a13} \\\\ {a21} & {a22} & {a23} \\\\ {a31} & {a32} & {a33} \\end{bmatrix} \\) and \\( \\mathbf{b} = \\begin{bmatrix} {r1} \\\\ {r2} \\\\ {r3} \\end{bmatrix} \\).<br>\\( \\det(A) = {detA} \\neq 0 \\), so \\( A^{-1} \\) exists.<br>\\( A^{-1} = \\begin{bmatrix} {inv11} & {inv12} & {inv13} \\\\ {inv21} & {inv22} & {inv23} \\\\ {inv31} & {inv32} & {inv33} \\end{bmatrix} \\)<br>\\( \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = A^{-1}\\mathbf{b} = \\begin{bmatrix} {x} \\\\ {y} \\\\ {z} \\end{bmatrix} \\)."
       }
     ]
   }
