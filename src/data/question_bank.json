@@ -5450,7 +5450,7 @@
         "xint": { "formula": "a/(-k) - h", "format": "fraction" }
       },
       "question": "Idenitify the domain, range, intercepts, and asymptotes for the function: <br> \\( f(x) = \\frac{ {a} }{ x {h|sign} } {k|sign} \\).",
-      "answer": "Domain: \\( x \\neq {h} \\)<br>Range: \\( y \\neq {k} \\)<br>Y-intercept: \\( {yint} \\)<br>X-intercept: \\( {xint} \\)<br>Vertical asymptote: \\( x = {negh} \\)<br>Horizontal asymptote: \\( y = {k} \\)"
+      "answer": "Domain: \\( x \\neq {negh} \\)<br>Range: \\( y \\neq {k} \\)<br>Y-intercept: \\( {yint} \\)<br>X-intercept: \\( {xint} \\)<br>Vertical asymptote: \\( x = {negh} \\)<br>Horizontal asymptote: \\( y = {k} \\)"
     },
     {
       "id": "ALG2-9.3-I1",
@@ -5485,7 +5485,7 @@
       "objective": "Graphing Reciprocal Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
         "h": { "min": -8, "max": 8, "exclude": [0] },
         "negh": { "formula": "-h" },
         "k": { "min": -5, "max": 5, "exclude": [0] },
@@ -8824,7 +8824,7 @@
           "inv32": { "formula": "-w" },
           "inv33": 1
         },
-        "question": "Solve the system using an inverse matrix. First build the coefficient matrix \\(A\\) and constant matrix \\(\\mathbf{b}\\), then solve.<br>\\( {a11|coef}x {a12|signedCoef}y {a13|signedCoef}z = {r1} \\)<br>\\( {a21|coef}x {a22|signedCoef}y {a23|signedCoef}z = {r2} \\)<br>\\( {a31|coef}x {a32|signedCoef}y {a33|signedCoef}z = {r3} \\)",
+        "question": "Solve the system using an inverse matrix. You may use a calculator but you must document each step.<br>\\( {a11|coef}x {a12|signedCoef}y {a13|signedCoef}z = {r1} \\)<br>\\( {a21|coef}x {a22|signedCoef}y {a23|signedCoef}z = {r2} \\)<br>\\( {a31|coef}x {a32|signedCoef}y {a33|signedCoef}z = {r3} \\)",
         "answer": "From the system, \\( A = \\begin{bmatrix} {a11} & {a12} & {a13} \\\\ {a21} & {a22} & {a23} \\\\ {a31} & {a32} & {a33} \\end{bmatrix} \\) and \\( \\mathbf{b} = \\begin{bmatrix} {r1} \\\\ {r2} \\\\ {r3} \\end{bmatrix} \\).<br>\\( \\det(A) = {detA} \\neq 0 \\), so \\( A^{-1} \\) exists.<br>\\( A^{-1} = \\begin{bmatrix} {inv11} & {inv12} & {inv13} \\\\ {inv21} & {inv22} & {inv23} \\\\ {inv31} & {inv32} & {inv33} \\end{bmatrix} \\)<br>\\( \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = A^{-1}\\mathbf{b} = \\begin{bmatrix} {x} \\\\ {y} \\\\ {z} \\end{bmatrix} \\)."
       }
     ]
