@@ -1750,11 +1750,24 @@
         "xIntercept": { "formula": "-b/m", "format": "fraction" },
         "yIntercept": { "formula": "b" }
       },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m}*x + ({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{xIntercept}", "y": 0, "label": "x-int", "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yIntercept}", "label": "y-int", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
       "question": "Use intercepts or a table to sketch the graph of \\( y = {m|coef}x {b|sign} \\).",
       "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
     },
     {
-      "id": "ALG1-4.1 & 4.2-B1",
+      "id": "ALG1-4.1 & 4.2-B2",
       "type": "template",
       "objective": "Graphing Linear Functions and Rate of Change",
       "difficulty": "basic",
@@ -1764,6 +1777,19 @@
         "c": { "min": -3, "max": 3, "exclude": [0] },
         "xIntercept": { "formula": "c/a", "format": "fraction" },
         "yIntercept": { "formula": "c/b", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = ({c} - {a}*x)/({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{xIntercept}", "y": 0, "label": "x-int", "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yIntercept}", "label": "y-int", "showInQuestion": false, "showInAnswer": true }
+        ]
       },
       "question": "Use intercepts or a table to sketch the graph of \\( {a|coef}x {b|signedCoef}y = {c} \\).",
       "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
@@ -1794,6 +1820,18 @@
         "m_den": { "min": 2, "max": 5, "exclude": ["m_num"] },
         "m": { "formula": "m_num/m_den", "format": "fraction" },
         "b": { "min": -8, "max": 8, "exclude": [0] }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m}*x + ({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": 0, "y": "{b}", "label": "y-int", "showInQuestion": false, "showInAnswer": true }
+        ]
       },
       "question": "Draw the graph of the line \\( y = \\frac{{m_num}}{{m_den}}x {b|sign} \\).",
       "answer": "\\( y = {m|coef}x {b|sign} \\)"
@@ -1826,7 +1864,11 @@
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1" },
         "m": { "formula": "mnum/mden", "format": "fraction" },
-        "b": { "formula": "y1 - (mnum/mden)*x1", "format": "fraction" }
+        "b_num_raw": { "formula": "mden*y1 - mnum*x1" },
+        "b_den_raw": { "formula": "mden" },
+        "b_num": { "formula": "b_den_raw < 0 ? -1*b_num_raw : b_num_raw" },
+        "b_den": { "formula": "b_den_raw < 0 ? -1*b_den_raw : b_den_raw" },
+        "b": { "formula": "b_num/b_den", "format": "fraction" }
       },
       "question": "A line passes through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Write the equation of the line in slope-intercept form.",
       "answer": "\\( y = {m|coef}x {b|sign} \\)"
@@ -1858,10 +1900,26 @@
         "y1": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
         "m_num": { "min": -5, "max": 5, "exclude": [0] },
         "m_den": { "min": 2, "max": 6, "exclude": ["m_num"] },
-        "m": { "formula": "m_num/m_den", "format": "fraction"  }
+        "m": { "formula": "m_num/m_den", "format": "fraction"  },
+        "yint_num": { "formula": "m_den*y1 - m_num*x1" },
+        "yint_den": { "formula": "m_den" },
+        "yint": { "formula": "yint_num/yint_den", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m}*(x - ({x1})) + ({y1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x1}", "y": "{y1}", "label": "Point", "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yint}", "label": "y-int", "showInQuestion": false, "showInAnswer": true }
+        ]
       },
       "question": "Graph the equation without rewriting: \\( y {y1|sign} = {m|coef}(x {x1|sign}) \\).",
-      "answer": "Graph not currently available."
+      "answer": "Equivalent slope-intercept form: \\( y = {m|coef}x {yint|sign} \\). Plot \\( ({x1}, {y1}) \\), use slope \\( {m} \\), and draw the line."
     },
     {
       "id": "ALG1-5.2-I1",
@@ -1875,7 +1933,9 @@
         "negb": { "formula": "-1*b" },
         "x1": { "min": -10, "max": 10, "exclude": [0] },
         "y1": { "min": -10, "max": 10, "exclude": [0] },
-        "yint": { "formula": "(a/b)*x1-y1" },
+        "yint_num": { "formula": "a*x1 - b*y1" },
+        "yint_den": { "formula": "b" },
+        "yint": { "formula": "yint_num/yint_den", "format": "fraction" },
         "c": { "formula": "b*y1 - a*x1" }
       },
       "question": "Rewrite the equation into standard form and slope-intercept form: <br>\\( y {y1|sign} = {m|coef}(x {x1|sign}) \\) ",
@@ -1913,12 +1973,17 @@
         "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1" },
+        "m": { "formula": "mnum/mden", "format": "fraction" },
         "negmden": { "formula": "-1*mden" },
-        "b": { "formula": "y1 - (mnum/mden)*x1", "format": "fraction" },
+        "b_num_raw": { "formula": "mden*y1 - mnum*x1" },
+        "b_den_raw": { "formula": "mden" },
+        "b_num": { "formula": "b_den_raw < 0 ? -1*b_num_raw : b_num_raw" },
+        "b_den": { "formula": "b_den_raw < 0 ? -1*b_den_raw : b_den_raw" },
+        "b": { "formula": "b_num/b_den", "format": "fraction" },
         "c": { "formula": "mden*y1 - mnum*x1" }
       },
       "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in Point-Slope, Slope-Intercept, and Standard Form.",
-      "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)"
+      "answer": "Point-Slope Form: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = {m|coef}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)"
     },
     {
       "id": "ALG1-5.2-A2",
@@ -1933,7 +1998,11 @@
         "x1": { "min": -6, "max": 6, "exclude": [0] },
         "m2": { "formula": "b/a", "format": "fraction" },
         "y1": { "min": -6, "max": 6, "exclude": [0] },
-        "b2": { "formula": "y1 - (m2)*x1", "format": "fraction" },
+        "b2_num_raw": { "formula": "a*y1 - b*x1" },
+        "b2_den_raw": { "formula": "a" },
+        "b2_num": { "formula": "b2_den_raw < 0 ? -1*b2_num_raw : b2_num_raw" },
+        "b2_den": { "formula": "b2_den_raw < 0 ? -1*b2_den_raw : b2_den_raw" },
+        "b2": { "formula": "b2_num/b2_den", "format": "fraction" },
         "negx1": { "formula": "-x1" },
         "negy1": { "formula": "-y1" },
         "c2": { "formula": "a*y1 + b*x1" }
@@ -1952,6 +2021,16 @@
         "m": { "formula": "m_num/m_den", "format": "fraction" },
         "b": { "min": -5, "max": 5, "exclude": [0] }
       },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y > {m}*x + ({b})",
+          "boundaryStyle": "dashed",
+          "showInQuestion": false,
+          "showInAnswer": true
+        }
+      },
       "question": "Graph the inequality \\( y > {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
       "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (dashed); Shade the region above the line."
     },
@@ -1966,6 +2045,15 @@
         "m": { "formula": "m_num/m_den", "format": "fraction" },
         "b": { "min": -5, "max": 5, "exclude": [0] }
       },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y <= {m}*x + ({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        }
+      },
       "question": "Graph the inequality \\( y \\leq {m|coef}x {b|sign} \\). Determine if the boundary line is solid or dashed, and which region to shade (Use a test point to confirm the shaded region).",
       "answer": "Boundary line: \\( y = {m|coef}x {b|sign} \\) (solid); Shade the region below the line (including the line)."
     },
@@ -1976,14 +2064,48 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b": { "min": -5, "max": 5, "exclude": [0, 1, -1] },
+        "b": { "min": 2, "max": 5 },
         "c": { "min": -10, "max": 10, "exclude": [0] },
-        "negb": { "formula": "-b" },
         "m": { "formula": "-a/b", "format": "fraction" },
         "yint": { "formula": "c/b", "format": "fraction" }
       },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y > ({c} - {a}*x)/({b})",
+          "boundaryStyle": "dashed",
+          "showInQuestion": false,
+          "showInAnswer": true
+        }
+      },
       "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
-      "answer": "Rewrite as \\( y > {m|coef}x {yint|sign} \\) if \\( {b} > 0 \\), or \\( y < {m|coef}x {yint|sign} \\) if \\( {b} < 0 \\); Boundary line is dashed; Shade appropriately."
+      "answer": "Rewrite as \\( y > {m|coef}x {yint|sign} \\); boundary line is dashed; shade above the line."
+    },
+    {
+      "id": "ALG1-6.5-I2",
+      "type": "template",
+      "objective": "Graphing Inequalities in Two Variables",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": -2 },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "m": { "formula": "-a/b", "format": "fraction" },
+        "yint": { "formula": "c/b", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y < ({c} - {a}*x)/({b})",
+          "boundaryStyle": "dashed",
+          "showInQuestion": false,
+          "showInAnswer": true
+        }
+      },
+      "question": "Graph the inequality \\( {a|coef}x {b|signedCoef}y > {c} \\). ",
+      "answer": "Rewrite as \\( y < {m|coef}x {yint|sign} \\); boundary line is dashed; shade below the line."
     }
   ],
   "Module 7": [
@@ -5515,6 +5637,215 @@
       },
       "question": "Write the equation for the graph shown below:",
       "answer": "\\( f(x) = \\frac{{a} }{ x {h|sign} } {k|sign} \\)."
+    },
+    {
+      "id": "ALG2-9.4-B1",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "basic",
+      "variables": {
+        "n": { "min": -3, "max": 3, "exclude": [0] },
+        "d": { "values": [2, 3] },
+        "r_num": { "min": -5, "max": 5 },
+        "r_den": { "min": -5, "max": 5, "exclude": [0, "r_num"] },
+        "a_num": { "formula": "n" },
+        "b_num": { "formula": "-n*r_num" },
+        "a_den": { "formula": "d" },
+        "b_den": { "formula": "-d*r_den" },
+        "xint": { "formula": "r_num", "format": "fraction" },
+        "yint": { "formula": "b_num/b_den", "format": "fraction" },
+        "ha": { "formula": "n/d", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = (a_num*x + b_num)/(a_den*x + b_den)", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = r_den", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = n/d", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": "{xint}", "y": 0, "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Graph the rational function on the coordinate plane, then identify the asymptotes: <br> \\( f(x) = \\frac{{a_num|coef}x {b_num|sign}}{{a_den|coef}x {b_den|sign}} \\).",
+      "answer": "See graph. Vertical asymptote: \\( x = {r_den} \\). Horizontal asymptote: \\( y = {ha} \\). Intercepts: \\(x\\)-int \\(= {xint}\\), \\(y\\)-int \\(= {yint}\\)."
+    },
+    {
+      "id": "ALG2-9.4-B2",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "basic",
+      "variables": {
+        "n": { "min": 1, "max": 3 },
+        "r_num": { "min": -5, "max": 5 },
+        "r1": { "min": -5, "max": 5, "exclude": [0, "r_num"] },
+        "r2": { "min": -5, "max": 5, "exclude": [0, "r1", "r_num"] },
+        "a_num": { "formula": "n" },
+        "b_num": { "formula": "-n*r_num" },
+        "n1": { "formula": "-r1" },
+        "n2": { "formula": "-r2" },
+        "xint": { "formula": "r_num", "format": "fraction" },
+        "yint": { "formula": "b_num/(r1*r2)", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = (a_num*x + b_num)/((x - r1)*(x - r2))", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = r1", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = 0", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq4": { "relation": "x = r2", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": "{xint}", "y": 0, "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Graph the rational function on the coordinate plane and state its asymptotes and intercepts: <br> \\( f(x) = \\frac{{a_num|coef}x {b_num|sign}}{(x {n1|sign})(x {n2|sign})} \\).",
+      "answer": "See graph. Vertical asymptotes: \\( x = {r1} \\) and \\( x = {r2} \\). Horizontal asymptote: \\( y = 0 \\). Intercepts: \\(x\\)-int \\(= {xint}\\), \\(y\\)-int \\(= {yint}\\)."
+    },
+    {
+      "id": "ALG2-9.4-B3",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -4, "max": 4, "exclude": [0] },
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "r": { "min": -6, "max": 6, "exclude": [0, "h"] },
+        "b": { "formula": "-a*r" },
+        "neg_h": { "formula": "-h" },
+        "xint": { "formula": "r" },
+        "yint": { "formula": "b/(-h)", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = (a*x + b)/(x - h)", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = h", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = a", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": "{xint}", "y": 0, "showInQuestion": false, "showInAnswer": true },
+          { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Graph the rational function on the coordinate plane and identify its asymptotes: <br> \\( f(x) = \\frac{{a|coef}x {b|sign}}{x {neg_h|sign}} \\).",
+      "answer": "See graph. Vertical asymptote: \\( x = {h} \\). Horizontal asymptote: \\( y = {a} \\). Intercepts: \\(x\\)-int \\(= {xint}\\), \\(y\\)-int \\(= {yint}\\)."
+    },
+    {
+      "id": "ALG2-9.4-I1",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "r1": { "min": -6, "max": 6, "exclude": [0] },
+        "r2": { "min": -6, "max": 6, "exclude": [0, "r1"] },
+        "r3": { "min": -6, "max": 6, "exclude": [0, "r1", "r2"] },
+        "aN": { "formula": "-(r1 + r2)" },
+        "bN": { "formula": "r1*r2" },
+        "aD": { "formula": "-(r1 + r3)" },
+        "bD": { "formula": "r1*r3" },
+        "n1": { "formula": "-r1" },
+        "n2": { "formula": "-r2" },
+        "n3": { "formula": "-r3" },
+        "hole_x": { "formula": "r1" },
+        "hole_y": { "formula": "(r1 - r2)/(r1 - r3)", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = ((x - r1)*(x - r2))/((x - r1)*(x - r3))", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = r3", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = 1", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          {
+            "x": "{hole_x}",
+            "y": "{hole_y}",
+            "label": "hole",
+            "fill": false,
+            "stroke": true,
+            "pointRadius": 6,
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
+      },
+      "question": "Factor/simplify, then graph the function on the coordinate plane. Identify asymptotes and the removable discontinuity: <br> \\( f(x) = \\frac{x^2 {aN|signedCoef}x {bN|sign}}{x^2 {aD|signedCoef}x {bD|sign}} \\).",
+      "answer": "Simplified form: \\( \\frac{x {n2|sign}}{x {n3|sign}} \\), with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptote: \\( x = {r3} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
+    },
+    {
+      "id": "ALG2-9.4-I2",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "d": { "min": -4, "max": 4, "exclude": [0] },
+        "s": { "min": -2, "max": 2 },
+        "rem": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "formula": "a*d + s" },
+        "c": { "formula": "s*d + rem" },
+        "neg_d": { "formula": "-d" },
+        "yint": { "formula": "c/d", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -14, "yMax": 14 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = (a*x^2 + b*x + c)/(x + d)", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = -d", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = a*x + s", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Graph the rational function on the coordinate plane. Use division to identify the vertical and slant asymptotes: <br> \\( f(x) = \\frac{{a|coef}x^2 {b|signedCoef}x {c|sign}}{x {d|sign}} \\).",
+      "answer": "Division gives \\( f(x) = {a|coef}x {s|sign} + \\frac{{rem}}{x {d|sign}} \\). Vertical asymptote: \\( x = {neg_d} \\). Slant asymptote: \\( y = {a|coef}x {s|sign} \\). See graph."
+    },
+    {
+      "id": "ALG2-9.4-I3",
+      "type": "template",
+      "objective": "Graphing Rational Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "values": [-4, -3, -2, 2, 3, 4] },
+        "r1": { "formula": "p + 1" },
+        "r2": { "formula": "p - 1" },
+        "r3": { "formula": "p + 5" },
+        "r4": { "formula": "p - 5" },
+        "aN": { "formula": "-(p + r1 + r2)" },
+        "bN": { "formula": "p*r1 + p*r2 + r1*r2" },
+        "cN": { "formula": "-p*r1*r2" },
+        "aD": { "formula": "-(p + r3 + r4)" },
+        "bD": { "formula": "p*r3 + p*r4 + r3*r4" },
+        "cD": { "formula": "-p*r3*r4" },
+        "np": { "formula": "-p" },
+        "n1": { "formula": "-r1" },
+        "n2": { "formula": "-r2" },
+        "n3": { "formula": "-r3" },
+        "n4": { "formula": "-r4" },
+        "hole_x": { "formula": "p" },
+        "hole_y": { "formula": "((p - r1)*(p - r2))/((p - r3)*(p - r4))", "format": "fraction" }
+      },
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = ((x - p)*(x - r1)*(x - r2))/((x - p)*(x - r3)*(x - r4))", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = r3", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "x = r4", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq4": { "relation": "y = 1", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "points": [
+          {
+            "x": "{hole_x}",
+            "y": "{hole_y}",
+            "label": "hole",
+            "fill": false,
+            "stroke": true,
+            "pointRadius": 6,
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
+      },
+      "question": "Factor/simplify, then graph the rational function on the coordinate plane. Identify the hole and vertical asymptotes: <br> \\( f(x) = \\frac{x^3 {aN|signedCoef}x^2 {bN|signedCoef}x {cN|sign}}{x^3 {aD|signedCoef}x^2 {bD|signedCoef}x {cD|sign}} \\).",
+      "answer": "Factoring and canceling gives \\( f(x) = \\frac{(x {n1|sign})(x {n2|sign})}{(x {n3|sign})(x {n4|sign})} \\) with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptotes: \\( x = {r3} \\) and \\( x = {r4} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
     }
   ]
 },
