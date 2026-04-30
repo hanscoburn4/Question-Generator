@@ -1807,7 +1807,7 @@
         "m": { "formula": "(y2 - y1)/(x2 - x1)", "format": "fraction" }
       },
       "question": "Find the slope of the line passing through the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
-      "answer": "\\( m = \\frac{{mnum}}{{mden}} \\)"
+      "answer": "\\( m = {m} \\)"
     },
     {
       "id": "ALG1-4.3 & 5.1-B1",
@@ -1897,6 +1897,8 @@
       "variables": {
         "x1": { "min": -8, "max": 8, "exclude": [0] },
         "y1": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
+        "negx1": { "formula": "-1*x1" },
+        "negy1": { "formula": "-1*y1" },
         "m_num": { "min": -5, "max": 5, "exclude": [0] },
         "m_den": { "min": 2, "max": 6, "exclude": ["m_num"] },
         "m": { "formula": "m_num/m_den", "format": "fraction"  },
@@ -1917,7 +1919,7 @@
           { "x": 0, "y": "{yint}", "label": "y-int", "showInQuestion": false, "showInAnswer": true }
         ]
       },
-      "question": "Graph the equation without rewriting: \\( y {y1|sign} = {m|coef}(x {x1|sign}) \\).",
+      "question": "Graph the equation without rewriting: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\).",
       "answer": "Equivalent slope-intercept form: \\( y = {m|coef}x {yint|sign} \\). Plot \\( ({x1}, {y1}) \\), use slope \\( {m} \\), and draw the line."
     },
     {
