@@ -1937,10 +1937,16 @@
         "yint_num": { "formula": "a*x1 - b*y1" },
         "yint_den": { "formula": "b" },
         "yint": { "formula": "yint_num/yint_den", "format": "fraction" },
-        "c": { "formula": "b*y1 - a*x1" }
+        "c": { "formula": "b*y1 - a*x1" },
+        "std_g_ab": { "formula": "(()=>{ let x=Math.abs(a), y=Math.abs(b); while(y!==0){ const t=x%y; x=y; y=t; } return x===0?1:x; })()" },
+        "std_g": { "formula": "(()=>{ let x=std_g_ab, y=Math.abs(c); while(y!==0){ const t=x%y; x=y; y=t; } return x===0?1:x; })()" },
+        "std_sign": { "formula": "a < 0 ? -1 : 1" },
+        "std_a": { "formula": "std_sign*(a/std_g)" },
+        "std_b": { "formula": "std_sign*((-b)/std_g)" },
+        "std_c": { "formula": "std_sign*(c/std_g)" }
       },
       "question": "Rewrite the equation into standard form and slope-intercept form: <br>\\( y {y1|sign} = {m|coef}(x {x1|sign}) \\) ",
-      "answer": "Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\) <br> Slope-Intercept Form: \\( y = {m|coef}x {yint|sign} \\)"
+      "answer": "Standard Form: \\( {std_a|coef}x {std_b|signedCoef}y = {std_c} \\) <br> Slope-Intercept Form: \\( y = {m|coef}x {yint|sign} \\)"
     },
     {
       "id": "ALG1-5.2-I2",
@@ -1981,7 +1987,7 @@
         "b_num": { "formula": "b_den_raw < 0 ? -1*b_num_raw : b_num_raw" },
         "b_den": { "formula": "b_den_raw < 0 ? -1*b_den_raw : b_den_raw" },
         "b": { "formula": "b_num/b_den", "format": "fraction" },
-        "c": { "formula": "mden*y1 - mnum*x1" }
+        "c": { "formula": "mnum*x1 - mden*y1" }
       },
       "question": "Write the equation of the line passing through \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\) in Point-Slope, Slope-Intercept, and Standard Form.",
       "answer": "Point-Slope Form: \\( y {negy1|sign} = {m|coef}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = {m|coef}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)"
@@ -2424,22 +2430,22 @@
         "x": { "min": -6, "max": 6, "exclude": [0] },
         "y": { "min": -6, "max": 6, "exclude": [0] },
         "a1": { "min": -3, "max": 3, "exclude": [0] },
-        "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
+        "b1": { "min": -4, "max": -1, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y" },
         "a2": { "min": -3, "max": 3, "exclude": [0,"a1"] },
-        "b2": { "min": -4, "max": 4, "exclude": [0,"a2","b1"] },
+        "b2": { "min": 1, "max": 4, "exclude": [0,"a2","b1"] },
         "c2": { "formula": "a2*x + b2*y" }
       },
       "draw": {
         "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
         "gridStep": 1,
         "eq1": {
-          "relation": "y > ({c1} - {a1}*x)/({b1})",
+          "relation": "y < (c1 - a1*x)/(b1)",
           "showInQuestion": false,
           "showInAnswer": true
         },
         "eq2": {
-          "relation": "y > ({c2} - {a2}*x)/({b2})",
+          "relation": "y > (c2 - a2*x)/(b2)",
           "showInQuestion": false,
           "showInAnswer": true
         }
@@ -2456,27 +2462,27 @@
         "x": { "min": -6, "max": 6, "exclude": [0] },
         "y": { "min": -6, "max": 6, "exclude": [0] },
         "a1": { "min": -3, "max": 3, "exclude": [0] },
-        "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
+        "b1": { "min": 1, "max": 4, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y" },
         "a2": { "min": -3, "max": 3, "exclude": [0,"a1"] },
-        "b2": { "min": -4, "max": 4, "exclude": [0,"a2","b1"] },
+        "b2": { "min": -4, "max": -1, "exclude": [0,"a2","b1"] },
         "c2": { "formula": "a2*x + b2*y" }
       },
       "draw": {
         "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
         "gridStep": 1,
         "eq1": {
-          "relation": "y < ({c1} - {a1}*x)/({b1})",
+          "relation": "y < (c1 - a1*x)/(b1)",
           "showInQuestion": false,
           "showInAnswer": true
         },
         "eq2": {
-          "relation": "y >= ({c2} - {a2}*x)/({b2})",
+          "relation": "y <= (c2 - a2*x)/(b2)",
           "showInQuestion": false,
           "showInAnswer": true
         }
       },
-      "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y < {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y \\ge {c2} \\)",
+      "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y < {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y \\le {c2} \\)",
       "answer": "Use a dashed boundary line for \\( {a1|coef}x {b1|signedCoef}y = {c1} \\) and a solid boundary line for \\( {a2|coef}x {b2|signedCoef}y = {c2} \\). Shade the half-plane that satisfies each inequality; the overlap is the solution region."
     }
   ],
@@ -6301,8 +6307,114 @@
           }
         ]
       },
-      "question": "Factor/simplify, then graph the rational function on the coordinate plane. Identify the hole and vertical asymptotes: <br> \\( f(x) = \\frac{x^3 {aN|signedCoef}x^2 {bN|signedCoef}x {cN|sign}}{x^3 {aD|signedCoef}x^2 {bD|signedCoef}x {cD|sign}} \\).",
+      "question": "Factor/simplify, then graph the rational function on the coordinate plane. The numerator is already factored; factor only the denominator. Identify the hole and vertical asymptotes: <br> \\( f(x) = \\frac{(x {p|sign})(x {n1|sign})(x {n2|sign})}{x^3 {aD|signedCoef}x^2 {bD|signedCoef}x {cD|sign}} \\).",
       "answer": "Factoring and canceling gives \\( f(x) = \\frac{(x {n1|sign})(x {n2|sign})}{(x {n3|sign})(x {n4|sign})} \\) with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptotes: \\( x = {r3} \\) and \\( x = {r4} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
+    },
+    {
+      "id": "ALG2-9.6-B1",
+      "type": "template",
+      "objective": "Solving Rational Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "value": 1 },
+        "b": { "formula": "a + 1" },
+        "x1": { "min": -8, "max": 8, "exclude": [-2, -1, 0] },
+        "x2": { "min": -8, "max": 8, "exclude": [-2, -1, 0, "x1"] },
+        "c": { "formula": "-(x1*x2 + x1 + x2 + 1)" },
+        "d": { "formula": "c - 1 - x1 - x2" }
+      },
+      "question": "Solve the equation: <br> \\( \\frac{{a}}{x {b|sign}} + \\frac{{c}}{x {d|sign}} = 1 \\).",
+      "answer": "The solutions are \\( x = {x1} \\) and \\( x = {x2} \\)."
+    },
+    {
+      "id": "ALG2-9.6-I1",
+      "type": "template",
+      "objective": "Solving Rational Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "k": { "values": [2, 3, 4] },
+        "r1": { "formula": "-k" },
+        "r2": { "formula": "2*k" },
+        "r3": { "formula": "3*k" },
+        "n1": { "formula": "-r1" },
+        "n2": { "formula": "-r2" },
+        "n3": { "formula": "-r3" },
+        "aD1": { "formula": "-(r1 + r2)" },
+        "bD1": { "formula": "r1*r2" },
+        "aD2": { "formula": "-(r1 + r3)" },
+        "bD2": { "formula": "r1*r3" },
+        "aD3": { "formula": "-(r2 + r3)" },
+        "bD3": { "formula": "r2*r3" },
+        "a": { "formula": "-5*k" },
+        "b": { "formula": "-k" },
+        "m": { "formula": "k" },
+        "q1": { "formula": "-12*k" },
+        "q0": { "formula": "16*k*k" },
+        "x_bad": { "formula": "2*k" },
+        "x_good": { "formula": "4*k" }
+      },
+      "question": "Solve the equation. Show your work and check for extraneous solutions: <br> \\( \\frac{x {a|sign}}{x^2 {aD1|signedCoef}x {bD1|sign}} + \\frac{x {b|sign}}{x^2 {aD2|signedCoef}x {bD2|sign}} = \\frac{{m}}{x^2 {aD3|signedCoef}x {bD3|sign}} \\).",
+      "answer": "Factor each denominator: \\( x^2 {aD1|signedCoef}x {bD1|sign}=(x {n1|sign})(x {n2|sign}) \\), \\( x^2 {aD2|signedCoef}x {bD2|sign}=(x {n1|sign})(x {n3|sign}) \\), and \\( x^2 {aD3|signedCoef}x {bD3|sign}=(x {n2|sign})(x {n3|sign}) \\). Multiplying by the LCD gives \\( 2x^2 {q1|signedCoef}x {q0|sign} = 0 \\), so \\( x = {x_bad} \\) or \\( x = {x_good} \\). Since \\( x = {x_bad} \\) makes a denominator zero, the solution is \\( x = {x_good} \\)."
+    },
+    {
+      "id": "ALG2-9.6-A1",
+      "type": "template",
+      "objective": "Solving Rational Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "k": { "values": [2, 3, 4, 5, 6, 7, 8] },
+        "h": { "values": [1, 2, 3] },
+        "v": { "formula": "3*k" },
+        "d_up": { "formula": "5*h*k" },
+        "d_down": { "formula": "2*h*k" },
+        "stop": { "formula": "h" },
+        "t_total": { "formula": "4*h" },
+        "q1": { "formula": "k" },
+        "q0": { "formula": "-2*k*k" },
+        "c_good": { "formula": "k" },
+        "c_bad": { "formula": "-2*k" }
+      },
+      "question": "A motorboat travels \\( {d_up} \\) miles upstream and \\( {d_down} \\) miles downstream. Its speed in still water is \\( {v} \\) mph. The entire trip takes \\( {t_total} \\) hours, including a \\( {stop} \\)-hour stop between the two legs. Find the speed \\(c\\) of the river current.",
+      "answer": "The travel-time equation is \\( \\frac{{d_up}}{{v - c}} + \\frac{{d_down}}{{v + c}} = {t_total} - {stop} \\). Simplifying gives \\( c^2 {q1|signedCoef}c {q0|sign} = 0 \\), so \\( c = {c_good} \\) or \\( c = {c_bad} \\). Since current speed must be positive, \\( c = {c_good} \\) mph."
+    },
+    {
+      "id": "ALG2-9.6-A2",
+      "type": "template",
+      "objective": "Solving Rational Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "k": { "values": [2, 3, 4] },
+        "d": { "formula": "4*k" },
+        "t_both": { "formula": "2*k" },
+        "t_a": { "formula": "k" },
+        "q1": { "formula": "-k" },
+        "q0": { "formula": "-12*k*k" },
+        "xsol": { "formula": "4*k" },
+        "xneg": { "formula": "-3*k" }
+      },
+      "question": "Pipe A can fill a pool in \\(x\\) hours. Pipe B can fill the same pool in \\({d}\\) more hours. They run together for \\( {t_both} \\) hours, then Pipe B is turned off and Pipe A runs alone for \\( {t_a} \\) more hours to finish the pool. Find how long it would take Pipe A to fill the pool alone.",
+      "answer": "Set up the work-rate equation \\( {t_both}\\left(\\frac{1}{x}+\\frac{1}{x {d|sign}}\\right)+\\frac{{t_a}}{x}=1 \\). Simplifying gives \\( x^2 {q1|signedCoef}x {q0|sign} = 0 \\), so \\( x = {xsol} \\) or \\( x = {xneg} \\). Reject the negative value, so \\( x = {xsol} \\) hours."
+    },
+    {
+      "id": "ALG2-9.6-A3",
+      "type": "template",
+      "objective": "Solving Rational Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "Aname": { "values": ["Bob", "Alice", "Charlie","Tony","Luke","Paula","Lars","Ashlynn","Janel","Frank"] },
+        "Bname": { "values": ["Bob", "Alice", "Charlie","Tony","Luke","Paula","Lars","Ashlynn","Janel","Frank"], "exclude": ["Aname"] },
+        "k": { "values": [1, 2, 3] },
+        "d": { "formula": "2*k" },
+        "nd": { "formula": "-d" },
+        "t_both": { "formula": "2*k" },
+        "t_a": { "formula": "k" },
+        "q1": { "formula": "-7*k" },
+        "q0": { "formula": "6*k*k" },
+        "xother": { "formula": "k" },
+        "xsol": { "formula": "6*k" }
+      },
+      "question": "{Aname} can mow a field in \\(x\\) hours. {Bname} can mow it faster by \\( {d} \\) hours. They work together for \\( {t_both} \\) hours, then {Bname} leaves and {Aname} works alone for \\( {t_a} \\) more hours to finish the project. Find \\(x\\).",
+      "answer": "Set up \\( {t_both}\\left(\\frac{1}{x}+\\frac{1}{x {nd|sign}}\\right)+\\frac{{t_a}}{x}=1 \\). This simplifies to \\( x^2 {q1|signedCoef}x {q0|sign} = 0 \\), so \\( x = {xother} \\) or \\( x = {xsol} \\). Since \\(x {nd|sign}\\) must be positive, the valid solution is \\( x = {xsol} \\) hours."
     }
   ]
 },
