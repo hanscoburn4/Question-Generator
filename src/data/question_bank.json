@@ -2477,7 +2477,7 @@
           "showInAnswer": true
         },
         "eq2": {
-          "relation": "y <= (c2 - a2*x)/(b2)",
+          "relation": "y >= (c2 - a2*x)/(b2)",
           "showInQuestion": false,
           "showInAnswer": true
         }
@@ -9865,6 +9865,58 @@
         },
         "question": "Decompose the following rational function into partial fractions.<br>\\( \\frac{{A|coef}x^2 {B|signedCoef}x {C|sign}}{{m|coef}x^3 {g|signedCoef}x^2 {h|signedCoef}x {i|sign}} \\)",
         "answer": "The partial fraction decomposition is \\( \\frac{{D}}{x {r1|sign}} {sE|signedCoef}\\frac{{Eabs|coef}x {Fadj|sign}}{{m|coef}x^2 {u|signedCoef}x {v|sign}} \\)."
+      }
+    ],
+    "Chapter 12": [
+      {
+        "id": "PC-12.1-B1",
+        "type": "template",
+        "objective": "Evaluating Limits",
+        "variables": {
+          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "a1": { "min": -2, "max": 2, "exclude": [0] },
+          "a2": { "min": -10, "max": 10, "exclude": [0, "a1"] },
+          "L1": { "formula": "a1*a*a + a2" },
+          "b1": { "min": -5, "max": 5, "exclude": [0] },
+          "b": { "formula": "-b1" },
+          "b2": { "min": -10, "max": 10, "exclude": [0, "b1"] },
+          "b3": { "min": -10, "max": 10, "exclude": [0] },
+          "L2": { "formula": "(b + b2)/(b + b3)" }
+        },
+        "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to {a}} ({a1|coef}x^2 {a2|sign}) \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to {b}} \\frac{(x {b1|sign})(x {b2|sign})}{(x {b3|sign})(x {b1|sign})} \\)",
+        "answer": "a) \\( {L1} \\) b) \\( {L2} \\)"
+      },
+      {
+        "id": "PC-12.1-I1",
+        "type": "template",
+        "objective": "Evaluating Limits",
+        "variables": {},
+      "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 1} \\frac{x}{\\ln(x)} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to \\frac{\\pi}{4}} \\tan^2(2x) \\)",
+      "answer": "a) Since \\( \\lim_{x \\to 1^-} \\frac{x}{\\ln(x)} = \\infty \\) and \\( \\lim_{x \\to 1^+} \\frac{x}{\\ln(x)} = -\\infty \\), the limit does not exist. b) \\( \\infty \\)"
+      },
+      {
+        "id": "PC-12.1-I2",
+        "type": "template",
+        "objective": "Evaluating Limits",
+        "variables": {},
+        "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} \\)",
+        "answer": "a) \\( \\frac{1}{2} \\) b) \\( 4 \\)"
+      },
+      {
+        "id": "PC-12.1-I3",
+        "type": "template",
+        "objective": "Evaluating Limits",
+        "variables": {},
+        "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{\\sin(x)}{x} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to \\frac{\\pi}{2}^-} \\tan(x) \\)",
+        "answer": "a) \\( 1 \\) b) \\( \\infty \\)"
+      },
+      {
+        "id": "PC-12.1-I4",
+        "type": "template",
+        "objective": "Evaluating Limits",
+        "variables": {},
+        "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{|x|}{x} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to 3} \\frac{x - 3}{|x - 3|} \\)",
+        "answer": "a) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\). b) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\)."
       }
     ]
   }
