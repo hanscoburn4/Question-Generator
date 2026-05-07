@@ -6316,10 +6316,11 @@
       "objective": "Solving Rational Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "value": 1 },
+        "a": { "values": [1] },
         "b": { "formula": "a + 1" },
-        "x1": { "min": -8, "max": 8, "exclude": [-2, -1, 0] },
-        "x2": { "min": -8, "max": 8, "exclude": [-2, -1, 0, "x1"] },
+        "negb": { "formula": "-b" },
+        "x1": { "min": -8, "max": 8, "exclude": [-2, -1, 0, "negb"] },
+        "x2": { "min": -8, "max": 8, "exclude": [-2, -1, 0, "x1", "negb"] },
         "c": { "formula": "-(x1*x2 + x1 + x2 + 1)" },
         "d": { "formula": "c - 1 - x1 - x2" }
       },
@@ -9872,6 +9873,7 @@
         "id": "PC-12.1-B1",
         "type": "template",
         "objective": "Evaluating Limits",
+        "difficulty": "basic",
         "variables": {
           "a": { "min": -5, "max": 5, "exclude": [0] },
           "a1": { "min": -2, "max": 2, "exclude": [0] },
@@ -9890,6 +9892,7 @@
         "id": "PC-12.1-I1",
         "type": "template",
         "objective": "Evaluating Limits",
+        "difficulty": "intermediate",
         "variables": {},
       "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 1} \\frac{x}{\\ln(x)} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to \\frac{\\pi}{4}} \\tan^2(2x) \\)",
       "answer": "a) Since \\( \\lim_{x \\to 1^-} \\frac{x}{\\ln(x)} = \\infty \\) and \\( \\lim_{x \\to 1^+} \\frac{x}{\\ln(x)} = -\\infty \\), the limit does not exist. b) \\( \\infty \\)"
@@ -9898,6 +9901,7 @@
         "id": "PC-12.1-I2",
         "type": "template",
         "objective": "Evaluating Limits",
+        "difficulty": "intermediate",
         "variables": {},
         "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} \\)",
         "answer": "a) \\( \\frac{1}{2} \\) b) \\( 4 \\)"
@@ -9906,6 +9910,7 @@
         "id": "PC-12.1-I3",
         "type": "template",
         "objective": "Evaluating Limits",
+        "difficulty": "intermediate",
         "variables": {},
         "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{\\sin(x)}{x} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to \\frac{\\pi}{2}^-} \\tan(x) \\)",
         "answer": "a) \\( 1 \\) b) \\( \\infty \\)"
@@ -9914,6 +9919,7 @@
         "id": "PC-12.1-I4",
         "type": "template",
         "objective": "Evaluating Limits",
+        "difficulty": "intermediate",
         "variables": {},
         "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{|x|}{x} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to 3} \\frac{x - 3}{|x - 3|} \\)",
         "answer": "a) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\). b) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\)."
