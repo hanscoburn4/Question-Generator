@@ -76,6 +76,53 @@ function gcd(a, b) {
   return a;
 }
 
+function binomialCoefficient(n, k) {
+  if (k < 0 || k > n) return 0;
+  k = Math.min(k, n - k);
+  let result = 1;
+  for (let i = 1; i <= k; i++) {
+    result = (result * (n - k + i)) / i;
+  }
+  return result;
+}
+
+function formatExpandedTerm(coef, xExp, yExp = 0, xSymbol = 'x', ySymbol = null) {
+  const absCoef = Math.abs(coef);
+  const factors = [];
+
+  if (absCoef !== 1 || (xExp === 0 && yExp === 0)) {
+    factors.push(String(absCoef));
+  }
+
+  if (xExp > 0) {
+    factors.push(`${xSymbol}${xExp === 1 ? '' : `^{${xExp}}`}`);
+  }
+
+  if (ySymbol && yExp > 0) {
+    factors.push(`${ySymbol}${yExp === 1 ? '' : `^{${yExp}}`}`);
+  }
+
+  return factors.join('');
+}
+
+function expandBinomial(a, b, n, xSymbol = 'x', ySymbol = null) {
+  const terms = [];
+
+  for (let k = 0; k <= n; k++) {
+    const coef = binomialCoefficient(n, k) * Math.pow(a, n - k) * Math.pow(b, k);
+    const monomial = formatExpandedTerm(coef, n - k, ySymbol ? k : 0, xSymbol, ySymbol);
+    const sign = coef < 0 ? '-' : '+';
+
+    if (terms.length === 0) {
+      terms.push(sign === '-' ? `-${monomial}` : monomial);
+    } else {
+      terms.push(`${sign} ${monomial}`);
+    }
+  }
+
+  return `\\( ${terms.join(' ')} \\)`;
+}
+
 function evaluateJSExpression(expression, variables = {}) {
   const helpers = {
     sqrt: Math.sqrt, sin: Math.sin, cos: Math.cos, tan: Math.tan,
@@ -83,6 +130,8 @@ function evaluateJSExpression(expression, variables = {}) {
     abs: Math.abs, pow: Math.pow, log: Math.log, ln: Math.log,
     exp: Math.exp, min: Math.min, max: Math.max,
     round: Math.round, floor: Math.floor, ceil: Math.ceil,
+    binomialCoefficient,
+    expandBinomial,
     PI: Math.PI, E: Math.E,
   };
 
@@ -371,7 +420,7 @@ function generateQuestionVariables(questionTemplate) {
       if (constraints.formula) {
         try {
           const value = evaluateJSExpression(constraints.formula, vars);
-          if (isFinite(value)) {
+          if (value !== undefined && value !== null && !(typeof value === "number" && !isFinite(value))) {
             vars[key] = value;
             changed = true;
           }
@@ -384,7 +433,7 @@ function generateQuestionVariables(questionTemplate) {
 
   // Final fallback – if a formula still isn't resolved → NaN / error (optional)
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
-    if (constraints.formula && !isFinite(vars[key])) {
+    if (constraints.formula && vars[key] === undefined) {
       console.error(`Formula for "${key}" could not be resolved: ${constraints.formula}`);
       vars[key] = NaN;
     }

@@ -4783,10 +4783,14 @@
         "d": { "min": -3, "max": 3, "exclude": [0] },
         "e": { "min": -6, "max": 6, "exclude": [0] },
         "deg": { "formula": "a + 2" },
-        "leadingCoef": { "formula": "b * d" }
+        "leadingCoef": { "formula": "b * d" },
+        "xDegMinus1": { "formula": "deg - 1" },
+        "xDegMinus2": { "formula": "deg - 2" },
+        "xDegMinus1Coef": { "formula": "b*e + c*d" },
+        "xDegMinus2Coef": { "formula": "c*e" }
       },
       "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = x^{a|coef} ({b|coef}x {c|sign})({d|coef}x {e|sign}) \\).",
-      "answer": "Standard form: \\( f(x) = {leadingCoef|coef}x^{deg|coef} {b*c|signedCoef}x^{deg-1|coef} {c*d|signedCoef}x^{deg-2|coef} \\); Degree: {deg}; Leading coefficient: {leadingCoef}"
+      "answer": "Standard form: \\( f(x) = {leadingCoef|coef}x^{deg|coef} {xDegMinus1Coef|signedCoef}x^{xDegMinus1|coef} {xDegMinus2Coef|signedCoef}x^{xDegMinus2|coef} \\); Degree: {deg}; Leading coefficient: {leadingCoef}"
     },
     {
       "id": "ALG2-4.1-B2",
@@ -4798,10 +4802,12 @@
         "b": { "min": -6, "max": 6, "exclude": [0] },
         "c": { "min": -8, "max": 8, "exclude": [0] },
         "d": { "min": -10, "max": 10 },
-        "e": { "min": -5, "max": 5 }
+        "e": { "min": -5, "max": 5 },
+        "x4Coef": { "formula": "a*b" },
+        "x2Coef": { "formula": "a*c" }
       },
       "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = {a|coef}x^2({b|coef}x^2 {c|sign}) {d|signedCoef}x {e|sign} \\).",
-      "answer": "Standard form: \\( f(x) = {a*b|coef}x^4 {a*c|signedCoef}x^2 {d|signedCoef}x {e|sign} \\); Degree: 4"
+      "answer": "Standard form: \\( f(x) = {x4Coef|coef}x^4 {x2Coef|signedCoef}x^2 {d|signedCoef}x {e|sign} \\); Degree: 4"
     },
     {
       "id": "ALG2-4.1-I1",
@@ -4842,27 +4848,16 @@
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
-        "h": { "min": -5, "max": 5, "exclude": [0] },
-        "w": { "min": -5, "max": 5, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0] },
-        "e": { "min": -6, "max": 6, "exclude": [0] }
-      },
-      "question": "Use a calculator to find all the extrema, then state the end-behavior of the polynomial function: \\( f(x) = {a|coef}x^4 {h|signedCoef}x^3 {w|signedCoef}x^2 {d|signedCoef}x {e|sign} \\).",
-      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
-    },
-    {
-      "id": "ALG2-4.1-A2",
-      "type": "template",
-      "objective": "Polynomial Functions",
-      "difficulty": "advanced",
-      "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0] },
         "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -5, "max": 5, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0] }
+        "d": { "min": -10, "max": 10, "exclude": [0] },
+        "x1": { "formula": "(-2*b + sqrt(4*b*b - 12*a*c))/(6*a)" },
+        "y1": { "formula": "a*x1*x1*x1 + b*x1*x1 + c*x1 + d" },
+        "x2": { "formula": "(-2*b - sqrt(4*b*b - 12*a*c))/(6*a)" },
+        "y2": { "formula": "a*x2*x2*x2 + b*x2*x2 + c*x2 + d" }
       },
       "question": "Use a calculator to find all the extrema, then state the end-behavior of the polynomial function: \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\).",
-      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
+      "answer": "Extrema: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Answers will vary based on the specific values."
     },
     {
       "id": "ALG2-4.2-B1",
@@ -4903,12 +4898,12 @@
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "length": { "min": 6, "max": 10 },
-        "width": { "min": 2, "max": 5},
-        "x": { "formula": "(length+width+sqrt((length+width)^2 - 3*length*width))/6"}
+        "l": { "min": 6, "max": 10 },
+        "w": { "min": 2, "max": 5},
+        "x": { "formula": "(4*(l + w) + sqrt(16*(l + w)*(l + w) - 48*l*w))/24"}
       },
-      "question": "A flat piece of cardboard has the dimensions {length} inches by {width} inches. Squares of side length x inches are cut from each corner, and the sides are folded up to form an open box. If the volume of the box is given by \\( V(x) \\), find the value of x that maximizes the volume.",
-      "answer": "x = {x} inches."
+      "question": "A flat piece of cardboard has the dimensions {l} inches by {w} inches. Squares of side length x inches are cut from each corner, and the sides are folded up to form an open box. If the volume of the box is given by \\( V(x) \\), find the value of x that maximizes the volume.",
+      "answer": "\\( x = {x} \\) inches."
     },
     {
       "id": "ALG2-4.2-A2",
@@ -4927,6 +4922,39 @@
       "answer": "Solve \\( P(x) = 0 \\) to find the break-even points. (Answers will vary based on specific values.)"
     },
     {
+      "id": "ALG2-4.2-A3",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -4, "max": -1 },
+        "t_peak": { "min": 2, "max": 6 },
+        "h0": { "min": 4, "max": 18 },
+        "b": { "formula": "-2*a*t_peak" },
+        "h_peak": { "formula": "a*t_peak*t_peak + b*t_peak + h0" }
+      },
+      "question": "A launched signal flare's height (in meters) is modeled by \\( h(t) = {a|coef}t^2 {b|signedCoef}t {h0|sign} \\), where \\(t\\) is time in seconds. Find when the flare reaches its maximum height and determine that maximum height.",
+      "answer": "The maximum occurs at \\( t = {t_peak} \\) seconds, and the maximum height is \\( {h_peak} \\) meters."
+    },
+    {
+      "id": "ALG2-4.2-A4",
+      "type": "template",
+      "objective": "Analyzing Graphs of Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "r1": { "min": 1, "max": 3 },
+        "gap1": { "min": 2, "max": 4 },
+        "gap2": { "min": 2, "max": 4 },
+        "r2": { "formula": "r1 + gap1" },
+        "r3": { "formula": "r2 + gap2" },
+        "b": { "formula": "-(r1 + r2 + r3)" },
+        "c": { "formula": "r1*r2 + r1*r3 + r2*r3" },
+        "d": { "formula": "-(r1*r2*r3)" }
+      },
+      "question": "The net gain (in thousands of dollars) from an ad campaign is modeled by \\( N(x) = x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\), where \\(x\\) is the number of thousands spent on ads. Find all break-even spending levels.",
+      "answer": "The break-even spending levels are \\( x = {r1} \\), \\( x = {r2} \\), and \\( x = {r3} \\) (thousand dollars)."
+    },
+    {
       "id": "ALG2-4.3-B1",
       "type": "template",
       "objective": "Operations with Polynomials",
@@ -4937,10 +4965,13 @@
         "c1": { "min": -8, "max": 8, "exclude": [0] },
         "a2": { "min": -5, "max": 5, "exclude": [0] },
         "b2": { "min": -6, "max": 6, "exclude": [0] },
-        "c2": { "min": -8, "max": 8, "exclude": [0] }
+        "c2": { "min": -8, "max": 8, "exclude": [0] },
+        "sumA": { "formula": "a1+a2" },
+        "sumB": { "formula": "b1+b2" },
+        "sumC": { "formula": "c1+c2" }
       },
       "question": "Add the polynomials: \\( ({a1|coef}x^2 {b1|signedCoef}x {c1|sign}) + ({a2|coef}x^2 {b2|signedCoef}x {c2|sign}) \\).",
-      "answer": "\\( {a1+a2|coef}x^2 {b1+b2|signedCoef}x {c1+c2|sign} \\)"
+      "answer": "\\( {sumA|coef}x^2 {sumB|signedCoef}x {sumC|sign} \\)"
     },
     {
       "id": "ALG2-4.3-B2",
@@ -4953,10 +4984,13 @@
         "c1": { "min": -8, "max": 8, "exclude": [0] },
         "a2": { "min": -5, "max": 5, "exclude": [0] },
         "b2": { "min": -6, "max": 6, "exclude": [0] },
-        "c2": { "min": -8, "max": 8, "exclude": [0] }
+        "c2": { "min": -8, "max": 8, "exclude": [0] },
+        "diffA": { "formula": "a1-a2" },
+        "diffB": { "formula": "b1-b2" },
+        "diffC": { "formula": "c1-c2" }
       },
       "question": "Subtract the polynomials: \\( ({a1|coef}x^2 {b1|signedCoef}x {c1|sign}) - ({a2|coef}x^2 {b2|signedCoef}x {c2|sign}) \\).",
-      "answer": "\\( {a1-a2|coef}x^2 {b1-b2|signedCoef}x {c1-c2|sign} \\)"
+      "answer": "\\( {diffA|coef}x^2 {diffB|signedCoef}x {diffC|sign} \\)"
     },
     {
       "id": "ALG2-4.3-I1",
@@ -4968,10 +5002,14 @@
         "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
         "d": { "min": -5, "max": 5, "exclude": [0] },
-        "e": { "min": -5, "max": 5, "exclude": [0] }
+        "e": { "min": -5, "max": 5, "exclude": [0] },
+        "x3Coef": { "formula": "a*c" },
+        "x2Coef": { "formula": "a*d+b*c" },
+        "x1Coef": { "formula": "a*e+b*d" },
+        "constCoef": { "formula": "b*e" }
       },
       "question": "Multiply the polynomials: \\( ({a|coef}x {b|sign})({c|coef}x^2 {d|signedCoef}x {e|sign}) \\).",
-      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {a*e+b*d|signedCoef}x {b*e|sign} \\)"
+      "answer": "\\( {x3Coef|coef}x^3 {x2Coef|signedCoef}x^2 {x1Coef|signedCoef}x {constCoef|sign} \\)"
     },
     {
       "id": "ALG2-4.3-I2",
@@ -4983,10 +5021,14 @@
         "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": 1, "max": 4 },
         "d": { "min": -5, "max": 5, "exclude": [0] },
-        "neg_d": { "formula": "-1*d" }
+        "neg_d": { "formula": "-1*d" },
+        "x3Coef": { "formula": "a*c*c" },
+        "x2Coef": { "formula": "b*c*c" },
+        "x1Coef": { "formula": "-a*d*d" },
+        "constCoef": { "formula": "-b*d*d" }
       },
       "question": "Multiply the binomials: \\( ({a|coef}x {b|sign})({c|coef}x {d|sign})({c|coef}x {neg_d|sign}) \\).",
-      "answer": "\\( {a*c|coef}x^3 {a*d+b*c|signedCoef}x^2 {a*e+b*d|signedCoef}x {b*e|sign} \\)"
+      "answer": "\\( {x3Coef|coef}x^3 {x2Coef|signedCoef}x^2 {x1Coef|signedCoef}x {constCoef|sign} \\)"
     },
     {
       "id": "ALG2-4.3-A1",
@@ -4998,10 +5040,15 @@
         "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": 1, "max": 3 },
         "d": { "min": -4, "max": 4, "exclude": [0] },
-        "e": { "min": -5, "max": 5, "exclude": [0] }
+        "e": { "min": -5, "max": 5, "exclude": [0] },
+        "x4Coef": { "formula": "a*c" },
+        "x3Coef": { "formula": "a*d+b*c" },
+        "x2Coef": { "formula": "a*e+b*d-2*c" },
+        "x1Coef": { "formula": "b*e-2*d" },
+        "constCoef": { "formula": "-2*e" }
       },
       "question": "Multiply and simplify: \\( ({a|coef}x^2 {b|signedCoef}x - 2)({c|coef}x^2 {d|signedCoef}x {e|sign}) \\).",
-      "answer": "\\( {a*c|coef}x^4 {a*d+b*c|signedCoef}x^3 {a*e+b*d-2*c|signedCoef}x^2 {b*e-2*d|signedCoef}x {-2*e|sign} \\)"
+      "answer": "\\( {x4Coef|coef}x^4 {x3Coef|signedCoef}x^3 {x2Coef|signedCoef}x^2 {x1Coef|signedCoef}x {constCoef|sign} \\)"
     },
     {
       "id": "ALG2-4.3-A2",
@@ -5013,10 +5060,15 @@
         "b": { "min": -3, "max": 3, "exclude": [0] },
         "c": { "min": 2, "max": 5 },
         "d": { "min": -3, "max": 3, "exclude": [0] },
-        "e": { "min": 2, "max": 5 }
+        "e": { "min": 2, "max": 5 },
+        "x5Coef": { "formula": "a*c" },
+        "x4Coef": { "formula": "a*d+b*c" },
+        "x3Coef": { "formula": "b*d+5*c-a*e" },
+        "x2Coef": { "formula": "5*d-b*e" },
+        "x1Coef": { "formula": "-5*e" }
       },
       "question": "Given \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 + 5x \\) and \\( g(x) = {c|coef}x^2 {d|signedCoef}x - {e} \\), find \\( f(x) \\cdot g(x) \\).",
-      "answer": "\\( {a*c|coef}x^5 {a*d+b*c|signedCoef}x^4 {b*d+5*c-a*e|signedCoef}x^3 {5*d-b*e|signedCoef}x^2 {-5*e|signedCoef}x \\)"
+      "answer": "\\( {x5Coef|coef}x^5 {x4Coef|signedCoef}x^4 {x3Coef|signedCoef}x^3 {x2Coef|signedCoef}x^2 {x1Coef|signedCoef}x \\)"
     },
     {
       "id": "ALG2-4.4-B1",
@@ -5027,10 +5079,12 @@
         "a": { "min": 2, "max": 8 },
         "b": { "min": -6, "max": 6, "exclude": [0] },
         "c": { "min": -8, "max": 8, "exclude": [0] },
-        "d": { "min": 2, "max": 6 }
+        "d": { "min": 2, "max": 6 },
+        "q3Coef": { "formula": "a/d", "format": "fraction" },
+        "q1Coef": { "formula": "b/d", "format": "fraction" }
       },
       "question": "Divide: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^2 {c|sign} }{ {d|coef}x } \\).",
-      "answer": "\\( {a/d}x^3 {b/d|signedCoef}x + \\frac{ {c} }{ {d|coef}x } \\)"
+      "answer": "\\( {q3Coef|coef}x^3 {q1Coef|signedCoef}x + \\frac{ {c} }{ {d|coef}x } \\)"
     },
     {
       "id": "ALG2-4.4-I1",
@@ -5041,10 +5095,14 @@
         "a": { "min": 1, "max": 3 },
         "p": { "min": -4, "max": 4, "exclude": [0] },
         "b": { "min": -3, "max": 3, "exclude": [0] },
-        "c": { "min": -5, "max": 5, "exclude": [0] }
+        "c": { "min": -5, "max": 5, "exclude": [0] },
+        "q2Coef": { "formula": "a" },
+        "q1Coef": { "formula": "b - a*p" },
+        "q0Coef": { "formula": "a*p*p - b*p" },
+        "r": { "formula": "c - p*q0Coef" }
       },
       "question": "Divide: \\( \\frac{ {a|coef}x^3 {b|signedCoef}x^2 {c|sign} }{ x {p|sign} } \\).",
-      "answer": "Quotient: \\( {a|coef}x^2 {a*p+b|signedCoef}x + \\frac{ {c} }{ x {p|sign} } \\)"
+      "answer": "Quotient: \\( {q2Coef|coef}x^2 {q1Coef|signedCoef}x {q0Coef|signedCoef} + \\frac{ {r} }{ x {p|sign} } \\)"
     },
     {
       "id": "ALG2-4.4-I2",
@@ -5056,10 +5114,15 @@
         "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
         "d": { "min": -8, "max": 8, "exclude": [0] },
-        "k": { "min": -3, "max": 3, "exclude": [0] }
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "q3Coef": { "formula": "a" },
+        "q2Coef": { "formula": "-a*k" },
+        "q1Coef": { "formula": "a*k*k + b" },
+        "q0Coef": { "formula": "c - k*q1Coef" },
+        "r": { "formula": "d - k*q0Coef" }
       },
       "question": "Divide \\( {a|coef}x^4 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\) by \\( x {k|sign} \\).",
-      "answer": "Quotient: \\( {a|coef}x^3 {a*k+b|signedCoef}x^2 {a*k*k+c|signedCoef}x {a*k*k*k+d|signedCoef} \\); Remainder: 0"
+      "answer": "Quotient: \\( {q3Coef|coef}x^3 {q2Coef|signedCoef}x^2 {q1Coef|signedCoef}x {q0Coef|signedCoef} \\); Remainder: {r}"
     },
     {
       "id": "ALG2-4.4-I3",
@@ -5071,10 +5134,15 @@
         "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
         "d": { "min": -8, "max": 8, "exclude": [0] },
-        "k": { "min": -3, "max": 3, "exclude": [0] }
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "q3Coef": { "formula": "a" },
+        "q2Coef": { "formula": "b - a*k" },
+        "q1Coef": { "formula": "-k*q2Coef" },
+        "q0Coef": { "formula": "c - k*q1Coef" },
+        "r": { "formula": "d - k*q0Coef" }
       },
       "question": "Divide \\( {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x {d|sign} \\) by \\( x {k|sign} \\).",
-      "answer": "Quotient: \\( {a|coef}x^3 {a*k+b|signedCoef}x^2 {a*k*k+c|signedCoef}x {a*k*k*k+d|signedCoef} \\); Remainder: 0"
+      "answer": "Quotient: \\( {q3Coef|coef}x^3 {q2Coef|signedCoef}x^2 {q1Coef|signedCoef}x {q0Coef|signedCoef} \\); Remainder: {r}"
     },
     {
       "id": "ALG2-4.4-A1",
@@ -5085,18 +5153,17 @@
         "q1": { "min": -4, "max": 4, "exclude": [0] },
         "q2": { "min": -5, "max": 5 },
         "q3": { "min": -6, "max": 6 },
-        "q4": { "min": -7, "max": 7 },
-        "r": { "min": -5, "max": 5 },
-        "a": { "formula": "f*q1" },
-        "b": { "formula": "f*q2 - g*q1" },
-        "c": { "formula": "f*q3 - g*q2" },
-        "d": { "formula": "f*q4 - g*q3" },
-        "e": { "formula": "r - g*q4" },
-        "f": { "min": 2, "max": 3 },
-        "g": { "min": -1, "max": 1, "exclude": [0] }
+        "r1": { "min": -6, "max": 6 },
+        "r0": { "min": -8, "max": 8 },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "a": { "formula": "q1" },
+        "b": { "formula": "q2" },
+        "c": { "formula": "q3 + k*q1" },
+        "d": { "formula": "k*q2 + r1" },
+        "e": { "formula": "k*q3 + r0" }
       },
-      "question": "Divide: \\( \\frac{ {a}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ {f}x {g|sign} } \\).",
-      "answer": "\\( {q1}x^3 {q2|signedCoef}x^2 {q3|signedCoef}x {q4|signedCoef} + \\frac{ {r} }{ {f}x {g|sign} } \\)"
+      "question": "Divide: \\( \\frac{ {a}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 {k|sign} } \\).",
+      "answer": "\\( {q1}x^2 {q2|signedCoef}x {q3|signedCoef} + \\frac{ {r1|signedCoef}x {r0|sign} }{ x^2 {k|sign} } \\)"
     },
     {
       "id": "ALG2-4.4-A2",
@@ -5104,15 +5171,21 @@
       "objective": "Dividing Polynomials",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 1 },
-        "b": { "min": -4, "max": 4, "exclude": [0] },
-        "c": { "min": -5, "max": 5, "exclude": [0] },
-        "d": { "min": -6, "max": 6, "exclude": [0] },
-        "e": { "min": -8, "max": 8, "exclude": [0] },
-        "g": { "min": -1, "max": 1, "exclude": [0] }
+        "q1": { "min": -3, "max": 3, "exclude": [0] },
+        "q2": { "min": -4, "max": 4 },
+        "q3": { "min": -5, "max": 5 },
+        "r1": { "min": -3, "max": 3 },
+        "r0": { "min": -6, "max": 6 },
+        "p": { "min": -3, "max": 3, "exclude": [0] },
+        "g": { "min": -2, "max": 2, "exclude": [0] },
+        "a": { "formula": "q1" },
+        "b": { "formula": "q2 + p*q1" },
+        "c": { "formula": "q3 + p*q2 + g*q1" },
+        "d": { "formula": "p*q3 + g*q2 + r1" },
+        "e": { "formula": "g*q3 + r0" }
       },
-      "question": "Divide: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 {g|sign} } \\).",
-      "answer": "\\( {a|coef}x^2 {b|signedCoef}x {c|signedCoef} + \\frac{ {d|signedCoef}x + {e|sign} }{ x^2 {g|sign} } \\)"
+      "question": "Divide: \\( \\frac{ {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} }{ x^2 {p|signedCoef}x {g|sign} } \\).",
+      "answer": "\\( {q1}x^2 {q2|signedCoef}x {q3|signedCoef} + \\frac{ {r1|signedCoef}x {r0|sign} }{ x^2 {p|signedCoef}x {g|sign} } \\)"
     },
     {
       "id": "ALG2-4.5-B1",
@@ -5122,10 +5195,11 @@
       "variables": {
         "a": { "min": 2, "max": 4 },
         "b": { "min": -1, "max": 1, "exclude": [0] },
-        "n": { "min": 3, "max": 6 }
+        "n": { "min": 3, "max": 6 },
+        "expandedAnswer": { "formula": "expandBinomial(a, b, n, 'x')" }
       },
       "question": "Expand: \\( ({a|coef}x {b|sign})^{n} \\).",
-      "answer": "\\( \\sum_{k=0}^{n} \\binom{n}{k} ({a}x)^{n-k} ({b})^k \\)"
+      "answer": "{expandedAnswer}"
     },
     {
       "id": "ALG2-4.5-I1",
@@ -5136,7 +5210,7 @@
         "n": { "min": 5, "max": 10 },
         "h": { "min": 2, "max": 4 },
         "t": { "formula": "n - h" },
-        "numerator": { "formula": "factorial(n)/factorial(h)/factorial(t)" },
+        "numerator": { "formula": "binomialCoefficient(n, h)" },
         "denominator": { "formula": "2**n" }
       },
       "question": "Suppose a fair coin is flipped {n} times. Find the probability of getting exactly {h} heads and {t} tails.",
@@ -5151,7 +5225,7 @@
         "n": { "min": 5, "max": 10 },
         "h": { "min": 2, "max": 4 },
         "t": { "formula": "n - h" },
-        "numerator": { "formula": "factorial(n)/factorial(h)/factorial(t)" },
+        "numerator": { "formula": "binomialCoefficient(n, h)" },
         "denominator": { "formula": "2**n" }
       },
       "question": "Suppose a fair dice is rolled {n} times. Find the probability of getting exactly {h} even numbers rolled",
@@ -5165,10 +5239,11 @@
       "variables": {
         "a": { "min": 1, "max": 3 },
         "b": { "min": -3, "max": 3, "exclude": [0] },
-        "n": { "min": 3, "max": 7 }
+        "n": { "min": 3, "max": 7 },
+        "expandedAnswer": { "formula": "expandBinomial(a, b, n, 'x', 'y')" }
       },
       "question": "Expand: \\( ({a|coef}x {b|signedCoef}y)^{n} \\).",
-      "answer": "\\( \\sum_{k=0}^{n} \\binom{n}{k} ({a}x)^{n-k} ({b}y)^k \\)"
+      "answer": "{expandedAnswer}"
     }
   ],
   "Module 5": [
@@ -9923,6 +9998,48 @@
         "variables": {},
         "question": "Evaluate the limits, if they do not exist state the reason: <br> a) \\( \\displaystyle \\lim_{x \\to 0} \\frac{|x|}{x} \\) <br><br> b) \\( \\displaystyle \\lim_{x \\to 3} \\frac{x - 3}{|x - 3|} \\)",
         "answer": "a) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\). b) The limit does not exist because the left-hand limit is \\( -1 \\) and the right-hand limit is \\( 1 \\)."
+      },
+      {
+        "id": "PC-12.2-B1",
+        "type": "template",
+        "objective": "Properties of Limits",
+        "difficulty": "basic",
+        "variables": {
+          "a1": { "min": -5, "max": 5, "exclude": [0] },
+          "b1": { "min": -5, "max": 5, "exclude": [0, "a"] },
+          "r1": { "min": -8, "max": 8, "exclude": [0] },
+          "r2": { "min": -5, "max": 5, "exclude": [0, "r1"] },
+          "r3": { "min": -8, "max": 8, "exclude": [0, "r1", "r2"] },
+          "a2": { "formula": "-(a1*r2 + r1)" },
+          "a3": { "formula": "r1 * r2" },
+          "b2": { "formula": "-(b1*r2 + r3)" },
+          "b3": { "formula": "r2 * r3" },
+          "L": { "formula": "(a1*r2 - r1)/(b1*r2 - r3)" }
+        },
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to {r2}} \\frac{{a1|coef}x^2 {a2|signedCoef}x {a3|sign}}{{b1|coef}x^2 {b2|signedCoef}x {b3|sign}} \\) ",
+        "answer": "\\( {L} \\)"
+      },
+      {
+        "id": "PC-12.2-B2",
+        "type": "template",
+        "objective": "Properties of Limits",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "values": [2, 3, 5, 6, 7, 10, 11] },
+          "L": { "formula": "- (sqrt(a))/(2*a)" }
+        },
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 0} \\frac{\\sqrt{x + {a}} - \\sqrt{{a}}}{x^2 - x} \\) ",
+        "answer": "\\( {L} \\)"
+      },
+      {
+        "id": "PC-12.2-I1",
+        "type": "template",
+        "objective": "Properties of Limits",
+        "difficulty": "intermediate",
+        "variables": {
+        },
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 0}  \\) ",
+        "answer": "\\( {L} \\)"
       }
     ]
   }
