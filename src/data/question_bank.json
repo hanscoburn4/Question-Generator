@@ -2581,7 +2581,7 @@
         "k": { "min": -3, "max": 3, "exclude": [0] },
         "x": { "min": -5, "max": 5, "exclude": [0, "h"] },
         "y": { "min": -5, "max": 5, "exclude": [0, "k"] },
-        "a": { "formula": "(y - k) / (x - h)**2)", "format": "fraction" }
+        "a": { "formula": "(y - k) / (x - h)**2", "format": "fraction" }
       },
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -7, "yMax": 7 },
@@ -4881,7 +4881,7 @@
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "intermediate",
        "variables": {
-        "a": { "min": -5, "max": 5 },
+        "a": { "min": -5, "max": 5, "exclude": [0] },
         "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": -6, "max": 6, "exclude": [0] },
         "d": { "min": -3, "max": 3, "exclude": [0] },
@@ -5274,13 +5274,13 @@
       "objective": "Solving Polynomial Equations by Graphing",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -3, "max": -1 },
-        "b": { "min": -5, "max": 5, "exclude": [0] },
-        "c": { "min": -8, "max": 8, "exclude": [0] },
-        "d": { "min": 4, "max": 6, "exclude": [0] }
+        "a": { "min": -16, "max": -16 },
+        "b": { "min": 50, "max": 80 },
+        "c": { "min": 4, "max": 35 },
+        "t": { "formula": "(-b + sqrt(b*b + 64*c))/(-32)", "format": "decimal"}
       },
-      "question": "A rocket is launched into the air, and its height (in feet) after t seconds is given by the polynomial function \\( h(t) = {a|coef}t^3 {b|signedCoef}t^2 {c|signedCoef}t {d|sign} \\). Use a graphing calculator to find when the rocket will hit the ground (when \\( h(t) = 0 \\)).",
-      "answer": "The real zeros are approximately at the x-values where the graph intersects the x-axis. (Answers will vary based on specific values.)"
+      "question": "An object is launched into the air, and its height (in feet) after t seconds is given by the polynomial function \\( h(t) = {a|coef}t^2 {b|signedCoef}t {c|sign} \\). Use a graphing calculator to find when the object will hit the ground. Round your answer to the nearest hundredth.",
+      "answer": "\\( t = {t} \\) sec."
     },
     {
       "id": "ALG2-5.2-B1",
