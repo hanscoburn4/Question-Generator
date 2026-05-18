@@ -4898,9 +4898,9 @@
       "objective": "Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "l": { "min": 6, "max": 10 },
-        "w": { "min": 2, "max": 5},
-        "x": { "formula": "(4*(l + w) + sqrt(16*(l + w)*(l + w) - 48*l*w))/24"}
+        "l": { "min": 6, "max": 12 },
+        "w": { "min": 5, "max": 8},
+        "x": { "formula": "(4*(l + w) - sqrt(16*(l + w)*(l + w) - 48*l*w))/24"}
       },
       "question": "A flat piece of cardboard has the dimensions {l} inches by {w} inches. Squares of side length x inches are cut from each corner, and the sides are folded up to form an open box. If the volume of the box is given by \\( V(x) \\), find the value of x that maximizes the volume.",
       "answer": "\\( x = {x} \\) inches."
@@ -10020,26 +10020,185 @@
         "answer": "\\( {L} \\)"
       },
       {
-        "id": "PC-12.2-B2",
-        "type": "template",
-        "objective": "Properties of Limits",
-        "difficulty": "basic",
-        "variables": {
-          "a": { "values": [2, 3, 5, 6, 7, 10, 11] },
-          "L": { "formula": "- (sqrt(a))/(2*a)" }
-        },
-        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 0} \\frac{\\sqrt{x + {a}} - \\sqrt{{a}}}{x^2 - x} \\) ",
-        "answer": "\\( {L} \\)"
-      },
-      {
         "id": "PC-12.2-I1",
         "type": "template",
         "objective": "Properties of Limits",
         "difficulty": "intermediate",
+        "variables": {},
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to -1} \\frac{x^3 + 1}{x^2 - 1} \\) ",
+        "answer": "\\( -\\frac{3}{2} \\)"
+      },
+      {
+        "id": "PC-12.2-I2",
+        "type": "template",
+        "objective": "Properties of Limits",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 9} \\frac{\\sqrt{x} - 3}{x - 9} \\) ",
+        "answer": "\\( \\frac{1}{6} \\)"
+      },
+      {
+        "id": "PC-12.2-I3",
+        "type": "template",
+        "objective": "Properties of Limits",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 0} \\frac{1 - \\cos(4x)}{x^2} \\) ",
+        "answer": "\\( 8 \\)"
+      },
+      {
+        "id": "PC-12.3-B1",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "basic",
         "variables": {
+          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "b": { "min": -5, "max": 5, "exclude": [0] },
+          "c": { "formula": "a*2" }
         },
-        "question": "Evaluate the limit algebraically, if they do not exist state the reason: <br> \\( \\displaystyle \\lim_{x \\to 0}  \\) ",
-        "answer": "\\( {L} \\)"
+        "question": "Find the derivative using the limit definition of: <br> \\( f(x) = {a|coef}x^2 {b|sign} \\)",
+        "answer": " \\( f'(x) = {c|coef}x \\)"
+      },
+      {
+        "id": "PC-12.3-B2",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "c": { "formula": "a*3" }
+        },
+        "question": "Find the derivative using the limit definition of: <br> \\( f(x) = {a|coef}x^3 \\)",
+        "answer": " \\( f'(x) = {c|coef}x^2 \\)"
+      },
+      {
+        "id": "PC-12.3-B3",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -5, "max": 5, "exclude": [0] }
+        },
+        "question": "Find the derivative using the limit definition of: <br> \\( f(x) = {a|coef}\\sqrt{x} \\)",
+        "answer": " \\( f'(x) = \\frac{{a}}{2\\sqrt{x}} \\)"
+      },
+      {
+        "id": "PC-12.3-I1",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -3, "max": 3, "exclude": [0] },
+          "h": { "min": -3, "max": 3 },
+          "k": { "min": -3, "max": 3 },
+          "b": { "formula": "-2*h" },
+          "c": { "formula": "h*h +k" },
+          "m": { "formula": "2*a + b" },
+          "y1": { "formula": "a*a + b*a + c" },
+          "yint": { "formula": "-m*a + y1"}
+        },
+        "question": "Find the equation of the tangent line for \\( f(x) \\) at the point when \\( x = {a} \\): <br> \\( f(x) = x^2 {b|signedCoef}x {c|sign} \\)",
+        "answer": " \\( \\frac{dy}{dx} = 2x {b|sign} \\), so the tangent line at \\( ({a}, {y1}) \\) is \\( y = {m|coef}x {yint|sign} \\)"
+      },
+      {
+        "id": "PC-12.3-A1",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "advanced",
+        "variables": {
+          "v0": { "values": [-50, -25, -5, 5, 25, 50] },
+          "s0": { "min": 75, "max": 180 },
+          "h1": { "formula": "-16 + v0 +s0" },
+          "h2": { "formula": "-16*2*2 + v0*2 +s0" },
+          "h3": { "formula": "-16*3*3 + v0*3 +s0" },
+          "v1": { "formula": "-32*1 + v0" },
+          "v2": { "formula": "-32*2 + v0" },
+          "v3": { "formula": "-32*3 + v0" }
+        },
+        "question": "If an object falling can be modeled by the function \\( h(t) = -16t^2 {v0|signedCoef}t {s0|sign} \\), where \\( h(t) \\) is the height in feet and \\( t \\) is the time in seconds. Find the object's height and instantaneous velocity at 1 second, 2 seconds, and 3 seconds.",
+        "answer": " \\( h(1) = {h1}, v(1) = {v1}, <br> h(2) = {h2}, v(2) = {v2}, <br> h(3) = {h3}, v(3) = {v3} \\)"
+      },
+      {
+        "id": "PC-12.3-A2",
+        "type": "template",
+        "objective": "Tangents and Derivatives",
+        "difficulty": "advanced",
+        "variables": {},
+        "question": "Using the limit definition of the derivative, find \\( f'(x) \\) for \\( f(x) = \\frac{3x - 1}{x + 2} \\), then find the equation of the tangent line at \\( x = 1 \\).",
+        "answer": "\\( f'(x) = \\frac{7}{(x + 2)^2} \\). At \\( x = 1 \\), \\( f(1) = \\frac{2}{3} \\) and \\( f'(1) = \\frac{7}{9} \\), so the tangent line is \\( y - \\frac{2}{3} = \\frac{7}{9}(x - 1) \\), or \\( y = \\frac{7}{9}x - \\frac{1}{9} \\)."
+      },
+      {
+        "id": "PC-12.4-B1",
+        "type": "template",
+        "objective": "Basic Derivative Theorems",
+        "difficulty": "basic",
+        "variables": {
+          "a1": { "min": -6, "max": 6, "exclude": [0] },
+          "a2": { "min": -6, "max": 6, "exclude": [0] },
+          "a3": { "min": -6, "max": 6, "exclude": [0] },
+          "a4": { "min": -6, "max": 6, "exclude": [0] },
+          "a5": { "min": -9, "max": 9, "exclude": [0] },
+          "b1": { "min": -5, "max": 5, "exclude": [0] },
+          "b2": { "min": -5, "max": 5, "exclude": [0] },
+          "b3": { "min": -5, "max": 5, "exclude": [0] },
+          "b4": { "min": -9, "max": 9, "exclude": [0] },
+          "d1": { "formula": "4*a1" },
+          "d2": { "formula": "3*a2" },
+          "d3": { "formula": "2*a3" },
+          "d4": { "formula": "a4" },
+          "e1": { "formula": "5*b1" },
+          "e2": { "formula": "2*b2" },
+          "e3": { "formula": "b3" }
+        },
+        "question": "Use basic derivative theorems to find each derivative: <br> a) \\( f(x) = {a1|coef}x^4 {a2|signedCoef}x^3 {a3|signedCoef}x^2 {a4|signedCoef}x {a5|sign} \\) <br><br> b) \\( g(x) = {b1|coef}x^5 {b2|signedCoef}x^2 {b3|signedCoef}x {b4|sign} \\)",
+        "answer": "a) \\( f'(x) = {d1|coef}x^3 {d2|signedCoef}x^2 {d3|signedCoef}x {d4|sign} \\) <br> b) \\( g'(x) = {e1|coef}x^4 {e2|signedCoef}x {e3|sign} \\)"
+      },
+      {
+        "id": "PC-12.4-I1",
+        "type": "template",
+        "objective": "Basic Derivative Theorems",
+        "difficulty": "intermediate",
+        "variables": {
+          "p": { "min": -3, "max": 3, "exclude": [0] },
+          "q": { "min": -5, "max": 5, "exclude": [0] },
+          "r": { "min": -6, "max": 6, "exclude": [0] },
+          "s": { "min": -8, "max": 8, "exclude": [0] },
+          "x0": { "min": -3, "max": 3, "exclude": [0] },
+          "dp": { "formula": "3*p" },
+          "dq": { "formula": "2*q" },
+          "m": { "formula": "3*p*x0*x0 + 2*q*x0 + r" },
+          "y0": { "formula": "p*x0*x0*x0 + q*x0*x0 + r*x0 + s" },
+          "yint": { "formula": "y0 - m*x0" }
+        },
+        "question": "Find the equation of the tangent line to \\( f(x) \\) at \\( x = {x0} \\): <br> \\( f(x) = {p|coef}x^3 {q|signedCoef}x^2 {r|signedCoef}x {s|sign} \\)",
+        "answer": "\\( f'(x) = {dp|coef}x^2 {dq|signedCoef}x {r|sign} \\). At \\( x = {x0} \\), the slope is \\( m = {m} \\), so the tangent line is \\( y = {m|coef}x {yint|sign} \\)."
+      },
+      {
+        "id": "PC-12.4-A1",
+        "type": "template",
+        "objective": "Basic Derivative Theorems",
+        "difficulty": "advanced",
+        "variables": {
+          "v0": { "values": [48, 64, 80, 96, 112, 128] },
+          "h0": { "min": 10, "max": 80 },
+          "tmax": { "formula": "v0/32" },
+          "hmax": { "formula": "-16*tmax*tmax + v0*tmax + h0" }
+        },
+        "question": "A projectile is launched upward. Its height in feet after \\( t \\) seconds is \\( h(t) = -16t^2 {v0|signedCoef}t {h0|sign} \\). Use derivatives to find when the projectile reaches maximum height by solving \\( h'(t) = 0 \\), then find the maximum height.",
+        "answer": "\\( h'(t) = -32t {v0|sign} \\). Setting \\( h'(t) = 0 \\) gives \\( t = {tmax} \\) seconds. The maximum height is \\( h({tmax}) = {hmax} \\) feet."
+      },
+      {
+        "id": "PC-12.4-A2",
+        "type": "template",
+        "objective": "Basic Derivative Theorems",
+        "difficulty": "advanced",
+        "variables": {
+          "s": { "values": [12, 18, 24, 30, 36] },
+          "xmax": { "formula": "s/6" },
+          "vmax": { "formula": "xmax*(s-2*xmax)*(s-2*xmax)" }
+        },
+        "question": "An open-top box is made by cutting out equal squares of side length \\( x \\) inches from each corner of a square sheet of cardboard with side length \\( {s} \\) inches, then folding up the sides. Use derivatives to find the value of \\( x \\) that maximizes the box volume and find the maximum volume.",
+        "answer": "The volume is \\( V(x) = x({s}-2x)^2 \\), with \\( 0 < x < \\frac{{s}}{2} \\). Since \\( V'(x) = ({s}-2x)({s}-6x) \\), the interior critical point is \\( x = \\frac{{s}}{6} = {xmax} \\). The maximum volume is \\( V({xmax}) = {vmax} \\text{ in}^3 \\)."
       }
     ]
   }
