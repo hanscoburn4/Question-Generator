@@ -6290,8 +6290,8 @@
       "draw": {
         "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
         "gridStep": 1,
-        "eq1": { "relation": "y = ((x - r1)*(x - r2))/((x - r1)*(x - r3))", "showInQuestion": false, "showInAnswer": true },
-        "eq2": { "relation": "x = r3", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq1": { "relation": "y = ((x - {r1})*(x - {r2}))/((x - {r1})*(x - {r3}))", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = {r3}", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
         "eq3": { "relation": "y = 1", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
         "points": [
           {
@@ -6306,8 +6306,8 @@
           }
         ]
       },
-      "question": "Factor/simplify, then graph the function on the coordinate plane. Identify asymptotes and the removable discontinuity: <br> \\( f(x) = \\frac{x^2 {aN|signedCoef}x {bN|sign}}{x^2 {aD|signedCoef}x {bD|sign}} \\).",
-      "answer": "Simplified form: \\( \\frac{x {n2|sign}}{x {n3|sign}} \\), with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptote: \\( x = {r3} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
+      "question": "Graph the function on the coordinate plane. Identify any asymptotes and any removable discontinuity: <br> \\( f(x) = \\frac{x^2 {aN|signedCoef}x {bN|sign}}{x^2 {aD|signedCoef}x {bD|sign}} \\).",
+      "answer": "Factored form: \\( \\frac{(x {n1|sign})(x {n2|sign})}{(x {n1|sign})(x {n3|sign})} \\). Simplified form: \\( \\frac{x {n2|sign}}{x {n3|sign}} \\), with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptote: \\( x = {r3} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
     },
     {
       "id": "ALG2-9.4-I2",
@@ -6327,15 +6327,15 @@
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -14, "yMax": 14 },
         "gridStep": 1,
-        "eq1": { "relation": "y = (a*x^2 + b*x + c)/(x + d)", "showInQuestion": false, "showInAnswer": true },
-        "eq2": { "relation": "x = -d", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
-        "eq3": { "relation": "y = a*x + s", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq1": { "relation": "y = ({a}*x^2 + {b}*x + {c})/(x + {d})", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = -{d}", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "y = {a}*x + {s}", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
         "points": [
           { "x": 0, "y": "{yint}", "showInQuestion": false, "showInAnswer": true }
         ]
       },
-      "question": "Graph the rational function on the coordinate plane. Use division to identify the vertical and slant asymptotes: <br> \\( f(x) = \\frac{{a|coef}x^2 {b|signedCoef}x {c|sign}}{x {d|sign}} \\).",
-      "answer": "Division gives \\( f(x) = {a|coef}x {s|sign} + \\frac{{rem}}{x {d|sign}} \\). Vertical asymptote: \\( x = {neg_d} \\). Slant asymptote: \\( y = {a|coef}x {s|sign} \\). See graph."
+      "question": "Graph the function on the coordinate plane. Identify any asymptotes and any removable discontinuity: <br> \\( f(x) = \\frac{{a|coef}x^2 {b|signedCoef}x {c|sign}}{x {d|sign}} \\).",
+      "answer": "Division gives \\( f(x) = {a|coef}x {s|sign} + \\frac{{rem}}{x {d|sign}} \\). Vertical asymptote: \\( x = {neg_d} \\). Slant asymptote: \\( y = {a|coef}x {s|sign} \\). Removable discontinuity: none. See graph."
     },
     {
       "id": "ALG2-9.4-I3",
@@ -6365,9 +6365,9 @@
       "draw": {
         "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
         "gridStep": 1,
-        "eq1": { "relation": "y = ((x - p)*(x - r1)*(x - r2))/((x - p)*(x - r3)*(x - r4))", "showInQuestion": false, "showInAnswer": true },
-        "eq2": { "relation": "x = r3", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
-        "eq3": { "relation": "x = r4", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq1": { "relation": "y = ((x - {p})*(x - {r1})*(x - {r2}))/((x - {p})*(x - {r3})*(x - {r4}))", "showInQuestion": false, "showInAnswer": true },
+        "eq2": { "relation": "x = {r3}", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
+        "eq3": { "relation": "x = {r4}", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
         "eq4": { "relation": "y = 1", "boundaryStyle": "dotted", "showInQuestion": false, "showInAnswer": true },
         "points": [
           {
@@ -6382,7 +6382,7 @@
           }
         ]
       },
-      "question": "Factor/simplify, then graph the rational function on the coordinate plane. The numerator is already factored; factor only the denominator. Identify the hole and vertical asymptotes: <br> \\( f(x) = \\frac{(x {p|sign})(x {n1|sign})(x {n2|sign})}{x^3 {aD|signedCoef}x^2 {bD|signedCoef}x {cD|sign}} \\).",
+      "question": "Graph the function on the coordinate plane. Identify any asymptotes and any removable discontinuity: <br> \\( f(x) = \\frac{(x {np|sign})(x {n1|sign})(x {n2|sign})}{x^3 {aD|signedCoef}x^2 {bD|signedCoef}x {cD|sign}} \\).",
       "answer": "Factoring and canceling gives \\( f(x) = \\frac{(x {n1|sign})(x {n2|sign})}{(x {n3|sign})(x {n4|sign})} \\) with a hole at \\( ({hole_x}, {hole_y}) \\). Vertical asymptotes: \\( x = {r3} \\) and \\( x = {r4} \\). Horizontal asymptote: \\( y = 1 \\). See graph."
     },
     {
