@@ -21,11 +21,15 @@
       "difficulty": "basic",
       "variables": { 
         "a": { "min": -10, "max": 10, "exclude": [0] } , 
-        "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+        "b": { "min": 2, "max": 12, "exclude": ["a"]},
+        "frac1": { "formula": "a/b" },
         "c": { "min": -10, "max": 10, "exclude": [0] }, 
-        "d": { "min": 2, "max": 12, "exclude": ["c"] } },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - \\frac{{{c}}}{{{d}}} \\).",
-      "answerExpression": "format(fraction(a*d - b*c, b*d)"
+        "d": { "min": 2, "max": 12, "exclude": ["c"] },
+        "frac2": { "formula": "c/d" },
+        "answer": { "formula": "frac1 + frac2" }
+      },
+      "question": "Evaluate: \\( {frac1} {frac2|sign} \\).",
+      "answerExpression": "You should have: {answer}"
     },
     {
       "id": "ALG1-0.1-B3",
