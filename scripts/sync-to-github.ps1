@@ -41,7 +41,7 @@ if ([string]::IsNullOrWhiteSpace($name) -or [string]::IsNullOrWhiteSpace($email)
   Write-Error "Git user.name/user.email are not configured. Run: git config --global user.name \"Your Name\" and git config --global user.email \"you@example.com\""
 }
 
-$hasStaged = git diff --cached --quiet
+git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {
   Write-Info "No staged changes to commit."
   Write-Info "Pushing latest '$branch' to '$Remote'..."
