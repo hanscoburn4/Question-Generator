@@ -8,11 +8,17 @@
       "difficulty": "basic",
       "variables": { 
         "a": { "min": -10, "max": 10, "exclude": [0] } , 
-        "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+        "b": { "min": 2, "max": 12, "exclude": ["a"]},
+        "frac1": { "formula": "a/b", "format": "fraction" },
         "c": { "min": -10, "max": 10, "exclude": [0] }, 
-        "d": { "min": 2, "max": 12, "exclude": ["c"] } },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + \\frac{{{c}}}{{{d}}} \\).",
-      "answerExpression": "format(fraction(a*d + b*c, b*d)"
+        "d": { "min": 2, "max": 12, "exclude": ["c"] },
+        "frac2": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*d + b*c" },
+        "ansDen": { "formula": "b*d" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {frac1} {frac2|sign} \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B2",
@@ -22,14 +28,16 @@
       "variables": { 
         "a": { "min": -10, "max": 10, "exclude": [0] } , 
         "b": { "min": 2, "max": 12, "exclude": ["a"]},
-        "frac1": { "formula": "a/b" },
+        "frac1": { "formula": "a/b", "format": "fraction" },
         "c": { "min": -10, "max": 10, "exclude": [0] }, 
         "d": { "min": 2, "max": 12, "exclude": ["c"] },
-        "frac2": { "formula": "c/d" },
-        "answer": { "formula": "frac1 + frac2" }
+        "frac2": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*d - b*c" },
+        "ansDen": { "formula": "b*d" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
       },
-      "question": "Evaluate: \\( {frac1} {frac2|sign} \\).",
-      "answerExpression": "You should have: {answer}"
+      "question": "Evaluate: \\( {frac1} - ({frac2}) \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B3",
@@ -38,11 +46,17 @@
       "difficulty": "basic",
       "variables": { 
         "a": { "min": -10, "max": 10, "exclude": [0] } , 
-        "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+        "b": { "min": 2, "max": 12, "exclude": ["a"]},
+        "frac1": { "formula": "a/b", "format": "fraction" },
         "c": { "min": -10, "max": 10, "exclude": [0] }, 
-        "d": { "min": 2, "max": 12, "exclude": ["c"] } },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} \\times \\frac{{{c}}}{{{d}}} \\).",
-      "answerExpression": "format(fraction(a*c, b*d)"
+        "d": { "min": 2, "max": 12, "exclude": ["c"] },
+        "frac2": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*c" },
+        "ansDen": { "formula": "b*d" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {frac1} \\times {frac2} \\).",
+      "answer": "\\({answer}\\)"
     },
     
     {
@@ -53,126 +67,270 @@
       "variables": { 
         "a": { "min": -10, "max": 10, "exclude": [0] } , 
         "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+        "frac1": { "formula": "a/b", "format": "fraction" },
         "c": { "min": -10, "max": 10, "exclude": [0] }, 
-        "d": { "min": 2, "max": 12, "exclude": ["c"] } },
-      "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} \\div \\frac{{{c}}}{{{d}}} \\).",
-      "answerExpression": "format(fraction(a*d, b*c)"
+        "d": { "min": 2, "max": 12, "exclude": ["c"] },
+        "frac2": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*d" },
+        "ansDen": { "formula": "b*c" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {frac1} \\div {frac2} \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B5",
       "type": "template",
       "objective": "Adding Fractions and Integers",
       "difficulty": "basic",
-      "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
-      "question": "Add: \\( \\frac{{{a}}}{{{b}}} + ({c}) \\).",
-      "answerExpression": "format(fraction(a + b*c, b)"
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": 2, "max": 20, "exclude": ["a"] },
+        "frac": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": -10, "max": 10 },
+        "ansNum": { "formula": "a + b*c" },
+        "ansDen": { "formula": "b" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {frac} {c|sign} \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B6",
       "type": "template",
       "objective": "Subtracting Fractions and Integers",
       "difficulty": "basic",
-      "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
-      "question": "Subtract: \\( {c} - \\frac{{{a}}}{{{b}}} \\).",
-      "answerExpression": "format(fraction(c*b - a, b)"
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": 2, "max": 20, "exclude": ["a"] },
+        "frac": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": -10, "max": 10 },
+        "ansNum": { "formula": "c*b - a" },
+        "ansDen": { "formula": "b" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {c} - ({frac}) \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B7",
       "type": "template",
       "objective": "Multiplying Fractions and Integers",
       "difficulty": "basic",
-      "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
-      "question": "Multiply: \\( {c} \\times \\frac{{{a}}}{{{b}}} \\).",
-      "answerExpression": "format(fraction(a*c, b)"
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": 2, "max": 20, "exclude": ["a"] },
+        "frac": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": -10, "max": 10 },
+        "ansNum": { "formula": "a*c" },
+        "ansDen": { "formula": "b" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {c} \\times {frac} \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.1-B8",
       "type": "template",
       "objective": "Dividing Fractions and Integers",
       "difficulty": "basic",
-      "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
-      "question": "Divide: \\( {c} \\div \\frac{{{a}}}{{{b}}} \\).",
-      "answerExpression": "format(fraction(c*b, a)"
+      "variables": {
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": 2, "max": 20, "exclude": ["a"] },
+        "frac": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": -10, "max": 10 },
+        "ansNum": { "formula": "c*b" },
+        "ansDen": { "formula": "a" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Evaluate: \\( {c} \\div {frac} \\).",
+      "answer": "\\({answer}\\)"
     },
     {
       "id": "ALG1-0.2-I1",
       "type": "template",
       "objective": "Subtracting Fractions",
       "difficulty": "intermediate",
-      "variables": { "a": { "min": 5, "max": 12 }, "b": { "min": 6, "max": 15,"exclude":["a"] }, "c": { "min": 1, "max": 5 }, "d": { "min": 2, "max": 10, "exclude":["c"] } },
-      "question": "A tank is \\({a}/{b}\\) full of water. After using \\({c}/{d}\\) of the water, how much water is left in the tank?",
-      "answerExpression": "format(fraction(a*d - b*c, b*d)"
+      "variables": {
+        "a": { "min": 5, "max": 12 },
+        "b": { "min": 6, "max": 15, "exclude": ["a"] },
+        "tank": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 5 },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "used": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*d - b*c" },
+        "ansDen": { "formula": "b*d" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "A tank is \\({tank}\\) full of water. After using \\({used}\\) of the tank, how much water is left?",
+      "answer": "\\({answer}\\) of the tank is left."
     },
     {
       "id": "ALG1-0.2-I2",
       "type": "template",
       "objective": "Multiplying Fractions",
       "difficulty": "intermediate",
-      "variables": { "a": { "min": 5, "max": 12 }, "b": { "min": 6, "max": 15,"exclude":["a"] }, "c": { "min": 1, "max": 5 }, "d": { "min": 2, "max": 10, "exclude":["c"] } },
-      "question": "A recipe calls for \\({a}/{b}\\) cups of sugar per batch. If you make \\({c}/{d}\\) of a batch, how much sugar do you need?",
-      "answerExpression": "format(fraction(a*c, b*d)"
+      "variables": {
+        "a": { "min": 5, "max": 12 },
+        "b": { "min": 6, "max": 15, "exclude": ["a"] },
+        "sugar": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 5 },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "batch": { "formula": "c/d", "format": "fraction" },
+        "ansNum": { "formula": "a*c" },
+        "ansDen": { "formula": "b*d" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "A recipe calls for \\({sugar}\\) cups of sugar per batch. If you make \\({batch}\\) of a batch, how much sugar do you need?",
+      "answer": "\\({answer}\\) cups of sugar"
     },
     {
       "id": "ALG1-0.2-I3",
       "type": "template",
       "objective": "Dividing Fractions",
       "difficulty": "intermediate",
-      "variables": { "a": { "min": 1, "max": 7 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 5 } },
-      "question": "You have \\({a}/{b}\\) of a chocolate bar and want to share it equally among \\({c}\\) friends. How much chocolate does each friend get?",
-      "answerExpression": "format(fraction(a, b*c)"
+      "variables": {
+        "a": { "min": 1, "max": 7 },
+        "b": { "min": 2, "max": 12, "exclude": ["a"] },
+        "bar": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 5 },
+        "ansNum": { "formula": "a" },
+        "ansDen": { "formula": "b*c" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "You have \\({bar}\\) of a chocolate bar and want to share it equally among \\({c}\\) friends. How much chocolate does each friend get?",
+      "answer": "Each friend gets \\({answer}\\) of the chocolate bar."
     },
     {
       "id": "ALG1-0.3-A1",
       "type": "template",
       "objective": "Multi-step Fraction Operations",
       "difficulty": "advanced",
-      "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
-      "question": "Liam baked \\({a}/{b}\\) of a cake on Monday and \\({c}/{d}\\) on Tuesday. He ate \\({e}/{f}\\) of what he baked on Tuesday. How much cake is left in total?",
-      "answerExpression": "format(fraction(a*d + c*(1 - e/f)*b, b*d)"
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "b": { "min": 2, "max": 12, "exclude": ["a"] },
+        "monday": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 7 },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "tuesday": { "formula": "c/d", "format": "fraction" },
+        "e": { "min": 1, "max": 4 },
+        "f": { "min": 2, "max": 8, "exclude": ["e"] },
+        "eaten": { "formula": "e/f", "format": "fraction" },
+        "ansNum": { "formula": "a*d*f + b*c*(f - e)" },
+        "ansDen": { "formula": "b*d*f" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "Liam baked \\({monday}\\) of a cake on Monday and \\({tuesday}\\) on Tuesday. He ate \\({eaten}\\) of what he baked on Tuesday. How much cake is left in total?",
+      "answer": "\\({answer}\\) of a cake is left."
     },
     {
       "id": "ALG1-0.3-A2",
       "type": "template",
       "objective": "Multi-step Fraction Operations",
       "difficulty": "advanced",
-      "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
-      "question": "A garden uses \\({a}/{b}\\) of a bag of fertilizer in the morning and \\({c}/{d}\\) in the afternoon. If \\({e}/{f}\\) of the total used fertilizer is for vegetables, how much fertilizer was used for vegetables?",
-      "answerExpression": "format(fraction((a/b + c/d) * e/f, 1)"
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "b": { "min": 2, "max": 12, "exclude": ["a"] },
+        "morning": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 7 },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "afternoon": { "formula": "c/d", "format": "fraction" },
+        "e": { "min": 1, "max": 4 },
+        "f": { "min": 2, "max": 8, "exclude": ["e"] },
+        "vegetablePart": { "formula": "e/f", "format": "fraction" },
+        "ansNum": { "formula": "e*(a*d + b*c)" },
+        "ansDen": { "formula": "b*d*f" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "A garden uses \\({morning}\\) of a bag of fertilizer in the morning and \\({afternoon}\\) in the afternoon. If \\({vegetablePart}\\) of the total used fertilizer is for vegetables, how much fertilizer was used for vegetables?",
+      "answer": "\\({answer}\\) of a bag was used for vegetables."
     },
     {
       "id": "ALG1-0.3-A3",
       "type": "template",
       "objective": "Multi-step Fraction Operations",
       "difficulty": "advanced",
-      "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
-      "question": "A ribbon is \\({a}/{b}\\) meters long. Sarah cuts \\({c}/{d}\\) of it and then cuts that piece into \\({e}/{f}\\) equal parts. How long, in meters, is each part?",
-      "answerExpression": "format(fraction(a*c, b*d*e/f)"
+      "variables": {
+        "a": { "min": 1, "max": 5 },
+        "b": { "min": 2, "max": 12, "exclude": ["a"] },
+        "ribbon": { "formula": "a/b", "format": "fraction" },
+        "c": { "min": 1, "max": 7 },
+        "d": { "min": 2, "max": 10, "exclude": ["c"] },
+        "piece": { "formula": "c/d", "format": "fraction" },
+        "e": { "min": 1, "max": 4 },
+        "f": { "min": 2, "max": 8, "exclude": ["e"] },
+        "parts": { "formula": "e/f", "format": "fraction" },
+        "ansNum": { "formula": "a*c*f" },
+        "ansDen": { "formula": "b*d*e" },
+        "answer": { "formula": "ansNum/ansDen", "format": "fraction" }
+      },
+      "question": "A ribbon is \\({ribbon}\\) meters long. Sarah cuts \\({piece}\\) of it and then cuts that piece into \\({parts}\\) equal parts. How long, in meters, is each part?",
+      "answer": "Each part is \\({answer}\\) meters long."
     },
     {
-      "id": "AlG1-0.4-B1",
+      "id": "ALG1-0.4-B1",
       "type": "template",
       "objective": "Plotting points on the coordinate plane",
       "difficulty": "basic",
       "variables": {
-        "a": {"min":-10, "max":10},
-        "b": {"min":-10, "max":10}
+        "a": { "min": -10, "max": 10 },
+        "b": { "min": -10, "max": 10 }
       },
       "question": "Plot the point \\(({a}, {b})\\) on the coordinate plane.",
-      "answer": "the x-value is \\({a}\\) while the y-value is \\({b}\\)."
+      "answer": "The x-value is \\({a}\\), and the y-value is \\({b}\\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "points": [
+          {
+            "x": "{a}",
+            "y": "{b}",
+            "label": "A",
+            "color": "#c0392b",
+            "pointRadius": 5,
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
+      }
     },
     {
-      "id": "AlG1-0.4-B2",
+      "id": "ALG1-0.4-B2",
       "type": "template",
       "objective": "Plotting points on the coordinate plane",
       "difficulty": "basic",
       "variables": {
-        "a": {"min":-10, "max":10},
-        "b": {"min":-10, "max":10},
-        "c": {"min":-10, "max":10},
-        "d": {"min":-10, "max":10}
+        "a": { "min": -10, "max": 10 },
+        "b": { "min": -10, "max": 10 },
+        "c": { "min": -10, "max": 10 },
+        "d": { "min": -10, "max": 10 }
       },
       "question": "Plot the points \\(({a}, {b})\\) and \\(({c}, {d})\\) on the coordinate plane.",
-      "answer": "First point: x is \\({a}\\) y is \\({b}\\); Second point: x is \\({c}\\) y is \\({d}\\)."
+      "answer": "First point: x is \\({a}\\), y is \\({b}\\). Second point: x is \\({c}\\), y is \\({d}\\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "points": [
+          {
+            "x": "{a}",
+            "y": "{b}",
+            "label": "A",
+            "color": "#c0392b",
+            "pointRadius": 5,
+            "showInQuestion": false,
+            "showInAnswer": true
+          },
+          {
+            "x": "{c}",
+            "y": "{d}",
+            "label": "B",
+            "color": "#2980b9",
+            "pointRadius": 5,
+            "showInQuestion": false,
+            "showInAnswer": true
+          }
+        ]
+      }
     }
 
   ],
