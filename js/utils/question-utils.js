@@ -150,13 +150,25 @@ function evaluateJSExpression(expression, variables = {}) {
 function tryParseIntegerDivision(formula, vars) {
   if (!formula) return null;
 
-  // Match patterns like: (a*d + c)/b  or  a/b  or  (x + 1)/(y - 2)
-  const divRegex = /\(?\s*([^()\/]+)\s*\/\s*([^()\/]+)\s*\)?$/;
-  const match = formula.match(divRegex);
-  if (!match) return null;
+  // Match only a single top-level division such as a/b or (x + 1)/(y - 2).
+  // Nested divisions inside larger sums must not be mistaken for the whole value.
+  let depth = 0;
+  let slashIndex = -1;
+  for (let i = 0; i < formula.length; i++) {
+    const ch = formula[i];
+    if (ch === '(') depth++;
+    else if (ch === ')') depth--;
+    else if (ch === '/' && depth === 0) {
+      if (slashIndex !== -1) return null;
+      slashIndex = i;
+    }
+  }
 
-  const numExpr = match[1].trim();
-  const denExpr = match[2].trim();
+  if (slashIndex === -1) return null;
+
+  const numExpr = formula.slice(0, slashIndex).trim();
+  const denExpr = formula.slice(slashIndex + 1).trim();
+  if (!numExpr || !denExpr) return null;
 
   try {
     const num = evaluateJSExpression(numExpr, vars);

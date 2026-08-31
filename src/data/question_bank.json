@@ -489,7 +489,7 @@
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -10, "max": 10, "exclude": [0,1] },
-        "y": { "min": -5, "max": 5, "exclude": [0,1] },
+        "y": { "min": 2, "max": 5 },
         "a": { "min": 2, "max": 10, "exclude":["x"] },
         "b": { "min": 2, "max": 10 },
         "c": { "min": 2, "max": 10, "exclude":["a","b"] },
@@ -542,8 +542,7 @@
         "b": { "min": 2, "max": 20, "exclude":["a"] },
         "c": { "min": 2, "max": 20, "exclude":["a","b"] },
         "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
-        "f": { "min": 2, "max": 20, "exclude":["d","e"] }
+        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] }
       },
       "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\(\\frac{{a}}{{b}} \\cdot \\frac{{b}}{{a}} = 1\\)</td><td>__________</td></tr><tr><td>\\( {a} + {b} = {b} + {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( {e} + (-{e}) = 0 \\)</td><td>__________</td></tr></table>",
       "answer": "<ul> <li><strong>\\(\\frac{{a}}{{b}} \\cdot \\frac{{b}}{{a}} = 1\\)</strong>: Multiplicative Inverse Property</li>\\ <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
@@ -558,11 +557,10 @@
         "b": { "min": 2, "max": 20, "exclude":["a"] },
         "c": { "min": 2, "max": 20, "exclude":["a","b"] },
         "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
-        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
-        "f": { "min": 2, "max": 20, "exclude":["d","e"] }
+        "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] }
       },
-      "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\({a} + {b} = {b} + {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( {e} + (-{e}) = 0 \\)</td><td>__________</td></tr></table>",
-      "answer": "<ul> <li><strong>\\({a} + {b} = {b} + {a}\\)</strong>: Commutative Property of Addition</li>\\ <li><strong>\\( ({a} + {b}) + {c} = {a} + ({b} + {c}) \\)</strong>: Associative Property of Addition</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {a} \\cdot \\frac{{{b}}}{{{c}}} = \\frac{{{a} \\cdot {b}}}{{{c}}} \\)</strong>: Distributive Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( {e} + (-{e}) = 0 \\)</strong>: Additive Inverse Property</li>\\ </ul>"
+      "question": "Fill in the property name used for each equation:<br><br><table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>\\({a} \\cdot {b} = {b} \\cdot {a}\\)</td><td>__________</td></tr><tr><td>\\( ({a} \\cdot {b}) \\cdot {c} = {a} \\cdot ({b} \\cdot {c}) \\)</td><td>__________</td></tr><tr><td>\\( {a} \\cdot 1 = {a} \\)</td><td>__________</td></tr><tr><td>\\( {a}({b} + {c}) = {a}\\cdot {b} + {a}\\cdot {c} \\)</td><td>__________</td></tr><tr><td>\\( {d} + 0 = {d} \\)</td><td>__________</td></tr><tr><td>\\( 0\\cdot {e} = 0 \\)</td><td>__________</td></tr></table>",
+      "answer": "<ul> <li><strong>\\({a} \\cdot {b} = {b} \\cdot {a}\\)</strong>: Commutative Property of Multiplication</li>\\ <li><strong>\\( ({a} \\cdot {b}) \\cdot {c} = {a} \\cdot ({b} \\cdot {c}) \\)</strong>: Associative Property of Multiplication</li>\\ <li><strong>\\( {a} \\cdot 1 = {a} \\)</strong>: Multiplicative Identity Property</li>\\ <li><strong>\\( {a}({b} + {c}) = {a}\\cdot {b} + {a}\\cdot {c} \\)</strong>: Distributive Property</li>\\ <li><strong>\\( {d} + 0 = {d} \\)</strong>: Additive Identity Property</li>\\ <li><strong>\\( 0\\cdot {e} = 0 \\)</strong>: Multiplicative Property of Zero</li>\\ </ul>"
     },
     {
       "id": "ALG1-1.3-I1",
@@ -577,8 +575,8 @@
         "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] },
         "result": { "formula": "d - e + 1" }
       },
-      "question": "Evaluate and identify the property use at each step: \\( \\bigl({d} + {a} + \\frac{{b}}{{c}}\\cdot\\frac{{c}}{{b}}\\bigr) - ({a} + {e}) \\).",
-      "answer": "\\({result}\\) <br>Properties used: Commutative Property of Addition, Multiplicative Inverse Property, Additive Inverse Property"
+      "question": "Evaluate and identify the property used at each step: \\( \\bigl({d} + {a} + \\frac{{b}}{{c}}\\cdot\\frac{{c}}{{b}}\\bigr) - ({a} + {e}) \\).",
+      "answer": "\\({result}\\) <br>Properties used: Multiplicative Inverse Property, Associative Property of Addition, Commutative Property of Addition, Additive Inverse Property"
     },
     {
       "id": "ALG1-1.3-I2",
@@ -592,8 +590,39 @@
         "d": { "min": 2, "max": 20, "exclude":["a","b","c"] },
         "e": { "min": 2, "max": 20, "exclude":["a","b","c","d"] }
       },
-      "question": "Evaluate and identify the property use at each step: \\( 0\\cdot({a} + {b}) + \\frac{{c}}{{d}} - \\frac{{c}}{{d}} + {e} \\).",
+      "question": "Evaluate and identify the property used at each step: \\( 0\\cdot({a} + {b}) + \\frac{{c}}{{d}} - \\frac{{c}}{{d}} + {e} \\).",
       "answer": "\\({e}\\) <br>Properties used: Multiplicative Property of Zero, Additive Inverse Property, Additive Identity Property"
+    },
+    {
+      "id": "ALG1-1.3-A1",
+      "type": "template",
+      "objective": "Evaluate Numerical Expressions by Applying Properties",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 12 },
+        "b": { "min": 2, "max": 12, "exclude":["a"] },
+        "c": { "min": 2, "max": 12, "exclude":["a","b"] },
+        "d": { "min": 2, "max": 12, "exclude":["a","b","c"] },
+        "result": { "formula": "b + 1" }
+      },
+      "question": "Evaluate efficiently and name the properties used: \\( ({a}+{b})({c}-{c}) + \\frac{{d}}{{a}}\\cdot\\frac{{a}}{{d}} - {a} + {a} + {b} \\).",
+      "answer": "\\({result}\\) <br>Properties used: Additive Inverse Property, Multiplicative Property of Zero, Multiplicative Inverse Property, Additive Inverse Property, Additive Identity Property"
+    },
+    {
+      "id": "ALG1-1.3-A2",
+      "type": "template",
+      "objective": "Evaluate Numerical Expressions by Applying Properties",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 12 },
+        "b": { "min": 2, "max": 12, "exclude":["a"] },
+        "c": { "min": 2, "max": 12, "exclude":["a","b"] },
+        "d": { "min": 2, "max": 12, "exclude":["a","b","c"] },
+        "e": { "min": 2, "max": 12, "exclude":["a","b","c","d"] },
+        "result": { "formula": "b + c + e" }
+      },
+      "question": "Evaluate efficiently and name the properties used: \\( \\frac{{{a}\\cdot {b} + {a}\\cdot {c}}}{{{a}}} + ({d} + (-{d})) + {e}\\cdot 1 \\).",
+      "answer": "\\({result}\\) <br>Properties used: Distributive Property, Multiplicative Inverse Property, Additive Inverse Property, Additive Identity Property, Multiplicative Identity Property"
     },
     {
       "id": "ALG1-1.4-B1",
@@ -607,7 +636,7 @@
         "coef_x": { "formula": "a*b" },
         "constant": { "formula": "a*c" }
       },
-      "question": "Use the distributive property to simplify: \\( {a}({b|signedCoef}x{c|sign}) \\).",
+      "question": "Use the distributive property to simplify: \\( {a}({b|coef}x{c|sign}) \\).",
       "answer": "\\({coef_x|coef}x {constant|sign}\\)"
     },
     {
@@ -622,7 +651,7 @@
         "coef_xy": { "formula": "a*b" },
         "coef_y": { "formula": "-a*c" }
       },
-      "question": "Use the distributive property to simplify: \\( ({b|signedCoef}x-{c})\\cdot{a|coef}y \\).",
+      "question": "Use the distributive property to simplify: \\( ({b|coef}x - {c})\\cdot {a|coef}y \\).",
       "answer": "\\({coef_xy|coef}xy {coef_y|signedCoef}y\\)"
     },
     {
@@ -641,7 +670,7 @@
         "coef_y": { "formula": "b*d" },
         "constant": { "formula": "-b*e - f" }
       },
-      "question": "Simplify by distributing and combining like terms: \\( {a|signedCoef}x {b|sign}({c|signedCoef}x{d|sign}y-{e}) - {f} \\).",
+      "question": "Simplify by distributing and combining like terms: \\( {a|coef}x {b|sign}({c|coef}x{d|sign}y - {e}) - {f} \\).",
       "answer": "\\({coef_x|coef}x {coef_y|signedCoef}y {constant|sign}\\)"
     },
     {
@@ -659,7 +688,43 @@
         "coef_x": { "formula": "a + c*d" },
         "constant": { "formula": "a*b - c*e + f" }
       },
-      "question": "Simplify by distributing and combining like terms: \\( {a}(x{b|sign}) {c|sign}({d|signedCoef}x-{e}) {f|sign} \\).",
+      "question": "Simplify by distributing and combining like terms: \\( {a}(x{b|sign}) {c|sign}({d|coef}x - {e}) {f|sign} \\).",
+      "answer": "\\({coef_x|coef}x {constant|sign}\\)"
+    },
+    {
+      "id": "ALG1-1.4-A1",
+      "type": "template",
+      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "b": { "min": -8, "max": 8, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "d": { "min": -8, "max": 8, "exclude": [0] },
+        "coef_x2": { "formula": "a*c" },
+        "coef_x": { "formula": "a*d + b*c" },
+        "constant": { "formula": "b*d" }
+      },
+      "question": "Simplify by distributing and combining like terms: \\( ({a|coef}x {b|sign})({c|coef}x {d|sign}) \\).",
+      "answer": "\\({coef_x2|coef}x^2 {coef_x|signedCoef}x {constant|sign}\\)"
+    },
+    {
+      "id": "ALG1-1.4-A2",
+      "type": "template",
+      "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 8 },
+        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "d": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "e": { "min": 2, "max": 8 },
+        "f": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "g": { "min": 2, "max": 8 },
+        "coef_x": { "formula": "a - c*d + f" },
+        "constant": { "formula": "a*b + c*e - f*g" }
+      },
+      "question": "Simplify by distributing and combining like terms: \\( {a}(x{b|sign}) - {c}({d|coef}x - {e}) {f|sign}(x - {g}) \\).",
       "answer": "\\({coef_x|coef}x {constant|sign}\\)"
     },
     {
@@ -706,7 +771,7 @@
         "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] },
         "result": { "formula": "abs(x - abs(a/c - y)) + (z/f)", "format": "auto" }
       },
-      "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
+      "question": "Evaluate: \\( \\left| x - \\left| \\frac{{a}}{{c}} - y \\right| \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
       "answer": "\\({result}\\)"
     },
     {
@@ -723,7 +788,42 @@
         "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] },
         "result": { "formula": "abs(a - x) + abs(c/y + z/f)", "format": "auto" }
       },
-      "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
+      "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{y} + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
+      "answer": "\\({result}\\)"
+    },
+    {
+      "id": "ALG1-1.5-A1",
+      "type": "template",
+      "objective": "Evaluate Absolute Value Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "x": { "min": -6, "max": 6, "exclude": [0] },
+        "y": { "min": -6, "max": 6, "exclude": [0] },
+        "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "c": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+        "d": { "min": -10, "max": 10, "exclude": [0] },
+        "e": { "min": -10, "max": 10 },
+        "result": { "formula": "abs(a*x + b) - abs(c*y - d) + e" }
+      },
+      "question": "Evaluate: \\( \\left|{a|coef}x {b|sign}\\right| - \\left|{c|coef}y - ({d})\\right| {e|sign} \\), when \\(x = {x}, y = {y}\\).",
+      "answer": "\\({result}\\)"
+    },
+    {
+      "id": "ALG1-1.5-A2",
+      "type": "template",
+      "objective": "Evaluate Absolute Value Expressions",
+      "difficulty": "advanced",
+      "variables": {
+        "x": { "min": -10, "max": 10, "exclude": [0] },
+        "y": { "min": -10, "max": 10, "exclude": [0] },
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": 2, "max": 9 },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": 2, "max": 9, "exclude": ["b"] },
+        "result": { "formula": "abs((x - a)/b) + abs((y - c)/d)", "format": "auto" }
+      },
+      "question": "Evaluate: \\( \\left|\\frac{x - ({a})}{{{b}}}\\right| + \\left|\\frac{y - ({c})}{{{d}}}\\right| \\), when \\(x = {x}, y = {y}\\).",
       "answer": "\\({result}\\)"
     }
   ],
@@ -4205,16 +4305,17 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 6 },
         "c": { "min": -10, "max": 10, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0,1,-1,"b"] },
+        "gap": { "min": 1, "max": 5 },
+        "d": { "formula": "b + gap" },
         "e": { "min": -10, "max": 10, "exclude": [0] },
         "xnum": { "formula": "b*c + b*e*d - d*a" },
         "xden": { "formula": "d - b" },
-        "x": { "formula": "(xnum)/(xden)" }
+        "x": { "formula": "(xnum)/(xden)", "format": "fraction" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x {a|sign}}{{b}} > \\frac{x {c|sign}}{{d}} {e|sign} \\).",
-      "answer": "\\( x > {xnum}/{xden} \\) or \\( x > {x} \\) (manually simplify) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "answer": "\\( x > {x} \\)"
     },
     {
       "id": "ALG2-2.1-I2",
@@ -4224,13 +4325,13 @@
       "variables": {
         "a": { "min": 1, "max": 3 },
         "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 10, "exclude": ["b/(1-b)"] },
+        "c": { "min": 2, "max": 10 },
         "xnum": { "formula": "-a*(c+b)" },
         "xden": { "formula": "c-b-c*b" },
-        "x": { "formula": "(xnum)/(xden)" }
+        "x": { "formula": "(xnum)/(xden)", "format": "fraction" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x + {a}}{{b}} > \\frac{x - {a}}{{c}} + x \\).",
-      "answer": "\\( x > {xnum}/{xden} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "answer": "\\( x < {x} \\)"
     },
     {
       "id": "ALG2-2.1-A1",
@@ -4239,7 +4340,7 @@
       "difficulty": "advanced",
       "variables": {        },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{-a}{x + b} = \\frac{c}{x - d} \\).",
-      "answer": "\\( x = \\frac{ ad - b }{ c + a } \\)"
+      "answer": "\\( x = \\frac{ad - bc}{a + c} \\), with \\(x \\ne -b\\) and \\(x \\ne d\\)."
     },
     {
       "id": "ALG2-2.1-A2",
@@ -4281,15 +4382,15 @@
       "objective": "Solving Absolute Value Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 15, "exclude": [-1,0,1] },
-        "d": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "x1": { "formula": "((b - d) / (c - a)).toFixed(2)"  },
-        "x2": { "formula": "((-b - d) / (c + a)).toFixed(2)"  }
+        "a": { "min": 2, "max": 4 },
+        "b": { "min": 4, "max": 10, "exclude": [0,1,-1] },
+        "c": { "min": 8, "max": 12, "exclude": [-1,0,1] },
+        "d": { "min": 2, "max": 3, "exclude": [0,1,-1] },
+        "x1": { "formula": "(b - d) / (c - a)", "format": "fraction" },
+        "x2": { "formula": "(-b - d) / (c + a)", "format": "fraction" }
       },
-      "question": "Solve for x: \\( |{a}x + {b}| = {c}x {d|sign} \\).",
-      "answer": "\\( x = {x1}, {x2} \\)"
+      "question": "Solve for \\( x \\), checking for extraneous solutions: \\( |{a}x + {b}| = {c}x {d|sign} \\).",
+      "answer": "\\( x = {x1} \\). The other branch solution, \\( x = {x2} \\), is extraneous because it makes \\( {c}x {d|sign} < 0 \\)."
     },
     {
       "id": "ALG2-2.2-A1",
@@ -4300,8 +4401,8 @@
         "a": { "min": 2, "max": 10 },
         "b": { "min": 2, "max": 10 },
         "c": { "min": 1, "max": 10 },
-        "d": { "min": 1, "max": 10 },
-        "e": { "min": 10, "max": 20 },
+        "d": { "min": 1, "max": 8 },
+        "e": { "min": 12, "max": 20 },
         "x1": { "formula": "(e-d+a*c)/(a*b)" },
         "x2": { "formula": "(d+a*c-e)/(a*b)" }
       },
@@ -4310,8 +4411,8 @@
     },
     {
       "id": "ALG2-2.3-B1",
-      "type": "linearGraph",
-      "objective": "Equtions of Linear Functions",
+      "type": "template",
+      "objective": "Equations of Linear Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
@@ -4327,7 +4428,7 @@
     {
       "id": "ALG2-2.3-I1",
       "type": "template",
-      "objective": "Equtions of Linear Functions",
+      "objective": "Equations of Linear Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -4, "max": 4, "exclude": [0] },
@@ -4335,7 +4436,7 @@
         "negb": { "formula": "-1*b" },
         "x1": { "min": -10, "max": 10, "exclude": [0] },
         "y1": { "min": -10, "max": 10, "exclude": [0] },
-        "yint": { "formula": "(a/b)*x1-y1.toFixed(2)" },
+        "yint": { "formula": "a*x1*(1/b) - y1", "format": "fraction" },
         "c": { "formula": "b*y1 - a*x1" }
       },
       "question": "Rewrite the given equation in both standard form and slope-intercept form: \\( y {y1|sign} = \\frac{{a}}{{b}}(x {x1|sign}) \\).",
@@ -4344,7 +4445,7 @@
     {
       "id": "ALG2-2.3-A1",
       "type": "template",
-      "objective": "Equtions of Linear Functions",
+      "objective": "Equations of Linear Functions",
       "difficulty": "advanced",
       "variables": {
         "x1": { "min": -10, "max": 10, "exclude": [0] },
@@ -4355,12 +4456,13 @@
         "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1"  },
+        "m": { "formula": "mnum/mden", "format": "fraction" },
         "negmden": { "formula": "-1*mden"  },
-        "b": { "formula": "y1 - (mnum/mden)*x1"  },
-        "c": { "formula": "mden*y1 - mnum*x1"  }
+        "b": { "formula": "y1 - mnum*x1*(1/mden)", "format": "fraction" },
+        "c": { "formula": "mnum*x1 - mden*y1"  }
       },
       "question": "Write the equation of the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\) in Point-Slope, Slope-Intercept, and Standard Form.",
-      "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)."
+      "answer": "Point-Slope Form: \\( y {negy1|sign} = {m}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = {m}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)."
     },
     {
       "id": "ALG2-2.4-B1",
@@ -4375,8 +4477,25 @@
         "m2": { "min": -4, "max": 4, "exclude": [0,"m1"] },
         "b2": { "formula": "y - m2*x", "exclude": [0] }
         },
-      "question": "Use the graph to determine the solution to the system of equations below:<br>\\( y = {m1|coef}x {b1|sign} \\)<br>\\( y = {m2|coef}x {b2|sign} \\)",
-      "answer": "\\({x}, {y}\\)"
+      "draw": {
+        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m1}*x + ({b1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = {m2}*x + ({b2})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( y = {m1|coef}x {b1|sign} \\)<br>\\( y = {m2|coef}x {b2|sign} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
       "id": "ALG2-2.4-I1",
@@ -4389,12 +4508,29 @@
         "a1": { "min": -5, "max": 5, "exclude": [0] }, 
         "b1": { "min": -5, "max": 5, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
-        "a2": { "min": -5, "max": 5, "exclude": [0,"a1"] },
-        "b2": { "min": -5, "max": 5, "exclude": [0,"a2","b1"] },
+        "a2": { "formula": "-1*b1" },
+        "b2": { "formula": "a1" },
         "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
-      "question": "Solve the system of equations by graphing:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\({x}, {y}\\)"
+      "draw": {
+        "window": { "xMin": -15, "xMax": 15, "yMin": -15, "yMax": 15 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = ({c1} - {a1}*x)/({b1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = ({c2} - {a2}*x)/({b2})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
       "id": "ALG2-2.4-A1",
@@ -4405,19 +4541,19 @@
         "a1": { "min": -10, "max": 10, "exclude": [0] }, 
         "b1": { "min": -7, "max": 7, "exclude": [0] },
         "c1": { "min": -10, "max": 10, "exclude": [0] },
-        "a2": { "min": -10, "max": 10, "exclude": ["a1",0] },
-        "b2": { "min": -7, "max": 7, "exclude": ["b1",0] },
+        "a2": { "formula": "-1*b1" },
+        "b2": { "formula": "a1" },
         "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
         "x" : { "formula": "(b1*c2 - b2*c1)/(b1*a2 - b2*a1)", "exclude": [0] },
         "y" : { "formula": "(a1*c2 - a2*c1  )/(a1*b2 - a2*b1)", "exclude": [0] }
         },
-      "question": "Solve the system of equations using a calculator round your answers to the nearest hundredth if needed:<br>\\( {a1|coef}x  {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\({x}, {y}\\) Manually round answers to three spaces. If the denominators were 0, the system has no solution or infinite solutions."
+      "question": "Solve the system of equations using a calculator. Round your answers to the nearest hundredth if needed:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\( ({x}, {y}) \\)"
   },
   {
       "id": "ALG2-2.5-B1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algabraically",
+      "objective": "Solving Systems of Equations Algebraically",
       "difficulty": "basic",
       "variables": {
         "x": { "min": -7, "max": 7, "exclude": [0] },
@@ -4425,7 +4561,7 @@
         "a1": 1, 
         "b1": { "min": -5, "max": 5, "exclude": [0]},
         "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
-        "a2": { "min": -5, "max": 5, "exclude": [0] },
+        "a2": { "min": 2, "max": 5 },
         "b2": { "values": [-1,1] },
         "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
@@ -4435,7 +4571,7 @@
   {
       "id": "ALG2-2.5-I1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algabraically",
+      "objective": "Solving Systems of Equations Algebraically",
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -6, "max": 6, "exclude": [0] },
@@ -4443,8 +4579,8 @@
         "a1": { "min": -3, "max": 3, "exclude": [0] }, 
         "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
-        "a2": { "min": -3, "max": 3, "exclude": [0,"a1"] },
-        "b2": { "min": -4, "max": 4, "exclude": [0,"a2","b1"] },
+        "a2": { "formula": "-1*b1" },
+        "b2": { "formula": "a1" },
         "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
       "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
@@ -4453,22 +4589,22 @@
   {
       "id": "ALG2-2.5-A1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algabraically",
+      "objective": "Solving Systems of Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
         "a1": { "min": -10, "max": 10, "exclude": [0] }, 
         "b1": { "min": -7, "max": 7, "exclude": [0] },
         "c1": { "min": -10, "max": 10, "exclude": [0] },
-        "a2": { "min": -10, "max": 10, "exclude": ["a1",0] },
-        "b2": { "min": -7, "max": 7, "exclude": ["b1",0] },
+        "a2": { "formula": "-1*b1" },
+        "b2": { "formula": "a1" },
         "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
         "xnum": { "formula": "b1*c2 - b2*c1", "exclude": [0] },
         "xden": { "formula": "b1*a2 - b2*a1", "exclude": [0] },
         "ynum": { "formula": "a1*c2 - a2*c1", "exclude": [0] },
         "yden": { "formula": "a1*b2 - a2*b1", "exclude": [0] }
         },
-      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x  {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\(\\frac{{xnum}}{{xden}}, \\frac{{ynum}}{{yden}}\\) If the denominators are 0, the system has no solution or infinite solutions."
+      "question": "Solve the system of equations using substitution or elimination (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\( \\left(\\frac{{xnum}}{{xden}}, \\frac{{ynum}}{{yden}}\\right) \\)"
   },
   {
     "id": "ALG2-2.6-B1",
@@ -4478,11 +4614,26 @@
     "variables": {
       "a1": { "min": -5, "max": 5, "exclude": [0] },
       "c1": { "min": -5, "max": 5, "exclude": [0] },
-      "a2": { "min": -5, "max": 5, "exclude": [0] },
+      "negc1": { "formula": "-1*c1" },
+      "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
       "c2": { "min": -5, "max": 5, "exclude": [0] }
     },
-    "question": "Solve the system of inequalities graphically: <br>\\( {a1|coef}x - y > {c1} \\)<br>\\( y < {a2|coef}x {c2|sign} \\)",
-    "answer": "Answer currently unavailable."
+    "draw": {
+      "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+      "gridStep": 1,
+      "eq1": {
+        "relation": "y < {a1}*x - ({c1})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq2": {
+        "relation": "y < {a2}*x + ({c2})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      }
+    },
+    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x - y > {c1} \\)<br>\\( y < {a2|coef}x {c2|sign} \\)",
+    "answer": "Use dotted boundary lines. Rewrite the first inequality as \\( y < {a1|coef}x {negc1|sign} \\). Shade below both boundary lines; the overlap is the solution region."
   },
   {
     "id": "ALG2-2.6-I1",
@@ -4491,15 +4642,34 @@
     "difficulty": "intermediate",
     "variables": {
       "a1": { "min": -5, "max": 5, "exclude": [0] },
-      "b1": { "min": -5, "max": 5, "exclude": [0] },
+      "b1": { "min": 1, "max": 5 },
       "c1": { "min": -5, "max": 5, "exclude": [0] },
-      "a2": { "min": -5, "max": 5, "exclude": [0] },
+      "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
       "c2": { "min": -5, "max": 5, "exclude": [0] },
       "c3": { "min": -3, "max": 3 }
 
     },
-    "question": "Solve the system of inequalities graphically: <br>\\( {a1|coef}x {b1|signedCoef}y > {c1} \\) <br> \\( y < {a2|coef}x {c2|signedCoef}\\) <br> \\( y > {c3} \\)",
-    "answer": "Answer currently unavailable."
+    "draw": {
+      "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+      "gridStep": 1,
+      "eq1": {
+        "relation": "y > ({c1} - {a1}*x)/({b1})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq2": {
+        "relation": "y < {a2}*x + ({c2})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq3": {
+        "relation": "y > {c3}",
+        "showInQuestion": false,
+        "showInAnswer": true
+      }
+    },
+    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y > {c1} \\)<br>\\( y < {a2|coef}x {c2|signedCoef} \\)<br>\\( y > {c3} \\)",
+    "answer": "Use dotted boundary lines for all three inequalities. Shade above \\( {a1|coef}x {b1|signedCoef}y = {c1} \\), below \\( y = {a2|coef}x {c2|signedCoef} \\), and above \\( y = {c3} \\); the overlap is the solution region."
   },
   {
     "id": "ALG2-2.8-B1",
@@ -4517,11 +4687,11 @@
       "y2": { "min": -5, "max": 5, "exclude": [0]  },
       "z2": { "min": -5, "max": 5, "exclude": [0]  },
       "r2": { "formula": "y2*b + z2*c" },
-      "y3": { "min": -5, "max": 5, "exclude": [0]  },
+      "y3": 0,
       "z3": { "min": -5, "max": 5, "exclude": [0]  },
-      "r3": { "formula": "y3*b + z3*c" }
+      "r3": { "formula": "z3*c" }
     },
-    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {y2|coef}b {z2|signedCoef}c = {r2} \\)<br>\\( {y3|coef}b {z3|signedCoef}c = {r3} \\)",
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {y2|coef}b {z2|signedCoef}c = {r2} \\)<br>\\( {z3|coef}c = {r3} \\)",
     "answer": "\\( ({a}, {b}, {c} )\\)"
   },
   {
@@ -4533,17 +4703,20 @@
       "a" : { "min": -5, "max": 5, "exclude": [0] },
       "b" : { "min": -5, "max": 5, "exclude": [0] },
       "c" : { "min": -5, "max": 5, "exclude": [0] },
-      "x1": { "min": -5, "max": 5, "exclude": [0] },
-      "y1": { "min": -5, "max": 5, "exclude": [0] },
-      "z1": { "min": -5, "max": 5, "exclude": [0] },
+      "p": { "min": -5, "max": 5, "exclude": [0] },
+      "q": { "min": -5, "max": 5, "exclude": [0] },
+      "r": { "min": -5, "max": 5, "exclude": [0] },
+      "x1": { "formula": "p" },
+      "y1": { "formula": "p" },
+      "z1": { "formula": "p" },
       "r1": { "formula": "x1*a + y1*b + z1*c" },
-      "x2": { "min": -5, "max": 5, "exclude": [0] },
-      "y2": { "min": -5, "max": 5, "exclude": [0] },
-      "z2": { "min": -5, "max": 5, "exclude": [0] },
+      "x2": { "formula": "q" },
+      "y2": { "formula": "-1*q" },
+      "z2": { "formula": "q" },
       "r2": { "formula": "x2*a + y2*b + z2*c" },
-      "x3": { "min": -5, "max": 5, "exclude": [0] },
-      "y3": { "min": -5, "max": 5, "exclude": [0] },
-      "z3": { "min": -5, "max": 5, "exclude": [0] },
+      "x3": { "formula": "r" },
+      "y3": { "formula": "r" },
+      "z3": { "formula": "-1*r" },
       "r3": { "formula": "x3*a + y3*b + z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
