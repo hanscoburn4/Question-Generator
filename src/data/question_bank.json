@@ -4299,6 +4299,20 @@
       "answer": "\\( x = {x} \\)"
     },
     {
+      "id": "ALG2-2.1-B2",
+      "type": "template",
+      "objective": "Solving Linear Equations and Inequalities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "c": { "min": -30, "max": 30, "exclude": [0] },
+        "x": { "formula": "c*(1/a) - b", "format": "fraction" }
+      },
+      "question": "Solve for \\( x \\), simplify your answer: \\( {a}(x {b|sign}) = {c} \\).",
+      "answer": "\\( x = {x} \\)"
+    },
+    {
       "id": "ALG2-2.1-I1",
       "type": "template",
       "objective": "Solving Linear Equations and Inequalities",
@@ -4357,8 +4371,8 @@
       "objective": "Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
-      "question": "Solve for \\( y_2 \\), simplify your answer: \\( d = \\sqrt{ (x_2-x_1)^2 + (y_2-y_1)^2 } \\).",
-      "answer": "\\( y_2 = y_1 \\pm \\sqrt{ d^2 - (x_2 - x_1)^2 } \\)"
+      "question": "Solve for \\( R_2 \\), simplify your answer: \\( \\frac{1}{R} = \\frac{1}{R_1} + \\frac{1}{R_2} \\).",
+      "answer": "\\( R_2 = \\frac{RR_1}{R_1 - R} \\), with \\(R \\ne 0\\), \\(R_1 \\ne 0\\), and \\(R_1 \\ne R\\)."
     },
     {
       "id": "ALG2-2.2-B1",
@@ -4374,6 +4388,22 @@
         "x2": { "formula": " (-c - b)/a " }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( |{a}x {b|sign}| = {c} \\).",
+      "answer": "\\( x = {x1} \\) or \\( x = {x2} \\)"
+    },
+    {
+      "id": "ALG2-2.2-B2",
+      "type": "template",
+      "objective": "Solving Absolute Value Equations and Inequalities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 8 },
+        "h": { "min": -10, "max": 10, "exclude": [0] },
+        "negh": { "formula": "-1*h" },
+        "c": { "min": 1, "max": 6 },
+        "x1": { "formula": "h + a*c" },
+        "x2": { "formula": "h - a*c" }
+      },
+      "question": "Solve for \\( x \\), simplify your answer: \\( \\left|\\frac{x {negh|sign}}{{a}}\\right| = {c} \\).",
       "answer": "\\( x = {x1} \\) or \\( x = {x2} \\)"
     },
     {
@@ -4393,6 +4423,21 @@
       "answer": "\\( x = {x1} \\). The other branch solution, \\( x = {x2} \\), is extraneous because it makes \\( {c}x {d|sign} < 0 \\)."
     },
     {
+      "id": "ALG2-2.2-I2",
+      "type": "template",
+      "objective": "Solving Absolute Value Equations and Inequalities",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 8 },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "c": { "min": 3, "max": 12 },
+        "left": { "formula": "(-c - b)*(1/a)", "format": "fraction" },
+        "right": { "formula": "(c - b)*(1/a)", "format": "fraction" }
+      },
+      "question": "Solve the absolute value inequality: \\( |{a}x {b|sign}| < {c} \\).",
+      "answer": "\\( {left} < x < {right} \\)"
+    },
+    {
       "id": "ALG2-2.2-A1",
       "type": "template",
       "objective": "Solving Absolute Value Equations and Inequalities",
@@ -4408,6 +4453,22 @@
       },
       "question": "Solve for \\( x \\) and graph the solutions on a number line: \\( {a}|{b}x - {c}| + {d} \\ge {e} \\).",
       "answer": "\\( x \\geq {x1} \\) or \\( x \\leq {x2} \\)"
+    },
+    {
+      "id": "ALG2-2.2-A2",
+      "type": "template",
+      "objective": "Solving Absolute Value Equations and Inequalities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 6 },
+        "h": { "min": -8, "max": 8, "exclude": [0] },
+        "negh": { "formula": "-1*h" },
+        "c": { "min": 2, "max": 7 },
+        "left": { "formula": "h - a*c" },
+        "right": { "formula": "h + a*c" }
+      },
+      "question": "Solve for \\( x \\) and graph the solutions on a number line: \\( \\left|\\frac{x {negh|sign}}{{a}}\\right| > {c} \\).",
+      "answer": "\\( x < {left} \\) or \\( x > {right} \\)"
     },
     {
       "id": "ALG2-2.3-B1",
@@ -4426,6 +4487,18 @@
       "answer": "\\( y {negb|sign} = \\frac{{c}}{{d}}(x {nega|sign}) \\)"        
     },
     {
+      "id": "ALG2-2.3-B2",
+      "type": "template",
+      "objective": "Equations of Linear Functions",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "min": -6, "max": 6, "exclude": [0] },
+        "b": { "min": -10, "max": 10, "exclude": [0] }
+      },
+      "question": "Write the equation of the line with slope \\(m = {m}\\) and \\(y\\)-intercept \\((0, {b})\\) in slope-intercept form.",
+      "answer": "\\( y = {m|coef}x {b|sign} \\)"
+    },
+    {
       "id": "ALG2-2.3-I1",
       "type": "template",
       "objective": "Equations of Linear Functions",
@@ -4441,6 +4514,22 @@
       },
       "question": "Rewrite the given equation in both standard form and slope-intercept form: \\( y {y1|sign} = \\frac{{a}}{{b}}(x {x1|sign}) \\).",
       "answer": "Slope-Intercept Form: \\( y = \\frac{{a}}{{b}}x {yint|sign} \\); Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\)."
+    },
+    {
+      "id": "ALG2-2.3-I2",
+      "type": "template",
+      "objective": "Equations of Linear Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -6, "max": 6, "exclude": [0] },
+        "b": { "min": 2, "max": 8 },
+        "c": { "min": -20, "max": 20, "exclude": [0] },
+        "nega": { "formula": "-1*a" },
+        "m": { "formula": "(-a)*(1/b)", "format": "fraction" },
+        "yint": { "formula": "c*(1/b)", "format": "fraction" }
+      },
+      "question": "Rewrite the equation in slope-intercept form: \\( {a|coef}x {b|signedCoef}y = {c} \\).",
+      "answer": "\\( y = {m}x {yint|sign} \\)"
     },
     {
       "id": "ALG2-2.3-A1",
@@ -4463,6 +4552,24 @@
       },
       "question": "Write the equation of the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\) in Point-Slope, Slope-Intercept, and Standard Form.",
       "answer": "Point-Slope Form: \\( y {negy1|sign} = {m}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = {m}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef}y = {c} \\)."
+    },
+    {
+      "id": "ALG2-2.3-A2",
+      "type": "template",
+      "objective": "Equations of Linear Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "mnum": { "min": -6, "max": 6, "exclude": [0] },
+        "mden": { "min": 2, "max": 8 },
+        "perp": { "formula": "(-mden)*(1/mnum)", "format": "fraction" },
+        "x1": { "min": -8, "max": 8, "exclude": [0] },
+        "y1": { "min": -8, "max": 8, "exclude": [0] },
+        "negx1": { "formula": "-1*x1" },
+        "negy1": { "formula": "-1*y1" },
+        "b": { "formula": "y1 - (-mden)*x1*(1/mnum)", "format": "fraction" }
+      },
+      "question": "Write the equation of the line perpendicular to \\( y = \\frac{{mnum}}{{mden}}x \\) that passes through \\(({x1}, {y1})\\). Give your answer in slope-intercept form.",
+      "answer": "\\( y = {perp}x {b|sign} \\)"
     },
     {
       "id": "ALG2-2.4-B1",
@@ -4498,15 +4605,47 @@
       "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
+      "id": "ALG2-2.4-B2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "basic",
+      "variables": {
+        "x": { "min": -6, "max": 6, "exclude": [0] },
+        "m": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "y": { "formula": "m*x + b" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "x = {x}",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = {m}*x + ({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( x = {x} \\)<br>\\( y = {m|coef}x {b|sign} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
+  },
+  {
       "id": "ALG2-2.4-I1",
       "type": "template",
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "intermediate",
       "variables": {
-        "x": { "min": -10, "max": 10, "exclude": [0] },
+        "a1": { "values": [-2, -1, 1, 2] }, 
+        "b1": { "values": [-2, -1, 1, 2], "exclude": ["a1"] },
+        "k": { "values": [-2, -1, 1, 2] },
+        "x": { "formula": "a1*b1*k" },
         "y": { "min": -10, "max": 10, "exclude": [0] },
-        "a1": { "min": -5, "max": 5, "exclude": [0] }, 
-        "b1": { "min": -5, "max": 5, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
         "a2": { "formula": "-1*b1" },
         "b2": { "formula": "a1" },
@@ -4533,20 +4672,68 @@
       "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
+      "id": "ALG2-2.4-I2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -8, "max": 8, "exclude": [0] },
+        "y": { "min": -8, "max": 8, "exclude": [0] },
+        "m": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "formula": "y - m*x" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {y}",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = {m}*x + ({b})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( y = {y} \\)<br>\\( y = {m|coef}x {b|sign} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
+  },
+  {
       "id": "ALG2-2.4-A1",
       "type": "template",
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "advanced",
       "variables": {
-        "a1": { "min": -10, "max": 10, "exclude": [0] }, 
-        "b1": { "min": -7, "max": 7, "exclude": [0] },
-        "c1": { "min": -10, "max": 10, "exclude": [0] },
-        "a2": { "formula": "-1*b1" },
-        "b2": { "formula": "a1" },
-        "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
-        "x" : { "formula": "(b1*c2 - b2*c1)/(b1*a2 - b2*a1)", "exclude": [0] },
-        "y" : { "formula": "(a1*c2 - a2*c1  )/(a1*b2 - a2*b1)", "exclude": [0] }
+        "x": { "min": -8, "max": 8, "exclude": [0] },
+        "y": { "min": -8, "max": 8, "exclude": [0] },
+        "a1": { "min": -5, "max": 5, "exclude": [0] }, 
+        "b1": { "min": -5, "max": 5, "exclude": [0, "a1"] },
+        "a2": { "formula": "a1 + b1" },
+        "b2": { "formula": "b1 - a1" },
+        "c1": { "formula": "a1*x + b1*y" },
+        "c2": { "formula": "a2*x + b2*y" }
         },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = ({c1} - {a1}*x)/({b1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = ({c2} - {a2}*x)/({b2})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
       "question": "Solve the system of equations using a calculator. Round your answers to the nearest hundredth if needed:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\( ({x}, {y}) \\)"
   },
@@ -4569,6 +4756,23 @@
       "answer": "\\({x}, {y}\\)"
   },
   {
+      "id": "ALG2-2.5-B2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algebraically",
+      "difficulty": "basic",
+      "variables": {
+        "x": { "min": -7, "max": 7, "exclude": [0] },
+        "y": { "min": -7, "max": 7, "exclude": [0] },
+        "m": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "formula": "y - m*x" },
+        "a2": { "min": 2, "max": 6 },
+        "b2": { "min": -5, "max": 5, "exclude": [0] },
+        "c2": { "formula": "a2*x + b2*y" }
+      },
+      "question": "Solve the system of equations using substitution (show your work):<br>\\( y = {m|coef}x {b|sign} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\({x}, {y}\\)"
+  },
+  {
       "id": "ALG2-2.5-I1",
       "type": "template",
       "objective": "Solving Systems of Equations Algebraically",
@@ -4587,24 +4791,57 @@
       "answer": "\\({x}, {y}\\)"
   },
   {
+      "id": "ALG2-2.5-I2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algebraically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -8, "max": 8, "exclude": [0] },
+        "y": { "min": -8, "max": 8, "exclude": [0] },
+        "a": { "min": 2, "max": 6 },
+        "b1": { "min": -6, "max": 6, "exclude": [0] },
+        "b2": { "min": -6, "max": 6, "exclude": [0, "b1"] },
+        "c1": { "formula": "a*x + b1*y" },
+        "c2": { "formula": "a*x + b2*y" }
+      },
+      "question": "Solve the system of equations using elimination (show your work):<br>\\( {a|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\({x}, {y}\\)"
+  },
+  {
       "id": "ALG2-2.5-A1",
       "type": "template",
       "objective": "Solving Systems of Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
-        "a1": { "min": -10, "max": 10, "exclude": [0] }, 
-        "b1": { "min": -7, "max": 7, "exclude": [0] },
-        "c1": { "min": -10, "max": 10, "exclude": [0] },
-        "a2": { "formula": "-1*b1" },
+        "x": { "values": [2.25, 2.5, 2.75, 3.25, 3.5, 3.75, 4.25, 4.5, 4.75], "format": "decimal" },
+        "y": { "values": [5.25, 5.5, 5.75, 6.25, 6.5, 6.75, 7.25, 7.5, 7.75], "format": "decimal" },
+        "a1": { "min": 2, "max": 6 }, 
+        "b1": { "min": 2, "max": 6, "exclude": ["a1"] },
+        "a2": { "formula": "b1" },
         "b2": { "formula": "a1" },
-        "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
-        "xnum": { "formula": "b1*c2 - b2*c1", "exclude": [0] },
-        "xden": { "formula": "b1*a2 - b2*a1", "exclude": [0] },
-        "ynum": { "formula": "a1*c2 - a2*c1", "exclude": [0] },
-        "yden": { "formula": "a1*b2 - a2*b1", "exclude": [0] }
+        "c1": { "formula": "a1*x + b1*y", "format": "decimal" },
+        "c2": { "formula": "a2*x + b2*y", "format": "decimal" }
         },
-      "question": "Solve the system of equations using substitution or elimination (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\( \\left(\\frac{{xnum}}{{xden}}, \\frac{{ynum}}{{yden}}\\right) \\)"
+      "question": "At a concession stand, {a1} bags of popcorn and {b1} drinks cost ${c1}. Another order has {a2} bags of popcorn and {b2} drinks for ${c2}. Find the price of one bag of popcorn and one drink.",
+      "answer": "Popcorn costs ${x} per bag and drinks cost ${y} each."
+  },
+  {
+      "id": "ALG2-2.5-A2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algebraically",
+      "difficulty": "advanced",
+      "variables": {
+        "x": { "values": [8.05, 9.05, 10.05, 11.05, 12.05, 13.05, 14.05], "format": "decimal" },
+        "y": { "values": [4.05, 5.05, 6.05, 7.05], "format": "decimal" },
+        "a1": { "min": 2, "max": 8 },
+        "b1": { "min": 2, "max": 8, "exclude": ["a1"] },
+        "a2": { "formula": "b1" },
+        "b2": { "formula": "a1" },
+        "c1": { "formula": "(a1*x + b1*y).toFixed(2)" },
+        "c2": { "formula": "(a2*x + b2*y).toFixed(2)" }
+      },
+      "question": "A school sells adult tickets and student tickets. One order has {a1} adult tickets and {b1} student tickets for ${c1}. Another order has {a2} adult tickets and {b2} student tickets for ${c2}. Find the price of one adult ticket and one student ticket.",
+      "answer": "Adult tickets cost ${x} each and student tickets cost ${y} each."
   },
   {
     "id": "ALG2-2.6-B1",
@@ -4634,6 +4871,34 @@
     },
     "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x - y > {c1} \\)<br>\\( y < {a2|coef}x {c2|sign} \\)",
     "answer": "Use dotted boundary lines. Rewrite the first inequality as \\( y < {a1|coef}x {negc1|sign} \\). Shade below both boundary lines; the overlap is the solution region."
+  },
+  {
+    "id": "ALG2-2.6-B2",
+    "type": "template",
+    "objective": "Solving Systems of Inequalities",
+    "difficulty": "basic",
+    "variables": {
+      "m1": { "min": -4, "max": 4, "exclude": [0] },
+      "b1": { "min": -6, "max": 6, "exclude": [0] },
+      "m2": { "min": -4, "max": 4, "exclude": [0, "m1"] },
+      "b2": { "min": -6, "max": 6, "exclude": [0, "b1"] }
+    },
+    "draw": {
+      "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+      "gridStep": 1,
+      "eq1": {
+        "relation": "y >= {m1}*x + ({b1})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq2": {
+        "relation": "y < {m2}*x + ({b2})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      }
+    },
+    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( y \\geq {m1|coef}x {b1|sign} \\)<br>\\( y < {m2|coef}x {b2|sign} \\)",
+    "answer": "Use a solid boundary for \\( y = {m1|coef}x {b1|sign} \\) and a dotted boundary for \\( y = {m2|coef}x {b2|sign} \\). Shade on or above the first line and below the second line; the overlap is the solution region."
   },
   {
     "id": "ALG2-2.6-I1",
@@ -4672,6 +4937,40 @@
     "answer": "Use dotted boundary lines for all three inequalities. Shade above \\( {a1|coef}x {b1|signedCoef}y = {c1} \\), below \\( y = {a2|coef}x {c2|signedCoef} \\), and above \\( y = {c3} \\); the overlap is the solution region."
   },
   {
+    "id": "ALG2-2.6-I2",
+    "type": "template",
+    "objective": "Solving Systems of Inequalities",
+    "difficulty": "intermediate",
+    "variables": {
+      "a1": { "min": -5, "max": 5, "exclude": [0] },
+      "b1": { "min": 1, "max": 5 },
+      "c1": { "min": -8, "max": 8, "exclude": [0] },
+      "k": { "min": -5, "max": 5, "exclude": [0] },
+      "c3": { "min": -5, "max": 5, "exclude": [0] }
+    },
+    "draw": {
+      "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+      "gridStep": 1,
+      "eq1": {
+        "relation": "y <= ({c1} - {a1}*x)/({b1})",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq2": {
+        "relation": "x > {k}",
+        "showInQuestion": false,
+        "showInAnswer": true
+      },
+      "eq3": {
+        "relation": "y >= {c3}",
+        "showInQuestion": false,
+        "showInAnswer": true
+      }
+    },
+    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y \\leq {c1} \\)<br>\\( x > {k} \\)<br>\\( y \\geq {c3} \\)",
+    "answer": "Use a solid boundary for \\( {a1|coef}x {b1|signedCoef}y = {c1} \\), a dotted boundary for \\( x = {k} \\), and a solid boundary for \\( y = {c3} \\). Shade the overlap of the three half-planes."
+  },
+  {
     "id": "ALG2-2.8-B1",
     "type": "template",
     "objective": "Solving Systems of Equations in Three Variables",
@@ -4692,6 +4991,28 @@
       "r3": { "formula": "z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {y2|coef}b {z2|signedCoef}c = {r2} \\)<br>\\( {z3|coef}c = {r3} \\)",
+    "answer": "\\( ({a}, {b}, {c} )\\)"
+  },
+  {
+    "id": "ALG2-2.8-B2",
+    "type": "template",
+    "objective": "Solving Systems of Equations in Three Variables",
+    "difficulty": "basic",
+    "variables": {
+      "a" : { "min": -5, "max": 5, "exclude": [0] },
+      "b" : { "min": -5, "max": 5, "exclude": [0] },
+      "c" : { "min": -5, "max": 5, "exclude": [0] },
+      "x1": { "min": -5, "max": 5, "exclude": [0] },
+      "r1": { "formula": "x1*a" },
+      "x2": { "min": -5, "max": 5, "exclude": [0] },
+      "y2": { "min": -5, "max": 5, "exclude": [0] },
+      "r2": { "formula": "x2*a + y2*b" },
+      "x3": { "min": -5, "max": 5, "exclude": [0] },
+      "y3": { "min": -5, "max": 5, "exclude": [0] },
+      "z3": { "min": -5, "max": 5, "exclude": [0] },
+      "r3": { "formula": "x3*a + y3*b + z3*c" }
+    },
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
     "answer": "\\( ({a}, {b}, {c} )\\)"
   },
   {
@@ -4717,6 +5038,34 @@
       "x3": { "formula": "r" },
       "y3": { "formula": "r" },
       "z3": { "formula": "-1*r" },
+      "r3": { "formula": "x3*a + y3*b + z3*c" }
+    },
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
+    "answer": "\\( ({a}, {b}, {c} )\\)"
+  },
+  {
+    "id": "ALG2-2.8-I2",
+    "type": "template",
+    "objective": "Solving Systems of Equations in Three Variables",
+    "difficulty": "intermediate",
+    "variables": {
+      "a" : { "min": -5, "max": 5, "exclude": [0] },
+      "b" : { "min": -5, "max": 5, "exclude": [0] },
+      "c" : { "min": -5, "max": 5, "exclude": [0] },
+      "s1": { "min": 1, "max": 4 },
+      "s2": { "min": 1, "max": 4 },
+      "s3": { "min": 1, "max": 4 },
+      "x1": { "formula": "s1" },
+      "y1": { "formula": "2*s1" },
+      "z1": { "formula": "s1" },
+      "r1": { "formula": "x1*a + y1*b + z1*c" },
+      "x2": { "formula": "2*s2" },
+      "y2": { "formula": "-1*s2" },
+      "z2": { "formula": "3*s2" },
+      "r2": { "formula": "x2*a + y2*b + z2*c" },
+      "x3": { "formula": "-1*s3" },
+      "y3": { "formula": "s3" },
+      "z3": { "formula": "2*s3" },
       "r3": { "formula": "x3*a + y3*b + z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
