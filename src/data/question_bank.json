@@ -2384,15 +2384,15 @@
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": -5, "max": 5, "exclude": [0] },
-        "y": { "min": -5, "max": 5, "exclude": [0] },
-        "m1": { "min": -4, "max": 4, "exclude": [0] },
-        "b1": { "formula": "y - m1*x", "exclude": [0] },
-        "m2": { "min": -4, "max": 4, "exclude": [0,"m1"] },
-        "b2": { "formula": "y - m2*x", "exclude": [0] }
+        "x": { "min": -3, "max": 3 },
+        "y": { "min": -3, "max": 3 },
+        "m1": { "values": [-2, -1, 1, 2] },
+        "m2": { "values": [-2, -1, 1, 2], "exclude": ["m1"] },
+        "b1": { "formula": "y - m1*x" },
+        "b2": { "formula": "y - m2*x" }
         },
       "draw": {
-        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
         "gridStep": 1,
         "eq1": {
           "relation": "y = {m1}*x + ({b1})",
@@ -4375,6 +4375,33 @@
       "answer": "\\( R_2 = \\frac{RR_1}{R_1 - R} \\), with \\(R \\ne 0\\), \\(R_1 \\ne 0\\), and \\(R_1 \\ne R\\)."
     },
     {
+      "id": "ALG2-2.1-A4",
+      "type": "template",
+      "objective": "Solving Linear Equations and Inequalities",
+      "difficulty": "advanced",
+      "variables": {           },
+      "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x-a}{b} = \\frac{c-x}{d} \\).",
+      "answer": "\\( x = \\frac{bc + ad}{b + d} \\), with \\(b \\ne 0\\), \\(d \\ne 0\\), and \\(b + d \\ne 0\\)."
+    },
+    {
+      "id": "ALG2-2.1-A5",
+      "type": "template",
+      "objective": "Solving Linear Equations and Inequalities",
+      "difficulty": "advanced",
+      "variables": {           },
+      "question": "Solve for \\( w \\), simplify your answer: \\( P = 2l + 2w + kw \\).",
+      "answer": "\\( w = \\frac{P - 2l}{k + 2} \\), with \\(k \\ne -2\\)."
+    },
+    {
+      "id": "ALG2-2.1-A6",
+      "type": "template",
+      "objective": "Solving Linear Equations and Inequalities",
+      "difficulty": "advanced",
+      "variables": {           },
+      "question": "Solve for \\( t \\), simplify your answer: \\( D = r(t-a) + s(t+b) \\).",
+      "answer": "\\( t = \\frac{D + ra - sb}{r + s} \\), with \\(r + s \\ne 0\\)."
+    },
+    {
       "id": "ALG2-2.2-B1",
       "type": "template",
       "objective": "Solving Absolute Value Equations and Inequalities",
@@ -4541,8 +4568,8 @@
         "negx1": { "formula": "-1*x1" },
         "y1": { "min": -10, "max": 10, "exclude": [0] },
         "negy1": { "formula": "-1*y1" },
-        "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
+        "x2": { "min": -10, "max": 10, "exclude": [0,"x1", "negx1"] },
+        "y2": { "min": -10, "max": 10, "exclude": [0, "y1", "negy1"] },
         "mnum": { "formula": "y2 - y1" },
         "mden": { "formula": "x2 - x1"  },
         "m": { "formula": "mnum/mden", "format": "fraction" },
@@ -4560,7 +4587,8 @@
       "difficulty": "advanced",
       "variables": {
         "mnum": { "min": -6, "max": 6, "exclude": [0] },
-        "mden": { "min": 2, "max": 8 },
+        "negmnum": { "formula": "-1*mnum" },
+        "mden": { "min": 2, "max": 8, "exclude": ["mnum","negmnum"] },
         "perp": { "formula": "(-mden)*(1/mnum)", "format": "fraction" },
         "x1": { "min": -8, "max": 8, "exclude": [0] },
         "y1": { "min": -8, "max": 8, "exclude": [0] },
@@ -4577,15 +4605,15 @@
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": -5, "max": 5, "exclude": [0] },
-        "y": { "min": -5, "max": 5, "exclude": [0] },
-        "m1": { "min": -4, "max": 4, "exclude": [0] },
+        "x": { "min": -3, "max": 3 },
+        "y": { "min": -3, "max": 3 },
+        "m1": { "values": [-2, -1, 1, 2] },
         "b1": { "formula": "y - m1*x", "exclude": [0] },
-        "m2": { "min": -4, "max": 4, "exclude": [0,"m1"] },
+        "m2": { "values": [-2, -1, 1, 2], "exclude": ["m1"] },
         "b2": { "formula": "y - m2*x", "exclude": [0] }
         },
       "draw": {
-        "window": { "xMin": -12, "xMax": 12, "yMin": -12, "yMax": 12 },
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
         "gridStep": 1,
         "eq1": {
           "relation": "y = {m1}*x + ({b1})",
@@ -4610,76 +4638,9 @@
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": -6, "max": 6, "exclude": [0] },
-        "m": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "min": -6, "max": 6, "exclude": [0] },
-        "y": { "formula": "m*x + b" }
-      },
-      "draw": {
-        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
-        "gridStep": 1,
-        "eq1": {
-          "relation": "x = {x}",
-          "showInQuestion": false,
-          "showInAnswer": true
-        },
-        "eq2": {
-          "relation": "y = {m}*x + ({b})",
-          "showInQuestion": false,
-          "showInAnswer": true
-        },
-        "points": [
-          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
-        ]
-      },
-      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( x = {x} \\)<br>\\( y = {m|coef}x {b|sign} \\)",
-      "answer": "The solution is \\( ({x}, {y}) \\)."
-  },
-  {
-      "id": "ALG2-2.4-I1",
-      "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
-      "difficulty": "intermediate",
-      "variables": {
-        "a1": { "values": [-2, -1, 1, 2] }, 
-        "b1": { "values": [-2, -1, 1, 2], "exclude": ["a1"] },
-        "k": { "values": [-2, -1, 1, 2] },
-        "x": { "formula": "a1*b1*k" },
-        "y": { "min": -10, "max": 10, "exclude": [0] },
-        "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
-        "a2": { "formula": "-1*b1" },
-        "b2": { "formula": "a1" },
-        "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
-        },
-      "draw": {
-        "window": { "xMin": -15, "xMax": 15, "yMin": -15, "yMax": 15 },
-        "gridStep": 1,
-        "eq1": {
-          "relation": "y = ({c1} - {a1}*x)/({b1})",
-          "showInQuestion": false,
-          "showInAnswer": true
-        },
-        "eq2": {
-          "relation": "y = ({c2} - {a2}*x)/({b2})",
-          "showInQuestion": false,
-          "showInAnswer": true
-        },
-        "points": [
-          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
-        ]
-      },
-      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "The solution is \\( ({x}, {y}) \\)."
-  },
-  {
-      "id": "ALG2-2.4-I2",
-      "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
-      "difficulty": "intermediate",
-      "variables": {
-        "x": { "min": -8, "max": 8, "exclude": [0] },
-        "y": { "min": -8, "max": 8, "exclude": [0] },
-        "m": { "min": -5, "max": 5, "exclude": [0] },
+        "x": { "min": -3, "max": 3 },
+        "y": { "min": -4, "max": 4 },
+        "m": { "values": [-2, -1, 1, 2] },
         "b": { "formula": "y - m*x" }
       },
       "draw": {
@@ -4703,19 +4664,101 @@
       "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
+      "id": "ALG2-2.4-I1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -3, "max": 3, "exclude": [0] },
+        "y": { "min": -3, "max": 3, "exclude": [0] },
+        "m1": { "values": [-2, -1, 1, 2] },
+        "m2": { "values": [-2, -1, 1, 2], "exclude": ["m1"] },
+        "a1": { "formula": "m1" },
+        "b1": -1,
+        "c1": { "formula": "m1*x - y" },
+        "negx": { "formula": "-1*x" },
+        "negy": { "formula": "-1*y" },
+        "yint1": { "formula": "y - m1*x" },
+        "yint2": { "formula": "y - m2*x" }
+        },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m1}*x + ({yint1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = {m2}*(x - ({x})) + ({y})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {a1|coef}x - y = {c1} \\)<br>\\( y {negy|sign} = {m2|coef}(x {negx|sign}) \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
+  },
+  {
+      "id": "ALG2-2.4-I2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -3, "max": 3, "exclude": [0] },
+        "y": { "min": -3, "max": 3, "exclude": [0] },
+        "m1": { "values": [-2, -1, 1, 2] },
+        "m2": { "values": [-2, -1, 1, 2], "exclude": ["m1"] },
+        "yint1": { "formula": "y - m1*x" },
+        "yint2": { "formula": "y - m2*x" },
+        "a1": { "formula": "m1" },
+        "b1": -1,
+        "c1": { "formula": "m1*x - y" },
+        "negx": { "formula": "-1*x" },
+        "negy": { "formula": "-1*y" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = {m1}*x + ({yint1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = {m2}*x + ({yint2})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {a1|coef}x - y = {c1} \\)<br>\\( y {negy|sign} = {m2|coef}(x {negx|sign}) \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
+  },
+  {
       "id": "ALG2-2.4-A1",
       "type": "template",
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "advanced",
       "variables": {
-        "x": { "min": -8, "max": 8, "exclude": [0] },
-        "y": { "min": -8, "max": 8, "exclude": [0] },
-        "a1": { "min": -5, "max": 5, "exclude": [0] }, 
-        "b1": { "min": -5, "max": 5, "exclude": [0, "a1"] },
-        "a2": { "formula": "a1 + b1" },
-        "b2": { "formula": "b1 - a1" },
-        "c1": { "formula": "a1*x + b1*y" },
-        "c2": { "formula": "a2*x + b2*y" }
+        "x": { "min": -3, "max": 3, "exclude": [0] },
+        "y": { "min": -3, "max": 3, "exclude": [0] },
+        "m1": { "values": [-2, -1, 1, 2] },
+        "m2": { "values": [-2, -1, 1, 2], "exclude": ["m1"] },
+        "q1": { "values": [2, 3] },
+        "q2": { "values": [2, 3] },
+        "yint1": { "formula": "y - m1*x" },
+        "yint2": { "formula": "y - m2*x" },
+        "a1": { "formula": "q1*m1" }, 
+        "b1": { "formula": "-1*q1" },
+        "c1": { "formula": "-1*q1*yint1" },
+        "a2": { "formula": "q2*m2" },
+        "b2": { "formula": "-1*q2" },
+        "c2": { "formula": "-1*q2*yint2" }
         },
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
@@ -4734,8 +4777,46 @@
           { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
         ]
       },
-      "question": "Solve the system of equations using a calculator. Round your answers to the nearest hundredth if needed:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\( ({x}, {y}) \\)"
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
+  },
+  {
+      "id": "ALG2-2.4-A2",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "advanced",
+      "variables": {
+        "k": { "values": [-1, 1] },
+        "x": { "formula": "4*k" },
+        "y": { "min": -3, "max": 3, "exclude": [0] },
+        "mnum1": { "values": [-3, -1, 1, 3] },
+        "mnum2": { "values": [-7, -5, 5, 7] },
+        "bcoef1": -2,
+        "bcoef2": -4,
+        "yint1": { "formula": "y - mnum1*x*(1/2)" },
+        "yint2": { "formula": "y - mnum2*x*(1/4)" },
+        "c1": { "formula": "bcoef1*yint1" },
+        "c2": { "formula": "bcoef2*yint2" }
+      },
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": {
+          "relation": "y = ({c1} - {mnum1}*x)/({bcoef1})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "eq2": {
+          "relation": "y = ({c2} - {mnum2}*x)/({bcoef2})",
+          "showInQuestion": false,
+          "showInAnswer": true
+        },
+        "points": [
+          { "x": "{x}", "y": "{y}", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ]
+      },
+      "question": "Solve the system of equations by graphing using the coordinate plane provided:<br>\\( {mnum1|coef}x {bcoef1|signedCoef}y = {c1} \\)<br>\\( {mnum2|coef}x {bcoef2|signedCoef}y = {c2} \\)",
+      "answer": "The solution is \\( ({x}, {y}) \\)."
   },
   {
       "id": "ALG2-2.5-B1",
