@@ -3976,63 +3976,562 @@
     }
    ]
 },
-"Under Construction (Geometry)": {
-  "Module 1": [
+"Construction Geometry": {
+  "Unit 1": [
     {
-      "id": "Geo-1.2-B1",
+      "id": "G.1.1-B1",
       "type": "template",
-      "objective": "Identify points, lines, line segments, rays, and planes",
+      "objective": "G.1.1 Measurement",
       "difficulty": "basic",
-      "variables": {},
-      "question": "Construct a line that has points A and B which is in plane P. Construct a line PQ that intersects line AB but is not coplanar with line AB.",
-      "answer": "Answer currently unavailable."
+      "variables": {
+        "feet": { "min": 2, "max": 9 },
+        "inches": { "min": 1, "max": 11 },
+        "total": { "formula": "12*feet+inches", "format": "decimal" }
+        },
+      "question": "A plan labels a board {feet}'-{inches}\". Write this measurement in feet and inches, then express the entire length in inches.",
+      "answer": "{feet} ft {inches} in. Total: {feet} × 12 + {inches} = <strong>{total} in.</strong>"
     },
     {
-      "id": "Geo-1.2-I1",
+      "id": "G.1.1-B2",
       "type": "template",
-      "objective": "Identify points, lines, line segments, rays, and planes",
+      "objective": "G.1.1 Measurement",
       "difficulty": "basic",
-      "variables": {},
-      "question": "Construct a line segment using a straightedge and then construct a congruent line segment using a compass and straightedge.",
-      "answer": "Answer currently unavailable."
+      "variables": {
+        "eighths": { "values": [1, 3, 5, 7] },
+        "decimal": { "formula": "eighths/8", "format": "decimal" },
+        "fraction": { "formula": "eighths/8", "format": "decimal" },
+        "fractionWhole": { "formula": "floor(fraction)", "format": "decimal" },
+        "fractionNumerator": { "formula": "round((fraction - fractionWhole)*64)", "format": "decimal" },
+        "fractionDivisor": { "formula": "fractionNumerator % 32 === 0 ? 32 : fractionNumerator % 16 === 0 ? 16 : fractionNumerator % 8 === 0 ? 8 : fractionNumerator % 4 === 0 ? 4 : fractionNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "fractionText": { "formula": "fractionNumerator === 0 ? String(fractionWhole) : (fractionWhole === 0 ? '' : fractionWhole + ' ') + (fractionNumerator / fractionDivisor) + '/' + (64 / fractionDivisor)" }
+        },
+      "question": "A parts list gives a thickness of {decimal} in. Express it as a fractional inch in simplest form.",
+      "answer": "{decimal} = {eighths}/8, so the thickness is <strong>{fractionText} in.</strong>"
     },
     {
-      "id": "Geo-1.3a-B1",
+      "id": "G.1.1-I1",
       "type": "template",
-      "objective": "Calculate measures of line segments",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "Currently unavailable.",
-      "answer": "Answer currently unavailable."
-    },
-    {
-      "id": "Geo-1.3b-B1",
-      "type": "template",
-      "objective": "Exponential Equations",
+      "objective": "G.1.1 Measurement",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -5, "max": 5, "exclude": [0] },
-        "b_den": { "min": 2, "max": 9 },
-        "b": { "formula": "1/b_den", "format": "fraction" }
-      },
-      "draw": {
-        "window": { "xMin": -15, "xMax": 15, "yMin": -12, "yMax": 12 },
-        "eq1": { 
-          "relation": "y = (b)^x + a", 
-          "showInQuestion": false, 
-          "showInAnswer": true }
-      },
-      "question": "Graph the function \\( y = ({b})^x {a|sign}\\) and state its domain and range.",
-      "answer": "Domain: all real numbers or \\( x \\in \\mathbb{R} \\), Range: \\( y > {a} \\)"
+        "feet": { "min": 2, "max": 10 },
+        "inches": { "min": 1, "max": 11 },
+        "eighths": { "values": [1, 3, 5, 7] },
+        "total": { "formula": "feet*12+inches+eighths/8", "format": "decimal" },
+        "totalWhole": { "formula": "floor(total)", "format": "decimal" },
+        "totalNumerator": { "formula": "round((total - totalWhole)*64)", "format": "decimal" },
+        "totalDivisor": { "formula": "totalNumerator % 32 === 0 ? 32 : totalNumerator % 16 === 0 ? 16 : totalNumerator % 8 === 0 ? 8 : totalNumerator % 4 === 0 ? 4 : totalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "totalText": { "formula": "totalNumerator === 0 ? String(totalWhole) : (totalWhole === 0 ? '' : totalWhole + ' ') + (totalNumerator / totalDivisor) + '/' + (64 / totalDivisor)" },
+        "remainder": { "formula": "inches+eighths/8", "format": "decimal" },
+        "remainderWhole": { "formula": "floor(remainder)", "format": "decimal" },
+        "remainderNumerator": { "formula": "round((remainder - remainderWhole)*64)", "format": "decimal" },
+        "remainderDivisor": { "formula": "remainderNumerator % 32 === 0 ? 32 : remainderNumerator % 16 === 0 ? 16 : remainderNumerator % 8 === 0 ? 8 : remainderNumerator % 4 === 0 ? 4 : remainderNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "remainderText": { "formula": "remainderNumerator === 0 ? String(remainderWhole) : (remainderWhole === 0 ? '' : remainderWhole + ' ') + (remainderNumerator / remainderDivisor) + '/' + (64 / remainderDivisor)" }
+        },
+      "question": "A dimension is {totalText} in. Express it in feet and inches, with fewer than 12 inches remaining and the fractional part in simplest form.",
+      "answer": "{totalText} in. = {feet} × 12 in. + {remainderText} in., so the dimension is <strong>{feet} ft {remainderText} in.</strong>"
+    },
+    {
+      "id": "G.1.1-I2",
+      "type": "template",
+      "objective": "G.1.1 Measurement",
+      "difficulty": "intermediate",
+      "variables": {
+        "start": { "min": 1, "max": 10 },
+        "tick": { "min": 1, "max": 15 },
+        "end": { "formula": "start+1", "format": "decimal" },
+        "arrow": { "formula": "40+20*tick", "format": "decimal" },
+        "left": { "formula": "arrow-6", "format": "decimal" },
+        "right": { "formula": "arrow+6", "format": "decimal" },
+        "reading": { "formula": "start+tick/16", "format": "decimal" },
+        "readingWhole": { "formula": "floor(reading)", "format": "decimal" },
+        "readingNumerator": { "formula": "round((reading - readingWhole)*64)", "format": "decimal" },
+        "readingDivisor": { "formula": "readingNumerator % 32 === 0 ? 32 : readingNumerator % 16 === 0 ? 16 : readingNumerator % 8 === 0 ? 8 : readingNumerator % 4 === 0 ? 4 : readingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "readingText": { "formula": "readingNumerator === 0 ? String(readingWhole) : (readingWhole === 0 ? '' : readingWhole + ' ') + (readingNumerator / readingDivisor) + '/' + (64 / readingDivisor)" }
+        },
+      "question": "The ruler segment divides one inch into sixteenths. Read the measurement at the arrow and simplify the fractional part.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 125' width='400' style='max-width:100%;height:auto' role='img' aria-label='Ruler from {start} to {end} inches with 16 equal intervals; arrow at tick {tick} after {start} inches'><path d='M40 85 H360 M40 45 V85 M60 70 V85 M80 60 V85 M100 70 V85 M120 50 V85 M140 70 V85 M160 60 V85 M180 70 V85 M200 45 V85 M220 70 V85 M240 60 V85 M260 70 V85 M280 50 V85 M300 70 V85 M320 60 V85 M340 70 V85 M360 45 V85' fill='none' stroke='black' stroke-width='2'/><path d='M{arrow} 8 V42 M{left} 34 L{arrow} 42 L{right} 34' fill='none' stroke='black' stroke-width='3'/><g font-size='18' text-anchor='middle' fill='black'><text x='40' y='110'>{start}</text><text x='360' y='110'>{end} in.</text></g></svg>",
+      "answer": "The arrow is {tick}/16 in. past {start} in.: <strong>{readingText} in.</strong>"
+    },
+    {
+      "id": "G.1.2-B",
+      "type": "template",
+      "objective": "G.1.2 Construction Fractions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 8, "max": 24 },
+        "b": { "min": 8, "max": 24 },
+        "na": { "values": [1, 3, 5, 7] },
+        "nb": { "values": [1, 3, 5, 7] },
+        "first": { "formula": "a+na/8", "format": "decimal" },
+        "firstWhole": { "formula": "floor(first)", "format": "decimal" },
+        "firstNumerator": { "formula": "round((first - firstWhole)*64)", "format": "decimal" },
+        "firstDivisor": { "formula": "firstNumerator % 32 === 0 ? 32 : firstNumerator % 16 === 0 ? 16 : firstNumerator % 8 === 0 ? 8 : firstNumerator % 4 === 0 ? 4 : firstNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "firstText": { "formula": "firstNumerator === 0 ? String(firstWhole) : (firstWhole === 0 ? '' : firstWhole + ' ') + (firstNumerator / firstDivisor) + '/' + (64 / firstDivisor)" },
+        "second": { "formula": "b+nb/8", "format": "decimal" },
+        "secondWhole": { "formula": "floor(second)", "format": "decimal" },
+        "secondNumerator": { "formula": "round((second - secondWhole)*64)", "format": "decimal" },
+        "secondDivisor": { "formula": "secondNumerator % 32 === 0 ? 32 : secondNumerator % 16 === 0 ? 16 : secondNumerator % 8 === 0 ? 8 : secondNumerator % 4 === 0 ? 4 : secondNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "secondText": { "formula": "secondNumerator === 0 ? String(secondWhole) : (secondWhole === 0 ? '' : secondWhole + ' ') + (secondNumerator / secondDivisor) + '/' + (64 / secondDivisor)" },
+        "total": { "formula": "first+second", "format": "decimal" },
+        "totalWhole": { "formula": "floor(total)", "format": "decimal" },
+        "totalNumerator": { "formula": "round((total - totalWhole)*64)", "format": "decimal" },
+        "totalDivisor": { "formula": "totalNumerator % 32 === 0 ? 32 : totalNumerator % 16 === 0 ? 16 : totalNumerator % 8 === 0 ? 8 : totalNumerator % 4 === 0 ? 4 : totalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "totalText": { "formula": "totalNumerator === 0 ? String(totalWhole) : (totalWhole === 0 ? '' : totalWhole + ' ') + (totalNumerator / totalDivisor) + '/' + (64 / totalDivisor)" }
+        },
+      "question": "Two trim pieces measure {firstText} in. and {secondText} in. They meet end to end with no gap or overlap. What total length do they occupy? Give a simplified mixed-number measurement.",
+      "answer": "{firstText} + {secondText} = <strong>{totalText} in.</strong>"
+    },
+    {
+      "id": "G.1.2-I",
+      "type": "template",
+      "objective": "G.1.2 Construction Fractions",
+      "difficulty": "intermediate",
+      "variables": {
+        "whole": { "min": 20, "max": 40 },
+        "half": { "values": [1, 3] },
+        "spaces": { "values": [2, 4] },
+        "marks": { "formula": "spaces-1", "format": "decimal" },
+        "length": { "formula": "whole+half/4", "format": "decimal" },
+        "lengthWhole": { "formula": "floor(length)", "format": "decimal" },
+        "lengthNumerator": { "formula": "round((length - lengthWhole)*64)", "format": "decimal" },
+        "lengthDivisor": { "formula": "lengthNumerator % 32 === 0 ? 32 : lengthNumerator % 16 === 0 ? 16 : lengthNumerator % 8 === 0 ? 8 : lengthNumerator % 4 === 0 ? 4 : lengthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "lengthText": { "formula": "lengthNumerator === 0 ? String(lengthWhole) : (lengthWhole === 0 ? '' : lengthWhole + ' ') + (lengthNumerator / lengthDivisor) + '/' + (64 / lengthDivisor)" },
+        "spacing": { "formula": "length/spaces", "format": "decimal" },
+        "spacingWhole": { "formula": "floor(spacing)", "format": "decimal" },
+        "spacingNumerator": { "formula": "round((spacing - spacingWhole)*64)", "format": "decimal" },
+        "spacingDivisor": { "formula": "spacingNumerator % 32 === 0 ? 32 : spacingNumerator % 16 === 0 ? 16 : spacingNumerator % 8 === 0 ? 8 : spacingNumerator % 4 === 0 ? 4 : spacingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "spacingText": { "formula": "spacingNumerator === 0 ? String(spacingWhole) : (spacingWhole === 0 ? '' : spacingWhole + ' ') + (spacingNumerator / spacingDivisor) + '/' + (64 / spacingDivisor)" },
+        "last": { "formula": "spacing*(spaces-1)", "format": "decimal" },
+        "lastWhole": { "formula": "floor(last)", "format": "decimal" },
+        "lastNumerator": { "formula": "round((last - lastWhole)*64)", "format": "decimal" },
+        "lastDivisor": { "formula": "lastNumerator % 32 === 0 ? 32 : lastNumerator % 16 === 0 ? 16 : lastNumerator % 8 === 0 ? 8 : lastNumerator % 4 === 0 ? 4 : lastNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "lastText": { "formula": "lastNumerator === 0 ? String(lastWhole) : (lastWhole === 0 ? '' : lastWhole + ' ') + (lastNumerator / lastDivisor) + '/' + (64 / lastDivisor)" }
+        },
+      "question": "A {lengthText} in. layout line is divided into {spaces} equal spaces. Find the spacing and the distance from the starting end to the last interior mark. No material is removed.",
+      "answer": "Spacing: {lengthText} ÷ {spaces} = <strong>{spacingText} in.</strong> The last interior mark is {marks} spaces from the start: <strong>{lastText} in.</strong>"
+    },
+    {
+      "id": "G.1.2-A1",
+      "type": "template",
+      "objective": "G.1.2 Construction Fractions",
+      "difficulty": "advanced",
+      "variables": {
+        "stock": { "values": [72, 84, 96] },
+        "count": { "values": [2, 3] },
+        "whole": { "min": 14, "max": 20 },
+        "eighths": { "values": [1, 3, 5, 7] },
+        "kerfUnits": { "values": [1, 2] },
+        "piece": { "formula": "whole+eighths/8", "format": "decimal" },
+        "pieceWhole": { "formula": "floor(piece)", "format": "decimal" },
+        "pieceNumerator": { "formula": "round((piece - pieceWhole)*64)", "format": "decimal" },
+        "pieceDivisor": { "formula": "pieceNumerator % 32 === 0 ? 32 : pieceNumerator % 16 === 0 ? 16 : pieceNumerator % 8 === 0 ? 8 : pieceNumerator % 4 === 0 ? 4 : pieceNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "pieceText": { "formula": "pieceNumerator === 0 ? String(pieceWhole) : (pieceWhole === 0 ? '' : pieceWhole + ' ') + (pieceNumerator / pieceDivisor) + '/' + (64 / pieceDivisor)" },
+        "kerf": { "formula": "kerfUnits/16", "format": "decimal" },
+        "kerfWhole": { "formula": "floor(kerf)", "format": "decimal" },
+        "kerfNumerator": { "formula": "round((kerf - kerfWhole)*64)", "format": "decimal" },
+        "kerfDivisor": { "formula": "kerfNumerator % 32 === 0 ? 32 : kerfNumerator % 16 === 0 ? 16 : kerfNumerator % 8 === 0 ? 8 : kerfNumerator % 4 === 0 ? 4 : kerfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "kerfText": { "formula": "kerfNumerator === 0 ? String(kerfWhole) : (kerfWhole === 0 ? '' : kerfWhole + ' ') + (kerfNumerator / kerfDivisor) + '/' + (64 / kerfDivisor)" },
+        "used": { "formula": "count*piece", "format": "decimal" },
+        "usedWhole": { "formula": "floor(used)", "format": "decimal" },
+        "usedNumerator": { "formula": "round((used - usedWhole)*64)", "format": "decimal" },
+        "usedDivisor": { "formula": "usedNumerator % 32 === 0 ? 32 : usedNumerator % 16 === 0 ? 16 : usedNumerator % 8 === 0 ? 8 : usedNumerator % 4 === 0 ? 4 : usedNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "usedText": { "formula": "usedNumerator === 0 ? String(usedWhole) : (usedWhole === 0 ? '' : usedWhole + ' ') + (usedNumerator / usedDivisor) + '/' + (64 / usedDivisor)" },
+        "waste": { "formula": "count*kerf", "format": "decimal" },
+        "wasteWhole": { "formula": "floor(waste)", "format": "decimal" },
+        "wasteNumerator": { "formula": "round((waste - wasteWhole)*64)", "format": "decimal" },
+        "wasteDivisor": { "formula": "wasteNumerator % 32 === 0 ? 32 : wasteNumerator % 16 === 0 ? 16 : wasteNumerator % 8 === 0 ? 8 : wasteNumerator % 4 === 0 ? 4 : wasteNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "wasteText": { "formula": "wasteNumerator === 0 ? String(wasteWhole) : (wasteWhole === 0 ? '' : wasteWhole + ' ') + (wasteNumerator / wasteDivisor) + '/' + (64 / wasteDivisor)" },
+        "remaining": { "formula": "stock-used-waste", "format": "decimal" },
+        "remainingWhole": { "formula": "floor(remaining)", "format": "decimal" },
+        "remainingNumerator": { "formula": "round((remaining - remainingWhole)*64)", "format": "decimal" },
+        "remainingDivisor": { "formula": "remainingNumerator % 32 === 0 ? 32 : remainingNumerator % 16 === 0 ? 16 : remainingNumerator % 8 === 0 ? 8 : remainingNumerator % 4 === 0 ? 4 : remainingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "remainingText": { "formula": "remainingNumerator === 0 ? String(remainingWhole) : (remainingWhole === 0 ? '' : remainingWhole + ' ') + (remainingNumerator / remainingDivisor) + '/' + (64 / remainingDivisor)" }
+        },
+      "question": "A {stock} in. board supplies {count} pieces, each {pieceText} in. long. Each of the {count} cuts removes {kerfText} in. of material (the kerf). Assuming no other waste, how much board remains?",
+      "answer": "Pieces use {usedText} in.; kerfs use {wasteText} in. Remaining: {stock} − {usedText} − {wasteText} = <strong>{remainingText} in.</strong>"
+    },
+    {
+      "id": "G.1.2-A2",
+      "type": "template",
+      "objective": "G.1.2 Construction Fractions",
+      "difficulty": "advanced",
+      "variables": {
+        "whole": { "min": 28, "max": 42 },
+        "quarter": { "values": [1, 3] },
+        "thicknessUnits": { "values": [4, 6] },
+        "clearanceUnits": { "values": [1, 2] },
+        "opening": { "formula": "whole+quarter/4", "format": "decimal" },
+        "openingWhole": { "formula": "floor(opening)", "format": "decimal" },
+        "openingNumerator": { "formula": "round((opening - openingWhole)*64)", "format": "decimal" },
+        "openingDivisor": { "formula": "openingNumerator % 32 === 0 ? 32 : openingNumerator % 16 === 0 ? 16 : openingNumerator % 8 === 0 ? 8 : openingNumerator % 4 === 0 ? 4 : openingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "openingText": { "formula": "openingNumerator === 0 ? String(openingWhole) : (openingWhole === 0 ? '' : openingWhole + ' ') + (openingNumerator / openingDivisor) + '/' + (64 / openingDivisor)" },
+        "thickness": { "formula": "thicknessUnits/8", "format": "decimal" },
+        "thicknessWhole": { "formula": "floor(thickness)", "format": "decimal" },
+        "thicknessNumerator": { "formula": "round((thickness - thicknessWhole)*64)", "format": "decimal" },
+        "thicknessDivisor": { "formula": "thicknessNumerator % 32 === 0 ? 32 : thicknessNumerator % 16 === 0 ? 16 : thicknessNumerator % 8 === 0 ? 8 : thicknessNumerator % 4 === 0 ? 4 : thicknessNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "thicknessText": { "formula": "thicknessNumerator === 0 ? String(thicknessWhole) : (thicknessWhole === 0 ? '' : thicknessWhole + ' ') + (thicknessNumerator / thicknessDivisor) + '/' + (64 / thicknessDivisor)" },
+        "clearance": { "formula": "clearanceUnits/16", "format": "decimal" },
+        "clearanceWhole": { "formula": "floor(clearance)", "format": "decimal" },
+        "clearanceNumerator": { "formula": "round((clearance - clearanceWhole)*64)", "format": "decimal" },
+        "clearanceDivisor": { "formula": "clearanceNumerator % 32 === 0 ? 32 : clearanceNumerator % 16 === 0 ? 16 : clearanceNumerator % 8 === 0 ? 8 : clearanceNumerator % 4 === 0 ? 4 : clearanceNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "clearanceText": { "formula": "clearanceNumerator === 0 ? String(clearanceWhole) : (clearanceWhole === 0 ? '' : clearanceWhole + ' ') + (clearanceNumerator / clearanceDivisor) + '/' + (64 / clearanceDivisor)" },
+        "shelf": { "formula": "opening-2*thickness-2*clearance", "format": "decimal" },
+        "shelfWhole": { "formula": "floor(shelf)", "format": "decimal" },
+        "shelfNumerator": { "formula": "round((shelf - shelfWhole)*64)", "format": "decimal" },
+        "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
+        },
+      "question": "An opening is {openingText} in. wide. Two side panels, each {thicknessText} in. thick, fit inside it. A shelf fits between the panels with {clearanceText} in. clearance at each end. Find the shelf length.",
+      "answer": "Subtract both panel thicknesses and both clearances: {openingText} − 2({thicknessText}) − 2({clearanceText}) = <strong>{shelfText} in.</strong>"
+    },
+    {
+      "id": "G.1.3-B",
+      "type": "template",
+      "objective": "G.1.3 Area & Perimeter",
+      "difficulty": "basic",
+      "variables": {
+        "length": { "min": 10, "max": 20 },
+        "width": { "min": 8, "max": 14 },
+        "area": { "formula": "length*width", "format": "decimal" },
+        "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
+        },
+      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of baseboard for its entire perimeter. Ignore openings and waste.",
+      "answer": "Area: {length} × {width} = <strong>{area} ft²</strong>. Baseboard: 2({length} + {width}) = <strong>{perimeter} ft</strong>."
+    },
+    {
+      "id": "G.1.3-I",
+      "type": "template",
+      "objective": "G.1.3 Area & Perimeter",
+      "difficulty": "intermediate",
+      "variables": {
+        "scale": { "values": [6, 8, 10, 12] },
+        "base": { "formula": "3*scale", "format": "decimal" },
+        "height": { "formula": "4*scale", "format": "decimal" },
+        "hypotenuse": { "formula": "5*scale", "format": "decimal" },
+        "area": { "formula": "base*height/2", "format": "decimal" },
+        "edging": { "formula": "(base+height+hypotenuse)/12", "format": "decimal" },
+        "squareFeet": { "formula": "area/144", "format": "fraction" }
+        },
+      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste.",
+      "answer": "Area: ({base} × {height})/2 = <strong>{area} in.²</strong> = \\( {squareFeet} \\) ft², using 144 in.² per ft². Edging: ({base} + {height} + {hypotenuse})/12 = <strong>{edging} ft</strong>."
+    },
+    {
+      "id": "G.1.3-A1",
+      "type": "template",
+      "objective": "G.1.3 Area & Perimeter",
+      "difficulty": "advanced",
+      "variables": {
+        "length": { "min": 12, "max": 20 },
+        "width": { "min": 10, "max": 16 },
+        "notchLength": { "min": 3, "max": 6 },
+        "notchWidth": { "min": 2, "max": 5 },
+        "area": { "formula": "length*width-notchLength*notchWidth", "format": "decimal" },
+        "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
+        },
+      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges.",
+      "answer": "Area: {length} × {width} − {notchLength} × {notchWidth} = <strong>{area} ft²</strong>. The notch replaces two outside edge lengths with equal inside lengths, so perimeter = 2({length} + {width}) = <strong>{perimeter} ft</strong>."
+    },
+    {
+      "id": "G.1.3-A2",
+      "type": "template",
+      "objective": "G.1.3 Area & Perimeter",
+      "difficulty": "advanced",
+      "variables": {
+        "width": { "min": 14, "max": 24 },
+        "height": { "min": 8, "max": 10 },
+        "doorWidth": { "values": [3, 4] },
+        "doorHeight": { "values": [6, 7] },
+        "windowWidth": { "min": 3, "max": 5 },
+        "windowHeight": { "min": 2, "max": 4 },
+        "coverage": { "values": [35, 40, 50] },
+        "coats": { "values": [2, 3] },
+        "net": { "formula": "width*height-doorWidth*doorHeight-windowWidth*windowHeight", "format": "decimal" },
+        "total": { "formula": "net*coats", "format": "decimal" },
+        "containers": { "formula": "ceil(total/coverage)", "format": "decimal" }
+        },
+      "question": "A wall is {width} ft wide and {height} ft high, with a {doorWidth} ft by {doorHeight} ft doorway and a {windowWidth} ft by {windowHeight} ft window. Find the area excluding openings. One container of finish covers {coverage} ft² for one coat. How many whole containers are needed for {coats} coats? Ignore waste.",
+      "answer": "Net area: {width} × {height} − {doorWidth} × {doorHeight} − {windowWidth} × {windowHeight} = <strong>{net} ft²</strong>. Required coverage: {net} × {coats} = {total} ft². Round {total}/{coverage} up to get <strong>{containers} containers</strong>."
+    },
+    {
+      "id": "G.1.4-B",
+      "type": "template",
+      "objective": "G.1.4 Circles",
+      "difficulty": "basic",
+      "variables": {
+        "diameter": { "values": [6, 8, 10, 12, 14, 16] },
+        "radius": { "formula": "diameter/2", "format": "decimal" }
+        },
+      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle?",
+      "answer": "The center-to-pencil distance is the radius: {diameter} ÷ 2 = <strong>{radius} in.</strong>"
+    },
+    {
+      "id": "G.1.4-I1",
+      "type": "template",
+      "objective": "G.1.4 Circles",
+      "difficulty": "intermediate",
+      "variables": {
+        "width": { "values": [12, 14, 16, 18] },
+        "height": { "values": [10, 12, 14] },
+        "radiusUnits": { "values": [5, 7, 9] },
+        "x": { "formula": "width/2", "format": "decimal" },
+        "y": { "formula": "height/2", "format": "decimal" },
+        "radius": { "formula": "radiusUnits/4", "format": "decimal" },
+        "radiusWhole": { "formula": "floor(radius)", "format": "decimal" },
+        "radiusNumerator": { "formula": "round((radius - radiusWhole)*64)", "format": "decimal" },
+        "radiusDivisor": { "formula": "radiusNumerator % 32 === 0 ? 32 : radiusNumerator % 16 === 0 ? 16 : radiusNumerator % 8 === 0 ? 8 : radiusNumerator % 4 === 0 ? 4 : radiusNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "radiusText": { "formula": "radiusNumerator === 0 ? String(radiusWhole) : (radiusWhole === 0 ? '' : radiusWhole + ' ') + (radiusNumerator / radiusDivisor) + '/' + (64 / radiusDivisor)" },
+        "horizontal": { "formula": "x-radius", "format": "decimal" },
+        "horizontalWhole": { "formula": "floor(horizontal)", "format": "decimal" },
+        "horizontalNumerator": { "formula": "round((horizontal - horizontalWhole)*64)", "format": "decimal" },
+        "horizontalDivisor": { "formula": "horizontalNumerator % 32 === 0 ? 32 : horizontalNumerator % 16 === 0 ? 16 : horizontalNumerator % 8 === 0 ? 8 : horizontalNumerator % 4 === 0 ? 4 : horizontalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "horizontalText": { "formula": "horizontalNumerator === 0 ? String(horizontalWhole) : (horizontalWhole === 0 ? '' : horizontalWhole + ' ') + (horizontalNumerator / horizontalDivisor) + '/' + (64 / horizontalDivisor)" },
+        "vertical": { "formula": "y-radius", "format": "decimal" },
+        "verticalWhole": { "formula": "floor(vertical)", "format": "decimal" },
+        "verticalNumerator": { "formula": "round((vertical - verticalWhole)*64)", "format": "decimal" },
+        "verticalDivisor": { "formula": "verticalNumerator % 32 === 0 ? 32 : verticalNumerator % 16 === 0 ? 16 : verticalNumerator % 8 === 0 ? 8 : verticalNumerator % 4 === 0 ? 4 : verticalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "verticalText": { "formula": "verticalNumerator === 0 ? String(verticalWhole) : (verticalWhole === 0 ? '' : verticalWhole + ' ') + (verticalNumerator / verticalDivisor) + '/' + (64 / verticalDivisor)" }
+        },
+      "question": "A circular opening of radius {radiusText} in. is centered on a panel {width} in. wide and {height} in. high. Locate the center from the left and bottom edges, then find the shortest clearance from the circle to each panel edge.",
+      "answer": "Center: <strong>{x} in. from the left and {y} in. from the bottom</strong>. Left and right clearances: {x} − {radiusText} = <strong>{horizontalText} in. each</strong>. Top and bottom: {y} − {radiusText} = <strong>{verticalText} in. each</strong>."
+    },
+    {
+      "id": "G.1.4-I2",
+      "type": "template",
+      "objective": "G.1.4 Circles",
+      "difficulty": "intermediate",
+      "variables": {
+        "diameter": { "values": [18, 22, 26, 30, 34, 38] },
+        "circumference": { "formula": "round(3.14*diameter*10)/10", "format": "decimal" }
+        },
+      "question": "A circular tabletop has diameter {diameter} in. Find the edging needed to go around it once, without overlap or waste. Use π = 3.14 and round to the nearest tenth of an inch.",
+      "answer": "Circumference = πd = 3.14 × {diameter} ≈ <strong>{circumference} in.</strong>"
+    },
+    {
+      "id": "G.1.4-I3",
+      "type": "template",
+      "objective": "G.1.4 Circles",
+      "difficulty": "intermediate",
+      "variables": {
+        "diameter": { "values": [10, 12, 14, 16, 18, 20] },
+        "radius": { "formula": "diameter/2", "format": "decimal" },
+        "area": { "formula": "round(3.14*radius*radius*100)/100", "format": "decimal" }
+        },
+      "question": "A circular cover has diameter {diameter} in. Find the area of one face to be painted. Use π = 3.14 and round to the nearest hundredth of a square inch.",
+      "answer": "Radius = {diameter}/2 = {radius} in. Area = πr² = 3.14 × {radius}² = <strong>{area} in.²</strong>."
+    },
+    {
+      "id": "G.1.5-B",
+      "type": "template",
+      "objective": "G.1.5 Scale",
+      "difficulty": "basic",
+      "variables": {
+        "factor": { "values": [4, 8] },
+        "drawing": { "min": 3, "max": 8 },
+        "actual": { "formula": "drawing*factor", "format": "decimal" },
+        "slot": { "values": [6, 12, 18, 24] },
+        "slotDrawing": { "formula": "slot/factor", "format": "decimal" },
+        "slotDrawingWhole": { "formula": "floor(slotDrawing)", "format": "decimal" },
+        "slotDrawingNumerator": { "formula": "round((slotDrawing - slotDrawingWhole)*64)", "format": "decimal" },
+        "slotDrawingDivisor": { "formula": "slotDrawingNumerator % 32 === 0 ? 32 : slotDrawingNumerator % 16 === 0 ? 16 : slotDrawingNumerator % 8 === 0 ? 8 : slotDrawingNumerator % 4 === 0 ? 4 : slotDrawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "slotDrawingText": { "formula": "slotDrawingNumerator === 0 ? String(slotDrawingWhole) : (slotDrawingWhole === 0 ? '' : slotDrawingWhole + ' ') + (slotDrawingNumerator / slotDrawingDivisor) + '/' + (64 / slotDrawingDivisor)" }
+        },
+      "question": "A detail drawing shows an actual {actual} in. part as a {drawing} in. line. Find the drawing-to-actual scale ratio using the same units. How long should an actual {slot} in. slot appear at that scale?",
+      "answer": "Scale: {drawing}:{actual} = <strong>1:{factor}</strong>. Slot drawing length: {slot}/{factor} = <strong>{slotDrawingText} in.</strong>"
+    },
+    {
+      "id": "G.1.5-I",
+      "type": "template",
+      "objective": "G.1.5 Scale",
+      "difficulty": "intermediate",
+      "variables": {
+        "feet": { "min": 10, "max": 24 },
+        "inches": { "values": [0, 4, 8] },
+        "scaleUnits": { "values": [3, 6] },
+        "actualFeet": { "formula": "feet+inches/12", "format": "decimal" },
+        "scale": { "formula": "scaleUnits/8", "format": "decimal" },
+        "scaleWhole": { "formula": "floor(scale)", "format": "decimal" },
+        "scaleNumerator": { "formula": "round((scale - scaleWhole)*64)", "format": "decimal" },
+        "scaleDivisor": { "formula": "scaleNumerator % 32 === 0 ? 32 : scaleNumerator % 16 === 0 ? 16 : scaleNumerator % 8 === 0 ? 8 : scaleNumerator % 4 === 0 ? 4 : scaleNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "scaleText": { "formula": "scaleNumerator === 0 ? String(scaleWhole) : (scaleWhole === 0 ? '' : scaleWhole + ' ') + (scaleNumerator / scaleDivisor) + '/' + (64 / scaleDivisor)" },
+        "drawing": { "formula": "actualFeet*scaleUnits/8", "format": "decimal" },
+        "drawingWhole": { "formula": "floor(drawing)", "format": "decimal" },
+        "drawingNumerator": { "formula": "round((drawing - drawingWhole)*64)", "format": "decimal" },
+        "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
+        },
+      "question": "A wall is {feet} ft {inches} in. long. How long should its line be on a drawing using scale {scaleText} in. = 1 ft? Give the drawing length in inches.",
+      "answer": "Convert inches to feet, then multiply by the drawing scale: ({feet} + {inches}/12) × {scaleText} = <strong>{drawingText} in.</strong>"
+    },
+    {
+      "id": "G.1.5-A1",
+      "type": "template",
+      "objective": "G.1.5 Scale",
+      "difficulty": "advanced",
+      "variables": {
+        "factor": { "values": [4, 8] },
+        "lengthTicks": { "min": 17, "max": 31 },
+        "widthTicks": { "min": 10, "max": 16 },
+        "lengthFeet": { "formula": "lengthTicks*factor/8", "format": "decimal" },
+        "widthFeet": { "formula": "widthTicks*factor/8", "format": "decimal" },
+        "feet": { "formula": "floor(lengthFeet)", "format": "decimal" },
+        "inches": { "formula": "(lengthFeet-feet)*12", "format": "decimal" },
+        "widthWhole": { "formula": "floor(widthFeet)", "format": "decimal" },
+        "widthInches": { "formula": "(widthFeet-widthWhole)*12", "format": "decimal" },
+        "area": { "formula": "lengthFeet*widthFeet", "format": "decimal" },
+        "scale": { "formula": "1/factor", "format": "decimal" },
+        "scaleWhole": { "formula": "floor(scale)", "format": "decimal" },
+        "scaleNumerator": { "formula": "round((scale - scaleWhole)*64)", "format": "decimal" },
+        "scaleDivisor": { "formula": "scaleNumerator % 32 === 0 ? 32 : scaleNumerator % 16 === 0 ? 16 : scaleNumerator % 8 === 0 ? 8 : scaleNumerator % 4 === 0 ? 4 : scaleNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "scaleText": { "formula": "scaleNumerator === 0 ? String(scaleWhole) : (scaleWhole === 0 ? '' : scaleWhole + ' ') + (scaleNumerator / scaleDivisor) + '/' + (64 / scaleDivisor)" },
+        "drawLength": { "formula": "lengthTicks/8", "format": "decimal" },
+        "drawLengthWhole": { "formula": "floor(drawLength)", "format": "decimal" },
+        "drawLengthNumerator": { "formula": "round((drawLength - drawLengthWhole)*64)", "format": "decimal" },
+        "drawLengthDivisor": { "formula": "drawLengthNumerator % 32 === 0 ? 32 : drawLengthNumerator % 16 === 0 ? 16 : drawLengthNumerator % 8 === 0 ? 8 : drawLengthNumerator % 4 === 0 ? 4 : drawLengthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "drawLengthText": { "formula": "drawLengthNumerator === 0 ? String(drawLengthWhole) : (drawLengthWhole === 0 ? '' : drawLengthWhole + ' ') + (drawLengthNumerator / drawLengthDivisor) + '/' + (64 / drawLengthDivisor)" },
+        "drawWidth": { "formula": "widthTicks/8", "format": "decimal" },
+        "drawWidthWhole": { "formula": "floor(drawWidth)", "format": "decimal" },
+        "drawWidthNumerator": { "formula": "round((drawWidth - drawWidthWhole)*64)", "format": "decimal" },
+        "drawWidthDivisor": { "formula": "drawWidthNumerator % 32 === 0 ? 32 : drawWidthNumerator % 16 === 0 ? 16 : drawWidthNumerator % 8 === 0 ? 8 : drawWidthNumerator % 4 === 0 ? 4 : drawWidthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "drawWidthText": { "formula": "drawWidthNumerator === 0 ? String(drawWidthWhole) : (drawWidthWhole === 0 ? '' : drawWidthWhole + ' ') + (drawWidthNumerator / drawWidthDivisor) + '/' + (64 / drawWidthDivisor)" }
+        },
+      "question": "On a plan with scale {scaleText} in. = 1 ft, a rectangular room measures {drawLengthText} in. by {drawWidthText} in. Find the actual dimensions in feet and inches and the floor area in square feet.",
+      "answer": "Each drawing inch represents {factor} ft. Actual dimensions: <strong>{feet} ft {inches} in. by {widthWhole} ft {widthInches} in.</strong> Area: {lengthFeet} × {widthFeet} = <strong>{area} ft²</strong>."
+    },
+    {
+      "id": "G.1.5-A2",
+      "type": "template",
+      "objective": "G.1.5 Scale",
+      "difficulty": "advanced",
+      "variables": {
+        "factor": { "values": [2, 4, 8] },
+        "percent": { "values": [25, 50] },
+        "drawingTicks": { "min": 8, "max": 28 },
+        "newFactor": { "formula": "factor*100/percent", "format": "decimal" },
+        "actual": { "formula": "drawingTicks/8*newFactor", "format": "decimal" },
+        "originalScale": { "formula": "1/factor", "format": "decimal" },
+        "originalScaleWhole": { "formula": "floor(originalScale)", "format": "decimal" },
+        "originalScaleNumerator": { "formula": "round((originalScale - originalScaleWhole)*64)", "format": "decimal" },
+        "originalScaleDivisor": { "formula": "originalScaleNumerator % 32 === 0 ? 32 : originalScaleNumerator % 16 === 0 ? 16 : originalScaleNumerator % 8 === 0 ? 8 : originalScaleNumerator % 4 === 0 ? 4 : originalScaleNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "originalScaleText": { "formula": "originalScaleNumerator === 0 ? String(originalScaleWhole) : (originalScaleWhole === 0 ? '' : originalScaleWhole + ' ') + (originalScaleNumerator / originalScaleDivisor) + '/' + (64 / originalScaleDivisor)" },
+        "newScale": { "formula": "1/newFactor", "format": "decimal" },
+        "newScaleWhole": { "formula": "floor(newScale)", "format": "decimal" },
+        "newScaleNumerator": { "formula": "round((newScale - newScaleWhole)*64)", "format": "decimal" },
+        "newScaleDivisor": { "formula": "newScaleNumerator % 32 === 0 ? 32 : newScaleNumerator % 16 === 0 ? 16 : newScaleNumerator % 8 === 0 ? 8 : newScaleNumerator % 4 === 0 ? 4 : newScaleNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "newScaleText": { "formula": "newScaleNumerator === 0 ? String(newScaleWhole) : (newScaleWhole === 0 ? '' : newScaleWhole + ' ') + (newScaleNumerator / newScaleDivisor) + '/' + (64 / newScaleDivisor)" },
+        "drawing": { "formula": "drawingTicks/8", "format": "decimal" },
+        "drawingWhole": { "formula": "floor(drawing)", "format": "decimal" },
+        "drawingNumerator": { "formula": "round((drawing - drawingWhole)*64)", "format": "decimal" },
+        "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
+        },
+      "question": "A drawing originally used scale {originalScaleText} in. = 1 ft, then was printed at {percent}% of its original linear size. What is the reduced print scale? A wall measures {drawingText} in. on the reduced print; find its actual length in feet.",
+      "answer": "Reduced scale: <strong>{newScaleText} in. = 1 ft</strong>. Each print inch represents {newFactor} ft. Actual length: {drawingText} × {newFactor} = <strong>{actual} ft</strong>."
+    },
+    {
+      "id": "G.1.6-B",
+      "type": "template",
+      "objective": "G.1.6 Plan Reading",
+      "difficulty": "basic",
+      "variables": {
+        "width": { "values": [24, 30, 36, 42, 48] },
+        "height": { "values": [24, 30, 36] },
+        "depth": { "values": [12, 18, 24] }
+        },
+      "question": "A rectangular cabinet is shown in three orthographic views. Use the labeled dimensions below; the sketches are not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 210' width='600' style='max-width:100%;height:auto' role='img' aria-label='Front view: {width} inches wide by {height} inches high. Top view: {width} inches wide by {depth} inches deep. Right-side view: unknown depth by {height} inches high.'><g fill='none' stroke='black' stroke-width='2'><rect x='20' y='50' width='140' height='120'/><rect x='220' y='50' width='140' height='75'/><rect x='430' y='50' width='85' height='120'/></g><g fill='black' font-size='15' text-anchor='middle'><text x='90' y='22'>FRONT</text><text x='90' y='44'>{width} in.</text><text x='183' y='112'>{height} in.</text><text x='290' y='22'>TOP</text><text x='290' y='44'>{width} in.</text><text x='388' y='92'>{depth} in.</text><text x='472' y='22'>RIGHT SIDE</text><text x='472' y='44'>?</text><text x='545' y='112'>{height} in.</text></g></svg><br>a) Give the cabinet width, height, and depth. b) Find the missing horizontal dimension in the right-side view.",
+      "answer": "a) Width <strong>{width} in.</strong>, height <strong>{height} in.</strong>, depth <strong>{depth} in.</strong> b) The side view shows depth horizontally: <strong>{depth} in.</strong>"
+    },
+    {
+      "id": "G.1.6-I",
+      "type": "template",
+      "objective": "G.1.6 Plan Reading",
+      "difficulty": "intermediate",
+      "variables": {
+        "width": { "min": 10, "max": 20 },
+        "height": { "min": 8, "max": 14 },
+        "inset": { "values": [1, 2] },
+        "diameterUnits": { "values": [2, 3, 4] },
+        "right": { "formula": "width-inset", "format": "decimal" },
+        "top": { "formula": "height-inset", "format": "decimal" },
+        "horizontal": { "formula": "width-2*inset", "format": "decimal" },
+        "vertical": { "formula": "height-2*inset", "format": "decimal" },
+        "diameter": { "formula": "diameterUnits/8", "format": "decimal" },
+        "diameterWhole": { "formula": "floor(diameter)", "format": "decimal" },
+        "diameterNumerator": { "formula": "round((diameter - diameterWhole)*64)", "format": "decimal" },
+        "diameterDivisor": { "formula": "diameterNumerator % 32 === 0 ? 32 : diameterNumerator % 16 === 0 ? 16 : diameterNumerator % 8 === 0 ? 8 : diameterNumerator % 4 === 0 ? 4 : diameterNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "diameterText": { "formula": "diameterNumerator === 0 ? String(diameterWhole) : (diameterWhole === 0 ? '' : diameterWhole + ' ') + (diameterNumerator / diameterDivisor) + '/' + (64 / diameterDivisor)" }
+        },
+      "question": "A plan shows a plate {width} in. wide and {height} in. high, labeled <strong>4 HOLES, Ø {diameterText} in.</strong> One hole center is near each corner, {inset} in. from each adjacent edge. Explain the note, give all four centers as (distance from left, distance from bottom), and find the horizontal and vertical center-to-center spacings.",
+      "answer": "Four holes, each <strong>{diameterText} in. in diameter</strong>. Centers in inches: <strong>({inset}, {inset}), ({right}, {inset}), ({inset}, {top}), ({right}, {top})</strong>. Horizontal spacing: {width} − 2({inset}) = <strong>{horizontal} in.</strong>; vertical: {height} − 2({inset}) = <strong>{vertical} in.</strong>"
+    },
+    {
+      "id": "G.1.6-A1",
+      "type": "template",
+      "objective": "G.1.6 Plan Reading",
+      "difficulty": "advanced",
+      "variables": {
+        "left": { "min": 30, "max": 48 },
+        "openingA": { "values": [28, 30, 32, 36] },
+        "middle": { "min": 36, "max": 60 },
+        "openingB": { "values": [28, 30, 32, 36] },
+        "right": { "min": 30, "max": 48 },
+        "overall": { "formula": "left+openingA+middle+openingB+right", "format": "decimal" },
+        "overallFeet": { "formula": "floor(overall/12)", "format": "decimal" },
+        "overallInches": { "formula": "overall%12", "format": "decimal" },
+        "position": { "formula": "left+openingA+middle", "format": "decimal" },
+        "positionFeet": { "formula": "floor(position/12)", "format": "decimal" },
+        "positionInches": { "formula": "position%12", "format": "decimal" }
+        },
+      "question": "A straight wall plan gives this dimension chain from left to right: <strong>left section {left} in. | opening A {openingA} in. | middle section {middle} in. | opening B unknown | right section {right} in.</strong> Overall length is {overallFeet} ft {overallInches} in. Find opening B's width in inches and the distance from the wall's left end to opening B's left edge in feet and inches.",
+      "answer": "Overall length: {overallFeet} × 12 + {overallInches} = {overall} in. Opening B: {overall} − {left} − {openingA} − {middle} − {right} = <strong>{openingB} in.</strong> Its left edge is {left} + {openingA} + {middle} = {position} in. = <strong>{positionFeet} ft {positionInches} in.</strong> from the left end."
+    },
+    {
+      "id": "G.1.6-A2",
+      "type": "template",
+      "objective": "G.1.6 Plan Reading",
+      "difficulty": "advanced",
+      "variables": {
+        "width": { "min": 28, "max": 42 },
+        "height": { "min": 20, "max": 36 },
+        "depth": { "values": [10, 12, 14, 16] },
+        "thicknessUnits": { "values": [4, 6] },
+        "clearanceUnits": { "values": [1, 2] },
+        "thickness": { "formula": "thicknessUnits/8", "format": "decimal" },
+        "thicknessWhole": { "formula": "floor(thickness)", "format": "decimal" },
+        "thicknessNumerator": { "formula": "round((thickness - thicknessWhole)*64)", "format": "decimal" },
+        "thicknessDivisor": { "formula": "thicknessNumerator % 32 === 0 ? 32 : thicknessNumerator % 16 === 0 ? 16 : thicknessNumerator % 8 === 0 ? 8 : thicknessNumerator % 4 === 0 ? 4 : thicknessNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "thicknessText": { "formula": "thicknessNumerator === 0 ? String(thicknessWhole) : (thicknessWhole === 0 ? '' : thicknessWhole + ' ') + (thicknessNumerator / thicknessDivisor) + '/' + (64 / thicknessDivisor)" },
+        "clearance": { "formula": "clearanceUnits/16", "format": "decimal" },
+        "clearanceWhole": { "formula": "floor(clearance)", "format": "decimal" },
+        "clearanceNumerator": { "formula": "round((clearance - clearanceWhole)*64)", "format": "decimal" },
+        "clearanceDivisor": { "formula": "clearanceNumerator % 32 === 0 ? 32 : clearanceNumerator % 16 === 0 ? 16 : clearanceNumerator % 8 === 0 ? 8 : clearanceNumerator % 4 === 0 ? 4 : clearanceNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "clearanceText": { "formula": "clearanceNumerator === 0 ? String(clearanceWhole) : (clearanceWhole === 0 ? '' : clearanceWhole + ' ') + (clearanceNumerator / clearanceDivisor) + '/' + (64 / clearanceDivisor)" },
+        "insideWidth": { "formula": "width-2*thickness", "format": "decimal" },
+        "insideWidthWhole": { "formula": "floor(insideWidth)", "format": "decimal" },
+        "insideWidthNumerator": { "formula": "round((insideWidth - insideWidthWhole)*64)", "format": "decimal" },
+        "insideWidthDivisor": { "formula": "insideWidthNumerator % 32 === 0 ? 32 : insideWidthNumerator % 16 === 0 ? 16 : insideWidthNumerator % 8 === 0 ? 8 : insideWidthNumerator % 4 === 0 ? 4 : insideWidthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "insideWidthText": { "formula": "insideWidthNumerator === 0 ? String(insideWidthWhole) : (insideWidthWhole === 0 ? '' : insideWidthWhole + ' ') + (insideWidthNumerator / insideWidthDivisor) + '/' + (64 / insideWidthDivisor)" },
+        "insideHeight": { "formula": "height-2*thickness", "format": "decimal" },
+        "insideHeightWhole": { "formula": "floor(insideHeight)", "format": "decimal" },
+        "insideHeightNumerator": { "formula": "round((insideHeight - insideHeightWhole)*64)", "format": "decimal" },
+        "insideHeightDivisor": { "formula": "insideHeightNumerator % 32 === 0 ? 32 : insideHeightNumerator % 16 === 0 ? 16 : insideHeightNumerator % 8 === 0 ? 8 : insideHeightNumerator % 4 === 0 ? 4 : insideHeightNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "insideHeightText": { "formula": "insideHeightNumerator === 0 ? String(insideHeightWhole) : (insideHeightWhole === 0 ? '' : insideHeightWhole + ' ') + (insideHeightNumerator / insideHeightDivisor) + '/' + (64 / insideHeightDivisor)" },
+        "shelf": { "formula": "insideWidth-2*clearance", "format": "decimal" },
+        "shelfWhole": { "formula": "floor(shelf)", "format": "decimal" },
+        "shelfNumerator": { "formula": "round((shelf - shelfWhole)*64)", "format": "decimal" },
+        "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
+        },
+      "question": "A shelf assembly plan gives outside width {width} in., outside height {height} in., and depth {depth} in. The front view shows two full-height side panels and top and bottom panels fitted between them. All panels are {thicknessText} in. thick and {depth} in. deep. Find a) clear inside width and height and b) the length and depth of a shelf between the side panels with {clearanceText} in. clearance at each end, flush with front and back.",
+      "answer": "a) Inside width: {width} − 2({thicknessText}) = <strong>{insideWidthText} in.</strong>; inside height: {height} − 2({thicknessText}) = <strong>{insideHeightText} in.</strong> b) Shelf length: {insideWidthText} − 2({clearanceText}) = <strong>{shelfText} in.</strong>; depth: <strong>{depth} in.</strong>"
     }
-   ]
+  ]
 },
 "Algebra 2": {
-  "Module 1": [
+  "1: Relations and Functions": [
     {
       "id": "ALG2-1.1a-B1",
       "type": "template",
-      "objective": "Identify Domain and Range of Functions",
+      "objective": "1.1a Identify Domain and Range of Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
@@ -4044,7 +4543,7 @@
     {
       "id": "ALG2-1.1a-I2",
       "type": "template",
-      "objective": "Identify Domain and Range of Functions",
+      "objective": "1.1a Identify Domain and Range of Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -1, "max": 1, "exclude": [0] },
@@ -4057,7 +4556,7 @@
     {
       "id": "ALG2-1.1a-A1",
       "type": "template",
-      "objective": "Identify Domain and Range of Functions",
+      "objective": "1.1a Identify Domain and Range of Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -1, "max": 1, "exclude": [0] },
@@ -4070,7 +4569,7 @@
     {
       "id": "ALG2-1.2a-B1",
       "type": "template",
-      "objective": "Identify Intercepts of Graphs of Functions",
+      "objective": "1.2a Identify Intercepts of Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "m": { "min": -3, "max": 3, "exclude": [0] },
@@ -4084,7 +4583,7 @@
     {
       "id": "ALG2-1.2a-B2",
       "type": "template",
-      "objective": "Identify Intercepts of Graphs of Functions",
+      "objective": "1.2a Identify Intercepts of Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -4, "max": 4, "exclude": [0] },
@@ -4100,7 +4599,7 @@
     {
       "id": "ALG2-1.2a-I1",
       "type": "template",
-      "objective": "Identify Intercepts of Graphs of Functions",
+      "objective": "1.2a Identify Intercepts of Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
@@ -4116,7 +4615,7 @@
     {
       "id": "ALG2-1.2a-I2",
       "type": "template",
-      "objective": "Identify Intercepts of Graphs of Functions",
+      "objective": "1.2a Identify Intercepts of Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min":-10, "max":10, "exclude":[0]},
@@ -4132,7 +4631,7 @@
     {
       "id": "ALG2-1.2b-B1",
       "type": "template",
-      "objective": "Identify Linear and Nonlinear Functions",
+      "objective": "1.2b Identify Linear and Nonlinear Functions",
       "difficulty": "basic",
       "variables": {},
       "question": "For each equation below, determine whether it is linear: <br> a) \\(y = -5x + 7\\), <br> b) \\(y = -6\\), <br> c) \\(y = x\\), <br> d) \\(y = 2x^2 + 5\\).",
@@ -4141,7 +4640,7 @@
     {
       "id": "ALG2-1.2b-B2",
       "type": "template",
-      "objective": "Identify Linear and Nonlinear Functions",
+      "objective": "1.2b Identify Linear and Nonlinear Functions",
       "difficulty": "basic",
       "variables": {},
       "question": "For each equation below, determine whether it is linear: <br> a) \\(x + 6y = 5\\), <br> b) \\(y = 7x + 6xy\\), <br> c) \\(-\\frac{6}{x} = 5y - 4\\), <br> d) \\(3x - y = 2\\).",
@@ -4150,7 +4649,7 @@
     {
       "id": "ALG2-1.2b-I1",
       "type": "template",
-      "objective": "Identify Linear and Nonlinear Functions",
+      "objective": "1.2b Identify Linear and Nonlinear Functions",
       "difficulty": "intermediate",
       "variables": {},
       "question": "For each equation below, determine whether it is linear: <br> a) \\(y = 4x - 7\\), <br> b) \\(y = 3x^2 + 5\\), <br> c) \\(y = -2x + 4\\), <br> d) \\(y = \\frac{1}{x} + 6\\).",
@@ -4159,7 +4658,7 @@
     {
       "id": "ALG2-1.2b-I2",
       "type": "template",
-      "objective": "Identify Linear and Nonlinear Functions",
+      "objective": "1.2b Identify Linear and Nonlinear Functions",
       "difficulty": "intermediate",
       "variables": {},
       "question": "For each equation below, determine whether it is linear: <br> a) \\(2x + 3y = 6\\), <br> b) \\(xy + 4y = 5\\), <br> c) \\(\\frac{3}{x} + y = 7\\), <br> d) \\(5x - y = 10\\).",
@@ -4168,7 +4667,7 @@
     {
       "id": "ALG2-1.2c-B1",
       "type": "template",
-      "objective": "Identify symmetry from equations",
+      "objective": "1.2c Identify symmetry from equations",
       "difficulty": "basic",
       "variables": {},
       "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> a) \\(y = x^2 - 4\\), <br> b) \\(y = x^3 - x\\), <br> c) \\(y = x^2 + x - 6\\), <br> d) \\(y = x^3 + x^2 - x - 1\\).",
@@ -4177,7 +4676,7 @@
     {
       "id": "ALG2-1.2c-I1",
       "type": "template",
-      "objective": "Identify symmetry from equations",
+      "objective": "1.2c Identify symmetry from equations",
       "difficulty": "intermediate",
       "variables": {},
       "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br>  a) \\(y = x^2 - 3\\), <br> b) \\(y = x^3 + x\\), <br> c) \\(y = x^2 + 2x + 1\\), <br> d) \\(y = x^3 - x^2 + x - 1\\).",
@@ -4186,7 +4685,7 @@
     {
       "id": "ALG2-1.3a-B1",
       "type": "template",
-      "objective": "Identify End Behavior of Graphs of Functions",
+      "objective": "1.3a Identify End Behavior of Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "values": [1, -1, 2, -2] },
@@ -4198,7 +4697,7 @@
     {
       "id": "ALG2-1.3a-I1",
       "type": "template",
-      "objective": "Identify End Behavior of Graphs of Functions",
+      "objective": "1.3a Identify End Behavior of Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [1, -1, 2, -2] },
@@ -4211,7 +4710,7 @@
     {
       "id": "ALG2-1.3b-B1",
       "type": "template",
-      "objective": "Identify Extrema of Graphs and Functions",
+      "objective": "1.3b Identify Extrema of Graphs and Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "values": [1, -1, 2, -2] },
@@ -4226,7 +4725,7 @@
     {
       "id": "ALG2-1.3b-I1",
       "type": "template",
-      "objective": "Identify Extrema of Graphs and Functions",
+      "objective": "1.3b Identify Extrema of Graphs and Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [2, -2] },
@@ -4242,7 +4741,7 @@
     {
       "id": "ALG2-1.7-B1",
       "type": "template",
-      "objective": "Transform Graphs of Functions",
+      "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "values": [1] },
@@ -4258,7 +4757,7 @@
     {
       "id": "ALG2-1.7-I1",
       "type": "template",
-      "objective": "Transform Graphs of Functions",
+      "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0]},
@@ -4271,7 +4770,7 @@
     {
       "id": "ALG2-1.7-A1",
       "type": "template",
-      "objective": "Transform Graphs of Functions",
+      "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0]},
@@ -4282,11 +4781,11 @@
       "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Starting point is at \\( ({h}, {k}) \\)."
     }
   ],
-  "Module 2": [
+  "2: Linear Equations, Inequalities, and Systems": [
     {
       "id": "ALG2-2.1-B1",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
@@ -4301,7 +4800,7 @@
     {
       "id": "ALG2-2.1-B2",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -8, "max": 8, "exclude": [0,1,-1] },
@@ -4315,7 +4814,7 @@
     {
       "id": "ALG2-2.1-I1",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
@@ -4334,7 +4833,7 @@
     {
       "id": "ALG2-2.1-I2",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -4350,7 +4849,7 @@
     {
       "id": "ALG2-2.1-A1",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {        },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{-a}{x + b} = \\frac{c}{x - d} \\).",
@@ -4359,7 +4858,7 @@
     {
       "id": "ALG2-2.1-A2",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
       "question": "Solve for \\( x_1 \\), simplify your answer: \\( x_1 + \\frac{a}{b}( x_2 - x_1 ) = f \\).",
@@ -4368,7 +4867,7 @@
     {
       "id": "ALG2-2.1-A3",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
       "question": "Solve for \\( R_2 \\), simplify your answer: \\( \\frac{1}{R} = \\frac{1}{R_1} + \\frac{1}{R_2} \\).",
@@ -4377,7 +4876,7 @@
     {
       "id": "ALG2-2.1-A4",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x-a}{b} = \\frac{c-x}{d} \\).",
@@ -4386,7 +4885,7 @@
     {
       "id": "ALG2-2.1-A5",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
       "question": "Solve for \\( w \\), simplify your answer: \\( P = 2l + 2w + kw \\).",
@@ -4395,7 +4894,7 @@
     {
       "id": "ALG2-2.1-A6",
       "type": "template",
-      "objective": "Solving Linear Equations and Inequalities",
+      "objective": "2.1 Solving Linear Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {           },
       "question": "Solve for \\( t \\), simplify your answer: \\( D = r(t-a) + s(t+b) \\).",
@@ -4404,7 +4903,7 @@
     {
       "id": "ALG2-2.2-B1",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 10 },
@@ -4420,7 +4919,7 @@
     {
       "id": "ALG2-2.2-B2",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 8 },
@@ -4436,7 +4935,7 @@
     {
       "id": "ALG2-2.2-I1",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 2, "max": 4 },
@@ -4452,7 +4951,7 @@
     {
       "id": "ALG2-2.2-I2",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 2, "max": 8 },
@@ -4467,7 +4966,7 @@
     {
       "id": "ALG2-2.2-A1",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 10 },
@@ -4484,7 +4983,7 @@
     {
       "id": "ALG2-2.2-A2",
       "type": "template",
-      "objective": "Solving Absolute Value Equations and Inequalities",
+      "objective": "2.2 Solving Absolute Value Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 6 },
@@ -4500,7 +4999,7 @@
     {
       "id": "ALG2-2.3-B1",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
@@ -4516,7 +5015,7 @@
     {
       "id": "ALG2-2.3-B2",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "basic",
       "variables": {
         "m": { "min": -6, "max": 6, "exclude": [0] },
@@ -4528,7 +5027,7 @@
     {
       "id": "ALG2-2.3-I1",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -4, "max": 4, "exclude": [0] },
@@ -4545,7 +5044,7 @@
     {
       "id": "ALG2-2.3-I2",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -6, "max": 6, "exclude": [0] },
@@ -4561,7 +5060,7 @@
     {
       "id": "ALG2-2.3-A1",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "advanced",
       "variables": {
         "x1": { "min": -10, "max": 10, "exclude": [0] },
@@ -4583,7 +5082,7 @@
     {
       "id": "ALG2-2.3-A2",
       "type": "template",
-      "objective": "Equations of Linear Functions",
+      "objective": "2.3 Equations of Linear Functions",
       "difficulty": "advanced",
       "variables": {
         "mnum": { "min": -6, "max": 6, "exclude": [0] },
@@ -4602,7 +5101,7 @@
     {
       "id": "ALG2-2.4-B1",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
         "x": { "min": -3, "max": 3 },
@@ -4635,13 +5134,13 @@
   {
       "id": "ALG2-2.4-B2",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
         "x": { "min": -3, "max": 3 },
         "y": { "min": -4, "max": 4 },
         "m": { "values": [-2, -1, 1, 2] },
-        "b": { "formula": "y - m*x" }
+        "b": { "formula": "y - m*x", "exclude": [0] }
       },
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
@@ -4666,7 +5165,7 @@
   {
       "id": "ALG2-2.4-I1",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -3, "max": 3, "exclude": [0] },
@@ -4676,8 +5175,11 @@
         "a1": { "formula": "m1" },
         "b1": -1,
         "c1": { "formula": "m1*x - y" },
-        "negx": { "formula": "-1*x" },
-        "negy": { "formula": "-1*y" },
+        "pointOffset": { "values": [-2, -1, 1, 2] },
+        "pointX": { "formula": "x + pointOffset" },
+        "pointY": { "formula": "y + m2*pointOffset" },
+        "negx": { "formula": "-1*pointX" },
+        "negy": { "formula": "-1*pointY" },
         "yint1": { "formula": "y - m1*x" },
         "yint2": { "formula": "y - m2*x" }
         },
@@ -4690,7 +5192,7 @@
           "showInAnswer": true
         },
         "eq2": {
-          "relation": "y = {m2}*(x - ({x})) + ({y})",
+          "relation": "y = {m2}*(x - ({pointX})) + ({pointY})",
           "showInQuestion": false,
           "showInAnswer": true
         },
@@ -4704,7 +5206,7 @@
   {
       "id": "ALG2-2.4-I2",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -3, "max": 3, "exclude": [0] },
@@ -4716,8 +5218,11 @@
         "a1": { "formula": "m1" },
         "b1": -1,
         "c1": { "formula": "m1*x - y" },
-        "negx": { "formula": "-1*x" },
-        "negy": { "formula": "-1*y" }
+        "pointOffset": { "values": [-2, -1, 1, 2] },
+        "pointX": { "formula": "x + pointOffset" },
+        "pointY": { "formula": "y + m2*pointOffset" },
+        "negx": { "formula": "-1*pointX" },
+        "negy": { "formula": "-1*pointY" }
       },
       "draw": {
         "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
@@ -4742,7 +5247,7 @@
   {
       "id": "ALG2-2.4-A1",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "advanced",
       "variables": {
         "x": { "min": -3, "max": 3, "exclude": [0] },
@@ -4783,7 +5288,7 @@
   {
       "id": "ALG2-2.4-A2",
       "type": "template",
-      "objective": "Solving Systems of Equations Graphically",
+      "objective": "2.4 Solving Systems of Equations Graphically",
       "difficulty": "advanced",
       "variables": {
         "k": { "values": [-1, 1] },
@@ -4821,7 +5326,7 @@
   {
       "id": "ALG2-2.5-B1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "basic",
       "variables": {
         "x": { "min": -7, "max": 7, "exclude": [0] },
@@ -4839,7 +5344,7 @@
   {
       "id": "ALG2-2.5-B2",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "basic",
       "variables": {
         "x": { "min": -7, "max": 7, "exclude": [0] },
@@ -4856,7 +5361,7 @@
   {
       "id": "ALG2-2.5-I1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -6, "max": 6, "exclude": [0] },
@@ -4874,7 +5379,7 @@
   {
       "id": "ALG2-2.5-I2",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "intermediate",
       "variables": {
         "x": { "min": -8, "max": 8, "exclude": [0] },
@@ -4891,7 +5396,7 @@
   {
       "id": "ALG2-2.5-A1",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
         "x": { "values": [2.25, 2.5, 2.75, 3.25, 3.5, 3.75, 4.25, 4.5, 4.75], "format": "decimal" },
@@ -4909,7 +5414,7 @@
   {
       "id": "ALG2-2.5-A2",
       "type": "template",
-      "objective": "Solving Systems of Equations Algebraically",
+      "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
         "x": { "values": [8.05, 9.05, 10.05, 11.05, 12.05, 13.05, 14.05], "format": "decimal" },
@@ -4927,7 +5432,7 @@
   {
     "id": "ALG2-2.6-B1",
     "type": "template",
-    "objective": "Solving Systems of Inequalities",
+    "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "basic",
     "variables": {
       "a1": { "min": -5, "max": 5, "exclude": [0] },
@@ -4956,7 +5461,7 @@
   {
     "id": "ALG2-2.6-B2",
     "type": "template",
-    "objective": "Solving Systems of Inequalities",
+    "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "basic",
     "variables": {
       "m1": { "min": -4, "max": 4, "exclude": [0] },
@@ -4984,7 +5489,7 @@
   {
     "id": "ALG2-2.6-I1",
     "type": "template",
-    "objective": "Solving Systems of Inequalities",
+    "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "intermediate",
     "variables": {
       "a1": { "min": -5, "max": 5, "exclude": [0] },
@@ -5020,7 +5525,7 @@
   {
     "id": "ALG2-2.6-I2",
     "type": "template",
-    "objective": "Solving Systems of Inequalities",
+    "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "intermediate",
     "variables": {
       "a1": { "min": -5, "max": 5, "exclude": [0] },
@@ -5054,7 +5559,7 @@
   {
     "id": "ALG2-2.8-B1",
     "type": "template",
-    "objective": "Solving Systems of Equations in Three Variables",
+    "objective": "2.8 Solving Systems of Equations in Three Variables",
     "difficulty": "basic",
     "variables": {
       "a" : { "min": -5, "max": 5, "exclude": [0] },
@@ -5077,7 +5582,7 @@
   {
     "id": "ALG2-2.8-B2",
     "type": "template",
-    "objective": "Solving Systems of Equations in Three Variables",
+    "objective": "2.8 Solving Systems of Equations in Three Variables",
     "difficulty": "basic",
     "variables": {
       "a" : { "min": -5, "max": 5, "exclude": [0] },
@@ -5099,7 +5604,7 @@
   {
     "id": "ALG2-2.8-I1",
     "type": "template",
-    "objective": "Solving Systems of Equations in Three Variables",
+    "objective": "2.8 Solving Systems of Equations in Three Variables",
     "difficulty": "intermediate",
     "variables": {
       "a" : { "min": -5, "max": 5, "exclude": [0] },
@@ -5127,7 +5632,7 @@
   {
     "id": "ALG2-2.8-I2",
     "type": "template",
-    "objective": "Solving Systems of Equations in Three Variables",
+    "objective": "2.8 Solving Systems of Equations in Three Variables",
     "difficulty": "intermediate",
     "variables": {
       "a" : { "min": -5, "max": 5, "exclude": [0] },
@@ -5153,11 +5658,11 @@
     "answer": "\\( ({a}, {b}, {c} )\\)"
   }
   ],
-  "Module 3": [
+  "3: Quadratic Functions": [
     {
       "id": "ALG2-3.1-B1",
       "type": "template",
-      "objective": "Graphing Quadratic Functions",
+      "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
@@ -5172,7 +5677,7 @@
     {
       "id": "ALG2-3.1-I1",
       "type": "template",
-      "objective": "Graphing Quadratic Functions",
+      "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
@@ -5187,7 +5692,7 @@
     {
       "id": "ALG2-3.1-A1",
       "type": "template",
-      "objective": "Graphing Quadratic Functions",
+      "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "advanced",
       "variables": {
         "b": { "min": 10, "max": 50 },
@@ -5202,7 +5707,7 @@
     {
       "id": "ALG2-3.2-B1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Graphing",
+      "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "basic",
       "variables": {
         "p": { "min": -7, "max": 7, "exclude": [0] },
@@ -5218,7 +5723,7 @@
     {
       "id": "ALG2-3.2-I1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Graphing",
+      "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 5 },
@@ -5235,7 +5740,7 @@
     {
       "id": "ALG2-3.2-A1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Graphing",
+      "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "advanced",
       "variables": {
         "x": { "min": 3, "max": 8 },
@@ -5253,7 +5758,7 @@
     {
       "id": "ALG2-3.3-B1",
       "type": "template",
-      "objective": "Complex Numbers",
+      "objective": "3.3 Complex Numbers",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -5269,7 +5774,7 @@
     {
       "id": "ALG2-3.3-I1",
       "type": "template",
-      "objective": "Complex Numbers",
+      "objective": "3.3 Complex Numbers",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -5286,7 +5791,7 @@
     {
       "id": "ALG2-3.4-B1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Factoring",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
       "difficulty": "basic",
       "variables": {
         "p": { "min": -9, "max": 9, "exclude": [0] },
@@ -5300,7 +5805,7 @@
     {
       "id": "ALG2-3.4-I1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Factoring",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [-1, 0, 1] },
@@ -5316,7 +5821,7 @@
     {
       "id": "ALG2-3.4-A1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Factoring",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 6 },
@@ -5333,7 +5838,7 @@
     {
       "id": "ALG2-3.5-B1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Completing the Square",
+      "objective": "3.5 Solving Quadratic Equations by Completing the Square",
       "difficulty": "basic",
       "variables": {
         "p": { "min": -10, "max": 10, "exclude": [0] },
@@ -5348,7 +5853,7 @@
     {
       "id": "ALG2-3.5-I1",
       "type": "template",
-      "objective": "Solving Quadratic Equations by Completing the Square",
+      "objective": "3.5 Solving Quadratic Equations by Completing the Square",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 5 },
@@ -5363,7 +5868,7 @@
     {
       "id": "ALG2-3.6-B1",
       "type": "template",
-      "objective": "Solving Quadratics with the Formula or Quadratic Method",
+      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
       "difficulty": "basic",
       "variables": {
         "p": { "min": -10, "max": 10, "exclude": [0] },
@@ -5379,7 +5884,7 @@
     {
       "id": "ALG2-3.6-I1",
       "type": "template",
-      "objective": "Solving Quadratics with the Formula or Quadratic Method",
+      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 5 },
@@ -5393,7 +5898,7 @@
     {
       "id": "ALG2-3.6-A1",
       "type": "template",
-      "objective": "Solving Quadratics with the Formula or Quadratic Method",
+      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
       "difficulty": "advanced",
       "variables": {
         "v_0": { "min": -50, "max": 50, "exclude": [0] },
@@ -5406,7 +5911,7 @@
     {
       "id": "ALG2-3.7-B1",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "basic",
       "variables": {
         "h" : { "min": -3, "max": 3, "exclude": [0] },
@@ -5420,7 +5925,7 @@
     {
       "id": "ALG2-3.7-B2",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "basic",
       "variables": {
         "h" : { "min": -3, "max": 3, "exclude": [0] },
@@ -5434,7 +5939,7 @@
     {
       "id": "ALG2-3.7-I1",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a" : { "min": -3, "max": 3, "exclude": [0,1] },
@@ -5449,7 +5954,7 @@
     {
       "id": "ALG2-3.7-I2",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "intermediate",
       "variables": {
         "a" : { "min": -3, "max": 3, "exclude": [0,1] },
@@ -5464,7 +5969,7 @@
     {
       "id": "ALG2-3.7-A1",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "advanced",
       "variables": {
         "a" : { "min": -3, "max": 3, "exclude": [0,1,-1] },
@@ -5479,7 +5984,7 @@
     {
       "id": "ALG2-3.7-A1",
       "type": "template",
-      "objective": "Quadratic Inequalities",
+      "objective": "3.7 Quadratic Inequalities",
       "difficulty": "advanced",
       "variables": {
         "a" : { "min": -3, "max": 3, "exclude": [0,1,-1] },
@@ -5494,7 +5999,7 @@
     {
       "id": "ALG2-3.8-B1",
       "type": "template",
-      "objective": "Solving Nonlinear Systems of Equations",
+      "objective": "3.8 Solving Nonlinear Systems of Equations",
       "difficulty": "basic",
       "variables": {
         "p": { "min": -5, "max": 5, "exclude": [0] },
@@ -5512,7 +6017,7 @@
     {
       "id": "ALG2-3.8-I1",
       "type": "template",
-      "objective": "Solving Nonlinear Systems of Equations",
+      "objective": "3.8 Solving Nonlinear Systems of Equations",
       "difficulty": "intermediate",
       "variables": {
         "leadingCoef": { "min": 2, "max": 5 },
@@ -5535,11 +6040,11 @@
     }
 
   ],
-  "Module 4": [
+  "4: Polynomial Functions": [
     {
       "id": "ALG2-4.1-B1",
       "type": "template",
-      "objective": "Polynomial Functions",
+      "objective": "4.1 Polynomial Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 4 },
@@ -5560,7 +6065,7 @@
     {
       "id": "ALG2-4.1-B2",
       "type": "template",
-      "objective": "Polynomial Functions",
+      "objective": "4.1 Polynomial Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 1, "max": 5 },
@@ -5577,7 +6082,7 @@
     {
       "id": "ALG2-4.1-I1",
       "type": "template",
-      "objective": "Polynomial Functions",
+      "objective": "4.1 Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5 },
@@ -5592,7 +6097,7 @@
     {
       "id": "ALG2-4.1-I2",
       "type": "template",
-      "objective": "Polynomial Functions",
+      "objective": "4.1 Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5 },
@@ -5609,7 +6114,7 @@
     {
       "id": "ALG2-4.1-A1",
       "type": "template",
-      "objective": "Polynomial Functions",
+      "objective": "4.1 Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
@@ -5627,7 +6132,7 @@
     {
       "id": "ALG2-4.2-B1",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -2, "max": 2, "exclude": [0] },
@@ -5643,7 +6148,7 @@
     {
       "id": "ALG2-4.2-I1",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "intermediate",
        "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -5660,7 +6165,7 @@
     {
       "id": "ALG2-4.2-A1",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
         "l": { "min": 6, "max": 12 },
@@ -5673,7 +6178,7 @@
     {
       "id": "ALG2-4.2-A2",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -3, "max": -1 },
@@ -5689,7 +6194,7 @@
     {
       "id": "ALG2-4.2-A3",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -4, "max": -1 },
@@ -5704,7 +6209,7 @@
     {
       "id": "ALG2-4.2-A4",
       "type": "template",
-      "objective": "Analyzing Graphs of Polynomial Functions",
+      "objective": "4.2 Analyzing Graphs of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
         "r1": { "min": 1, "max": 3 },
@@ -5722,7 +6227,7 @@
     {
       "id": "ALG2-4.3-B1",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "basic",
       "variables": {
         "a1": { "min": -5, "max": 5, "exclude": [0] },
@@ -5741,7 +6246,7 @@
     {
       "id": "ALG2-4.3-B2",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "basic",
       "variables": {
         "a1": { "min": -5, "max": 5, "exclude": [0] },
@@ -5760,7 +6265,7 @@
     {
       "id": "ALG2-4.3-I1",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 2, "max": 5 },
@@ -5779,7 +6284,7 @@
     {
       "id": "ALG2-4.3-I2",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 4 },
@@ -5798,7 +6303,7 @@
     {
       "id": "ALG2-4.3-A1",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -5818,7 +6323,7 @@
     {
       "id": "ALG2-4.3-A2",
       "type": "template",
-      "objective": "Operations with Polynomials",
+      "objective": "4.3 Operations with Polynomials",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 5 },
@@ -5838,7 +6343,7 @@
     {
       "id": "ALG2-4.4-B1",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 8 },
@@ -5854,7 +6359,7 @@
     {
       "id": "ALG2-4.4-I1",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -5872,7 +6377,7 @@
     {
       "id": "ALG2-4.4-I2",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 1 },
@@ -5892,7 +6397,7 @@
     {
       "id": "ALG2-4.4-I3",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -5912,7 +6417,7 @@
     {
       "id": "ALG2-4.4-A1",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "advanced",
       "variables": {
         "q1": { "min": -4, "max": 4, "exclude": [0] },
@@ -5933,7 +6438,7 @@
     {
       "id": "ALG2-4.4-A2",
       "type": "template",
-      "objective": "Dividing Polynomials",
+      "objective": "4.4 Dividing Polynomials",
       "difficulty": "advanced",
       "variables": {
         "q1": { "min": -3, "max": 3, "exclude": [0] },
@@ -5955,7 +6460,7 @@
     {
       "id": "ALG2-4.5-B1",
       "type": "template",
-      "objective": "Powers of Binomials",
+      "objective": "4.5 Powers of Binomials",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 4 },
@@ -5969,7 +6474,7 @@
     {
       "id": "ALG2-4.5-I1",
       "type": "template",
-      "objective": "Powers of Binomials",
+      "objective": "4.5 Powers of Binomials",
       "difficulty": "intermediate",
       "variables": {
         "n": { "min": 5, "max": 10 },
@@ -5984,7 +6489,7 @@
     {
       "id": "ALG2-4.5-I2",
       "type": "template",
-      "objective": "Powers of Binomials",
+      "objective": "4.5 Powers of Binomials",
       "difficulty": "intermediate",
       "variables": {
         "n": { "min": 5, "max": 10 },
@@ -5999,7 +6504,7 @@
     {
       "id": "ALG2-4.5-A1",
       "type": "template",
-      "objective": "Powers of Binomials",
+      "objective": "4.5 Powers of Binomials",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -6011,11 +6516,11 @@
       "answer": "{expandedAnswer}"
     }
   ],
-  "Module 5": [
+  "5: Polynomial Equations": [
     {
       "id": "ALG2-5.1-B1",
       "type": "template",
-      "objective": "Solving Polynomial Equations by Graphing",
+      "objective": "5.1 Solving Polynomial Equations by Graphing",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 1, "max": 2 },
@@ -6036,7 +6541,7 @@
     {
       "id": "ALG2-5.1-I1",
       "type": "template",
-      "objective": "Solving Polynomial Equations by Graphing",
+      "objective": "5.1 Solving Polynomial Equations by Graphing",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -16, "max": -16 },
@@ -6050,7 +6555,7 @@
     {
       "id": "ALG2-5.2-B1",
       "type": "template",
-      "objective": "Solving Polynomial Equations Algebraically",
+      "objective": "5.2 Solving Polynomial Equations Algebraically",
       "difficulty": "basic",
       "variables": {
         "cube_root_a": { "values": [2, 3, 4] },
@@ -6069,7 +6574,7 @@
     {
       "id": "ALG2-5.2-I1",
       "type": "template",
-      "objective": "Solving Polynomial Equations Algebraically",
+      "objective": "5.2 Solving Polynomial Equations Algebraically",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -6086,7 +6591,7 @@
     {
       "id": "ALG2-5.2-A1",
       "type": "template",
-      "objective": "Solving Polynomial Equations Algebraically",
+      "objective": "5.2 Solving Polynomial Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 5 },
@@ -6105,7 +6610,7 @@
     {
       "id": "ALG2-5.4-B1",
       "type": "template",
-      "objective": "The Remainder and Factor Theorems",
+      "objective": "5.4 The Remainder and Factor Theorems",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -6125,7 +6630,7 @@
     {
       "id": "ALG2-5.4-I1",
       "type": "template",
-      "objective": "The Remainder and Factor Theorems",
+      "objective": "5.4 The Remainder and Factor Theorems",
       "difficulty": "intermediate",
       "variables": {
         "z1": { "min": -3, "max": 3, "exclude": [0] },
@@ -6143,7 +6648,7 @@
     {
       "id": "ALG2-5.4-A1",
       "type": "template",
-      "objective": "The Remainder and Factor Theorems",
+      "objective": "5.4 The Remainder and Factor Theorems",
       "difficulty": "advanced",
       "variables": {
         "z1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6165,7 +6670,7 @@
     {
       "id": "ALG2-5.4-A2",
       "type": "template",
-      "objective": "The Remainder and Factor Theorems",
+      "objective": "5.4 The Remainder and Factor Theorems",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -6183,7 +6688,7 @@
     {
       "id": "ALG2-5.5-B1",
       "type": "template",
-      "objective": "Roots and Zeros",
+      "objective": "5.5 Roots and Zeros",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 1, "max": 3 },
@@ -6198,7 +6703,7 @@
     {
       "id": "ALG2-5.5-B2",
       "type": "template",
-      "objective": "Roots and Zeros",
+      "objective": "5.5 Roots and Zeros",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -6213,7 +6718,7 @@
     { 
       "id": "ALG2-5.5-I1",
       "type": "template",
-      "objective": "Roots and Zeros",
+      "objective": "5.5 Roots and Zeros",
       "difficulty": "intermediate",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6230,7 +6735,7 @@
     {
       "id": "ALG2-5.5-A1",
       "type": "template",
-      "objective": "The Remainder and Factor Theorems",
+      "objective": "5.4 The Remainder and Factor Theorems",
       "difficulty": "advanced",
       "variables": {
         "z1": { "min": -2, "max": 2, "exclude": [0] },
@@ -6252,7 +6757,7 @@
     {
       "id": "ALG2-5.5-A2",
       "type": "template",
-      "objective": "Roots and Zeros",
+      "objective": "5.5 Roots and Zeros",
       "difficulty": "advanced",
       "variables": {
         "r1": { "min": -2, "max": 2, "exclude": [0] },
@@ -6267,11 +6772,11 @@
       "answer": "\\( x = {r1}, {r2}, {z}i, {-z}i \\)"
     }
   ],
-  "Module 7": [
+  "7: Exponential Functions": [
     {
       "id": "ALG2-7.1-B1",
       "type": "template",
-      "objective": "Graphing Exponential Functions",
+      "objective": "7.1 Graphing Exponential Functions",
       "difficulty": "basic",
       "variables": {
         "a_num": { "min": -3, "max": 3, "exclude": [0] },
@@ -6294,7 +6799,7 @@
     {
       "id": "ALG2-7.1-I1",
       "type": "template",
-      "objective": "Graphing Exponential Functions",
+      "objective": "7.1 Graphing Exponential Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -2, "max": 2, "exclude": [0] },
@@ -6318,7 +6823,7 @@
     {
       "id": "ALG2-7.2-B1",
       "type": "template",
-      "objective": "Solving Exponential Equations",
+      "objective": "7.2 Solving Exponential Equations",
       "difficulty": "basic",
       "variables": {
         "common_base": { "min": 2, "max": 5 },
@@ -6338,7 +6843,7 @@
     {
       "id": "ALG2-7.2-I1",
       "type": "template",
-      "objective": "Solving Exponential Equations",
+      "objective": "7.2 Solving Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
         "cost": { "values": [20000, 22000, 25000, 31000, 37000, 41000, 45000, 50000] },
@@ -6353,7 +6858,7 @@
     {
       "id": "ALG2-7.2-21",
       "type": "template",
-      "objective": "Solving Exponential Equations",
+      "objective": "7.2 Solving Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
         "cost": { "values": [1000,1250,1500,1750,2000,2250,2500,2750,3000,3250,3500,3750,4000,4250,4500,5000] },
@@ -6368,7 +6873,7 @@
     {
       "id": "ALG2-7.3-B1",
       "type": "template",
-      "objective": "Special Exponential Functions",
+      "objective": "7.3 Special Exponential Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
@@ -6386,7 +6891,7 @@
     {
       "id": "ALG2-7.3-I1",
       "type": "template",
-      "objective": "Special Exponential Functions",
+      "objective": "7.3 Special Exponential Functions",
       "difficulty": "intermediate",
       "variables": { 
         "c": { "values": [1000,1250,1500,1750,2000,2250,2500,2750,3000,3250,3500,3750,4000,4250,4500,5000] },
@@ -6400,7 +6905,7 @@
     {
       "id": "ALG2-7.3-I2",
       "type": "template",
-      "objective": "Special Exponential Functions",
+      "objective": "7.3 Special Exponential Functions",
       "difficulty": "intermediate",
       "variables": { 
         "ran_int": { "min": 2, "max": 20 },
@@ -6415,7 +6920,7 @@
     {
       "id": "ALG2-7.3-I3",
       "type": "template",
-      "objective": "Special Exponential Functions",
+      "objective": "7.3 Special Exponential Functions",
       "difficulty": "intermediate",
       "variables": { 
         "c": { "min": 20, "max": 500 },
@@ -6427,11 +6932,11 @@
       "answer": "Approximately {A} grams remain after {t} days."
     }
   ],
-  "Module 8": [
+  "8: Logarithmic Functions": [
     {
       "id": "ALG2-8.1-B1",
       "type": "template",
-      "objective": "Logarithms and Logarithmic Functions",
+      "objective": "8.1 Logarithms and Logarithmic Functions",
       "difficulty": "basic",
       "variables": {
         "base1": { "min": 2, "max": 5 },
@@ -6451,7 +6956,7 @@
     {
       "id": "ALG2-8.1-I1",
       "type": "template",
-      "objective": "Logarithms and Logarithmic Functions",
+      "objective": "8.1 Logarithms and Logarithmic Functions",
       "difficulty": "intermediate",
       "variables": {
         "base": { "min": 2, "max": 5 },
@@ -6470,7 +6975,7 @@
     {
       "id": "ALG2-8.2-B1",
       "type": "template",
-      "objective": "Properties of Logarithms",
+      "objective": "8.2 Properties of Logarithms",
       "difficulty": "basic",
       "variables": {
         "base1": { "min": 2, "max": 6 },
@@ -6492,7 +6997,7 @@
     {
       "id": "ALG2-8.2-B2",
       "type": "template",
-      "objective": "Properties of Logarithms",
+      "objective": "8.2 Properties of Logarithms",
       "difficulty": "basic",
       "variables": {
         "base": { "min": 2, "max": 6 },
@@ -6508,7 +7013,7 @@
     {
       "id": "ALG2-8.2-I1",
       "type": "template",
-      "objective": "Properties of Logarithms",
+      "objective": "8.2 Properties of Logarithms",
       "difficulty": "intermediate",
       "variables": {
          "variant": { "min": 0, "max": 1 },
@@ -6531,7 +7036,7 @@
     {
       "id": "ALG2-8.3-B1",
       "type": "template",
-      "objective": "Common Logarithmic and Exponential Equations",
+      "objective": "8.3 Common Logarithmic and Exponential Equations",
       "difficulty": "basic",
       "variables": {
         "b1": { "values": [2, 4, 6, 8, 10] },
@@ -6548,7 +7053,7 @@
     {
       "id": "ALG2-8.3-I1",
       "type": "template",
-      "objective": "Common Logarithmic and Exponential Equations",
+      "objective": "8.3 Common Logarithmic and Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
         "b1": { "values": [2, 4, 6, 8, 10] },
@@ -6567,7 +7072,7 @@
     {
       "id": "ALG2-8.3-I2",
       "type": "template",
-      "objective": "Common Logarithmic and Exponential Equations",
+      "objective": "8.3 Common Logarithmic and Exponential Equations",
       "difficulty": "intermediate",
       "variables": {
         "randint": { "min": 1, "max": 40 },
@@ -6586,7 +7091,7 @@
     {
       "id": "ALG2-8.4-B1",
       "type": "template",
-      "objective": "Natural Logarithms",
+      "objective": "8.4 Natural Logarithms",
       "difficulty": "basic",
       "variables": {
         "b": { "values": [2, 3, 4, 5, 6, 7, 8, 9, 10] },
@@ -6600,7 +7105,7 @@
     {
       "id": "ALG2-8.4-B2",
       "type": "template",
-      "objective": "Natural Logarithms",
+      "objective": "8.4 Natural Logarithms",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 7 },
@@ -6613,7 +7118,7 @@
     {
       "id": "ALG2-8.4-I1",
       "type": "template",
-      "objective": "Natural Logarithms",
+      "objective": "8.4 Natural Logarithms",
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [2, 3, 4, 5] },
@@ -6630,7 +7135,7 @@
     {
       "id": "ALG2-8.4-I2",
       "type": "template",
-      "objective": "Natural Logarithms",
+      "objective": "8.4 Natural Logarithms",
       "difficulty": "intermediate",
       "variables": {
         "p": { "min": 1, "max": 6 },
@@ -6644,7 +7149,7 @@
     {
       "id": "ALG2-8.4-A1",
       "type": "template",
-      "objective": "Natural Logarithms",
+      "objective": "8.4 Natural Logarithms",
       "difficulty": "advanced",
       "variables": {
         "mode": { "min": 0, "max": 1 },
@@ -6665,11 +7170,11 @@
     }
 
   ],
-  "Module 9": [
+  "9: Rational Functions": [
     {
       "id": "ALG2-9.1-B1",
       "type": "template",
-      "objective": "Multiplying and Dividing Rational Expressions",
+      "objective": "9.1 Multiplying and Dividing Rational Expressions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6686,7 +7191,7 @@
     {
       "id": "ALG2-9.1-B2",
       "type": "template",
-      "objective": "Multiplying and Dividing Rational Expressions",
+      "objective": "9.1 Multiplying and Dividing Rational Expressions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6703,7 +7208,7 @@
     {
       "id": "ALG2-9.1-B3",
       "type": "template",
-      "objective": "Multiplying and Dividing Rational Expressions",
+      "objective": "9.1 Multiplying and Dividing Rational Expressions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6720,7 +7225,7 @@
     {
       "id": "ALG2-9.1-I1",
       "type": "template",
-      "objective": "Multiplying and Dividing Rational Expressions",
+      "objective": "9.1 Multiplying and Dividing Rational Expressions",
       "difficulty": "intermediate",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6737,7 +7242,7 @@
     {
       "id": "ALG2-9.1-I2",
       "type": "template",
-      "objective": "Multiplying and Dividing Rational Expressions",
+      "objective": "9.1 Multiplying and Dividing Rational Expressions",
       "difficulty": "intermediate",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6760,7 +7265,7 @@
     {
       "id": "ALG2-9.2-B1",
       "type": "template",
-      "objective": "Adding and Subtracting Rational Expressions",
+      "objective": "9.2 Adding and Subtracting Rational Expressions",
       "difficulty": "basic",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6781,7 +7286,7 @@
     {
       "id": "ALG2-9.2-I1",
       "type": "template",
-      "objective": "Adding and Subtracting Rational Expressions",
+      "objective": "9.2 Adding and Subtracting Rational Expressions",
       "difficulty": "intermediate",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6801,7 +7306,7 @@
     {
       "id": "ALG2-9.2-A1",
       "type": "template",
-      "objective": "Adding and Subtracting Rational Expressions",
+      "objective": "9.2 Adding and Subtracting Rational Expressions",
       "difficulty": "advanced",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6826,7 +7331,7 @@
     {
       "id": "ALG2-9.2-A2",
       "type": "template",
-      "objective": "Adding and Subtracting Rational Expressions",
+      "objective": "9.2 Adding and Subtracting Rational Expressions",
       "difficulty": "advanced",
       "variables": {
         "r1": { "min": -5, "max": 5, "exclude": [0] },
@@ -6852,7 +7357,7 @@
     {
       "id": "ALG2-9.3-B1",
       "type": "template",
-      "objective": "Graphing Reciprocal Functions",
+      "objective": "9.3 Graphing Reciprocal Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -6872,7 +7377,7 @@
     {
       "id": "ALG2-9.3-I1",
       "type": "template",
-      "objective": "Graphing Reciprocal Functions",
+      "objective": "9.3 Graphing Reciprocal Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0] },
@@ -6903,7 +7408,7 @@
     {
       "id": "ALG2-9.3-A1",
       "type": "template",
-      "objective": "Graphing Reciprocal Functions",
+      "objective": "9.3 Graphing Reciprocal Functions",
       "difficulty": "advanced",
       "variables": {
         "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
@@ -6944,7 +7449,7 @@
     {
       "id": "ALG2-9.4-B1",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "basic",
       "variables": {
         "n": { "min": -3, "max": 3, "exclude": [0] },
@@ -6976,7 +7481,7 @@
     {
       "id": "ALG2-9.4-B2",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "basic",
       "variables": {
         "n": { "min": 1, "max": 3 },
@@ -7008,7 +7513,7 @@
     {
       "id": "ALG2-9.4-B3",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -4, "max": 4, "exclude": [0] },
@@ -7036,7 +7541,7 @@
     {
       "id": "ALG2-9.4-I1",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "intermediate",
       "variables": {
         "r1": { "min": -6, "max": 6, "exclude": [0] },
@@ -7077,7 +7582,7 @@
     {
       "id": "ALG2-9.4-I2",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [-1, 1] },
@@ -7105,7 +7610,7 @@
     {
       "id": "ALG2-9.4-I3",
       "type": "template",
-      "objective": "Graphing Rational Functions",
+      "objective": "9.4 Graphing Rational Functions",
       "difficulty": "intermediate",
       "variables": {
         "p": { "values": [-4, -3, -2, 2, 3, 4] },
@@ -7153,7 +7658,7 @@
     {
       "id": "ALG2-9.6-B1",
       "type": "template",
-      "objective": "Solving Rational Equations",
+      "objective": "9.6 Solving Rational Equations",
       "difficulty": "basic",
       "variables": {
         "a": { "values": [1] },
@@ -7170,7 +7675,7 @@
     {
       "id": "ALG2-9.6-I1",
       "type": "template",
-      "objective": "Solving Rational Equations",
+      "objective": "9.6 Solving Rational Equations",
       "difficulty": "intermediate",
       "variables": {
         "k": { "values": [2, 3, 4] },
@@ -7200,7 +7705,7 @@
     {
       "id": "ALG2-9.6-A1",
       "type": "template",
-      "objective": "Solving Rational Equations",
+      "objective": "9.6 Solving Rational Equations",
       "difficulty": "advanced",
       "variables": {
         "k": { "values": [2, 3, 4, 5, 6, 7, 8] },
@@ -7221,7 +7726,7 @@
     {
       "id": "ALG2-9.6-A2",
       "type": "template",
-      "objective": "Solving Rational Equations",
+      "objective": "9.6 Solving Rational Equations",
       "difficulty": "advanced",
       "variables": {
         "k": { "values": [2, 3, 4] },
@@ -7239,7 +7744,7 @@
     {
       "id": "ALG2-9.6-A3",
       "type": "template",
-      "objective": "Solving Rational Equations",
+      "objective": "9.6 Solving Rational Equations",
       "difficulty": "advanced",
       "variables": {
         "Aname": { "values": ["Bob", "Alice", "Charlie","Tony","Luke","Paula","Lars","Ashlynn","Janel","Frank"] },
