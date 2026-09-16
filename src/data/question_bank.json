@@ -3977,7 +3977,7 @@
    ]
 },
 "Construction Geometry": {
-  "Unit 1": [
+  "1: Measurement, Plans & Precision": [
     {
       "id": "G.1.1-B1",
       "type": "template",
@@ -3988,7 +3988,7 @@
         "inches": { "min": 1, "max": 11 },
         "total": { "formula": "12*feet+inches", "format": "decimal" }
         },
-      "question": "A plan labels a board {feet}'-{inches}\". Write this measurement in feet and inches, then express the entire length in inches.",
+      "question": "A plan labels a board {feet}'{inches}\". Express the entire length in inches.",
       "answer": "{feet} ft {inches} in. Total: {feet} × 12 + {inches} = <strong>{total} in.</strong>"
     },
     {
@@ -5364,33 +5364,16 @@
       "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "intermediate",
       "variables": {
-        "x": { "min": -6, "max": 6, "exclude": [0] },
-        "y": { "min": -6, "max": 6, "exclude": [0] },
-        "a1": { "min": -3, "max": 3, "exclude": [0] }, 
-        "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
+        "x": { "min": -10, "max": 10, "exclude": [0] },
+        "y": { "min": -10, "max": 10, "exclude": [0] },
+        "a1": { "min": -6, "max": 6, "exclude": [0] }, 
+        "b1": { "min": -6, "max": 6, "exclude": [0] },
         "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
-        "a2": { "formula": "-1*b1" },
-        "b2": { "formula": "a1" },
+        "a2": { "min": -8, "max": 8, "exclude": ["a1", 0] },
+        "b2": { "min": -8, "max": 8, "exclude": ["b1", 0] },
         "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
-      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
-      "answer": "\\({x}, {y}\\)"
-  },
-  {
-      "id": "ALG2-2.5-I2",
-      "type": "template",
-      "objective": "2.5 Solving Systems of Equations Algebraically",
-      "difficulty": "intermediate",
-      "variables": {
-        "x": { "min": -8, "max": 8, "exclude": [0] },
-        "y": { "min": -8, "max": 8, "exclude": [0] },
-        "a": { "min": 2, "max": 6 },
-        "b1": { "min": -6, "max": 6, "exclude": [0] },
-        "b2": { "min": -6, "max": 6, "exclude": [0, "b1"] },
-        "c1": { "formula": "a*x + b1*y" },
-        "c2": { "formula": "a*x + b2*y" }
-      },
-      "question": "Solve the system of equations using elimination (show your work):<br>\\( {a|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a|coef}x {b2|signedCoef}y = {c2} \\)",
+      "question": "Solve the system of equations using either substitution or elimination (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
   },
   {
@@ -5401,10 +5384,10 @@
       "variables": {
         "x": { "values": [2.25, 2.5, 2.75, 3.25, 3.5, 3.75, 4.25, 4.5, 4.75], "format": "decimal" },
         "y": { "values": [5.25, 5.5, 5.75, 6.25, 6.5, 6.75, 7.25, 7.5, 7.75], "format": "decimal" },
-        "a1": { "min": 2, "max": 6 }, 
-        "b1": { "min": 2, "max": 6, "exclude": ["a1"] },
-        "a2": { "formula": "b1" },
-        "b2": { "formula": "a1" },
+        "a1": { "min": 2, "max": 8 }, 
+        "b1": { "min": 2, "max": 5, "exclude": ["a1"] },
+        "a2": { "min": 2, "max": 8, "exclude": ["a1"] },
+        "b2": { "min": 2, "max": 5, "exclude": ["b1"] },
         "c1": { "formula": "a1*x + b1*y", "format": "decimal" },
         "c2": { "formula": "a2*x + b2*y", "format": "decimal" }
         },
@@ -5417,12 +5400,12 @@
       "objective": "2.5 Solving Systems of Equations Algebraically",
       "difficulty": "advanced",
       "variables": {
-        "x": { "values": [8.05, 9.05, 10.05, 11.05, 12.05, 13.05, 14.05], "format": "decimal" },
-        "y": { "values": [4.05, 5.05, 6.05, 7.05], "format": "decimal" },
-        "a1": { "min": 2, "max": 8 },
-        "b1": { "min": 2, "max": 8, "exclude": ["a1"] },
-        "a2": { "formula": "b1" },
-        "b2": { "formula": "a1" },
+        "x": { "values": [8.05, 8.35, 8.65, 9.05, 9.35, 9.65, 10.05, 10.35, 10.65, 11.05, 11.35, 11.65, 12.05, 12.35, 12.65, 13.05, 13.35, 13.65, 14.05, 14.35, 14.65], "format": "decimal" },
+        "y": { "values": [4.05, 4.25, 4.55, 4.85, 5.15, 5.45, 5.75, 6.05, 6.35, 6.65, 6.95, 7.25, 7.55, 7.85], "format": "decimal" },
+        "a1": { "min": 2, "max": 6 },
+        "b1": { "min": 2, "max": 20, "exclude": ["a1"] },
+        "a2": { "min": 2, "max": 6, "exclude": ["a1"] },
+        "b2": { "min": 2, "max": 20, "exclude": ["b1"] },
         "c1": { "formula": "(a1*x + b1*y).toFixed(2)" },
         "c2": { "formula": "(a2*x + b2*y).toFixed(2)" }
       },
