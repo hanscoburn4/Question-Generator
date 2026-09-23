@@ -3988,7 +3988,7 @@
         "inches": { "min": 1, "max": 11 },
         "total": { "formula": "12*feet+inches", "format": "decimal" }
         },
-      "question": "A plan labels a board {feet}'{inches}\". Express the entire length in inches.",
+      "question": "A plan labels a board {feet}'{inches}\". Express the entire length in inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "{feet} ft {inches} in. Total: {feet} × 12 + {inches} = <strong>{total} in.</strong>"
     },
     {
@@ -4005,7 +4005,7 @@
         "fractionDivisor": { "formula": "fractionNumerator % 32 === 0 ? 32 : fractionNumerator % 16 === 0 ? 16 : fractionNumerator % 8 === 0 ? 8 : fractionNumerator % 4 === 0 ? 4 : fractionNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "fractionText": { "formula": "fractionNumerator === 0 ? String(fractionWhole) : (fractionWhole === 0 ? '' : fractionWhole + ' ') + (fractionNumerator / fractionDivisor) + '/' + (64 / fractionDivisor)" }
         },
-      "question": "A parts list gives a thickness of {decimal} in. Express it as a fractional inch in simplest form.",
+      "question": "A parts list gives a thickness of {decimal} in. Express it as a fractional inch in simplest form. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "{decimal} = {eighths}/8, so the thickness is <strong>{fractionText} in.</strong>"
     },
     {
@@ -4028,7 +4028,7 @@
         "remainderDivisor": { "formula": "remainderNumerator % 32 === 0 ? 32 : remainderNumerator % 16 === 0 ? 16 : remainderNumerator % 8 === 0 ? 8 : remainderNumerator % 4 === 0 ? 4 : remainderNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "remainderText": { "formula": "remainderNumerator === 0 ? String(remainderWhole) : (remainderWhole === 0 ? '' : remainderWhole + ' ') + (remainderNumerator / remainderDivisor) + '/' + (64 / remainderDivisor)" }
         },
-      "question": "A dimension is {totalText} in. Express it in feet and inches, with fewer than 12 inches remaining and the fractional part in simplest form.",
+      "question": "A dimension is {totalText} in. Express it in feet and inches, with fewer than 12 inches remaining and the fractional part in simplest form. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "{totalText} in. = {feet} × 12 in. + {remainderText} in., so the dimension is <strong>{feet} ft {remainderText} in.</strong>"
     },
     {
@@ -4049,7 +4049,7 @@
         "readingDivisor": { "formula": "readingNumerator % 32 === 0 ? 32 : readingNumerator % 16 === 0 ? 16 : readingNumerator % 8 === 0 ? 8 : readingNumerator % 4 === 0 ? 4 : readingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "readingText": { "formula": "readingNumerator === 0 ? String(readingWhole) : (readingWhole === 0 ? '' : readingWhole + ' ') + (readingNumerator / readingDivisor) + '/' + (64 / readingDivisor)" }
         },
-      "question": "The ruler segment divides one inch into sixteenths. Read the measurement at the arrow and simplify the fractional part.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 125' width='400' style='max-width:100%;height:auto' role='img' aria-label='Ruler from {start} to {end} inches with 16 equal intervals; arrow at tick {tick} after {start} inches'><path d='M40 85 H360 M40 45 V85 M60 70 V85 M80 60 V85 M100 70 V85 M120 50 V85 M140 70 V85 M160 60 V85 M180 70 V85 M200 45 V85 M220 70 V85 M240 60 V85 M260 70 V85 M280 50 V85 M300 70 V85 M320 60 V85 M340 70 V85 M360 45 V85' fill='none' stroke='black' stroke-width='2'/><path d='M{arrow} 8 V42 M{left} 34 L{arrow} 42 L{right} 34' fill='none' stroke='black' stroke-width='3'/><g font-size='18' text-anchor='middle' fill='black'><text x='40' y='110'>{start}</text><text x='360' y='110'>{end} in.</text></g></svg>",
+      "question": "The ruler segment divides one inch into sixteenths. Read the measurement at the arrow and simplify the fractional part. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 125' width='400' style='max-width:100%;height:auto' role='img' aria-label='Ruler from {start} to {end} inches with 16 equal intervals; arrow at tick {tick} after {start} inches'><path d='M40 85 H360 M40 45 V85 M60 70 V85 M80 60 V85 M100 70 V85 M120 50 V85 M140 70 V85 M160 60 V85 M180 70 V85 M200 45 V85 M220 70 V85 M240 60 V85 M260 70 V85 M280 50 V85 M300 70 V85 M320 60 V85 M340 70 V85 M360 45 V85' fill='none' stroke='black' stroke-width='2'/><path d='M{arrow} 8 V42 M{left} 34 L{arrow} 42 L{right} 34' fill='none' stroke='black' stroke-width='3'/><g font-size='18' text-anchor='middle' fill='black'><text x='40' y='110'>{start}</text><text x='360' y='110'>{end} in.</text></g></svg>",
       "answer": "The arrow is {tick}/16 in. past {start} in.: <strong>{readingText} in.</strong>"
     },
     {
@@ -4078,7 +4078,7 @@
         "totalDivisor": { "formula": "totalNumerator % 32 === 0 ? 32 : totalNumerator % 16 === 0 ? 16 : totalNumerator % 8 === 0 ? 8 : totalNumerator % 4 === 0 ? 4 : totalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "totalText": { "formula": "totalNumerator === 0 ? String(totalWhole) : (totalWhole === 0 ? '' : totalWhole + ' ') + (totalNumerator / totalDivisor) + '/' + (64 / totalDivisor)" }
         },
-      "question": "Two trim pieces measure {firstText} in. and {secondText} in. They meet end to end with no gap or overlap. What total length do they occupy? Give a simplified mixed-number measurement.",
+      "question": "Two trim pieces measure {firstText} in. and {secondText} in. They meet end to end with no gap or overlap. What total length do they occupy? Give a simplified mixed-number measurement. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "{firstText} + {secondText} = <strong>{totalText} in.</strong>"
     },
     {
@@ -4107,7 +4107,7 @@
         "lastDivisor": { "formula": "lastNumerator % 32 === 0 ? 32 : lastNumerator % 16 === 0 ? 16 : lastNumerator % 8 === 0 ? 8 : lastNumerator % 4 === 0 ? 4 : lastNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "lastText": { "formula": "lastNumerator === 0 ? String(lastWhole) : (lastWhole === 0 ? '' : lastWhole + ' ') + (lastNumerator / lastDivisor) + '/' + (64 / lastDivisor)" }
         },
-      "question": "A {lengthText} in. layout line is divided into {spaces} equal spaces. Find the spacing and the distance from the starting end to the last interior mark. No material is removed.",
+      "question": "A {lengthText} in. layout line is divided into {spaces} equal spaces. Find the spacing and the distance from the starting end to the last interior mark. No material is removed. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Spacing: {lengthText} ÷ {spaces} = <strong>{spacingText} in.</strong> The last interior mark is {marks} spaces from the start: <strong>{lastText} in.</strong>"
     },
     {
@@ -4147,7 +4147,7 @@
         "remainingDivisor": { "formula": "remainingNumerator % 32 === 0 ? 32 : remainingNumerator % 16 === 0 ? 16 : remainingNumerator % 8 === 0 ? 8 : remainingNumerator % 4 === 0 ? 4 : remainingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "remainingText": { "formula": "remainingNumerator === 0 ? String(remainingWhole) : (remainingWhole === 0 ? '' : remainingWhole + ' ') + (remainingNumerator / remainingDivisor) + '/' + (64 / remainingDivisor)" }
         },
-      "question": "A {stock} in. board supplies {count} pieces, each {pieceText} in. long. Each of the {count} cuts removes {kerfText} in. of material (the kerf). Assuming no other waste, how much board remains?",
+      "question": "A {stock} in. board supplies {count} pieces, each {pieceText} in. long. Each of the {count} cuts removes {kerfText} in. of material (the kerf). Assuming no other waste, how much board remains? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Pieces use {usedText} in.; kerfs use {wasteText} in. Remaining: {stock} − {usedText} − {wasteText} = <strong>{remainingText} in.</strong>"
     },
     {
@@ -4181,7 +4181,7 @@
         "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
         },
-      "question": "An opening is {openingText} in. wide. Two side panels, each {thicknessText} in. thick, fit inside it. A shelf fits between the panels with {clearanceText} in. clearance at each end. Find the shelf length.",
+      "question": "An opening is {openingText} in. wide. Two side panels, each {thicknessText} in. thick, fit inside it. A shelf fits between the panels with {clearanceText} in. clearance at each end. Find the shelf length. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Subtract both panel thicknesses and both clearances: {openingText} − 2({thicknessText}) − 2({clearanceText}) = <strong>{shelfText} in.</strong>"
     },
     {
@@ -4195,7 +4195,7 @@
         "area": { "formula": "length*width", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of baseboard for its entire perimeter. Ignore openings and waste.",
+      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of baseboard for its entire perimeter. Ignore openings and waste. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
       "answer": "Area: {length} × {width} = <strong>{area} ft²</strong>. Baseboard: 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
@@ -4212,7 +4212,7 @@
         "edging": { "formula": "(base+height+hypotenuse)/12", "format": "decimal" },
         "squareFeet": { "formula": "area/144", "format": "fraction" }
         },
-      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste.",
+      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
       "answer": "Area: ({base} × {height})/2 = <strong>{area} in.²</strong> = \\( {squareFeet} \\) ft², using 144 in.² per ft². Edging: ({base} + {height} + {hypotenuse})/12 = <strong>{edging} ft</strong>."
     },
     {
@@ -4228,7 +4228,7 @@
         "area": { "formula": "length*width-notchLength*notchWidth", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges.",
+      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
       "answer": "Area: {length} × {width} − {notchLength} × {notchWidth} = <strong>{area} ft²</strong>. The notch replaces two outside edge lengths with equal inside lengths, so perimeter = 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
@@ -4249,7 +4249,7 @@
         "total": { "formula": "net*coats", "format": "decimal" },
         "containers": { "formula": "ceil(total/coverage)", "format": "decimal" }
         },
-      "question": "A wall is {width} ft wide and {height} ft high, with a {doorWidth} ft by {doorHeight} ft doorway and a {windowWidth} ft by {windowHeight} ft window. Find the area excluding openings. One container of finish covers {coverage} ft² for one coat. How many whole containers are needed for {coats} coats? Ignore waste.",
+      "question": "A wall is {width} ft wide and {height} ft high, with a {doorWidth} ft by {doorHeight} ft doorway and a {windowWidth} ft by {windowHeight} ft window. Find the area excluding openings. One container of finish covers {coverage} ft² for one coat. How many whole containers are needed for {coats} coats? Ignore waste. Give the area exactly; round the container count up to a whole container.",
       "answer": "Net area: {width} × {height} − {doorWidth} × {doorHeight} − {windowWidth} × {windowHeight} = <strong>{net} ft²</strong>. Required coverage: {net} × {coats} = {total} ft². Round {total}/{coverage} up to get <strong>{containers} containers</strong>."
     },
     {
@@ -4261,7 +4261,7 @@
         "diameter": { "values": [6, 8, 10, 12, 14, 16] },
         "radius": { "formula": "diameter/2", "format": "decimal" }
         },
-      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle?",
+      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "The center-to-pencil distance is the radius: {diameter} ÷ 2 = <strong>{radius} in.</strong>"
     },
     {
@@ -4291,7 +4291,7 @@
         "verticalDivisor": { "formula": "verticalNumerator % 32 === 0 ? 32 : verticalNumerator % 16 === 0 ? 16 : verticalNumerator % 8 === 0 ? 8 : verticalNumerator % 4 === 0 ? 4 : verticalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "verticalText": { "formula": "verticalNumerator === 0 ? String(verticalWhole) : (verticalWhole === 0 ? '' : verticalWhole + ' ') + (verticalNumerator / verticalDivisor) + '/' + (64 / verticalDivisor)" }
         },
-      "question": "A circular opening of radius {radiusText} in. is centered on a panel {width} in. wide and {height} in. high. Locate the center from the left and bottom edges, then find the shortest clearance from the circle to each panel edge.",
+      "question": "A circular opening of radius {radiusText} in. is centered on a panel {width} in. wide and {height} in. high. Locate the center from the left and bottom edges, then find the shortest clearance from the circle to each panel edge. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Center: <strong>{x} in. from the left and {y} in. from the bottom</strong>. Left and right clearances: {x} − {radiusText} = <strong>{horizontalText} in. each</strong>. Top and bottom: {y} − {radiusText} = <strong>{verticalText} in. each</strong>."
     },
     {
@@ -4301,23 +4301,20 @@
       "difficulty": "intermediate",
       "variables": {
         "diameter": { "values": [18, 22, 26, 30, 34, 38] },
-        "circumference": { "formula": "round(3.14*diameter*10)/10", "format": "decimal" }
-        },
-      "question": "A circular tabletop has diameter {diameter} in. Find the edging needed to go around it once, without overlap or waste. Use π = 3.14 and round to the nearest tenth of an inch.",
-      "answer": "Circumference = πd = 3.14 × {diameter} ≈ <strong>{circumference} in.</strong>"
-    },
-    {
-      "id": "G.1.4-I3",
-      "type": "template",
-      "objective": "G.1.4 Circles",
-      "difficulty": "intermediate",
-      "variables": {
-        "diameter": { "values": [10, 12, 14, 16, 18, 20] },
         "radius": { "formula": "diameter/2", "format": "decimal" },
-        "area": { "formula": "round(3.14*radius*radius*100)/100", "format": "decimal" }
+        "circumference": { "formula": "round((PI*diameter)*16)/16", "format": "decimal" },
+        "circumferenceWhole": { "formula": "floor(circumference)" },
+        "circumferenceNumerator": { "formula": "round((circumference-circumferenceWhole)*16)" },
+        "circumferenceDivisor": { "formula": "circumferenceNumerator % 8 === 0 ? 8 : circumferenceNumerator % 4 === 0 ? 4 : circumferenceNumerator % 2 === 0 ? 2 : 1" },
+        "circumferenceText": { "formula": "circumferenceNumerator === 0 ? String(circumferenceWhole) : (circumferenceWhole === 0 ? '' : circumferenceWhole + ' ') + (circumferenceNumerator/circumferenceDivisor) + '/' + (16/circumferenceDivisor)" },
+        "area": { "formula": "round((PI*radius*radius)*16)/16", "format": "decimal" },
+        "areaWhole": { "formula": "floor(area)" },
+        "areaNumerator": { "formula": "round((area-areaWhole)*16)" },
+        "areaDivisor": { "formula": "areaNumerator % 8 === 0 ? 8 : areaNumerator % 4 === 0 ? 4 : areaNumerator % 2 === 0 ? 2 : 1" },
+        "areaText": { "formula": "areaNumerator === 0 ? String(areaWhole) : (areaWhole === 0 ? '' : areaWhole + ' ') + (areaNumerator/areaDivisor) + '/' + (16/areaDivisor)" }
         },
-      "question": "A circular cover has diameter {diameter} in. Find the area of one face to be painted. Use π = 3.14 and round to the nearest hundredth of a square inch.",
-      "answer": "Radius = {diameter}/2 = {radius} in. Area = πr² = 3.14 × {radius}² = <strong>{area} in.²</strong>."
+      "question": "A circular tabletop has diameter {diameter} in. Find a) its circumference, the edging needed to go around it once without overlap or waste, and b) the area of its top face to be painted. Use your calculator's value of π. Round circumference to the nearest 1/16 inch and area to the nearest 1/16 square inch. Express answers as simplified mixed numbers.",
+      "answer": "a) Circumference = πd = π × {diameter} ≈ <strong>{circumferenceText} in.</strong><br>b) Radius = {diameter}/2 = {radius} in. Area = πr² = π × {radius}² ≈ <strong>{areaText} in.²</strong>."
     },
     {
       "id": "G.1.5-B",
@@ -4335,7 +4332,7 @@
         "slotDrawingDivisor": { "formula": "slotDrawingNumerator % 32 === 0 ? 32 : slotDrawingNumerator % 16 === 0 ? 16 : slotDrawingNumerator % 8 === 0 ? 8 : slotDrawingNumerator % 4 === 0 ? 4 : slotDrawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "slotDrawingText": { "formula": "slotDrawingNumerator === 0 ? String(slotDrawingWhole) : (slotDrawingWhole === 0 ? '' : slotDrawingWhole + ' ') + (slotDrawingNumerator / slotDrawingDivisor) + '/' + (64 / slotDrawingDivisor)" }
         },
-      "question": "A detail drawing shows an actual {actual} in. part as a {drawing} in. line. Find the drawing-to-actual scale ratio using the same units. How long should an actual {slot} in. slot appear at that scale?",
+      "question": "A detail drawing shows an actual {actual} in. part as a {drawing} in. line. Find the drawing-to-actual scale ratio using the same units. How long should an actual {slot} in. slot appear at that scale? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Keep the scale ratio exact.",
       "answer": "Scale: {drawing}:{actual} = <strong>1:{factor}</strong>. Slot drawing length: {slot}/{factor} = <strong>{slotDrawingText} in.</strong>"
     },
     {
@@ -4359,7 +4356,7 @@
         "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
         },
-      "question": "A wall is {feet} ft {inches} in. long. How long should its line be on a drawing using scale {scaleText} in. = 1 ft? Give the drawing length in inches.",
+      "question": "A wall is {feet} ft {inches} in. long. How long should its line be on a drawing using scale {scaleText} in. = 1 ft? Give the drawing length in inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Convert inches to feet, then multiply by the drawing scale: ({feet} + {inches}/12) × {scaleText} = <strong>{drawingText} in.</strong>"
     },
     {
@@ -4394,7 +4391,7 @@
         "drawWidthDivisor": { "formula": "drawWidthNumerator % 32 === 0 ? 32 : drawWidthNumerator % 16 === 0 ? 16 : drawWidthNumerator % 8 === 0 ? 8 : drawWidthNumerator % 4 === 0 ? 4 : drawWidthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawWidthText": { "formula": "drawWidthNumerator === 0 ? String(drawWidthWhole) : (drawWidthWhole === 0 ? '' : drawWidthWhole + ' ') + (drawWidthNumerator / drawWidthDivisor) + '/' + (64 / drawWidthDivisor)" }
         },
-      "question": "On a plan with scale {scaleText} in. = 1 ft, a rectangular room measures {drawLengthText} in. by {drawWidthText} in. Find the actual dimensions in feet and inches and the floor area in square feet.",
+      "question": "On a plan with scale {scaleText} in. = 1 ft, a rectangular room measures {drawLengthText} in. by {drawWidthText} in. Find the actual dimensions in feet and inches and the floor area in square feet. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
       "answer": "Each drawing inch represents {factor} ft. Actual dimensions: <strong>{feet} ft {inches} in. by {widthWhole} ft {widthInches} in.</strong> Area: {lengthFeet} × {widthFeet} = <strong>{area} ft²</strong>."
     },
     {
@@ -4424,7 +4421,7 @@
         "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
         },
-      "question": "A drawing originally used scale {originalScaleText} in. = 1 ft, then was printed at {percent}% of its original linear size. What is the reduced print scale? A wall measures {drawingText} in. on the reduced print; find its actual length in feet.",
+      "question": "A drawing originally used scale {originalScaleText} in. = 1 ft, then was printed at {percent}% of its original linear size. What is the reduced print scale? A wall measures {drawingText} in. on the reduced print; find its actual length in feet. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Keep the reduced scale exact, even if it uses thirty-seconds; apply rounding only to the actual wall length.",
       "answer": "Reduced scale: <strong>{newScaleText} in. = 1 ft</strong>. Each print inch represents {newFactor} ft. Actual length: {drawingText} × {newFactor} = <strong>{actual} ft</strong>."
     },
     {
@@ -4437,7 +4434,7 @@
         "height": { "values": [24, 30, 36] },
         "depth": { "values": [12, 18, 24] }
         },
-      "question": "A rectangular cabinet is shown in three orthographic views. Use the labeled dimensions below; the sketches are not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 210' width='600' style='max-width:100%;height:auto' role='img' aria-label='Front view: {width} inches wide by {height} inches high. Top view: {width} inches wide by {depth} inches deep. Right-side view: unknown depth by {height} inches high.'><g fill='none' stroke='black' stroke-width='2'><rect x='20' y='50' width='140' height='120'/><rect x='220' y='50' width='140' height='75'/><rect x='430' y='50' width='85' height='120'/></g><g fill='black' font-size='15' text-anchor='middle'><text x='90' y='22'>FRONT</text><text x='90' y='44'>{width} in.</text><text x='183' y='112'>{height} in.</text><text x='290' y='22'>TOP</text><text x='290' y='44'>{width} in.</text><text x='388' y='92'>{depth} in.</text><text x='472' y='22'>RIGHT SIDE</text><text x='472' y='44'>?</text><text x='545' y='112'>{height} in.</text></g></svg><br>a) Give the cabinet width, height, and depth. b) Find the missing horizontal dimension in the right-side view.",
+      "question": "A rectangular cabinet is shown in three orthographic views. Use the labeled dimensions below; the sketches are not to scale. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 210' width='600' style='max-width:100%;height:auto' role='img' aria-label='Front view: {width} inches wide by {height} inches high. Top view: {width} inches wide by {depth} inches deep. Right-side view: unknown depth by {height} inches high.'><g fill='none' stroke='black' stroke-width='2'><rect x='20' y='50' width='140' height='120'/><rect x='220' y='50' width='140' height='75'/><rect x='430' y='50' width='85' height='120'/></g><g fill='black' font-size='15' text-anchor='middle'><text x='90' y='22'>FRONT</text><text x='90' y='44'>{width} in.</text><text x='183' y='112'>{height} in.</text><text x='290' y='22'>TOP</text><text x='290' y='44'>{width} in.</text><text x='388' y='92'>{depth} in.</text><text x='472' y='22'>RIGHT SIDE</text><text x='472' y='44'>?</text><text x='545' y='112'>{height} in.</text></g></svg><br>a) Give the cabinet width, height, and depth. b) Find the missing horizontal dimension in the right-side view.",
       "answer": "a) Width <strong>{width} in.</strong>, height <strong>{height} in.</strong>, depth <strong>{depth} in.</strong> b) The side view shows depth horizontally: <strong>{depth} in.</strong>"
     },
     {
@@ -4460,7 +4457,7 @@
         "diameterDivisor": { "formula": "diameterNumerator % 32 === 0 ? 32 : diameterNumerator % 16 === 0 ? 16 : diameterNumerator % 8 === 0 ? 8 : diameterNumerator % 4 === 0 ? 4 : diameterNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "diameterText": { "formula": "diameterNumerator === 0 ? String(diameterWhole) : (diameterWhole === 0 ? '' : diameterWhole + ' ') + (diameterNumerator / diameterDivisor) + '/' + (64 / diameterDivisor)" }
         },
-      "question": "A plan shows a plate {width} in. wide and {height} in. high, labeled <strong>4 HOLES, Ø {diameterText} in.</strong> One hole center is near each corner, {inset} in. from each adjacent edge. Explain the note, give all four centers as (distance from left, distance from bottom), and find the horizontal and vertical center-to-center spacings.",
+      "question": "A plan shows a plate {width} in. wide and {height} in. high, labeled <strong>4 HOLES, Ø {diameterText} in.</strong> One hole center is near each corner, {inset} in. from each adjacent edge. Explain the note, give all four centers as (distance from left, distance from bottom), and find the horizontal and vertical center-to-center spacings. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Four holes, each <strong>{diameterText} in. in diameter</strong>. Centers in inches: <strong>({inset}, {inset}), ({right}, {inset}), ({inset}, {top}), ({right}, {top})</strong>. Horizontal spacing: {width} − 2({inset}) = <strong>{horizontal} in.</strong>; vertical: {height} − 2({inset}) = <strong>{vertical} in.</strong>"
     },
     {
@@ -4481,7 +4478,7 @@
         "positionFeet": { "formula": "floor(position/12)", "format": "decimal" },
         "positionInches": { "formula": "position%12", "format": "decimal" }
         },
-      "question": "A straight wall plan gives this dimension chain from left to right: <strong>left section {left} in. | opening A {openingA} in. | middle section {middle} in. | opening B unknown | right section {right} in.</strong> Overall length is {overallFeet} ft {overallInches} in. Find opening B's width in inches and the distance from the wall's left end to opening B's left edge in feet and inches.",
+      "question": "A straight wall plan gives this dimension chain from left to right: <strong>left section {left} in. | opening A {openingA} in. | middle section {middle} in. | opening B unknown | right section {right} in.</strong> Overall length is {overallFeet} ft {overallInches} in. Find opening B's width in inches and the distance from the wall's left end to opening B's left edge in feet and inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "Overall length: {overallFeet} × 12 + {overallInches} = {overall} in. Opening B: {overall} − {left} − {openingA} − {middle} − {right} = <strong>{openingB} in.</strong> Its left edge is {left} + {openingA} + {middle} = {position} in. = <strong>{positionFeet} ft {positionInches} in.</strong> from the left end."
     },
     {
@@ -4521,8 +4518,276 @@
         "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
         },
-      "question": "A shelf assembly plan gives outside width {width} in., outside height {height} in., and depth {depth} in. The front view shows two full-height side panels and top and bottom panels fitted between them. All panels are {thicknessText} in. thick and {depth} in. deep. Find a) clear inside width and height and b) the length and depth of a shelf between the side panels with {clearanceText} in. clearance at each end, flush with front and back.",
+      "question": "A shelf assembly plan gives outside width {width} in., outside height {height} in., and depth {depth} in. The front view shows two full-height side panels and top and bottom panels fitted between them. All panels are {thicknessText} in. thick and {depth} in. deep. Find a) clear inside width and height and b) the length and depth of a shelf between the side panels with {clearanceText} in. clearance at each end, flush with front and back. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
       "answer": "a) Inside width: {width} − 2({thicknessText}) = <strong>{insideWidthText} in.</strong>; inside height: {height} − 2({thicknessText}) = <strong>{insideHeightText} in.</strong> b) Shelf length: {insideWidthText} − 2({clearanceText}) = <strong>{shelfText} in.</strong>; depth: <strong>{depth} in.</strong>"
+    }
+  ],
+  "2: Square, Level and Structural Layout": [
+    {
+      "id": "G.2.1-B1",
+      "type": "template",
+      "objective": "G.2.1 Angle Measurement and Relationships",
+      "difficulty": "basic",
+      "variables": {
+        "angle": { "values": [15, 25, 30, 45, 60, 75, 80, 90, 105, 120, 135, 140, 150, 170] },
+        "endX": { "formula": "round((205+150*cos(angle*PI/180))*1000)/1000", "format": "decimal" },
+        "endY": { "formula": "round((185-150*sin(angle*PI/180))*1000)/1000", "format": "decimal" },
+        "arcX": { "formula": "round((205+35*cos(angle*PI/180))*1000)/1000", "format": "decimal" },
+        "arcY": { "formula": "round((185-35*sin(angle*PI/180))*1000)/1000", "format": "decimal" },
+        "classification": { "formula": "angle < 90 ? 'acute' : angle === 90 ? 'right' : angle < 180 ? 'obtuse' : 'straight'" }
+        },
+      "question": "Use a protractor to measure the marked angle to the nearest degree. Classify it as acute, right, obtuse, or straight. The diagram is drawn to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 225' width='420' style='max-width:100%;height:auto' role='img' aria-label='Two rays meet at O. Measure the angle marked by the arc above the horizontal ray.'><path d='M{endX} {endY} L205 185 H355 M240 185 A35 35 0 0 0 {arcX} {arcY}' fill='none' stroke='black' stroke-width='2'/><text x='205' y='210' text-anchor='middle' font-size='16' fill='black'>O</text></svg>",
+      "answer": "The marked angle is <strong>{angle}&deg;</strong>, so it is <strong>{classification}</strong>."
+    },
+    {
+      "id": "G.2.1-B2",
+      "type": "template",
+      "objective": "G.2.1 Angle Measurement and Relationships",
+      "difficulty": "basic",
+      "variables": {
+        "angle": { "min": 15, "max": 75 },
+        "complement": { "formula": "90-angle", "format": "decimal" },
+        "supplement": { "formula": "180-angle", "format": "decimal" }
+        },
+      "question": "A brace makes a {angle}&deg; angle with a horizontal member. Find a) the complementary angle and b) the supplementary angle. Give exact answers in degrees.",
+      "answer": "a) 90&deg; &minus; {angle}&deg; = <strong>{complement}&deg;</strong>.<br>b) 180&deg; &minus; {angle}&deg; = <strong>{supplement}&deg;</strong>."
+    },
+    {
+      "id": "G.2.1-I1",
+      "type": "template",
+      "objective": "G.2.1 Angle Measurement and Relationships",
+      "difficulty": "intermediate",
+      "variables": {
+        "angle": { "min": 25, "max": 70 },
+        "adjacent": { "formula": "180-angle", "format": "decimal" }
+        },
+      "question": "Two straight layout lines cross as shown. Find x and y and explain the relationships you use. The sketch is not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Two straight lines intersect. The upper angle is {angle} degrees, the opposite lower angle is x, and the right adjacent angle is y. Not to scale.'><path d='M55 165 L365 45 M55 45 L365 165' fill='none' stroke='black' stroke-width='2'/><text x='210' y='43' text-anchor='middle' font-size='16' fill='black'>{angle}&deg;</text><text x='210' y='195' text-anchor='middle' font-size='16' fill='black'>x</text><text x='350' y='115' text-anchor='middle' font-size='16' fill='black'>y</text></svg>",
+      "answer": "<strong>x = {angle}&deg;</strong> because vertical angles are equal. <strong>y = {adjacent}&deg;</strong> because adjacent angles forming a straight line sum to 180&deg;."
+    },
+    {
+      "id": "G.2.1-I2",
+      "type": "template",
+      "objective": "G.2.1 Angle Measurement and Relationships",
+      "difficulty": "intermediate",
+      "variables": {
+        "angle": { "min": 25, "max": 70 },
+        "obtuse": { "formula": "180-angle", "format": "decimal" }
+        },
+      "question": "The two rails are parallel. Find angles x and y where the straight brace crosses the rails. Explain the relationships you use. The sketch is not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Two parallel horizontal rails crossed by a rising diagonal. The upper-right angle at rail 1 is {angle} degrees; x is upper-right at rail 2 and y is upper-left at rail 2. Not to scale.'><path d='M30 65 H410 M30 155 H410 M105 205 L285 15' fill='none' stroke='black' stroke-width='2'/><text x='300' y='50' text-anchor='middle' font-size='16' fill='black'>{angle}&deg;</text><text x='215' y='140' text-anchor='middle' font-size='16' fill='black'>x</text><text x='85' y='140' text-anchor='middle' font-size='16' fill='black'>y</text><text x='390' y='90' text-anchor='middle' font-size='16' fill='black'>rail 1</text><text x='390' y='180' text-anchor='middle' font-size='16' fill='black'>rail 2</text></svg>",
+      "answer": "<strong>x = {angle}&deg;</strong> by corresponding angles. <strong>y = 180&deg; &minus; {angle}&deg; = {obtuse}&deg;</strong> because x and y form a straight angle along rail 2."
+    },
+    {
+      "id": "G.2.1-A",
+      "type": "template",
+      "objective": "G.2.1 Angle Measurement and Relationships",
+      "difficulty": "advanced",
+      "variables": {
+        "angle": { "min": 25, "max": 65 },
+        "wallAngle": { "formula": "90-angle", "format": "decimal" },
+        "outside": { "formula": "180-angle", "format": "decimal" }
+        },
+      "question": "A rectangular frame has a straight diagonal brace. The top rail extends past the right upright. Determine x, the angle between the brace and right upright, and y, the angle between the brace and the rightward extension of the top rail. Justify your answers from the layout. The sketch is not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Rectangular frame with a brace from bottom-left to top-right. At bottom-left the brace makes {angle} degrees with the bottom. At top-right x is between brace and right upright; y is between the brace ray toward bottom-left and the extension of the top rail to the right. Not to scale.'><path d='M70 35 V185 H365 V35 Z M70 185 L365 35 M365 35 H415 M70 165 H90 V185 M345 185 V165 H365' fill='none' stroke='black' stroke-width='2'/><text x='147' y='174' text-anchor='middle' font-size='16' fill='black'>{angle}&deg;</text><text x='354' y='78' text-anchor='middle' font-size='16' fill='black'>x</text><text x='398' y='63' text-anchor='middle' font-size='16' fill='black'>y</text></svg>",
+      "answer": "The rectangular frame has parallel top and bottom rails, so the acute brace-to-rail angle is {angle}&deg;. The upright is perpendicular to the rails: <strong>x = 90&deg; &minus; {angle}&deg; = {wallAngle}&deg;</strong>. The brace and rightward rail extension form the supplementary angle: <strong>y = 180&deg; &minus; {angle}&deg; = {outside}&deg;</strong>."
+    },
+    {
+      "id": "G.2.2-B1",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "basic",
+      "variables": {
+        "legA": { "min": 12, "max": 32 },
+        "legB": { "min": 18, "max": 42 },
+        "hypotenuseExact": { "formula": "sqrt(legA*legA+legB*legB)", "format": "decimal" },
+        "hypotenuse": { "formula": "round(hypotenuseExact*16)/16", "format": "decimal" },
+        "hypotenuseWhole": { "formula": "floor(hypotenuse)", "format": "decimal" },
+        "hypotenuseNumerator": { "formula": "round((hypotenuse-hypotenuseWhole)*16)", "format": "decimal" },
+        "hypotenuseDivisor": { "formula": "hypotenuseNumerator % 8 === 0 ? 8 : hypotenuseNumerator % 4 === 0 ? 4 : hypotenuseNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "hypotenuseText": { "formula": "hypotenuseNumerator === 0 ? String(hypotenuseWhole) : (hypotenuseWhole === 0 ? '' : hypotenuseWhole + ' ') + (hypotenuseNumerator/hypotenuseDivisor) + '/' + (16/hypotenuseDivisor)" }
+        },
+      "question": "A right triangle has perpendicular legs of {legA} in. and {legB} in. Find the hypotenuse. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "By the Pythagorean theorem, c = &radic;({legA}<sup>2</sup> + {legB}<sup>2</sup>) &asymp; <strong>{hypotenuseText} in.</strong>"
+    },
+    {
+      "id": "G.2.2-B2",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "basic",
+      "variables": {
+        "hypotenuse": { "min": 30, "max": 50 },
+        "leg": { "min": 12, "max": 24 },
+        "missingExact": { "formula": "sqrt(hypotenuse*hypotenuse-leg*leg)", "format": "decimal" },
+        "missing": { "formula": "round(missingExact*16)/16", "format": "decimal" },
+        "missingWhole": { "formula": "floor(missing)", "format": "decimal" },
+        "missingNumerator": { "formula": "round((missing-missingWhole)*16)", "format": "decimal" },
+        "missingDivisor": { "formula": "missingNumerator % 8 === 0 ? 8 : missingNumerator % 4 === 0 ? 4 : missingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "missingText": { "formula": "missingNumerator === 0 ? String(missingWhole) : (missingWhole === 0 ? '' : missingWhole + ' ') + (missingNumerator/missingDivisor) + '/' + (16/missingDivisor)" }
+        },
+      "question": "A right triangle has a hypotenuse of {hypotenuse} in. and one leg of {leg} in. Find the other leg. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "The unknown leg is &radic;({hypotenuse}<sup>2</sup> &minus; {leg}<sup>2</sup>) &asymp; <strong>{missingText} in.</strong>"
+    },
+    {
+      "id": "G.2.2-I",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "intermediate",
+      "variables": {
+        "length": { "values": [48, 60, 72, 84, 96] },
+        "width": { "values": [24, 30, 36, 42] },
+        "diagonalExact": { "formula": "sqrt(length*length+width*width)", "format": "decimal" },
+        "diagonal": { "formula": "round(diagonalExact*16)/16", "format": "decimal" },
+        "diagonalWhole": { "formula": "floor(diagonal)", "format": "decimal" },
+        "diagonalNumerator": { "formula": "round((diagonal-diagonalWhole)*16)", "format": "decimal" },
+        "diagonalDivisor": { "formula": "diagonalNumerator % 8 === 0 ? 8 : diagonalNumerator % 4 === 0 ? 4 : diagonalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "diagonalText": { "formula": "diagonalNumerator === 0 ? String(diagonalWhole) : (diagonalWhole === 0 ? '' : diagonalWhole + ' ') + (diagonalNumerator/diagonalDivisor) + '/' + (16/diagonalDivisor)" }
+        },
+      "question": "A rectangular frame measures {length} in. by {width} in. A brace runs between two opposite corners. Find the corner-to-corner brace length, ignoring joint allowances. Explain why your calculation applies. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Four-sided layout ABCD, in order. AB and CD are {length} inches; BC and DA are {width} inches. Both diagonals are shown. Sketch not to scale.'><path d='M65 45 H355 V170 H65 Z M65 45 L355 170 M355 45 L65 170' fill='none' stroke='black' stroke-width='2'/><text x='50' y='35' text-anchor='middle' font-size='16' fill='black'>A</text><text x='370' y='35' text-anchor='middle' font-size='16' fill='black'>B</text><text x='370' y='190' text-anchor='middle' font-size='16' fill='black'>C</text><text x='50' y='190' text-anchor='middle' font-size='16' fill='black'>D</text><text x='210' y='30' text-anchor='middle' font-size='16' fill='black'>{length} in.</text><text x='395' y='115' text-anchor='middle' font-size='16' fill='black'>{width} in.</text></svg>",
+      "answer": "Adjacent sides of a rectangle are perpendicular, so they and the diagonal form a right triangle. Brace length = &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) &asymp; <strong>{diagonalText} in.</strong>"
+    },
+    {
+      "id": "G.2.2-A",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "advanced",
+      "variables": {
+        "scale": { "min": 4, "max": 12 },
+        "length": { "formula": "4*scale", "format": "decimal" },
+        "width": { "formula": "3*scale", "format": "decimal" },
+        "expected": { "formula": "5*scale", "format": "decimal" },
+        "offset": { "values": [-1, 0, 1] },
+        "measured": { "formula": "expected+offset", "format": "decimal" },
+        "sideSum": { "formula": "length*length+width*width", "format": "decimal" },
+        "diagonalSquare": { "formula": "measured*measured", "format": "decimal" },
+        "verdict": { "formula": "offset === 0 ? 'Yes' : 'No'" },
+        "reasoning": { "formula": "offset === 0 ? 'The diagonal squared equals the sum of the adjacent side squares, so the converse of the Pythagorean theorem gives a right angle.' : 'The diagonal squared differs from the sum of the adjacent side squares, so the included angle is not a right angle.'" }
+        },
+      "question": "A flat, convex four-sided layout ABCD has AB = CD = {length} in. and BC = DA = {width} in. Its diagonal AC is {measured} in. Treat these given measurements as exact. Find the diagonal required for a rectangle, then decide whether this layout is rectangular. Support your decision mathematically. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "Expected diagonal = &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) = <strong>{expected} in.</strong> Measured AC squared is {diagonalSquare}, while the sum of adjacent side squares is {sideSum}. <strong>Rectangular: {verdict}.</strong> {reasoning} Both pairs of opposite sides are equal, so the convex layout is a parallelogram; a right angle would make it a rectangle."
+    },
+    {
+      "id": "G.2.3-B",
+      "type": "template",
+      "objective": "G.2.3 Parallel and Perpendicular Lines",
+      "difficulty": "basic",
+      "variables": {
+        "set": { "values": [0, 1, 2] },
+        "a": { "formula": "set === 0 ? 'A' : set === 1 ? 'P' : 'W'" },
+        "b": { "formula": "set === 0 ? 'B' : set === 1 ? 'Q' : 'X'" },
+        "c": { "formula": "set === 0 ? 'C' : set === 1 ? 'R' : 'Y'" },
+        "d": { "formula": "set === 0 ? 'D' : set === 1 ? 'S' : 'Z'" },
+        "width": { "min": 24, "max": 48 },
+        "height": { "min": 12, "max": 20 }
+        },
+      "question": "The plan shows a rectangular panel. Name a) the edge parallel to {a}{b}, and b) both edges perpendicular to {a}{b}. Explain what parallel and perpendicular mean.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Rectangle with vertices {a}, {b}, {c}, {d} in clockwise order from top-left. Not to scale.'><path d='M70 45 H350 V175 H70 Z M70 65 H90 V45' fill='none' stroke='black' stroke-width='2'/><text x='55' y='35' text-anchor='middle' font-size='16' fill='black'>{a}</text><text x='365' y='35' text-anchor='middle' font-size='16' fill='black'>{b}</text><text x='365' y='197' text-anchor='middle' font-size='16' fill='black'>{c}</text><text x='55' y='197' text-anchor='middle' font-size='16' fill='black'>{d}</text><text x='210' y='30' text-anchor='middle' font-size='16' fill='black'>{width} in.</text><text x='397' y='118' text-anchor='middle' font-size='16' fill='black'>{height} in.</text></svg>",
+      "answer": "a) <strong>{c}{d}</strong> is parallel to {a}{b}: their lines lie in the same plane and never intersect.<br>b) <strong>{a}{d} and {b}{c}</strong> are perpendicular to {a}{b}: each meets it at 90&deg;."
+    },
+    {
+      "id": "G.2.3-I1",
+      "type": "template",
+      "objective": "G.2.3 Parallel and Perpendicular Lines",
+      "difficulty": "intermediate",
+      "variables": {
+        "run": { "values": [48, 60, 72, 96] },
+        "left": { "min": 8, "max": 16 },
+        "change": { "values": [-2, 0, 2] },
+        "right": { "formula": "left+change", "format": "decimal" },
+        "rise": { "formula": "right-left", "format": "decimal" },
+        "verdict": { "formula": "change === 0 ? 'parallel' : 'not parallel'" },
+        "correction": { "formula": "change === 0 ? 'No change is needed.' : change > 0 ? 'Reduce the right offset by ' + change + ' in.' : 'Increase the right offset by ' + (-change) + ' in.'" },
+        "rightY": { "formula": "170-right*7", "format": "decimal" },
+        "leftY": { "formula": "170-left*7", "format": "decimal" }
+        },
+      "question": "At two points {run} in. apart on a straight reference line, perpendicular measurements to a straight rail are {left} in. and {right} in., on the same side of the reference line. Are the rail and reference line parallel? If the left end stays fixed, how must the right offset change to make them parallel? Treat the dimensions as exact. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Straight reference line and straight rail. Perpendicular offsets at endpoints {run} inches apart are {left} inches and {right} inches on the same side of the reference.'><path d='M65 170 H355 M65 {leftY} L355 {rightY} M65 170 V{leftY} M355 170 V{rightY} M65 155 H80 V170 M340 170 V155 H355' fill='none' stroke='black' stroke-width='2'/><text x='210' y='195' text-anchor='middle' font-size='16' fill='black'>{run} in.</text><text x='30' y='120' text-anchor='middle' font-size='16' fill='black'>{left} in.</text><text x='397' y='120' text-anchor='middle' font-size='16' fill='black'>{right} in.</text></svg>",
+      "answer": "The rail is <strong>{verdict}</strong> to the reference: parallel straight lines have equal perpendicular offsets. The offsets differ by {rise} in. (right minus left). <strong>{correction}</strong>"
+    },
+    {
+      "id": "G.2.3-I2",
+      "type": "template",
+      "objective": "G.2.3 Parallel and Perpendicular Lines",
+      "difficulty": "intermediate",
+      "variables": {
+        "scale": { "min": 3, "max": 10 },
+        "a": { "formula": "3*scale", "format": "decimal" },
+        "b": { "formula": "4*scale", "format": "decimal" },
+        "expected": { "formula": "5*scale", "format": "decimal" },
+        "offset": { "values": [-1, 0, 1] },
+        "between": { "formula": "expected+offset", "format": "decimal" },
+        "sideSum": { "formula": "a*a+b*b", "format": "decimal" },
+        "square": { "formula": "between*between", "format": "decimal" },
+        "verdict": { "formula": "offset === 0 ? 'perpendicular' : 'not perpendicular'" }
+        },
+      "question": "Two straight layout lines meet at O. Mark A at {a} in. from O on one line and B at {b} in. from O on the other. The distance AB is {between} in. Treat the measurements as exact. Determine whether the lines are perpendicular, using the dimensions to justify your answer.",
+      "answer": "OA squared + OB squared = {a}<sup>2</sup> + {b}<sup>2</sup> = {sideSum}. AB squared = {between}<sup>2</sup> = {square}. A right angle requires AB = {expected} in. By the converse of the Pythagorean theorem, the lines are <strong>{verdict}</strong>."
+    },
+    {
+      "id": "G.2.4-B",
+      "type": "template",
+      "objective": "G.2.4 Diagonals and Squareness",
+      "difficulty": "basic",
+      "variables": {
+        "length": { "min": 30, "max": 60 },
+        "width": { "min": 18, "max": 28 },
+        "diagonalExact": { "formula": "sqrt(length*length+width*width)", "format": "decimal" },
+        "diagonal": { "formula": "round(diagonalExact*16)/16", "format": "decimal" },
+        "diagonalWhole": { "formula": "floor(diagonal)", "format": "decimal" },
+        "diagonalNumerator": { "formula": "round((diagonal-diagonalWhole)*16)", "format": "decimal" },
+        "diagonalDivisor": { "formula": "diagonalNumerator % 8 === 0 ? 8 : diagonalNumerator % 4 === 0 ? 4 : diagonalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "diagonalText": { "formula": "diagonalNumerator === 0 ? String(diagonalWhole) : (diagonalWhole === 0 ? '' : diagonalWhole + ' ') + (diagonalNumerator/diagonalDivisor) + '/' + (16/diagonalDivisor)" }
+        },
+      "question": "A rectangular layout is intended to measure {length} in. by {width} in. What should each diagonal measure? Explain why equal diagonals are a useful squareness check, and whether equal diagonals alone prove that any four-sided shape is rectangular. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "Each diagonal should be &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) &asymp; <strong>{diagonalText} in.</strong> A rectangle has equal diagonals. Equal diagonals alone do not prove an arbitrary quadrilateral is rectangular (an isosceles trapezoid can also have equal diagonals). Once a convex layout is verified to be a parallelogram, equal diagonals establish that it is a rectangle."
+    },
+    {
+      "id": "G.2.4-I",
+      "type": "template",
+      "objective": "G.2.4 Diagonals and Squareness",
+      "difficulty": "intermediate",
+      "variables": {
+        "length": { "values": [48, 60, 72, 84] },
+        "width": { "values": [24, 30, 36] },
+        "shear": { "values": [-2, -1, 1, 2] },
+        "targetExact": { "formula": "sqrt(length*length+width*width)", "format": "decimal" },
+        "target": { "formula": "round(targetExact*16)/16", "format": "decimal" },
+        "targetWhole": { "formula": "floor(target)", "format": "decimal" },
+        "targetNumerator": { "formula": "round((target-targetWhole)*16)", "format": "decimal" },
+        "targetDivisor": { "formula": "targetNumerator % 8 === 0 ? 8 : targetNumerator % 4 === 0 ? 4 : targetNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "targetText": { "formula": "targetNumerator === 0 ? String(targetWhole) : (targetWhole === 0 ? '' : targetWhole + ' ') + (targetNumerator/targetDivisor) + '/' + (16/targetDivisor)" },
+        "acExact": { "formula": "sqrt(length*length+width*width+2*length*shear)", "format": "decimal" },
+        "ac": { "formula": "round(acExact*16)/16", "format": "decimal" },
+        "acWhole": { "formula": "floor(ac)", "format": "decimal" },
+        "acNumerator": { "formula": "round((ac-acWhole)*16)", "format": "decimal" },
+        "acDivisor": { "formula": "acNumerator % 8 === 0 ? 8 : acNumerator % 4 === 0 ? 4 : acNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "acText": { "formula": "acNumerator === 0 ? String(acWhole) : (acWhole === 0 ? '' : acWhole + ' ') + (acNumerator/acDivisor) + '/' + (16/acDivisor)" },
+        "bdExact": { "formula": "sqrt(length*length+width*width-2*length*shear)", "format": "decimal" },
+        "bd": { "formula": "round(bdExact*16)/16", "format": "decimal" },
+        "bdWhole": { "formula": "floor(bd)", "format": "decimal" },
+        "bdNumerator": { "formula": "round((bd-bdWhole)*16)", "format": "decimal" },
+        "bdDivisor": { "formula": "bdNumerator % 8 === 0 ? 8 : bdNumerator % 4 === 0 ? 4 : bdNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "bdText": { "formula": "bdNumerator === 0 ? String(bdWhole) : (bdWhole === 0 ? '' : bdWhole + ' ') + (bdNumerator/bdDivisor) + '/' + (16/bdDivisor)" },
+        "longer": { "formula": "shear > 0 ? 'AC' : 'BD'" },
+        "shorter": { "formula": "shear > 0 ? 'BD' : 'AC'" },
+        "bottomLeft": { "formula": "65+shear*10", "format": "decimal" },
+        "bottomRight": { "formula": "355+shear*10", "format": "decimal" }
+        },
+      "question": "A flat frame ABCD has opposite sides verified equal: AB = CD = {length} in. and BC = DA = {width} in. Its measured diagonals, reported to the nearest 1/16 inch, are AC = {acText} in. and BD = {bdText} in. Explain whether the frame is square, find the target diagonal, and describe how to adjust and recheck it without changing side lengths. Here, square means four right-angle corners. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Four-sided layout ABCD, in order. AB and CD are {length} inches; BC and DA are {width} inches. Both diagonals are shown. Sketch not to scale.'><path d='M65 45 H355 L{bottomRight} 170 H{bottomLeft} Z M65 45 L{bottomRight} 170 M355 45 L{bottomLeft} 170' fill='none' stroke='black' stroke-width='2'/><text x='50' y='35' text-anchor='middle' font-size='16' fill='black'>A</text><text x='370' y='35' text-anchor='middle' font-size='16' fill='black'>B</text><text x='{bottomRight}' y='190' text-anchor='middle' font-size='16' fill='black'>C</text><text x='{bottomLeft}' y='190' text-anchor='middle' font-size='16' fill='black'>D</text><text x='210' y='30' text-anchor='middle' font-size='16' fill='black'>{length} in.</text><text x='395' y='115' text-anchor='middle' font-size='16' fill='black'>{width} in.</text></svg>",
+      "answer": "The diagonals differ, so the frame is <strong>not square</strong>. Target for both diagonals: &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) &asymp; <strong>{targetText} in.</strong> Rack the frame to shorten {longer} and lengthen {shorter}. Recheck both diagonals against the calculated target and recheck all four side lengths. Equal diagonals verify a rectangle once the flat convex frame is known to be a parallelogram; matching rounded readings alone cannot prove perfect mathematical equality."
+    },
+    {
+      "id": "G.2.4-A",
+      "type": "template",
+      "objective": "G.2.4 Diagonals and Squareness",
+      "difficulty": "advanced",
+      "variables": {
+        "length": { "values": [48, 60, 72, 84, 96] },
+        "width": { "values": [24, 30, 36, 42] },
+        "diagonalExact": { "formula": "sqrt(length*length+width*width)", "format": "decimal" },
+        "diagonal": { "formula": "round(diagonalExact*16)/16", "format": "decimal" },
+        "diagonalWhole": { "formula": "floor(diagonal)", "format": "decimal" },
+        "diagonalNumerator": { "formula": "round((diagonal-diagonalWhole)*16)", "format": "decimal" },
+        "diagonalDivisor": { "formula": "diagonalNumerator % 8 === 0 ? 8 : diagonalNumerator % 4 === 0 ? 4 : diagonalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "diagonalText": { "formula": "diagonalNumerator === 0 ? String(diagonalWhole) : (diagonalWhole === 0 ? '' : diagonalWhole + ' ') + (diagonalNumerator/diagonalDivisor) + '/' + (16/diagonalDivisor)" }
+        },
+      "question": "Only two reference points A and B are fixed, {length} in. apart. Design a rectangular layout ABCD of width {width} in. on one chosen side of AB. Describe how to locate D and C using distances from A and B, calculate the needed diagonal, and list the measurements that would mathematically verify the rectangle. Explain why checking only that the diagonals match is insufficient. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "Diagonal target: &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) &asymp; <strong>{diagonalText} in.</strong><br>Locate D on the chosen side of AB where AD = {width} in. and BD equals the diagonal target. Locate C on that same side where BC = {width} in. and AC equals the diagonal target. Use unrounded values for the mathematical construction and the rounded value for marking.<br>Verify AB = CD = {length} in., AD = BC = {width} in., and both AC and BD equal the calculated diagonal. Equal opposite sides make the convex layout a parallelogram; equal diagonals then make it a rectangle. Alternatively, the exact diagonal and adjacent sides satisfy the converse of the Pythagorean theorem. Equal diagonals without side checks are insufficient because other quadrilaterals can have them. Field measurements rounded to 1/16 in. verify the layout only to that measurement precision."
     }
   ]
 },
@@ -5355,7 +5620,7 @@
         "b2": { "min": -5, "max": 5, "exclude": [0] },
         "c2": { "formula": "a2*x + b2*y" }
       },
-      "question": "Solve the system of equations using substitution (show your work):<br>\\( y = {m|coef}x {b|sign} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( y = {m|coef}x {b|sign} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
   },
   {
@@ -5418,28 +5683,32 @@
     "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "basic",
     "variables": {
-      "a1": { "min": -5, "max": 5, "exclude": [0] },
-      "c1": { "min": -5, "max": 5, "exclude": [0] },
-      "negc1": { "formula": "-1*c1" },
-      "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
-      "c2": { "min": -5, "max": 5, "exclude": [0] }
+      "a1": { "min": -3, "max": 3, "exclude": [0] },
+      "d1": { "min": 1, "max": 3 },
+      "m1": { "formula": "a1/d1", "format": "fraction" },
+      "b1": { "min": -5, "max": 5, "exclude": [0] },
+      "rhs1": { "formula": "-d1*b1" },
+      "a2": { "min": -3, "max": 3, "exclude": [0] },
+      "d2": { "min": 1, "max": 3 },
+      "m2": { "formula": "a2/d2", "format": "fraction", "exclude": ["m1"] },
+      "b2": { "min": -5, "max": 5, "exclude": [0, "b1"] }
     },
     "draw": {
       "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
       "gridStep": 1,
       "eq1": {
-        "relation": "y < {a1}*x - ({c1})",
+        "relation": "y < {m1}*x + ({b1})",
         "showInQuestion": false,
         "showInAnswer": true
       },
       "eq2": {
-        "relation": "y < {a2}*x + ({c2})",
+        "relation": "y < {m2}*x + ({b2})",
         "showInQuestion": false,
         "showInAnswer": true
       }
     },
-    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x - y > {c1} \\)<br>\\( y < {a2|coef}x {c2|sign} \\)",
-    "answer": "Use dotted boundary lines. Rewrite the first inequality as \\( y < {a1|coef}x {negc1|sign} \\). Shade below both boundary lines; the overlap is the solution region."
+    "question": "Graph the system of inequalities using the coordinate plane provided:<br>\\( {a1|coef}x - {d1|coef}y > {rhs1} \\)<br>\\( y < {m2|coef}x {b2|sign} \\)",
+    "answer": "Use dotted boundary lines. Rewrite the first inequality as \\( y < {m1|coef}x {b1|sign} \\). Shade below both boundary lines; the overlap is the solution region."
   },
   {
     "id": "ALG2-2.6-B2",
@@ -5447,9 +5716,13 @@
     "objective": "2.6 Solving Systems of Inequalities",
     "difficulty": "basic",
     "variables": {
-      "m1": { "min": -4, "max": 4, "exclude": [0] },
+      "a1": { "min": -3, "max": 3, "exclude": [0] },
+      "d1": { "min": 1, "max": 3 },
+      "m1": { "formula": "a1/d1", "format": "fraction" },
       "b1": { "min": -6, "max": 6, "exclude": [0] },
-      "m2": { "min": -4, "max": 4, "exclude": [0, "m1"] },
+      "a2": { "min": -3, "max": 3, "exclude": [0] },
+      "d2": { "min": 1, "max": 3 },
+      "m2": { "formula": "a2/d2", "format": "fraction", "exclude": ["m1"] },
       "b2": { "min": -6, "max": 6, "exclude": [0, "b1"] }
     },
     "draw": {
@@ -5480,7 +5753,7 @@
       "c1": { "min": -5, "max": 5, "exclude": [0] },
       "a2": { "min": -5, "max": 5, "exclude": [0, "a1"] },
       "c2": { "min": -5, "max": 5, "exclude": [0] },
-      "c3": { "min": -3, "max": 3 }
+      "c3": { "min": -3, "max": 3, "exclude": [0] }
 
     },
     "draw": {
@@ -5593,20 +5866,17 @@
       "a" : { "min": -5, "max": 5, "exclude": [0] },
       "b" : { "min": -5, "max": 5, "exclude": [0] },
       "c" : { "min": -5, "max": 5, "exclude": [0] },
-      "p": { "min": -5, "max": 5, "exclude": [0] },
-      "q": { "min": -5, "max": 5, "exclude": [0] },
-      "r": { "min": -5, "max": 5, "exclude": [0] },
-      "x1": { "formula": "p" },
-      "y1": { "formula": "p" },
-      "z1": { "formula": "p" },
+      "x1": { "min": -5, "max": 5, "exclude": [0] },
+      "y1": { "min": -5, "max": 5, "exclude": [0] },
+      "z1": { "min": -5, "max": 5, "exclude": [0] },
       "r1": { "formula": "x1*a + y1*b + z1*c" },
-      "x2": { "formula": "q" },
-      "y2": { "formula": "-1*q" },
-      "z2": { "formula": "q" },
+      "x2": { "min": -5, "max": 5, "exclude": [0, "x1"] },
+      "y2": { "min": -5, "max": 5, "exclude": [0] },
+      "z2": { "min": -5, "max": 5, "exclude": [0] },
       "r2": { "formula": "x2*a + y2*b + z2*c" },
-      "x3": { "formula": "r" },
-      "y3": { "formula": "r" },
-      "z3": { "formula": "-1*r" },
+      "x3": { "min": -5, "max": 5, "exclude": [0, "x1", "x2"] },
+      "y3": { "min": -5, "max": 5, "exclude": [0] },
+      "z3": { "min": -5, "max": 5, "exclude": [0] },
       "r3": { "formula": "x3*a + y3*b + z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
@@ -5618,27 +5888,24 @@
     "objective": "2.8 Solving Systems of Equations in Three Variables",
     "difficulty": "intermediate",
     "variables": {
-      "a" : { "min": -5, "max": 5, "exclude": [0] },
-      "b" : { "min": -5, "max": 5, "exclude": [0] },
-      "c" : { "min": -5, "max": 5, "exclude": [0] },
-      "s1": { "min": 1, "max": 4 },
-      "s2": { "min": 1, "max": 4 },
-      "s3": { "min": 1, "max": 4 },
-      "x1": { "formula": "s1" },
-      "y1": { "formula": "2*s1" },
-      "z1": { "formula": "s1" },
-      "r1": { "formula": "x1*a + y1*b + z1*c" },
-      "x2": { "formula": "2*s2" },
-      "y2": { "formula": "-1*s2" },
-      "z2": { "formula": "3*s2" },
-      "r2": { "formula": "x2*a + y2*b + z2*c" },
-      "x3": { "formula": "-1*s3" },
-      "y3": { "formula": "s3" },
-      "z3": { "formula": "2*s3" },
-      "r3": { "formula": "x3*a + y3*b + z3*c" }
+      "x" : { "min": -5, "max": 5, "exclude": [0] },
+      "y" : { "min": -5, "max": 5, "exclude": [0] },
+      "z" : { "min": -5, "max": 5, "exclude": [0] },
+      "x1": { "min": -5, "max": 5, "exclude": [0] },
+      "y1": { "min": -5, "max": 5, "exclude": [0] },
+      "z1": { "min": -5, "max": 5, "exclude": [0] },
+      "r1": { "formula": "x1*x + y1*y + z1*z" },
+      "x2": { "min": -5, "max": 5, "exclude": [0,"x1"] },
+      "y2": { "min": -5, "max": 5, "exclude": [0] },
+      "z2": { "min": -5, "max": 5, "exclude": [0] },
+      "r2": { "formula": "x2*x + y2*y + z2*z" },
+      "x3": { "min": -5, "max": 5, "exclude": [0,"x1","x2"] },
+      "y3": { "min": -5, "max": 5, "exclude": [0] },
+      "z3": { "min": -5, "max": 5, "exclude": [0] },
+      "r3": { "formula": "x3*x + y3*y + z3*z" }
     },
-    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
-    "answer": "\\( ({a}, {b}, {c} )\\)"
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}x {y1|signedCoef}y {z1|signedCoef}z = {r1} \\)<br>\\( {x2|coef}x {y2|signedCoef}y {z2|signedCoef}z = {r2} \\)<br>\\( {x3|coef}x {y3|signedCoef}y {z3|signedCoef}z = {r3} \\)",
+    "answer": "\\( ({x}, {y}, {z} )\\)"
   }
   ],
   "3: Quadratic Functions": [
