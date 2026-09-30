@@ -4195,8 +4195,8 @@
         "area": { "formula": "length*width", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of baseboard for its entire perimeter. Ignore openings and waste. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
-      "answer": "Area: {length} × {width} = <strong>{area} ft²</strong>. Baseboard: 2({length} + {width}) = <strong>{perimeter} ft</strong>."
+      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of its perimeter. Ignore openings and waste.",
+      "answer": "Area: {length} × {width} = <strong>{area} ft²</strong>. Perimeter: 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
       "id": "G.1.3-I",
@@ -4212,7 +4212,7 @@
         "edging": { "formula": "(base+height+hypotenuse)/12", "format": "decimal" },
         "squareFeet": { "formula": "area/144", "format": "fraction" }
         },
-      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
+      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste.",
       "answer": "Area: ({base} × {height})/2 = <strong>{area} in.²</strong> = \\( {squareFeet} \\) ft², using 144 in.² per ft². Edging: ({base} + {height} + {hypotenuse})/12 = <strong>{edging} ft</strong>."
     },
     {
@@ -4228,7 +4228,7 @@
         "area": { "formula": "length*width-notchLength*notchWidth", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
+      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges.",
       "answer": "Area: {length} × {width} − {notchLength} × {notchWidth} = <strong>{area} ft²</strong>. The notch replaces two outside edge lengths with equal inside lengths, so perimeter = 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
@@ -4258,10 +4258,10 @@
       "objective": "G.1.4 Circles",
       "difficulty": "basic",
       "variables": {
-        "diameter": { "values": [6, 8, 10, 12, 14, 16] },
+        "diameter": { "min": 5, "max": 20 },
         "radius": { "formula": "diameter/2", "format": "decimal" }
         },
-      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle?",
       "answer": "The center-to-pencil distance is the radius: {diameter} ÷ 2 = <strong>{radius} in.</strong>"
     },
     {
@@ -4270,9 +4270,9 @@
       "objective": "G.1.4 Circles",
       "difficulty": "intermediate",
       "variables": {
-        "width": { "values": [12, 14, 16, 18] },
-        "height": { "values": [10, 12, 14] },
-        "radiusUnits": { "values": [5, 7, 9] },
+        "width": { "min": 10, "max": 20 },
+        "height": { "min": 8, "max": 16 },
+        "radiusUnits": { "min": 4, "max": 12 },
         "x": { "formula": "width/2", "format": "decimal" },
         "y": { "formula": "height/2", "format": "decimal" },
         "radius": { "formula": "radiusUnits/4", "format": "decimal" },
@@ -4300,7 +4300,7 @@
       "objective": "G.1.4 Circles",
       "difficulty": "intermediate",
       "variables": {
-        "diameter": { "values": [18, 22, 26, 30, 34, 38] },
+        "diameter": { "min": 16, "max": 40 },
         "radius": { "formula": "diameter/2", "format": "decimal" },
         "circumference": { "formula": "round((PI*diameter)*16)/16", "format": "decimal" },
         "circumferenceWhole": { "formula": "floor(circumference)" },
@@ -4794,56 +4794,191 @@
 "Algebra 2": {
   "1: Relations and Functions": [
     {
-      "id": "ALG2-1.1a-B1",
+      "id": "ALG2-1.1-B1",
       "type": "template",
-      "objective": "1.1a Identify Domain and Range of Functions",
+      "objective": "1.1 Identify Domain and Range of Functions",
       "difficulty": "basic",
       "variables": {
         "a": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "min": -5, "max": 5, "exclude": [0] }
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "rangeRelation": { "formula": "a > 0 ? '\\\\geq' : '\\\\leq'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}x^2 {b|sign} \\). Find the domain and range of the function.",
-      "answer": "Domain: all real numbers; Range: \\( y \\geq {-b} \\) if \\( {a} > 0 \\), \\( y \\leq {-b} \\) if \\( {a} < 0 \\)."
+      "question": "Use the graph of \\( f(x) = {a|coef}x^2 {b|sign} \\). Find the domain and range of the function.",
+      "answer": "Domain: \\( (-\\infty, \\infty) \\); Range: \\( y {rangeRelation} {b} \\).",
+      "draw": {
+        "window": { "xMin": -9, "xMax": 9, "yMin": -9, "yMax": 9 },
+        "eq1": { "relation": "y = a*x^2 + b", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
     },
     {
-      "id": "ALG2-1.1a-I2",
+      "id": "ALG2-1.1-I1",
       "type": "template",
-      "objective": "1.1a Identify Domain and Range of Functions",
+      "objective": "1.1 Identify Domain and Range of Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -1, "max": 1, "exclude": [0] },
-        "h": { "min": -5, "max": 5, "exclude": [0] },
-        "k": { "min": -5, "max": 5, "exclude": [0] }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "excludedX": { "formula": "-h" },
+        "leftEnd": { "formula": "-h - 0.02" },
+        "rightStart": { "formula": "-h + 0.02" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}(x {h|sign})^2 {k|sign} \\). Find the domain and range of the function.",
-      "answer": "Domain: all real numbers; Range: \\( y \\geq {k} \\) if \\( {a} > 0 \\), \\( y \\leq {k} \\) if \\( {a} < 0 \\)."
+      "question": "Use the graph of \\( f(x) = \\frac{{a}}{x {h|sign}} {k|sign} \\). Find the domain and range of the function. Dashed lines show asymptotes.",
+      "answer": "Domain: all real numbers except \\( x = {excludedX} \\); Range: all real numbers except \\( y = {k} \\).",
+      "draw": {
+        "window": { "xMin": -8, "xMax": 8, "yMin": -9, "yMax": 9 },
+        "eq1": { "relation": "y = a/(x + h) + k", "domain": { "min": -8, "max": "leftEnd" }, "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a/(x + h) + k", "domain": { "min": "rightStart", "max": 8 }, "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" },
+        "eq3": { "relation": "x = excludedX", "boundaryStyle": "dashed", "color": "#64748b", "showInQuestion": true, "showInAnswer": true },
+        "eq4": { "relation": "y = k", "boundaryStyle": "dashed", "color": "#64748b", "showInQuestion": true, "showInAnswer": true }
+      }
     },
     {
-      "id": "ALG2-1.1a-A1",
+      "id": "ALG2-1.1-I2",
       "type": "template",
-      "objective": "1.1a Identify Domain and Range of Functions",
+      "objective": "1.1 Identify Domain and Range of Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "values": [2, 3] },
+        "s": { "values": [-1, 1] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "rangeRelation": { "formula": "a > 0 ? '>' : '<'" }
+      },
+      "question": "Use the graph of \\( f(x) = {a} \\cdot {b}^{{s|coef}x} {k|sign} \\). Find the domain and range of the function. The dashed line shows the horizontal asymptote.",
+      "answer": "Domain: \\( (-\\infty, \\infty) \\); Range: \\( y {rangeRelation} {k} \\).",
+      "draw": {
+        "window": { "xMin": -8, "xMax": 8, "yMin": -9, "yMax": 9 },
+        "eq1": { "relation": "y = a*b^(s*x) + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = k", "boundaryStyle": "dashed", "color": "#64748b", "showInQuestion": true, "showInAnswer": true }
+      }
+    },
+    {
+      "id": "ALG2-1.1-I3",
+      "type": "template",
+      "objective": "1.1 Identify Domain and Range of Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "values": [1, 2] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "rangeMin": { "formula": "k - abs(a)" },
+        "rangeMax": { "formula": "k + abs(a)" }
+      },
+      "question": "Use the graph of \\( f(x) = {a|coef}\\sin({b|coef}x) {k|sign} \\). Find the domain and range of the function. Angles are in radians.",
+      "answer": "Domain: \\( (-\\infty, \\infty) \\); Range: \\( [{rangeMin}, {rangeMax}] \\).",
+      "draw": {
+        "window": { "xMin": -8, "xMax": 8, "yMin": -9, "yMax": 9 },
+        "eq1": { "relation": "y = a*sin(b*x) + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.1-I4",
+      "type": "template",
+      "objective": "1.1 Identify Domain and Range of Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "r": { "values": [1, 2] },
+        "rSquared": { "formula": "r*r" },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "rangeRelation": { "formula": "a > 0 ? '\\\\geq' : '\\\\leq'" }
+      },
+      "question": "Use the graph of \\( f(x) = {a|coef}(x^2 - {rSquared})^2 {k|sign} \\). Find the domain and range of the function.",
+      "answer": "Domain: \\( (-\\infty, \\infty) \\); Range: \\( y {rangeRelation} {k} \\).",
+      "draw": {
+        "window": { "xMin": -4, "xMax": 4, "yMin": -9, "yMax": 9 },
+        "eq1": { "relation": "y = a*(x^2 - rSquared)^2 + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.1-A1",
+      "type": "template",
+      "objective": "1.1 Identify Domain and Range of Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": -1, "max": 1, "exclude": [0] },
+        "a": { "values": [-1, 1] },
         "b": { "min": 1, "max": 3 },
-        "c": { "min": -1, "max": 1, "exclude": [0,"a"] }
+        "c": { "formula": "-a" },
+        "d": { "formula": "b + 2*a" },
+        "leftY": { "formula": "9*a + b" },
+        "rightY": { "formula": "b - 2*a" },
+        "rangeMin": { "formula": "min(leftY, rightY)" },
+        "rangeMax": { "formula": "max(leftY, rightY)" },
+        "rangeLeft": { "formula": "a > 0 ? '[' : '('" },
+        "rangeRight": { "formula": "a > 0 ? ')' : ']'" },
+        "yMin": { "formula": "rangeMin - 2" },
+        "yMax": { "formula": "rangeMax + 2" }
       },
-      "question": "Find the domain and range of the function: \\( f(x) = \\begin{cases} {a|coef}x^2 {b|sign}, \\text{ for } -3 < x < 0 \\\\ {c|coef}x^2 {b|sign}, \\text{ for } 0 \\leq x \\leq 4 \\end{cases} \\)",
-      "answer": "Domain: \\( -3 < x \\leq 4 \\); Range will vary based on values of \\( a \\), \\( b \\), and \\( c \\). Use the graphing calculator to determine the minimum and maximum y-values."
+      "question": "Use the graph of the piecewise function to find its domain and range. Open circles mark excluded endpoints; filled circles mark included endpoints.<br>\\( f(x) = \\begin{cases} {a|coef}x^2 {b|sign}, & -3 < x < 0 \\\\ {c|coef}x^2 {d|sign}, & 0 \\leq x \\leq 2 \\end{cases} \\)",
+      "answer": "Domain: \\( (-3, 2] \\); Range: \\( {rangeLeft}{rangeMin}, {rangeMax}{rangeRight} \\).",
+      "draw": {
+        "window": { "xMin": -5, "xMax": 4, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*x^2 + b", "domain": { "min": -3, "max": 0 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "eq2": { "relation": "y = c*x^2 + d", "domain": { "min": 0, "max": 2 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "points": [
+          { "x": -3, "y": "leftY", "pointRadius": 5, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 0, "y": "b", "pointRadius": 5, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 0, "y": "d", "pointRadius": 5, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 2, "y": "rightY", "pointRadius": 5, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true }
+        ]
+      }
     },
     {
-      "id": "ALG2-1.2a-B1",
+      "id": "ALG2-1.1-A2",
       "type": "template",
-      "objective": "1.2a Identify Intercepts of Graphs of Functions",
-      "difficulty": "basic",
+      "objective": "1.1 Identify Domain and Range of Functions",
+      "difficulty": "advanced",
       "variables": {
-        "m": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "min": -6, "max": 6, "exclude":[0] },
-        "xIntercept": { "formula": "-b/m", "format": "fraction" },
-        "yIntercept": { "formula": "b" }
+        "a": { "values": [-1, 1] },
+        "b": { "min": 1, "max": 3 },
+        "c": { "formula": "-a" },
+        "d": { "formula": "b + 2*a" },
+        "rightY": { "formula": "b - 2*a" },
+        "yMin": { "formula": "b - 11" },
+        "yMax": { "formula": "b + 11" },
+        "rangeRelation": { "formula": "a > 0 ? '\\\\geq' : '\\\\leq'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = {m|coef}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
-      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+      "question": "Use the graph of the piecewise function to find its domain and range. The left branch continues indefinitely to the left. Open circles mark excluded endpoints; filled circles mark included endpoints.<br>\\( f(x) = \\begin{cases} {a|coef}x^2 {b|sign}, & x < 0 \\\\ {c|coef}x^2 {d|sign}, & 0 \\leq x \\leq 2 \\end{cases} \\)",
+      "answer": "Domain: \\( (-\\infty, 2] \\); Range: \\( y {rangeRelation} {rightY} \\).",
+      "draw": {
+        "window": { "xMin": -5, "xMax": 4, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*x^2 + b", "domain": { "max": 0 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "eq2": { "relation": "y = c*x^2 + d", "domain": { "min": 0, "max": 2 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "points": [
+          { "x": 0, "y": "b", "pointRadius": 5, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 0, "y": "d", "pointRadius": 5, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 2, "y": "rightY", "pointRadius": 5, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.1-A3",
+      "type": "template",
+      "objective": "1.1 Identify Domain and Range of Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "b": { "min": 1, "max": 3 },
+        "c": { "formula": "-a" },
+        "d": { "formula": "b + 2*a" },
+        "leftY": { "formula": "9*a + b" },
+        "yMin": { "formula": "b - 11" },
+        "yMax": { "formula": "b + 11" },
+        "rangeRelation": { "formula": "a > 0 ? '<' : '>'" }
+      },
+      "question": "Use the graph of the piecewise function to find its domain and range. The right branch continues indefinitely to the right. Open circles mark excluded endpoints; filled circles mark included endpoints.<br>\\( f(x) = \\begin{cases} {a|coef}x^2 {b|sign}, & -3 < x < 0 \\\\ {c|coef}x^2 {d|sign}, & x \\geq 0 \\end{cases} \\)",
+      "answer": "Domain: \\( (-3, \\infty) \\); Range: \\( y {rangeRelation} {leftY} \\).",
+      "draw": {
+        "window": { "xMin": -5, "xMax": 4, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*x^2 + b", "domain": { "min": -3, "max": 0 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "eq2": { "relation": "y = c*x^2 + d", "domain": { "min": 0 }, "color": "#2563eb", "showInQuestion": true, "showInAnswer": true },
+        "points": [
+          { "x": -3, "y": "leftY", "pointRadius": 5, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 0, "y": "b", "pointRadius": 5, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true },
+          { "x": 0, "y": "d", "pointRadius": 5, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": true, "showInAnswer": true }
+        ]
+      }
     },
     {
       "id": "ALG2-1.2a-B2",
