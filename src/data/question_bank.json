@@ -4981,162 +4981,566 @@
       }
     },
     {
-      "id": "ALG2-1.2a-B2",
+      "id": "ALG2-1.2-B1",
       "type": "template",
-      "objective": "1.2a Identify Intercepts of Graphs of Functions",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
       "difficulty": "basic",
       "variables": {
-        "r1": { "min": -4, "max": 4, "exclude": [0] },
-        "r2": { "min": -4, "max": 4, "exclude": ["r1", 0] },
-        "a":  { "values": [1, -1] },
-        "b": { "formula": "-a*(r1 + r2)" },
+        "m": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "values": [-3, -2, -1, 1, 2, 3] },
+        "xint": { "formula": "-b/m", "format": "fraction" }
+      },
+      "question": "For \\( f(x) = {m|coef}x {b|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Linear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: \\( (0, {b}) \\)."
+    },
+    {
+      "id": "ALG2-1.2-B2",
+      "type": "template",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "basic",
+      "variables": {
+        "m": { "values": [-3, -2, -1, 1, 2, 3] }
+      },
+      "question": "For \\( f(x) = {m|coef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Linear.<br>b) Origin.<br>c) x- and y-intercepts: \\( (0, 0) \\)."
+    },
+    {
+      "id": "ALG2-1.2-B3",
+      "type": "template",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "basic",
+      "variables": {
+        "b": { "min": -4, "max": 4 },
+        "symmetry": { "formula": "b === 0 ? 'x-axis, y-axis, and origin' : 'y-axis'" },
+        "xAnswer": { "formula": "b === 0 ? 'Every point on the x-axis' : 'None'" }
+      },
+      "question": "For \\( f(x) = {b} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Linear (constant function).<br>b) {symmetry}.<br>c) x-intercepts: {xAnswer}; y-intercept: \\( (0, {b}) \\)."
+    },
+    {
+      "id": "ALG2-1.2-B4",
+      "type": "template",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "r": { "min": 1, "max": 4 },
+        "s": { "values": [-1, 1] },
+        "c": { "formula": "s*a*r*r" },
+        "xAnswer": { "formula": "s < 0 ? 'x-intercepts: \\\\( (' + (-r) + ', 0) \\\\) and \\\\( (' + r + ', 0) \\\\).' : 'x-intercepts: None.'" }
+      },
+      "question": "For \\( f(x) = {a|coef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) y-axis.<br>c) {xAnswer} y-intercept: \\( (0, {c}) \\)."
+    },
+    {
+      "id": "ALG2-1.2-I1",
+      "type": "template",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "intermediate",
+      "variables": {
+        "p": { "values": [-5, -3, -1, 1, 3, 5] },
+        "q": { "values": [2, 4, 6] },
+        "h": { "values": [-3, -2, -1, 1, 2, 3] },
+        "k": { "values": [-3, -2, -1, 1, 2, 3] },
+        "negH": { "formula": "-h" },
+        "negK": { "formula": "-k" },
+        "xint": { "formula": "(p*h-q*k)/p", "format": "fraction" },
+        "yint": { "formula": "(q*k-p*h)/q", "format": "fraction" },
+        "symmetry": { "formula": "q*k === p*h ? 'Origin' : 'None of the listed symmetries'" }
+      },
+      "question": "For \\( y {negK|sign} = \\frac{{p}}{{q}}(x {negH|sign}) \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Linear.<br>b) {symmetry}.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: \\( (0, {yint}) \\)."
+    },
+    {
+      "id": "ALG2-1.2-I2",
+      "type": "template",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "r1": { "values": [-3, -2, -1, 1, 2, 3] },
+        "r2": { "values": [-3, -2, -1, 1, 2, 3], "exclude": ["r1"] },
+        "b": { "formula": "-a*(r1+r2)" },
         "c": { "formula": "a*r1*r2" },
-        "yIntercept": { "formula": "a*r1*r2" }
+        "symmetry": { "formula": "b === 0 ? 'y-axis' : 'None of the listed symmetries'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|signedCoef} \\). Find the \\( x \\)-intercepts and \\( y \\)-intercept of the function.",
-      "answer": "\\( x \\)-intercepts: \\( ({r1}, 0) \\) and \\( ({r2}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) {symmetry}.<br>c) x-intercepts: \\( ({r1}, 0) \\) and \\( ({r2}, 0) \\); y-intercept: \\( (0, {c}) \\)."
     },
     {
-      "id": "ALG2-1.2a-I1",
+      "id": "ALG2-1.2-I3",
       "type": "template",
-      "objective": "1.2a Identify Intercepts of Graphs of Functions",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
       "difficulty": "intermediate",
       "variables": {
-        "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
-        "slopeDen": { "min": 2, "max": 10, "exclude": [0, "slopeNum"] },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "xIntercept": { "formula": "-(b * slopeDen) / slopeNum", "format": "fraction" },
-        "yIntercept": { "formula": "b" }
+        "a": { "values": [-1, 1] },
+        "h": { "values": [-3, -2, -1, 1, 2, 3] },
+        "t": { "min": 0, "max": 3 },
+        "k": { "formula": "-a*t" },
+        "x1": { "formula": "-h-t" },
+        "x2": { "formula": "-h+t" },
+        "yint": { "formula": "a*abs(h)+k" },
+        "xAnswer": { "formula": "t === 0 ? 'x-intercept: \\\\( (' + x1 + ', 0) \\\\).' : 'x-intercepts: \\\\( (' + x1 + ', 0) \\\\) and \\\\( (' + x2 + ', 0) \\\\).'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = \\frac{{slopeNum}}{{slopeDen}}x {b|sign} \\). Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line.",
-      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+      "question": "For \\( f(x) = {a|coef}|x {h|sign}| {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) {xAnswer} y-intercept: \\( (0, {yint}) \\)."
     },
-
     {
-      "id": "ALG2-1.2a-I2",
+      "id": "ALG2-1.2-I4",
       "type": "template",
-      "objective": "1.2a Identify Intercepts of Graphs of Functions",
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min":-10, "max":10, "exclude":[0]},
-        "b": { "min": -5, "max": 5, "exclude":[0] },
-        "c": { "min": 2, "max": 8, "exclude":["b",0] },
-        "d": { "min": -10, "max": 10, "exclude":[0]},
-        "xIntercept": { "formula": "d - c*a/b", "format": "fraction" },
-        "yIntercept": { "formula": "a + b*d/c", "format": "fraction" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] }
       },
-      "question": "Find the \\( x \\)-intercept and the \\( y \\)-intercept of the line algebraically: \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\)",
-      "answer": "\\( x \\)-intercept: \\( ({xIntercept}, 0) \\); \\( y \\)-intercept: \\( (0, {yIntercept}) \\)"
+      "question": "For \\( f(x) = \\frac{{a}}{x} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) Origin.<br>c) x-intercepts: None; y-intercept: None (undefined at \\( x = 0 \\))."
     },
     {
-      "id": "ALG2-1.2b-B1",
+      "id": "ALG2-1.2-A1",
       "type": "template",
-      "objective": "1.2b Identify Linear and Nonlinear Functions",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> a) \\(y = -5x + 7\\), <br> b) \\(y = -6\\), <br> c) \\(y = x\\), <br> d) \\(y = 2x^2 + 5\\).",
-      "answer": "Only \\(y = 2x^2 + 5\\) is not linear."
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "r": { "min": 1, "max": 4 },
+        "b": { "formula": "-a*r*r" },
+        "negR": { "formula": "-r" }
+      },
+      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) Origin.<br>c) x-intercepts: \\( ({negR}, 0) \\), \\( (0, 0) \\), and \\( ({r}, 0) \\); y-intercept: \\( (0, 0) \\)."
     },
     {
-      "id": "ALG2-1.2b-B2",
+      "id": "ALG2-1.2-A2",
       "type": "template",
-      "objective": "1.2b Identify Linear and Nonlinear Functions",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> a) \\(x + 6y = 5\\), <br> b) \\(y = 7x + 6xy\\), <br> c) \\(-\\frac{6}{x} = 5y - 4\\), <br> d) \\(3x - y = 2\\).",
-      "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "r": { "min": 1, "max": 3 },
+        "gap": { "min": 1, "max": 2 },
+        "s": { "formula": "r+gap" },
+        "b": { "formula": "-a*(r*r+s*s)" },
+        "c": { "formula": "a*r*r*s*s" },
+        "negR": { "formula": "-r" },
+        "negS": { "formula": "-s" }
+      },
+      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) y-axis.<br>c) x-intercepts: \\( ({negS}, 0) \\), \\( ({negR}, 0) \\), \\( ({r}, 0) \\), and \\( ({s}, 0) \\); y-intercept: \\( (0, {c}) \\)."
     },
     {
-      "id": "ALG2-1.2b-I1",
+      "id": "ALG2-1.2-A3",
       "type": "template",
-      "objective": "1.2b Identify Linear and Nonlinear Functions",
-      "difficulty": "intermediate",
-      "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> a) \\(y = 4x - 7\\), <br> b) \\(y = 3x^2 + 5\\), <br> c) \\(y = -2x + 4\\), <br> d) \\(y = \\frac{1}{x} + 6\\).",
-      "answer": "Only \\(y = 3x^2 + 5\\) and \\(y = \\frac{1}{x} + 6\\) are not linear."
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "r": { "values": [-3, -2, -1, 1, 2, 3] },
+        "h": { "values": [-3, -2, -1, 1, 2, 3], "exclude": ["r"] },
+        "negR": { "formula": "-r" },
+        "negH": { "formula": "-h" },
+        "yint": { "formula": "a*r/h", "format": "fraction" }
+      },
+      "question": "For \\( f(x) = \\frac{{a|coef}(x {negR|sign})}{x {negH|sign}} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({r}, 0) \\); y-intercept: \\( (0, {yint}) \\). The excluded input \\( x = {h} \\) is not an intercept."
     },
     {
-      "id": "ALG2-1.2b-I2",
+      "id": "ALG2-1.2-A4",
       "type": "template",
-      "objective": "1.2b Identify Linear and Nonlinear Functions",
-      "difficulty": "intermediate",
-      "variables": {},
-      "question": "For each equation below, determine whether it is linear: <br> a) \\(2x + 3y = 6\\), <br> b) \\(xy + 4y = 5\\), <br> c) \\(\\frac{3}{x} + y = 7\\), <br> d) \\(5x - y = 10\\).",
-      "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "h": { "values": [-4, -1, 1, 4] },
+        "r": { "min": 1, "max": 4 },
+        "k": { "formula": "-a*r" },
+        "xint": { "formula": "r*r-h" },
+        "yAnswer": { "formula": "h < 0 ? 'None (undefined at x = 0)' : '\\\\( (0, ' + (a*Math.sqrt(h)+k) + ') \\\\)'" }
+      },
+      "question": "For \\( f(x) = {a|coef}\\sqrt{x {h|sign}} {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: {yAnswer}."
     },
     {
-      "id": "ALG2-1.2c-B1",
+      "id": "ALG2-1.2-A5",
       "type": "template",
-      "objective": "1.2c Identify symmetry from equations",
-      "difficulty": "basic",
-      "variables": {},
-      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> a) \\(y = x^2 - 4\\), <br> b) \\(y = x^3 - x\\), <br> c) \\(y = x^2 + x - 6\\), <br> d) \\(y = x^3 + x^2 - x - 1\\).",
-      "answer": "\\(y = x^2 - 4\\) is symmetric about the y-axis; \\(y = x^3 - x\\) is symmetric about the origin; the other two have."
+      "objective": "1.2 Identify linearity, symmetry and intercepts",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "b": { "values": [2, 3] },
+        "r": { "min": 1, "max": 3 },
+        "k": { "formula": "-a*pow(b,r)" },
+        "yint": { "formula": "a+k" }
+      },
+      "question": "For \\( f(x) = {a|coef}{b}^x {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({r}, 0) \\); y-intercept: \\( (0, {yint}) \\)."
     },
     {
-      "id": "ALG2-1.2c-I1",
+      "id": "ALG2-1.3-B1",
       "type": "template",
-      "objective": "1.2c Identify symmetry from equations",
-      "difficulty": "intermediate",
-      "variables": {},
-      "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br>  a) \\(y = x^2 - 3\\), <br> b) \\(y = x^3 + x\\), <br> c) \\(y = x^2 + 2x + 1\\), <br> d) \\(y = x^3 - x^2 + x - 1\\).",
-      "answer": "\\(y = x^2 - 3\\) is symmetric about the y-axis; \\(y = x^3 + x\\) is symmetric about the origin; the other two have no symmetry."
-    },
-    {
-      "id": "ALG2-1.3a-B1",
-      "type": "template",
-      "objective": "1.3a Identify End Behavior of Graphs of Functions",
+      "objective": "1.3 Identify extrema and end behavior of functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1, -1, 2, -2] },
-        "b": { "min": -3, "max": 3, "exclude":[0] }
+        "a": { "values": [-1, 1] },
+        "h": { "min": -2, "max": 2 },
+        "k": { "min": -3, "max": 3 },
+        "negH": { "formula": "-h" },
+        "extremum": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
+        "xMin": { "formula": "h-3" },
+        "xMax": { "formula": "h+3" },
+        "yMin": { "formula": "k-6" },
+        "yMax": { "formula": "k+6" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^2 {b|signedCoef}x \\). Describe the end behavior of the function as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
-      "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\)."
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
+      "draw": {
+        "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*(x-h)^2 + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
     },
     {
-      "id": "ALG2-1.3a-I1",
+      "id": "ALG2-1.3-B2",
       "type": "template",
-      "objective": "1.3a Identify End Behavior of Graphs of Functions",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "values": [1, -1, 2, -2] },
-        "b": { "min": -3, "max": 3, "exclude":[0] },
-        "c": { "min": -2, "max": 2, "exclude":[0] }
-      },
-      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x \\). Describe the end behavior of the function as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
-      "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '-\\infty' : '\\infty'} \\)."
-    },
-    {
-      "id": "ALG2-1.3b-B1",
-      "type": "template",
-      "objective": "1.3b Identify Extrema of Graphs and Functions",
+      "objective": "1.3 Identify extrema and end behavior of functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1, -1, 2, -2] },
-        "b": { "min": -3, "max": 3, "exclude":[0] },
-        "c": { "min": -2, "max": 2, "exclude":[0] },
+        "a": { "values": [-1, 1] },
+        "h": { "min": -2, "max": 2 },
+        "k": { "min": -3, "max": 3 },
+        "negH": { "formula": "-h" },
+        "extremum": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
+        "xMin": { "formula": "h-3" },
+        "xMax": { "formula": "h+3" },
+        "yMin": { "formula": "k-6" },
+        "yMax": { "formula": "k+6" }
+      },
+      "question": "Use the graph of \\( f(x) = {a|coef}|x {negH|sign}| {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
+      "draw": {
+        "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*abs(x-h) + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.3-B3",
+      "type": "template",
+      "objective": "1.3 Identify extrema and end behavior of functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "h": { "min": -2, "max": 2 },
+        "k": { "min": -3, "max": 3 },
+        "negH": { "formula": "-h" },
+        "b": { "formula": "-3*a" },
+        "xLeft": { "formula": "h-1" },
+        "xRight": { "formula": "h+1" },
+        "yLeft": { "formula": "k+2*a" },
+        "yRight": { "formula": "k-2*a" },
+        "leftType": { "formula": "a > 0 ? 'maximum' : 'minimum'" },
+        "rightType": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
+        "endLeft": { "formula": "a > 0 ? '-\\\\infty' : '\\\\infty'" },
+        "xMin": { "formula": "h-3" },
+        "xMax": { "formula": "h+3" },
+        "yMin": { "formula": "k-6" },
+        "yMax": { "formula": "k+6" }
+      },
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^3 {b|signedCoef}(x {negH|sign}) {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local {leftType} at \\( ({xLeft}, {yLeft}) \\); local {rightType} at \\( ({xRight}, {yRight}) \\). No absolute extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endLeft} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
+      "draw": {
+        "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*(x-h)^3 - 3*a*(x-h) + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.3-B4",
+      "type": "template",
+      "objective": "1.3 Identify extrema and end behavior of functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "h": { "min": -2, "max": 2 },
+        "k": { "min": -3, "max": 3 },
+        "negH": { "formula": "-h" },
+        "b": { "formula": "-2*a" },
+        "xLeft": { "formula": "h-1" },
+        "xRight": { "formula": "h+1" },
+        "yOuter": { "formula": "k-a" },
+        "yCenter": { "formula": "k" },
+        "outerType": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "centerType": { "formula": "a > 0 ? 'maximum' : 'minimum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
+        "xMin": { "formula": "h-3" },
+        "xMax": { "formula": "h+3" },
+        "yMin": { "formula": "k-6" },
+        "yMax": { "formula": "k+6" }
+      },
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^4 {b|signedCoef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {outerType} at \\( ({xLeft}, {yOuter}) \\) and \\( ({xRight}, {yOuter}) \\); local {centerType} at \\( ({h}, {yCenter}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
+      "draw": {
+        "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*(x-h)^4 - 2*a*(x-h)^2 + k", "showInQuestion": true, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.3-I1",
+      "type": "template",
+      "objective": "1.3 Identify extrema and end behavior of functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
+        "c": { "min": -4, "max": 4 },
         "h": { "formula": "-b/(2*a)", "format": "fraction" },
-        "k": { "formula": "a*(-b/(2*a))*(-b/(2*a)) + b*(-b/(2*a)) + c", "format": "fraction" }
+        "k": { "formula": "(4*a*c-b*b)/(4*a)", "format": "fraction" },
+        "extremum": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^2 {b|signedCoef}x {c|signedCoef} \\). Find the coordinates of any extrema for the function.",
-      "answer": "Vertex at \\( ({h}, {k}) \\)."
+      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
     },
     {
-      "id": "ALG2-1.3b-I1",
+      "id": "ALG2-1.3-I2",
       "type": "template",
-      "objective": "1.3b Identify Extrema of Graphs and Functions",
+      "objective": "1.3 Identify extrema and end behavior of functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "values": [2, -2] },
-        "r1": { "min": -4, "max": 4, "exclude": [0] },
-        "r2": { "min": -4, "max": 4, "exclude": ["r1",0] },
-        "b": { "formula": "-3*a*(r1 + r2)/2" },
-        "c": { "formula": "3*a*r1*r2" },
-        "d": { "min": -1, "max": 1, "exclude":[0] }
+        "a": { "values": [-1, 1] },
+        "h": { "min": -2, "max": 2 },
+        "r": { "values": [1, 2] },
+        "k": { "min": -3, "max": 3 },
+        "b": { "formula": "-3*a*h" },
+        "c": { "formula": "3*a*(h*h-r*r)" },
+        "d": { "formula": "k-a*h*h*h+3*a*r*r*h" },
+        "xLeft": { "formula": "h-r" },
+        "xRight": { "formula": "h+r" },
+        "yLeft": { "formula": "k+2*a*r*r*r" },
+        "yRight": { "formula": "k-2*a*r*r*r" },
+        "leftType": { "formula": "a > 0 ? 'maximum' : 'minimum'" },
+        "rightType": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
+        "endLeft": { "formula": "a > 0 ? '-\\\\infty' : '\\\\infty'" }
       },
-      "question": "Use a graphing calculator to view the graph of \\( y = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|signedCoef} \\). Find the coordinates of any extrema for the function.",
-      "answer": "Use the graphing calculator to identify local maxima and minima. Answers will vary based on the specific values."
+      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local {leftType} at \\( ({xLeft}, {yLeft}) \\); local {rightType} at \\( ({xRight}, {yRight}) \\). No absolute extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endLeft} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
+    },
+    {
+      "id": "ALG2-1.3-I3",
+      "type": "template",
+      "objective": "1.3 Identify extrema and end behavior of functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-2, -1, 1, 2] },
+        "r": { "min": 1, "max": 3 },
+        "k": { "min": -3, "max": 3 },
+        "b": { "formula": "-2*a*r*r" },
+        "c": { "formula": "a*r*r*r*r+k" },
+        "h": { "values": [0] },
+        "xLeft": { "formula": "-r" },
+        "xRight": { "formula": "r" },
+        "yOuter": { "formula": "k" },
+        "yCenter": { "formula": "c" },
+        "outerType": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
+        "centerType": { "formula": "a > 0 ? 'maximum' : 'minimum'" },
+        "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" }
+      },
+      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {outerType} at \\( ({xLeft}, {yOuter}) \\) and \\( ({xRight}, {yOuter}) \\); local {centerType} at \\( ({h}, {yCenter}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
+    },
+    {
+      "id": "ALG2-1.3-I4",
+      "type": "template",
+      "objective": "1.3 Identify extrema and end behavior of functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-4, -3, -2, -1, 1, 2, 3, 4] },
+        "h": { "min": -2, "max": 2 },
+        "k": { "min": -3, "max": 3 },
+        "negH": { "formula": "-h" },
+        "yExtremum": { "formula": "a+k" },
+        "extremum": { "formula": "a > 0 ? 'maximum' : 'minimum'" }
+      },
+      "question": "For \\( f(x) = \\frac{{a}}{(x {negH|sign})^2 + 1} {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "answer": "a) Local and absolute {extremum} at \\( ({h}, {yExtremum}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {k} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {k} \\)."
+    },
+    {
+      "id": "ALG2-1.6-B1",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [1, -1] },
+        "h": { "values": [-3, -2, -1, 1, 2, 3] },
+        "k": { "values": [-3, -2, -1, 1, 2, 3] },
+        "negH": { "formula": "-h" },
+        "direction": { "formula": "a > 0 ? 'upward' : 'downward'" },
+        "slope": { "formula": "abs(a)" }
+      },
+      "question": "Graph \\( f(x) = {a|coef}|x {negH|sign}| {k|sign} \\).",
+      "answer": "Vertex: \\( ({h}, {k}) \\); opens {direction}; slope magnitude: \\( {slope} \\). See graph.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -8, "yMax": 8 },
+        "eq1": { "relation": "y = a*abs(x-h)+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.6-B2",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "basic",
+      "variables": {
+        "s": { "values": [-4, -3, -2, -0.5, -0.25, 0.25, 0.5, 2, 3], "exclude": [0], "format": "fraction" },
+        "k": { "min": -3, "max": 3 }
+      },
+      "question": "Graph \\( f(x) = \\lfloor {s|coef} x {k|sign}\\rfloor \\).",
+      "answer": "See graph.",
+      "draw": {
+        "window": { "xMin": -6.5, "xMax": 6.5, "yMin": -11, "yMax": 11 },
+        "eq1": { "step": { "mode": "floor", "inputScale": "s", "inputOffset": "k" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.6-I1",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, -0.5, -0.25, 0.25, 0.5, 2, 3], "format": "fraction" },
+        "h": { "values": [-3, -2, -1, 1, 2, 3] },
+        "k": { "values": [-3, -2, -1, 1, 2, 3] },
+        "negH": { "formula": "-h" },
+        "direction": { "formula": "a > 0 ? 'upward' : 'downward'" },
+        "slope": { "formula": "abs(a)" }
+      },
+      "question": "Graph \\( f(x) = {a|coef}|x {negH|sign}| {k|sign} \\).",
+      "answer": "Vertex: \\( ({h}, {k}) \\); opens {direction}; slope magnitude: \\( {slope} \\). See graph.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -8, "yMax": 8 },
+        "eq1": { "relation": "y = a*abs(x-h)+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" }
+      }
+    },
+    {
+      "id": "ALG2-1.6-A1",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "m": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "l": { "values": [-3, -2] },
+        "r": { "values": [2, 3] },
+        "k": { "min": -2, "max": 2 },
+        "jLeft": { "values": [-3, -1, 1, 3] },
+        "jRight": { "values": [-3, -1, 1, 3] },
+        "h": { "formula": "r+1" },
+        "negH": { "formula": "-h" },
+        "b": { "formula": "k-jLeft-m*l" },
+        "d": { "formula": "rightY-a" },
+        "leftY": { "formula": "k-jLeft" },
+        "middleLeftY": { "formula": "k" },
+        "middleRightY": { "formula": "s*(r-l-1)+k" },
+        "rightY": { "formula": "middleRightY+jRight" },
+        "vertexY": { "formula": "d" },
+        "yMin": { "formula": "min(leftY,middleLeftY,middleRightY,rightY,vertexY)-4" },
+        "yMax": { "formula": "max(leftY,middleLeftY,middleRightY,rightY,vertexY)+4" },
+        "s": { "values": [-2, -1, 1, 2] },
+        "negL": { "formula": "-l" }
+      },
+      "question": "Graph \\( f(x) = \\begin{cases} {m|coef}x {b|sign}, & x < {l} \\\\ {s|coef}\\lfloor x {negL|sign} \\rfloor {k|sign}, & {l} \\leq x < {r} \\\\ {a|coef}|x {negH|sign}| {d|sign}, & x \\geq {r} \\end{cases} \\).",
+      "answer": "See graph. Open: \\( ({l}, {leftY}) \\); Closed: \\( ({l}, {middleLeftY}) \\); Open: \\( ({r}, {middleRightY}) \\); Closed: \\( ({r}, {rightY}) \\).",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = m*x+b", "domain": { "max": "l" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "step": { "mode": "floor", "inputOffset": "negL", "outputScale": "s", "outputOffset": "k" }, "domain": { "min": "l", "max": "r", "maxInclusive": false }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq3": { "relation": "y = a*abs(x-h)+d", "domain": { "min": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "l", "y": "leftY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "l", "y": "middleLeftY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "middleRightY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "rightY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.6-A2",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "m": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "l": { "values": [-3, -2] },
+        "r": { "values": [2, 3] },
+        "k": { "min": -2, "max": 2 },
+        "jLeft": { "values": [-3, -1, 1, 3] },
+        "jRight": { "values": [-3, -1, 1, 3] },
+        "h": { "formula": "l-1" },
+        "negH": { "formula": "-h" },
+        "d": { "formula": "k-jLeft-a" },
+        "b": { "formula": "k-m*l" },
+        "rightLevel": { "formula": "m*r+b+jRight" },
+        "leftY": { "formula": "k-jLeft" },
+        "middleLeftY": { "formula": "k" },
+        "middleRightY": { "formula": "m*r+b" },
+        "rightY": { "formula": "rightLevel" },
+        "vertexY": { "formula": "d" },
+        "yMin": { "formula": "min(leftY,middleLeftY,middleRightY,rightY,vertexY)-4" },
+        "yMax": { "formula": "max(leftY,middleLeftY,middleRightY,rightY,vertexY)+4" }
+      },
+      "question": "Graph \\( f(x) = \\begin{cases} {a|coef}|x {negH|sign}| {d|sign}, & x \\leq {l} \\\\ {m|coef}x {b|sign}, & {l} < x \\leq {r} \\\\ {rightLevel}, & x > {r} \\end{cases} \\).",
+      "answer": "See graph. Closed: \\( ({l}, {leftY}) \\); Open: \\( ({l}, {middleLeftY}) \\); Closed: \\( ({r}, {middleRightY}) \\); Open: \\( ({r}, {rightY}) \\).",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = a*abs(x-h)+d", "domain": { "max": "l" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = m*x+b", "domain": { "min": "l", "max": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq3": { "relation": "y = rightLevel", "domain": { "min": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "l", "y": "leftY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "l", "y": "middleLeftY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "middleRightY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "rightY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.6-A3",
+      "type": "template",
+      "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "m": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "l": { "values": [-3, -2] },
+        "r": { "values": [2, 3] },
+        "k": { "min": -2, "max": 2 },
+        "jLeft": { "values": [-3, -1, 1, 3] },
+        "jRight": { "values": [-3, -1, 1, 3] },
+        "d": { "formula": "k+jLeft-a*abs(l)" },
+        "b": { "formula": "a*abs(r)+d+jRight-m*r" },
+        "leftY": { "formula": "k" },
+        "middleLeftY": { "formula": "k+jLeft" },
+        "middleRightY": { "formula": "a*abs(r)+d" },
+        "rightY": { "formula": "a*abs(r)+d+jRight" },
+        "vertexY": { "formula": "d" },
+        "yMin": { "formula": "min(leftY,middleLeftY,middleRightY,rightY,vertexY)-4" },
+        "yMax": { "formula": "max(leftY,middleLeftY,middleRightY,rightY,vertexY)+4" }
+      },
+      "question": "Graph \\( f(x) = \\begin{cases} {k}, & x < {l} \\\\ {a|coef}|x| {d|sign}, & {l} \\leq x \\leq {r} \\\\ {m|coef}x {b|sign}, & x > {r} \\end{cases} \\).",
+      "answer": "See graph. Open: \\( ({l}, {leftY}) \\); Closed: \\( ({l}, {middleLeftY}) \\); Closed: \\( ({r}, {middleRightY}) \\); Open: \\( ({r}, {rightY}) \\).",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": "yMin", "yMax": "yMax" },
+        "eq1": { "relation": "y = k", "domain": { "max": "l" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a*abs(x)+d", "domain": { "min": "l", "max": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq3": { "relation": "y = m*x+b", "domain": { "min": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "l", "y": "leftY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "l", "y": "middleLeftY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "middleRightY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
+          { "x": "r", "y": "rightY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
     },
     {
       "id": "ALG2-1.7-B1",

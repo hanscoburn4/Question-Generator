@@ -421,6 +421,7 @@ class DrawingEngine {
     if (entry && typeof entry === "object") {
       return {
         relation: entry.relation || entry.equation || entry.expression || "",
+        step: entry.step,
         domain: entry.domain || entry.xDomain,
         thetaDomain: entry.thetaDomain || entry.tDomain,
         thetaMin: entry.thetaMin,
@@ -806,7 +807,104 @@ class DrawingEngine {
     return null;
   }
 
+  // step: { mode: "floor" | "ceil", inputScale, inputOffset,
+  //         outputScale, outputOffset } describes a*mode(b*x+c)+d.
+  // Parameters accept numbers or variable names/expressions, like window bounds.
+  getStepSegments(equationConfig, bounds, variables = {}) {
+    const step = equationConfig.step;
+    const mode = step?.mode || "floor";
+    if (mode !== "floor" && mode !== "ceil") {
+      throw new Error(`Unsupported step mode: "${mode}".`);
+    }
+    const resolve = (name, fallback) => this.resolveNumericValue(step?.[name] ?? fallback, variables, NaN);
+    const b = resolve("inputScale", 1);
+    const c = resolve("inputOffset", 0);
+    const a = resolve("outputScale", 1);
+    const d = resolve("outputOffset", 0);
+    if (![a, b, c, d].every(Number.isFinite)) throw new Error("Invalid step parameters.");
+    const domain = this.normalizeDomain(equationConfig.domain, bounds, variables);
+    const min = Math.max(bounds.xMin, domain.min);
+    const max = Math.min(bounds.xMax, domain.max);
+    if (min > max) return [];
+    if (a === 0 || b === 0) {
+      return [{ min, max, y: a * Math[mode](c) + d, markers: [] }];
+    }
+    const z1 = b * min + c;
+    const z2 = b * max + c;
+    const first = Math.floor(Math.min(z1, z2)) - 1;
+    const last = Math.ceil(Math.max(z1, z2));
+    if (!Number.isSafeInteger(first) || !Number.isSafeInteger(last) || last - first > 4000) {
+      throw new Error("Too many steps for this graph window.");
+    }
+    const segments = [];
+    for (let n = first; n <= last; n += 1) {
+      const x1 = (n - c) / b;
+      const x2 = (n + 1 - c) / b;
+      const left = Math.min(x1, x2);
+      const right = Math.max(x1, x2);
+      if (right < min || left > max) continue;
+      const leftClosed = (mode === "floor") === (b > 0);
+      const markers = [
+        { x: left, closed: leftClosed },
+        { x: right, closed: !leftClosed }
+      ].filter(marker => marker.x >= min && marker.x <= max);
+      // A piecewise restriction can exclude an otherwise closed step endpoint.
+      // Mark a restriction inside a step, but never mark mere viewport clipping.
+      for (const [edge, inclusive] of [
+        [domain.min, equationConfig.domain?.minInclusive !== false],
+        [domain.max, equationConfig.domain?.maxInclusive !== false]
+      ]) {
+        if (edge < min || edge > max || edge < left || edge > right) continue;
+        const marker = markers.find(point => point.x === edge);
+        if (marker) marker.closed = marker.closed && inclusive;
+        else if (equationConfig.domain && edge > left && edge < right &&
+          ((edge === domain.min && (equationConfig.domain.min !== undefined || equationConfig.domain.xMin !== undefined)) ||
+           (edge === domain.max && (equationConfig.domain.max !== undefined || equationConfig.domain.xMax !== undefined)))) {
+          markers.push({ x: edge, closed: inclusive });
+        }
+      }
+      const clippedMin = Math.max(left, min);
+      const clippedMax = Math.min(right, max);
+      // Include an isolated closed endpoint at the edge of the visible window.
+      if (clippedMin === clippedMax && !markers.some(marker => marker.closed && marker.x === clippedMin)) continue;
+      segments.push({ min: clippedMin, max: clippedMax, y: a * (mode === "floor" ? n : n + 1) + d, markers });
+    }
+    return segments;
+  }
+
+  drawStepFunction(env, equationConfig, variables, color) {
+    const { ctx } = env;
+    const segments = this.getStepSegments(equationConfig, env, variables);
+    const boundaryColor = equationConfig.color || color;
+    ctx.save();
+    ctx.strokeStyle = boundaryColor;
+    ctx.lineWidth = equationConfig.lineWidth || 2;
+    ctx.setLineDash(this.resolveBoundaryDash(equationConfig, this.resolveBoundaryStyle(equationConfig)));
+    // Separate paths prevent artificial vertical connectors across jumps.
+    for (const segment of segments) {
+      if (segment.y < env.yMin || segment.y > env.yMax) continue;
+      const py = this.yToPixel(segment.y, env);
+      ctx.beginPath();
+      ctx.moveTo(this.xToPixel(segment.min, env), py);
+      ctx.lineTo(this.xToPixel(segment.max, env), py);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    for (const segment of segments) {
+      if (segment.y < env.yMin || segment.y > env.yMax) continue;
+      for (const marker of segment.markers) {
+        this.drawPointMarker(ctx, this.xToPixel(marker.x, env), this.yToPixel(segment.y, env), {
+          pointRadius: 4, outlineWidth: 2,
+          fillColor: marker.closed ? boundaryColor : "#ffffff", strokeColor: boundaryColor
+        }, variables, boundaryColor);
+      }
+    }
+    ctx.restore();
+    return true;
+  }
+
   drawRelation(env, equationConfig, variables = {}, color = "#e74c3c") {
+    if (equationConfig.step) return this.drawStepFunction(env, equationConfig, variables, color);
     const parsed = this.parseRelation(equationConfig.relation);
     if (!parsed) {
       throw new Error(`Unsupported relation format: "${equationConfig.relation}"`);
@@ -1080,7 +1178,7 @@ class DrawingEngine {
     const rawEquations = this.extractEquationConfigs(drawConfig);
     const equations = rawEquations
       .map(eq => this.normalizeEquationEntry(eq))
-      .filter(eq => typeof eq.relation === "string" && eq.relation.trim().length > 0);
+      .filter(eq => eq.step || (typeof eq.relation === "string" && eq.relation.trim().length > 0));
 
     equations.forEach((equation, index) => {
       const visibleInContext = context === "answer"
