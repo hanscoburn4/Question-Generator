@@ -4990,7 +4990,7 @@
         "b": { "values": [-3, -2, -1, 1, 2, 3] },
         "xint": { "formula": "-b/m", "format": "fraction" }
       },
-      "question": "For \\( f(x) = {m|coef}x {b|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {m|coef}x {b|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Linear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: \\( (0, {b}) \\)."
     },
     {
@@ -5001,7 +5001,7 @@
       "variables": {
         "m": { "values": [-3, -2, -1, 1, 2, 3] }
       },
-      "question": "For \\( f(x) = {m|coef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {m|coef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Linear.<br>b) Origin.<br>c) x- and y-intercepts: \\( (0, 0) \\)."
     },
     {
@@ -5014,7 +5014,7 @@
         "symmetry": { "formula": "b === 0 ? 'x-axis, y-axis, and origin' : 'y-axis'" },
         "xAnswer": { "formula": "b === 0 ? 'Every point on the x-axis' : 'None'" }
       },
-      "question": "For \\( f(x) = {b} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {b} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Linear (constant function).<br>b) {symmetry}.<br>c) x-intercepts: {xAnswer}; y-intercept: \\( (0, {b}) \\)."
     },
     {
@@ -5029,7 +5029,7 @@
         "c": { "formula": "s*a*r*r" },
         "xAnswer": { "formula": "s < 0 ? 'x-intercepts: \\\\( (' + (-r) + ', 0) \\\\) and \\\\( (' + r + ', 0) \\\\).' : 'x-intercepts: None.'" }
       },
-      "question": "For \\( f(x) = {a|coef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) y-axis.<br>c) {xAnswer} y-intercept: \\( (0, {c}) \\)."
     },
     {
@@ -5048,7 +5048,7 @@
         "yint": { "formula": "(q*k-p*h)/q", "format": "fraction" },
         "symmetry": { "formula": "q*k === p*h ? 'Origin' : 'None of the listed symmetries'" }
       },
-      "question": "For \\( y {negK|sign} = \\frac{{p}}{{q}}(x {negH|sign}) \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( y {negK|sign} = \\frac{{p}}{{q}}(x {negH|sign}) \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Linear.<br>b) {symmetry}.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: \\( (0, {yint}) \\)."
     },
     {
@@ -5064,7 +5064,7 @@
         "c": { "formula": "a*r1*r2" },
         "symmetry": { "formula": "b === 0 ? 'y-axis' : 'None of the listed symmetries'" }
       },
-      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) {symmetry}.<br>c) x-intercepts: \\( ({r1}, 0) \\) and \\( ({r2}, 0) \\); y-intercept: \\( (0, {c}) \\)."
     },
     {
@@ -5082,7 +5082,7 @@
         "yint": { "formula": "a*abs(h)+k" },
         "xAnswer": { "formula": "t === 0 ? 'x-intercept: \\\\( (' + x1 + ', 0) \\\\).' : 'x-intercepts: \\\\( (' + x1 + ', 0) \\\\) and \\\\( (' + x2 + ', 0) \\\\).'" }
       },
-      "question": "For \\( f(x) = {a|coef}|x {h|sign}| {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}|x {h|sign}| {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) {xAnswer} y-intercept: \\( (0, {yint}) \\)."
     },
     {
@@ -5093,7 +5093,7 @@
       "variables": {
         "a": { "values": [-3, -2, -1, 1, 2, 3] }
       },
-      "question": "For \\( f(x) = \\frac{{a}}{x} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = \\frac{{a}}{x} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) Origin.<br>c) x-intercepts: None; y-intercept: None (undefined at \\( x = 0 \\))."
     },
     {
@@ -5107,7 +5107,7 @@
         "b": { "formula": "-a*r*r" },
         "negR": { "formula": "-r" }
       },
-      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) Origin.<br>c) x-intercepts: \\( ({negR}, 0) \\), \\( (0, 0) \\), and \\( ({r}, 0) \\); y-intercept: \\( (0, 0) \\)."
     },
     {
@@ -5125,7 +5125,7 @@
         "negR": { "formula": "-r" },
         "negS": { "formula": "-s" }
       },
-      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) y-axis.<br>c) x-intercepts: \\( ({negS}, 0) \\), \\( ({negR}, 0) \\), \\( ({r}, 0) \\), and \\( ({s}, 0) \\); y-intercept: \\( (0, {c}) \\)."
     },
     {
@@ -5141,7 +5141,7 @@
         "negH": { "formula": "-h" },
         "yint": { "formula": "a*r/h", "format": "fraction" }
       },
-      "question": "For \\( f(x) = \\frac{{a|coef}(x {negR|sign})}{x {negH|sign}} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = \\frac{{a|coef}(x {negR|sign})}{x {negH|sign}} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({r}, 0) \\); y-intercept: \\( (0, {yint}) \\). The excluded input \\( x = {h} \\) is not an intercept."
     },
     {
@@ -5157,7 +5157,7 @@
         "xint": { "formula": "r*r-h" },
         "yAnswer": { "formula": "h < 0 ? 'None (undefined at x = 0)' : '\\\\( (0, ' + (a*Math.sqrt(h)+k) + ') \\\\)'" }
       },
-      "question": "For \\( f(x) = {a|coef}\\sqrt{x {h|sign}} {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}\\sqrt{x {h|sign}} {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({xint}, 0) \\); y-intercept: {yAnswer}."
     },
     {
@@ -5172,7 +5172,7 @@
         "k": { "formula": "-a*pow(b,r)" },
         "yint": { "formula": "a+k" }
       },
-      "question": "For \\( f(x) = {a|coef}{b}^x {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Select all symmetries that apply: x-axis, y-axis, origin, or none of these.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
+      "question": "For \\( f(x) = {a|coef}{b}^x {k|sign} \\):<br>a) Determine whether the function is linear or nonlinear.<br>b) Identify the symmetry.<br>c) Find all x- and y-intercepts. Give exact coordinates, or state that none exist.",
       "answer": "a) Nonlinear.<br>b) None of the listed symmetries.<br>c) x-intercept: \\( ({r}, 0) \\); y-intercept: \\( (0, {yint}) \\)."
     },
     {
