@@ -3988,7 +3988,7 @@
         "inches": { "min": 1, "max": 11 },
         "total": { "formula": "12*feet+inches", "format": "decimal" }
         },
-      "question": "A plan labels a board {feet}'{inches}\". Express the entire length in inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Convert {feet}'{inches}\" to inches.",
       "answer": "{feet} ft {inches} in. Total: {feet} × 12 + {inches} = <strong>{total} in.</strong>"
     },
     {
@@ -4005,7 +4005,7 @@
         "fractionDivisor": { "formula": "fractionNumerator % 32 === 0 ? 32 : fractionNumerator % 16 === 0 ? 16 : fractionNumerator % 8 === 0 ? 8 : fractionNumerator % 4 === 0 ? 4 : fractionNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "fractionText": { "formula": "fractionNumerator === 0 ? String(fractionWhole) : (fractionWhole === 0 ? '' : fractionWhole + ' ') + (fractionNumerator / fractionDivisor) + '/' + (64 / fractionDivisor)" }
         },
-      "question": "A parts list gives a thickness of {decimal} in. Express it as a fractional inch in simplest form. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Write {decimal} in. as a simplified fraction, to the nearest 1/16 in.",
       "answer": "{decimal} = {eighths}/8, so the thickness is <strong>{fractionText} in.</strong>"
     },
     {
@@ -4028,7 +4028,7 @@
         "remainderDivisor": { "formula": "remainderNumerator % 32 === 0 ? 32 : remainderNumerator % 16 === 0 ? 16 : remainderNumerator % 8 === 0 ? 8 : remainderNumerator % 4 === 0 ? 4 : remainderNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "remainderText": { "formula": "remainderNumerator === 0 ? String(remainderWhole) : (remainderWhole === 0 ? '' : remainderWhole + ' ') + (remainderNumerator / remainderDivisor) + '/' + (64 / remainderDivisor)" }
         },
-      "question": "A dimension is {totalText} in. Express it in feet and inches, with fewer than 12 inches remaining and the fractional part in simplest form. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Convert {totalText} in. to feet and inches.",
       "answer": "{totalText} in. = {feet} × 12 in. + {remainderText} in., so the dimension is <strong>{feet} ft {remainderText} in.</strong>"
     },
     {
@@ -4049,7 +4049,7 @@
         "readingDivisor": { "formula": "readingNumerator % 32 === 0 ? 32 : readingNumerator % 16 === 0 ? 16 : readingNumerator % 8 === 0 ? 8 : readingNumerator % 4 === 0 ? 4 : readingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "readingText": { "formula": "readingNumerator === 0 ? String(readingWhole) : (readingWhole === 0 ? '' : readingWhole + ' ') + (readingNumerator / readingDivisor) + '/' + (64 / readingDivisor)" }
         },
-      "question": "The ruler segment divides one inch into sixteenths. Read the measurement at the arrow and simplify the fractional part. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 125' width='400' style='max-width:100%;height:auto' role='img' aria-label='Ruler from {start} to {end} inches with 16 equal intervals; arrow at tick {tick} after {start} inches'><path d='M40 85 H360 M40 45 V85 M60 70 V85 M80 60 V85 M100 70 V85 M120 50 V85 M140 70 V85 M160 60 V85 M180 70 V85 M200 45 V85 M220 70 V85 M240 60 V85 M260 70 V85 M280 50 V85 M300 70 V85 M320 60 V85 M340 70 V85 M360 45 V85' fill='none' stroke='black' stroke-width='2'/><path d='M{arrow} 8 V42 M{left} 34 L{arrow} 42 L{right} 34' fill='none' stroke='black' stroke-width='3'/><g font-size='18' text-anchor='middle' fill='black'><text x='40' y='110'>{start}</text><text x='360' y='110'>{end} in.</text></g></svg>",
+      "question": "Read the ruler at the arrow to the nearest 1/16 in. Simplify the fraction.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 125' width='400' style='max-width:100%;height:auto' role='img' aria-label='Ruler from {start} to {end} inches with 16 equal intervals; arrow at tick {tick} after {start} inches'><path d='M40 85 H360 M40 45 V85 M60 70 V85 M80 60 V85 M100 70 V85 M120 50 V85 M140 70 V85 M160 60 V85 M180 70 V85 M200 45 V85 M220 70 V85 M240 60 V85 M260 70 V85 M280 50 V85 M300 70 V85 M320 60 V85 M340 70 V85 M360 45 V85' fill='none' stroke='black' stroke-width='2'/><path d='M{arrow} 8 V42 M{left} 34 L{arrow} 42 L{right} 34' fill='none' stroke='black' stroke-width='3'/><g font-size='18' text-anchor='middle' fill='black'><text x='40' y='110'>{start}</text><text x='360' y='110'>{end} in.</text></g></svg>",
       "answer": "The arrow is {tick}/16 in. past {start} in.: <strong>{readingText} in.</strong>"
     },
     {
@@ -4078,7 +4078,7 @@
         "totalDivisor": { "formula": "totalNumerator % 32 === 0 ? 32 : totalNumerator % 16 === 0 ? 16 : totalNumerator % 8 === 0 ? 8 : totalNumerator % 4 === 0 ? 4 : totalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "totalText": { "formula": "totalNumerator === 0 ? String(totalWhole) : (totalWhole === 0 ? '' : totalWhole + ' ') + (totalNumerator / totalDivisor) + '/' + (64 / totalDivisor)" }
         },
-      "question": "Two trim pieces measure {firstText} in. and {secondText} in. They meet end to end with no gap or overlap. What total length do they occupy? Give a simplified mixed-number measurement. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Two trim pieces, {firstText} in. and {secondText} in., meet end to end without a gap or overlap. Find their total length. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "{firstText} + {secondText} = <strong>{totalText} in.</strong>"
     },
     {
@@ -4107,7 +4107,7 @@
         "lastDivisor": { "formula": "lastNumerator % 32 === 0 ? 32 : lastNumerator % 16 === 0 ? 16 : lastNumerator % 8 === 0 ? 8 : lastNumerator % 4 === 0 ? 4 : lastNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "lastText": { "formula": "lastNumerator === 0 ? String(lastWhole) : (lastWhole === 0 ? '' : lastWhole + ' ') + (lastNumerator / lastDivisor) + '/' + (64 / lastDivisor)" }
         },
-      "question": "A {lengthText} in. layout line is divided into {spaces} equal spaces. Find the spacing and the distance from the starting end to the last interior mark. No material is removed. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Divide a {lengthText} in. line into {spaces} equal spaces. Find:<br>a) The spacing.<br>b) The distance from the start to the last interior mark. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Spacing: {lengthText} ÷ {spaces} = <strong>{spacingText} in.</strong> The last interior mark is {marks} spaces from the start: <strong>{lastText} in.</strong>"
     },
     {
@@ -4147,7 +4147,7 @@
         "remainingDivisor": { "formula": "remainingNumerator % 32 === 0 ? 32 : remainingNumerator % 16 === 0 ? 16 : remainingNumerator % 8 === 0 ? 8 : remainingNumerator % 4 === 0 ? 4 : remainingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "remainingText": { "formula": "remainingNumerator === 0 ? String(remainingWhole) : (remainingWhole === 0 ? '' : remainingWhole + ' ') + (remainingNumerator / remainingDivisor) + '/' + (64 / remainingDivisor)" }
         },
-      "question": "A {stock} in. board supplies {count} pieces, each {pieceText} in. long. Each of the {count} cuts removes {kerfText} in. of material (the kerf). Assuming no other waste, how much board remains? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Cut {count} pieces of length {pieceText} in. from a {stock} in. board. Each of the {count} cuts wastes {kerfText} in. Find the leftover length. Ignore other waste. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Pieces use {usedText} in.; kerfs use {wasteText} in. Remaining: {stock} − {usedText} − {wasteText} = <strong>{remainingText} in.</strong>"
     },
     {
@@ -4181,7 +4181,7 @@
         "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
         },
-      "question": "An opening is {openingText} in. wide. Two side panels, each {thicknessText} in. thick, fit inside it. A shelf fits between the panels with {clearanceText} in. clearance at each end. Find the shelf length. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "A {openingText} in. opening contains two side panels, each {thicknessText} in. thick. Find the shelf length between them, allowing {clearanceText} in. clearance at each end. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Subtract both panel thicknesses and both clearances: {openingText} − 2({thicknessText}) − 2({clearanceText}) = <strong>{shelfText} in.</strong>"
     },
     {
@@ -4195,31 +4195,33 @@
         "area": { "formula": "length*width", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "A rectangular room is {length} ft long and {width} ft wide. Find its floor area and the length of its perimeter. Ignore openings and waste.",
+      "question": "Find the area and perimeter of a {length} ft by {width} ft rectangular room.",
       "answer": "Area: {length} × {width} = <strong>{area} ft²</strong>. Perimeter: 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
-      "id": "G.1.3-I",
+      "id": "G.1.3-I1",
       "type": "template",
       "objective": "G.1.3 Area & Perimeter",
       "difficulty": "intermediate",
       "variables": {
-        "scale": { "values": [6, 8, 10, 12] },
-        "base": { "formula": "3*scale", "format": "decimal" },
-        "height": { "formula": "4*scale", "format": "decimal" },
+        "scale": { "values": [1, 2, 3] },
+        "halfBase": { "values": [3, 4] },
+        "length": { "formula": "2*halfBase*scale", "format": "decimal" },
+        "height": { "min": 8, "max": 12 },
         "hypotenuse": { "formula": "5*scale", "format": "decimal" },
-        "area": { "formula": "base*height/2", "format": "decimal" },
-        "edging": { "formula": "(base+height+hypotenuse)/12", "format": "decimal" },
-        "squareFeet": { "formula": "area/144", "format": "fraction" }
+        "tri_height": { "formula": "(7-halfBase)*scale", "format": "decimal" },
+        "rectangleArea": { "formula": "length*height", "format": "decimal" },
+        "area": { "formula": "rectangleArea+length*tri_height/2", "format": "decimal" },
+        "perimeter": { "formula": "length+2*height+2*hypotenuse", "format": "decimal" }
         },
-      "question": "A right-triangular panel has perpendicular sides of {base} in. and {height} in. and a third side of {hypotenuse} in. Find its area in square inches and square feet, and the edging length for all three sides in feet. Ignore waste.",
-      "answer": "Area: ({base} × {height})/2 = <strong>{area} in.²</strong> = \\( {squareFeet} \\) ft², using 144 in.² per ft². Edging: ({base} + {height} + {hypotenuse})/12 = <strong>{edging} ft</strong>."
+      "question": "A rectangular wall is {length} ft. wide and {height} ft. high. An isosceles triangular top adds {tri_height} ft. of height, with two sloping sides of {hypotenuse} ft. each.<br>a) Find the total area in square feet.<br>b) Find the outside perimeter in feet.",
+      "answer": "a) Area = rectangle + triangle = \\( {length}({height}) + \\frac{1}{2}({length})({tri_height}) \\) = <strong>{area} ft&sup2;</strong>.<br>b) Perimeter = bottom + two walls + two sloping sides = {length} + 2({height}) + 2({hypotenuse}) = <strong>{perimeter} ft</strong>. Do not include the shared edge between the rectangle and triangle."
     },
     {
-      "id": "G.1.3-A1",
+      "id": "G.1.3-I2",
       "type": "template",
       "objective": "G.1.3 Area & Perimeter",
-      "difficulty": "advanced",
+      "difficulty": "intermediate",
       "variables": {
         "length": { "min": 12, "max": 20 },
         "width": { "min": 10, "max": 16 },
@@ -4228,7 +4230,7 @@
         "area": { "formula": "length*width-notchLength*notchWidth", "format": "decimal" },
         "perimeter": { "formula": "2*(length+width)", "format": "decimal" }
         },
-      "question": "An L-shaped floor is made by removing a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft rectangle. Find the remaining floor area and the entire boundary length, including the two notch edges.",
+      "question": "Remove a {notchLength} ft by {notchWidth} ft rectangle from one corner of a {length} ft by {width} ft floor. Find the remaining area and perimeter, including the notch edges.",
       "answer": "Area: {length} × {width} − {notchLength} × {notchWidth} = <strong>{area} ft²</strong>. The notch replaces two outside edge lengths with equal inside lengths, so perimeter = 2({length} + {width}) = <strong>{perimeter} ft</strong>."
     },
     {
@@ -4249,7 +4251,7 @@
         "total": { "formula": "net*coats", "format": "decimal" },
         "containers": { "formula": "ceil(total/coverage)", "format": "decimal" }
         },
-      "question": "A wall is {width} ft wide and {height} ft high, with a {doorWidth} ft by {doorHeight} ft doorway and a {windowWidth} ft by {windowHeight} ft window. Find the area excluding openings. One container of finish covers {coverage} ft² for one coat. How many whole containers are needed for {coats} coats? Ignore waste. Give the area exactly; round the container count up to a whole container.",
+      "question": "A {width} ft by {height} ft wall has a {doorWidth} ft by {doorHeight} ft door and a {windowWidth} ft by {windowHeight} ft window.<br>a) Find the wall area excluding both openings.<br>b) Each finish container covers {coverage} ft² per coat. How many whole containers cover {coats} coats? Round up; ignore waste.",
       "answer": "Net area: {width} × {height} − {doorWidth} × {doorHeight} − {windowWidth} × {windowHeight} = <strong>{net} ft²</strong>. Required coverage: {net} × {coats} = {total} ft². Round {total}/{coverage} up to get <strong>{containers} containers</strong>."
     },
     {
@@ -4261,41 +4263,11 @@
         "diameter": { "min": 5, "max": 20 },
         "radius": { "formula": "diameter/2", "format": "decimal" }
         },
-      "question": "A circular opening has a diameter of {diameter} in. What distance from the center to the pencil point is needed to lay out the circle?",
+      "question": "A circle has diameter {diameter} in. How far from its center should the pencil be to draw it?",
       "answer": "The center-to-pencil distance is the radius: {diameter} ÷ 2 = <strong>{radius} in.</strong>"
     },
     {
-      "id": "G.1.4-I1",
-      "type": "template",
-      "objective": "G.1.4 Circles",
-      "difficulty": "intermediate",
-      "variables": {
-        "width": { "min": 10, "max": 20 },
-        "height": { "min": 8, "max": 16 },
-        "radiusUnits": { "min": 4, "max": 12 },
-        "x": { "formula": "width/2", "format": "decimal" },
-        "y": { "formula": "height/2", "format": "decimal" },
-        "radius": { "formula": "radiusUnits/4", "format": "decimal" },
-        "radiusWhole": { "formula": "floor(radius)", "format": "decimal" },
-        "radiusNumerator": { "formula": "round((radius - radiusWhole)*64)", "format": "decimal" },
-        "radiusDivisor": { "formula": "radiusNumerator % 32 === 0 ? 32 : radiusNumerator % 16 === 0 ? 16 : radiusNumerator % 8 === 0 ? 8 : radiusNumerator % 4 === 0 ? 4 : radiusNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
-        "radiusText": { "formula": "radiusNumerator === 0 ? String(radiusWhole) : (radiusWhole === 0 ? '' : radiusWhole + ' ') + (radiusNumerator / radiusDivisor) + '/' + (64 / radiusDivisor)" },
-        "horizontal": { "formula": "x-radius", "format": "decimal" },
-        "horizontalWhole": { "formula": "floor(horizontal)", "format": "decimal" },
-        "horizontalNumerator": { "formula": "round((horizontal - horizontalWhole)*64)", "format": "decimal" },
-        "horizontalDivisor": { "formula": "horizontalNumerator % 32 === 0 ? 32 : horizontalNumerator % 16 === 0 ? 16 : horizontalNumerator % 8 === 0 ? 8 : horizontalNumerator % 4 === 0 ? 4 : horizontalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
-        "horizontalText": { "formula": "horizontalNumerator === 0 ? String(horizontalWhole) : (horizontalWhole === 0 ? '' : horizontalWhole + ' ') + (horizontalNumerator / horizontalDivisor) + '/' + (64 / horizontalDivisor)" },
-        "vertical": { "formula": "y-radius", "format": "decimal" },
-        "verticalWhole": { "formula": "floor(vertical)", "format": "decimal" },
-        "verticalNumerator": { "formula": "round((vertical - verticalWhole)*64)", "format": "decimal" },
-        "verticalDivisor": { "formula": "verticalNumerator % 32 === 0 ? 32 : verticalNumerator % 16 === 0 ? 16 : verticalNumerator % 8 === 0 ? 8 : verticalNumerator % 4 === 0 ? 4 : verticalNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
-        "verticalText": { "formula": "verticalNumerator === 0 ? String(verticalWhole) : (verticalWhole === 0 ? '' : verticalWhole + ' ') + (verticalNumerator / verticalDivisor) + '/' + (64 / verticalDivisor)" }
-        },
-      "question": "A circular opening of radius {radiusText} in. is centered on a panel {width} in. wide and {height} in. high. Locate the center from the left and bottom edges, then find the shortest clearance from the circle to each panel edge. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
-      "answer": "Center: <strong>{x} in. from the left and {y} in. from the bottom</strong>. Left and right clearances: {x} − {radiusText} = <strong>{horizontalText} in. each</strong>. Top and bottom: {y} − {radiusText} = <strong>{verticalText} in. each</strong>."
-    },
-    {
-      "id": "G.1.4-I2",
+      "id": "G.1.4-I",
       "type": "template",
       "objective": "G.1.4 Circles",
       "difficulty": "intermediate",
@@ -4313,8 +4285,8 @@
         "areaDivisor": { "formula": "areaNumerator % 8 === 0 ? 8 : areaNumerator % 4 === 0 ? 4 : areaNumerator % 2 === 0 ? 2 : 1" },
         "areaText": { "formula": "areaNumerator === 0 ? String(areaWhole) : (areaWhole === 0 ? '' : areaWhole + ' ') + (areaNumerator/areaDivisor) + '/' + (16/areaDivisor)" }
         },
-      "question": "A circular tabletop has diameter {diameter} in. Find a) its circumference, the edging needed to go around it once without overlap or waste, and b) the area of its top face to be painted. Use your calculator's value of π. Round circumference to the nearest 1/16 inch and area to the nearest 1/16 square inch. Express answers as simplified mixed numbers.",
-      "answer": "a) Circumference = πd = π × {diameter} ≈ <strong>{circumferenceText} in.</strong><br>b) Radius = {diameter}/2 = {radius} in. Area = πr² = π × {radius}² ≈ <strong>{areaText} in.²</strong>."
+      "question": "A circular tabletop has diameter {diameter} in. Find its circumference and area using calculator π. Round to the circumference to the nearest 1/16 in. and the area to the nearest hundredth of a square in.",
+      "answer": "a) Circumference = πd = π × {diameter} ≈ <strong>{circumferenceText} in.</strong><br>b) Radius = {diameter}/2 = {radius} in. Area = πr² = π × {radius}² ≈ <strong>{area} in.²</strong>."
     },
     {
       "id": "G.1.5-B",
@@ -4332,7 +4304,7 @@
         "slotDrawingDivisor": { "formula": "slotDrawingNumerator % 32 === 0 ? 32 : slotDrawingNumerator % 16 === 0 ? 16 : slotDrawingNumerator % 8 === 0 ? 8 : slotDrawingNumerator % 4 === 0 ? 4 : slotDrawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "slotDrawingText": { "formula": "slotDrawingNumerator === 0 ? String(slotDrawingWhole) : (slotDrawingWhole === 0 ? '' : slotDrawingWhole + ' ') + (slotDrawingNumerator / slotDrawingDivisor) + '/' + (64 / slotDrawingDivisor)" }
         },
-      "question": "A detail drawing shows an actual {actual} in. part as a {drawing} in. line. Find the drawing-to-actual scale ratio using the same units. How long should an actual {slot} in. slot appear at that scale? Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Keep the scale ratio exact.",
+      "question": "A {actual} in. part measures {drawing} in. on a drawing.<br>a) Find the exact drawing-to-actual scale ratio.<br>b) Find the drawn length of an actual {slot} in. slot. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Scale: {drawing}:{actual} = <strong>1:{factor}</strong>. Slot drawing length: {slot}/{factor} = <strong>{slotDrawingText} in.</strong>"
     },
     {
@@ -4356,7 +4328,7 @@
         "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
         },
-      "question": "A wall is {feet} ft {inches} in. long. How long should its line be on a drawing using scale {scaleText} in. = 1 ft? Give the drawing length in inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
+      "question": "Draw a {feet} ft {inches} in. wall at scale {scaleText} in. = 1 ft. Find its drawing length in inches. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Convert inches to feet, then multiply by the drawing scale: ({feet} + {inches}/12) × {scaleText} = <strong>{drawingText} in.</strong>"
     },
     {
@@ -4391,7 +4363,7 @@
         "drawWidthDivisor": { "formula": "drawWidthNumerator % 32 === 0 ? 32 : drawWidthNumerator % 16 === 0 ? 16 : drawWidthNumerator % 8 === 0 ? 8 : drawWidthNumerator % 4 === 0 ? 4 : drawWidthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawWidthText": { "formula": "drawWidthNumerator === 0 ? String(drawWidthWhole) : (drawWidthWhole === 0 ? '' : drawWidthWhole + ' ') + (drawWidthNumerator / drawWidthDivisor) + '/' + (64 / drawWidthDivisor)" }
         },
-      "question": "On a plan with scale {scaleText} in. = 1 ft, a rectangular room measures {drawLengthText} in. by {drawWidthText} in. Find the actual dimensions in feet and inches and the floor area in square feet. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Give areas exactly in the requested square units.",
+      "question": "At scale {scaleText} in. = 1 ft, a rectangular room measures {drawLengthText} in. by {drawWidthText} in. on a plan. Find:<br>a) Its actual dimensions in feet and inches.<br>b) Its exact area in square feet. Round lengths to the nearest 1/16 in.; simplify fractions.",
       "answer": "Each drawing inch represents {factor} ft. Actual dimensions: <strong>{feet} ft {inches} in. by {widthWhole} ft {widthInches} in.</strong> Area: {lengthFeet} × {widthFeet} = <strong>{area} ft²</strong>."
     },
     {
@@ -4421,7 +4393,7 @@
         "drawingDivisor": { "formula": "drawingNumerator % 32 === 0 ? 32 : drawingNumerator % 16 === 0 ? 16 : drawingNumerator % 8 === 0 ? 8 : drawingNumerator % 4 === 0 ? 4 : drawingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "drawingText": { "formula": "drawingNumerator === 0 ? String(drawingWhole) : (drawingWhole === 0 ? '' : drawingWhole + ' ') + (drawingNumerator / drawingDivisor) + '/' + (64 / drawingDivisor)" }
         },
-      "question": "A drawing originally used scale {originalScaleText} in. = 1 ft, then was printed at {percent}% of its original linear size. What is the reduced print scale? A wall measures {drawingText} in. on the reduced print; find its actual length in feet. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions. Keep the reduced scale exact, even if it uses thirty-seconds; apply rounding only to the actual wall length.",
+      "question": "A plan at scale {originalScaleText} in. = 1 ft is printed at {percent}% of its original linear size. Find:<br>a) The new scale, exactly.<br>b) The actual length in feet of a wall measuring {drawingText} in. on the print. Round only the wall length to the nearest 1/16 in.; simplify fractions.",
       "answer": "Reduced scale: <strong>{newScaleText} in. = 1 ft</strong>. Each print inch represents {newFactor} ft. Actual length: {drawingText} × {newFactor} = <strong>{actual} ft</strong>."
     },
     {
@@ -4434,7 +4406,7 @@
         "height": { "values": [24, 30, 36] },
         "depth": { "values": [12, 18, 24] }
         },
-      "question": "A rectangular cabinet is shown in three orthographic views. Use the labeled dimensions below; the sketches are not to scale. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 210' width='600' style='max-width:100%;height:auto' role='img' aria-label='Front view: {width} inches wide by {height} inches high. Top view: {width} inches wide by {depth} inches deep. Right-side view: unknown depth by {height} inches high.'><g fill='none' stroke='black' stroke-width='2'><rect x='20' y='50' width='140' height='120'/><rect x='220' y='50' width='140' height='75'/><rect x='430' y='50' width='85' height='120'/></g><g fill='black' font-size='15' text-anchor='middle'><text x='90' y='22'>FRONT</text><text x='90' y='44'>{width} in.</text><text x='183' y='112'>{height} in.</text><text x='290' y='22'>TOP</text><text x='290' y='44'>{width} in.</text><text x='388' y='92'>{depth} in.</text><text x='472' y='22'>RIGHT SIDE</text><text x='472' y='44'>?</text><text x='545' y='112'>{height} in.</text></g></svg><br>a) Give the cabinet width, height, and depth. b) Find the missing horizontal dimension in the right-side view.",
+      "question": "Use the cabinet views (not to scale) to find:<br>a) Width, height, and depth.<br>b) The missing side-view dimension.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 210' width='600' style='max-width:100%;height:auto' role='img' aria-label='Front view: {width} inches wide by {height} inches high. Top view: {width} inches wide by {depth} inches deep. Right-side view: unknown depth by {height} inches high.'><g fill='none' stroke='black' stroke-width='2'><rect x='20' y='50' width='140' height='120'/><rect x='220' y='50' width='140' height='75'/><rect x='430' y='50' width='85' height='120'/></g><g fill='black' font-size='15' text-anchor='middle'><text x='90' y='22'>FRONT</text><text x='90' y='44'>{width} in.</text><text x='183' y='112'>{height} in.</text><text x='290' y='22'>TOP</text><text x='290' y='44'>{width} in.</text><text x='388' y='92'>{depth} in.</text><text x='472' y='22'>RIGHT SIDE</text><text x='472' y='44'>?</text><text x='545' y='112'>{height} in.</text></g></svg>",
       "answer": "a) Width <strong>{width} in.</strong>, height <strong>{height} in.</strong>, depth <strong>{depth} in.</strong> b) The side view shows depth horizontally: <strong>{depth} in.</strong>"
     },
     {
@@ -4457,8 +4429,8 @@
         "diameterDivisor": { "formula": "diameterNumerator % 32 === 0 ? 32 : diameterNumerator % 16 === 0 ? 16 : diameterNumerator % 8 === 0 ? 8 : diameterNumerator % 4 === 0 ? 4 : diameterNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "diameterText": { "formula": "diameterNumerator === 0 ? String(diameterWhole) : (diameterWhole === 0 ? '' : diameterWhole + ' ') + (diameterNumerator / diameterDivisor) + '/' + (64 / diameterDivisor)" }
         },
-      "question": "A plan shows a plate {width} in. wide and {height} in. high, labeled <strong>4 HOLES, Ø {diameterText} in.</strong> One hole center is near each corner, {inset} in. from each adjacent edge. Explain the note, give all four centers as (distance from left, distance from bottom), and find the horizontal and vertical center-to-center spacings. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
-      "answer": "Four holes, each <strong>{diameterText} in. in diameter</strong>. Centers in inches: <strong>({inset}, {inset}), ({right}, {inset}), ({inset}, {top}), ({right}, {top})</strong>. Horizontal spacing: {width} − 2({inset}) = <strong>{horizontal} in.</strong>; vertical: {height} − 2({inset}) = <strong>{vertical} in.</strong>"
+      "question": "Read the plate plan.<br>a) How many holes are needed, and what is their diameter?<br>b) How far is center D from the left edge and from the bottom edge?<br>c) What is the center-to-center distance from A to B? Lengths: nearest 1/16 in.; simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 580 330' width='580' style='max-width:100%;height:auto' role='img' aria-label='Plate {width} inches wide by {height} inches high. Hole centers: A upper left, B upper right, C lower left, D lower right. Each is {inset} inches from both nearest edges. Note: 4 holes, diameter {diameterText} inches.'><text x='280' y='22' text-anchor='middle' font-size='15' fill='black'>PLATE PLAN - not to scale</text><path d='M120 75 H440 V255 H120 Z M120 45 H440 M120 38 V52 M440 38 V52 M475 75 V255 M468 75 H482 M468 255 H482' fill='none' stroke='black' stroke-width='1.5'/><text x='280' y='39' text-anchor='middle' font-size='15' fill='black'>{width} in.</text><text x='520' y='170' text-anchor='middle' font-size='15' fill='black'>{height} in.</text><circle cx='160' cy='115' r='9' fill='none' stroke='black' stroke-width='1.5'/><path d='M146 115 H174 M160 101 V129' fill='none' stroke='black' stroke-width='1.5'/><text x='183' y='102' text-anchor='middle' font-size='15' fill='black'>A</text><circle cx='400' cy='115' r='9' fill='none' stroke='black' stroke-width='1.5'/><path d='M386 115 H414 M400 101 V129' fill='none' stroke='black' stroke-width='1.5'/><text x='423' y='102' text-anchor='middle' font-size='15' fill='black'>B</text><circle cx='160' cy='215' r='9' fill='none' stroke='black' stroke-width='1.5'/><path d='M146 215 H174 M160 201 V229' fill='none' stroke='black' stroke-width='1.5'/><text x='183' y='202' text-anchor='middle' font-size='15' fill='black'>C</text><circle cx='400' cy='215' r='9' fill='none' stroke='black' stroke-width='1.5'/><path d='M386 215 H414 M400 201 V229' fill='none' stroke='black' stroke-width='1.5'/><text x='423' y='202' text-anchor='middle' font-size='15' fill='black'>D</text><text x='280' y='288' text-anchor='middle' font-size='15' fill='black'>4 HOLES, &#216; {diameterText} in.</text><text x='280' y='314' text-anchor='middle' font-size='15' fill='black'>Each center is {inset} in. from both nearest edges.</text></svg>",
+      "answer": "a) <strong>4 holes, each {diameterText} in. in diameter.</strong> The &#216; symbol means diameter.<br>b) D is {width} &minus; {inset} = <strong>{right} in. from the left</strong> and <strong>{inset} in. from the bottom</strong>.<br>c) A to B: {width} &minus; 2({inset}) = <strong>{horizontal} in.</strong>."
     },
     {
       "id": "G.1.6-A1",
@@ -4478,8 +4450,8 @@
         "positionFeet": { "formula": "floor(position/12)", "format": "decimal" },
         "positionInches": { "formula": "position%12", "format": "decimal" }
         },
-      "question": "A straight wall plan gives this dimension chain from left to right: <strong>left section {left} in. | opening A {openingA} in. | middle section {middle} in. | opening B unknown | right section {right} in.</strong> Overall length is {overallFeet} ft {overallInches} in. Find opening B's width in inches and the distance from the wall's left end to opening B's left edge in feet and inches. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
-      "answer": "Overall length: {overallFeet} × 12 + {overallInches} = {overall} in. Opening B: {overall} − {left} − {openingA} − {middle} − {right} = <strong>{openingB} in.</strong> Its left edge is {left} + {openingA} + {middle} = {position} in. = <strong>{positionFeet} ft {positionInches} in.</strong> from the left end."
+      "question": "Use the overall dimension and dimension chain in the wall plan to find:<br>a) x, the width of opening B, in inches.<br>b) y, the distance from the wall's left end to opening B's left edge, in feet and inches. Lengths: nearest 1/16 in.; simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 270' width='600' style='max-width:100%;height:auto' role='img' aria-label='Wall top view. Overall {overallFeet} feet {overallInches} inches. Left to right: {left} inches of wall, opening A {openingA} inches, {middle} inches of wall, opening B width x, {right} inches of wall. Dimension y extends from the left end to the left edge of opening B.'><text x='300' y='22' text-anchor='middle' font-size='15' fill='black'>WALL PLAN (TOP VIEW) - not to scale</text><path d='M40 65 H560 M40 57 V100 M560 57 V100' fill='none' stroke='black' stroke-width='1.5'/><text x='300' y='54' text-anchor='middle' font-size='15' fill='black'>Overall: {overallFeet} ft {overallInches} in.</text><g fill='#eee' stroke='black' stroke-width='1.5'><rect x='40' y='105' width='95' height='35'/><rect x='235' y='105' width='110' height='35'/><rect x='455' y='105' width='105' height='35'/></g><text x='185' y='127' text-anchor='middle' font-size='15' fill='black'>Opening A</text><text x='400' y='127' text-anchor='middle' font-size='15' fill='black'>Opening B</text><path d='M40 160 H560 M40 149 V170 M135 140 V170 M235 140 V170 M345 140 V170 M455 140 V170 M560 140 V170' fill='none' stroke='black' stroke-width='1.5'/><text x='87' y='189' text-anchor='middle' font-size='15' fill='black'>{left} in.</text><text x='185' y='189' text-anchor='middle' font-size='15' fill='black'>{openingA} in.</text><text x='290' y='189' text-anchor='middle' font-size='15' fill='black'>{middle} in.</text><text x='400' y='189' text-anchor='middle' font-size='15' fill='black'>x</text><text x='508' y='189' text-anchor='middle' font-size='15' fill='black'>{right} in.</text><path d='M40 210 V232 M345 210 V232 M40 225 H345' fill='none' stroke='black' stroke-width='1.5'/><text x='193' y='249' text-anchor='middle' font-size='15' fill='black'>y: left end to opening B</text></svg>",
+      "answer": "a) Overall = {overallFeet} &times; 12 + {overallInches} = {overall} in.<br>x = {overall} &minus; ({left} + {openingA} + {middle} + {right}) = <strong>{openingB} in.</strong><br>b) y = {left} + {openingA} + {middle} = {position} in. = <strong>{positionFeet} ft {positionInches} in.</strong>."
     },
     {
       "id": "G.1.6-A2",
@@ -4518,8 +4490,8 @@
         "shelfDivisor": { "formula": "shelfNumerator % 32 === 0 ? 32 : shelfNumerator % 16 === 0 ? 16 : shelfNumerator % 8 === 0 ? 8 : shelfNumerator % 4 === 0 ? 4 : shelfNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
         "shelfText": { "formula": "shelfNumerator === 0 ? String(shelfWhole) : (shelfWhole === 0 ? '' : shelfWhole + ' ') + (shelfNumerator / shelfDivisor) + '/' + (64 / shelfDivisor)" }
         },
-      "question": "A shelf assembly plan gives outside width {width} in., outside height {height} in., and depth {depth} in. The front view shows two full-height side panels and top and bottom panels fitted between them. All panels are {thicknessText} in. thick and {depth} in. deep. Find a) clear inside width and height and b) the length and depth of a shelf between the side panels with {clearanceText} in. clearance at each end, flush with front and back. Round length answers to the nearest 1/16 inch, if needed, and simplify fractions.",
-      "answer": "a) Inside width: {width} − 2({thicknessText}) = <strong>{insideWidthText} in.</strong>; inside height: {height} − 2({thicknessText}) = <strong>{insideHeightText} in.</strong> b) Shelf length: {insideWidthText} − 2({clearanceText}) = <strong>{shelfText} in.</strong>; depth: <strong>{depth} in.</strong>"
+      "question": "Use both cabinet views and the plan notes.<br>a) Find the inside width and height.<br>b) Find the shelf length (left to right) and depth (front to back).<br>Use the side view for depth and allow the end gaps shown in the note. Lengths: nearest 1/16 in.; simplify fractions.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 410' width='600' style='max-width:100%;height:auto' role='img' aria-label='Cabinet front view: outside width {width} inches, outside height {height} inches. Full-height sides with top and bottom fitted between them. Right-side view: depth {depth} inches. All panels {thicknessText} inches thick. No back panel. Shelf spans the full depth, with {clearanceText} inches clearance at each left and right end.'><text x='165' y='22' text-anchor='middle' font-size='15' fill='black'>FRONT VIEW</text><text x='485' y='22' text-anchor='middle' font-size='15' fill='black'>RIGHT-SIDE VIEW</text><path d='M65 70 H265 V260 H65 Z M80 70 V260 M250 70 V260 M80 85 H250 M80 245 H250 M65 48 H265 M65 41 V55 M265 41 V55 M33 70 V260 M26 70 H40 M26 260 H40' fill='none' stroke='black' stroke-width='1.5'/><text x='165' y='42' text-anchor='middle' font-size='15' fill='black'>{width} in.</text><text x='18' y='170' text-anchor='middle' font-size='15' transform='rotate(-90 18 170)'>{height} in.</text><path d='M95 175 H235 M95 167 V183 M235 167 V183 M165 102 V226 M158 102 H172 M158 226 H172' fill='none' stroke='black' stroke-width='1.5'/><text x='206' y='164' text-anchor='middle' font-size='15' fill='black'>inside width</text><text x='165' y='284' text-anchor='middle' font-size='15' fill='black'>Open front; no back panel</text><path d='M430 70 H550 V260 H430 Z M430 285 H550 M430 277 V293 M550 277 V293' fill='none' stroke='black' stroke-width='1.5'/><text x='490' y='309' text-anchor='middle' font-size='15' fill='black'>{depth} in.</text><text x='300' y='344' text-anchor='middle' font-size='15' fill='black'>All panels: {thicknessText} in. thick</text><text x='300' y='368' text-anchor='middle' font-size='15' fill='black'>Shelf: full depth; {clearanceText} in. gap at EACH end</text><text x='300' y='391' text-anchor='middle' font-size='15' fill='black'>Views not to scale</text><text x='145' y='164' text-anchor='middle' font-size='14' transform='rotate(-90 145 164)'>inside height</text></svg>",
+      "answer": "a) Inside width = {width} &minus; 2({thicknessText}) = <strong>{insideWidthText} in.</strong><br>Inside height = {height} &minus; 2({thicknessText}) = <strong>{insideHeightText} in.</strong><br>b) Shelf length = {insideWidthText} &minus; 2({clearanceText}) = <strong>{shelfText} in.</strong><br>Shelf depth = <strong>{depth} in.</strong>, read from the side view (full depth; no back panel)."
     }
   ],
   "2: Square, Level and Structural Layout": [
@@ -5192,7 +5164,7 @@
         "yMin": { "formula": "k-6" },
         "yMax": { "formula": "k+6" }
       },
-      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
       "draw": {
         "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
@@ -5216,7 +5188,7 @@
         "yMin": { "formula": "k-6" },
         "yMax": { "formula": "k+6" }
       },
-      "question": "Use the graph of \\( f(x) = {a|coef}|x {negH|sign}| {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "Use the graph of \\( f(x) = {a|coef}|x {negH|sign}| {k|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
       "draw": {
         "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
@@ -5247,7 +5219,7 @@
         "yMin": { "formula": "k-6" },
         "yMax": { "formula": "k+6" }
       },
-      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^3 {b|signedCoef}(x {negH|sign}) {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^3 {b|signedCoef}(x {negH|sign}) {k|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local {leftType} at \\( ({xLeft}, {yLeft}) \\); local {rightType} at \\( ({xRight}, {yRight}) \\). No absolute extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endLeft} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
       "draw": {
         "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
@@ -5277,7 +5249,7 @@
         "yMin": { "formula": "k-6" },
         "yMax": { "formula": "k+6" }
       },
-      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^4 {b|signedCoef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "Use the graph of \\( f(x) = {a|coef}(x {negH|sign})^4 {b|signedCoef}(x {negH|sign})^2 {k|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {outerType} at \\( ({xLeft}, {yOuter}) \\) and \\( ({xRight}, {yOuter}) \\); local {centerType} at \\( ({h}, {yCenter}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\).",
       "draw": {
         "window": { "xMin": "xMin", "xMax": "xMax", "yMin": "yMin", "yMax": "yMax" },
@@ -5298,7 +5270,7 @@
         "extremum": { "formula": "a > 0 ? 'minimum' : 'maximum'" },
         "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "For \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {extremum} at \\( ({h}, {k}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
     },
     {
@@ -5323,7 +5295,7 @@
         "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" },
         "endLeft": { "formula": "a > 0 ? '-\\\\infty' : '\\\\infty'" }
       },
-      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "For \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local {leftType} at \\( ({xLeft}, {yLeft}) \\); local {rightType} at \\( ({xRight}, {yRight}) \\). No absolute extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endLeft} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
     },
     {
@@ -5346,7 +5318,7 @@
         "centerType": { "formula": "a > 0 ? 'maximum' : 'minimum'" },
         "endRight": { "formula": "a > 0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "For \\( f(x) = {a|coef}x^4 {b|signedCoef}x^2 {c|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {outerType} at \\( ({xLeft}, {yOuter}) \\) and \\( ({xRight}, {yOuter}) \\); local {centerType} at \\( ({h}, {yCenter}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {endRight} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {endRight} \\)."
     },
     {
@@ -5362,7 +5334,7 @@
         "yExtremum": { "formula": "a+k" },
         "extremum": { "formula": "a > 0 ? 'maximum' : 'minimum'" }
       },
-      "question": "For \\( f(x) = \\frac{{a}}{(x {negH|sign})^2 + 1} {k|sign} \\):<br>a) Find the coordinates of all local extrema and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
+      "question": "For \\( f(x) = \\frac{{a}}{(x {negH|sign})^2 + 1} {k|sign} \\):<br>a) Find the coordinates of all local extrema (round to the nearest hundredth if necessary) and classify each as a maximum or minimum. <br>b) Describe the end behavior as \\( x \\to -\\infty \\) and as \\( x \\to \\infty \\).",
       "answer": "a) Local and absolute {extremum} at \\( ({h}, {yExtremum}) \\). No other extrema.<br>b) As \\( x \\to -\\infty \\), \\( f(x) \\to {k} \\); as \\( x \\to \\infty \\), \\( f(x) \\to {k} \\)."
     },
     {
@@ -5391,7 +5363,7 @@
       "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
       "difficulty": "basic",
       "variables": {
-        "s": { "values": [-4, -3, -2, -0.5, -0.25, 0.25, 0.5, 2, 3], "exclude": [0], "format": "fraction" },
+        "s": { "values": [-0.75, -0.5, -0.25, 0.25, 0.5, 0.75], "exclude": [0], "format": "fraction" },
         "k": { "min": -3, "max": 3 }
       },
       "question": "Graph \\( f(x) = \\lfloor {s|coef} x {k|sign}\\rfloor \\).",
@@ -5445,7 +5417,7 @@
         "vertexY": { "formula": "d" },
         "yMin": { "formula": "min(leftY,middleLeftY,middleRightY,rightY,vertexY)-4" },
         "yMax": { "formula": "max(leftY,middleLeftY,middleRightY,rightY,vertexY)+4" },
-        "s": { "values": [-2, -1, 1, 2] },
+        "s": { "values": [-0.75, -0.5, -0.25, 0.25, 0.5, 0.75], "format": "fraction" },
         "negL": { "formula": "-l" }
       },
       "question": "Graph \\( f(x) = \\begin{cases} {m|coef}x {b|sign}, & x < {l} \\\\ {s|coef}\\lfloor x {negL|sign} \\rfloor {k|sign}, & {l} \\leq x < {r} \\\\ {a|coef}|x {negH|sign}| {d|sign}, & x \\geq {r} \\end{cases} \\).",

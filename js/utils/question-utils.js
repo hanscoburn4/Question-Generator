@@ -285,7 +285,7 @@ function approximateFraction(x, maxDenominator = 1000, eps = 1e-12) {
   const g = gcd(Math.abs(num1), den1);
   const approxN = sign * (num1 / g);
   const approxD = den1 / g;
-  if (Math.abs(approxN / approxD - x) < eps) {
+  if (Math.abs(Math.abs(approxN / approxD) - x) < eps) {
     return { n: approxN, d: approxD };
   }
   return null;
