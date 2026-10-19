@@ -128,6 +128,33 @@ test('B2 matches floor(s*x+k) for every allowed value; graphs are answer-only', 
   }
 });
 
+test('A1 uses one integer-function piece with reciprocal input slopes and integer outputs', () => {
+  const bank = JSON.parse(fs.readFileSync(path.join(root, 'src/data/question_bank.json'), 'utf8'));
+  const template = bank['Algebra 2']['1: Relations and Functions'].find(q => q.id === 'ALG2-1.6-A1');
+  const allowedSlopes = [1, 1 / 2, 1 / 3, 1 / 4];
+
+  assert.ok(!template.question.includes('|x'), 'A1 should not also contain an absolute-value piece');
+  assert.equal(template.draw.eq2.step.outputScale, undefined);
+  assert.equal(template.draw.eq2.step.outputOffset, undefined);
+
+  for (let i = 0; i < 500; i++) {
+    const question = sandbox.window.QuestionGenerator.generateQuestion(template);
+    const variables = question.variables;
+    assert.equal(question.variableErrors.length, 0);
+    assert.ok(allowedSlopes.some(value => Math.abs(value - variables.stepM) < 1e-10));
+
+    const graphBounds = engine.normalizeWindow(question.draw.window, variables);
+    const segments = engine.getStepSegments(question.draw.eq2, graphBounds, variables);
+    assert.ok(segments.length > 0);
+    assert.ok(segments.every(segment => Number.isInteger(segment.y)));
+    assert.equal(variables.middleLeftY, Math.floor(variables.stepM * variables.l + variables.stepB));
+    assert.equal(
+      variables.middleRightY,
+      Math.floor(variables.stepM * variables.r + variables.stepB - 0.000001)
+    );
+  }
+});
+
 test('ordinary relation normalization is unchanged', () => {
   const equation = engine.normalizeEquationEntry({ relation: 'y = x^2', showInQuestion: false });
   assert.equal(equation.relation, 'y = x^2');

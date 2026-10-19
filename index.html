@@ -23,8 +23,14 @@
 <body>
   <div class="header-section">
     <div class="title-input-section">
-      <label for="customTitle">Assignment Title:</label>
-      <input type="text" id="customTitle" placeholder="Enter assignment title (e.g., Chapter 1 Quiz)" value="SMWYK - Name: __________" />
+      <h2 id="generatedTitle">Course - Module/Unit</h2>
+      <div class="assignment-details">
+        <span id="generatedLessons" class="assignment-lessons">Lessons</span>
+        <div class="assignment-student">
+          <label for="customTitle">Name: <input type="text" id="customTitle" placeholder="______________" /></label>
+          <label for="assignmentDate">Date: <input type="text" id="assignmentDate" placeholder="__________" /></label>
+        </div>
+      </div>
     </div>
   </div>
   

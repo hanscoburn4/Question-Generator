@@ -5399,34 +5399,33 @@
       "objective": "1.6 Graph Piecewise, Step, and Absolute Value Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
-        "m": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "leftSlope": { "values": [-2, -1, 1, 2] },
+        "rightSlope": { "values": [-2, -1, 1, 2] },
         "l": { "values": [-3, -2] },
         "r": { "values": [2, 3] },
-        "k": { "min": -2, "max": 2 },
-        "jLeft": { "values": [-3, -1, 1, 3] },
-        "jRight": { "values": [-3, -1, 1, 3] },
-        "h": { "formula": "r+1" },
-        "negH": { "formula": "-h" },
-        "b": { "formula": "k-jLeft-m*l" },
-        "d": { "formula": "rightY-a" },
-        "leftY": { "formula": "k-jLeft" },
-        "middleLeftY": { "formula": "k" },
-        "middleRightY": { "formula": "s*(r-l-1)+k" },
+        "stepDen": { "values": [1, 2, 3, 4] },
+        "stepM": { "formula": "1/stepDen", "format": "fraction" },
+        "stepB": { "values": [-3, -2, -1, 1, 2, 3] },
+        "middleLeftY": { "formula": "floor(stepM*l+stepB)" },
+        "middleRightY": { "formula": "floor(stepM*r+stepB-0.000001)" },
+        "jLeft": { "values": [-3, -2, 2, 3] },
+        "jRight": { "values": [-3, -2, 2, 3] },
+        "leftY": { "formula": "middleLeftY-jLeft" },
         "rightY": { "formula": "middleRightY+jRight" },
-        "vertexY": { "formula": "d" },
-        "yMin": { "formula": "min(leftY,middleLeftY,middleRightY,rightY,vertexY)-4" },
-        "yMax": { "formula": "max(leftY,middleLeftY,middleRightY,rightY,vertexY)+4" },
-        "s": { "values": [-0.75, -0.5, -0.25, 0.25, 0.5, 0.75], "format": "fraction" },
-        "negL": { "formula": "-l" }
+        "leftB": { "formula": "leftY-leftSlope*l", "exclude": [0] },
+        "rightB": { "formula": "rightY-rightSlope*r", "exclude": [0] },
+        "leftWindowY": { "formula": "leftSlope*(-7)+leftB" },
+        "rightWindowY": { "formula": "rightSlope*7+rightB" },
+        "yMin": { "formula": "min(leftWindowY,leftY,middleLeftY,middleRightY,rightY,rightWindowY)-3" },
+        "yMax": { "formula": "max(leftWindowY,leftY,middleLeftY,middleRightY,rightY,rightWindowY)+3" }
       },
-      "question": "Graph \\( f(x) = \\begin{cases} {m|coef}x {b|sign}, & x < {l} \\\\ {s|coef}\\lfloor x {negL|sign} \\rfloor {k|sign}, & {l} \\leq x < {r} \\\\ {a|coef}|x {negH|sign}| {d|sign}, & x \\geq {r} \\end{cases} \\).",
+      "question": "Graph \\( f(x) = \\begin{cases} {leftSlope|coef}x {leftB|sign}, & x < {l} \\\\ \\lfloor {stepM|coef}x {stepB|sign} \\rfloor, & {l} \\leq x < {r} \\\\ {rightSlope|coef}x {rightB|sign}, & x \\geq {r} \\end{cases} \\).",
       "answer": "See graph. Open: \\( ({l}, {leftY}) \\); Closed: \\( ({l}, {middleLeftY}) \\); Open: \\( ({r}, {middleRightY}) \\); Closed: \\( ({r}, {rightY}) \\).",
       "draw": {
         "window": { "xMin": -7, "xMax": 7, "yMin": "yMin", "yMax": "yMax" },
-        "eq1": { "relation": "y = m*x+b", "domain": { "max": "l" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
-        "eq2": { "step": { "mode": "floor", "inputOffset": "negL", "outputScale": "s", "outputOffset": "k" }, "domain": { "min": "l", "max": "r", "maxInclusive": false }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
-        "eq3": { "relation": "y = a*abs(x-h)+d", "domain": { "min": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq1": { "relation": "y = leftSlope*x+leftB", "domain": { "max": "l" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "step": { "mode": "floor", "inputScale": "stepM", "inputOffset": "stepB" }, "domain": { "min": "l", "max": "r", "maxInclusive": false }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq3": { "relation": "y = rightSlope*x+rightB", "domain": { "min": "r" }, "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
         "points": [
           { "x": "l", "y": "leftY", "pointRadius": 4, "fillColor": "#ffffff", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
           { "x": "l", "y": "middleLeftY", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "outlineWidth": 2, "showInQuestion": false, "showInAnswer": true },
@@ -5520,15 +5519,50 @@
       "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [1] },
-        "b": { "values": [0] },
-        "c": { "values": [0]},
-        "h": { "min": -5, "max": 5, "exclude": [0]},
-        "neg_h": { "formula": "-h" },
-        "k": { "min": -5, "max": 5, "exclude": [0]}
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "horizontalText": { "formula": "abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right' : 'left')" },
+        "verticalText": { "formula": "abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
       },
-      "question": "Given the parent function \\( f(x) = x^2 \\), use a graphing calculator to graph the transformed function \\( g(x) = (x {h|sign})^2 {k|sign} \\). Describe the transformations applied.",
-      "answer": "The graph is shifted {neg_h} units horizontally and {k} units vertically. Vertex is at \\( ({neg_h}, {k}) \\)."
+      "question": "The parent function \\( f(x) = x^2 \\) is shown. Graph the transformed function \\( g(x) = (x {negH|sign})^2 {k|sign} \\) on the same coordinate plane.",
+      "answer": "The graph is shifted {horizontalText} and {verticalText}. Its vertex is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = x^2", "showInQuestion": true, "showInAnswer": true, "color": "#64748b" },
+        "eq2": { "relation": "y = (x-h)^2+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.7-B2",
+      "type": "basic",
+      "objective": "1.7 Transform Graphs of Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "reflectionText": { "formula": "a < 0 ? 'reflection over the x-axis; ' : ''" },
+        "scaleText": { "formula": "abs(a) > 1 ? 'vertical stretch by a factor of ' + abs(a) + '; ' : (abs(a) < 1 ? 'vertical compression by a factor of ' + (abs(a) === 0.25 ? '1/4' : '1/2') + '; ' : '')" },
+        "horizontalText": { "formula": "'shift ' + abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right; ' : 'left; ')" },
+        "verticalText": { "formula": "'shift ' + abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
+      },
+      "question": "The parent function \\( f(x) = |x| \\) is shown. Graph \\( g(x) = {a|coef}|x {negH|sign}| {k|sign} \\) on the same coordinate plane and list its transformations.",
+      "answer": "Transformations: {reflectionText}{scaleText}{horizontalText}{verticalText}. The vertex is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = abs(x)", "showInQuestion": true, "showInAnswer": true, "color": "#64748b" },
+        "eq2": { "relation": "y = a*abs(x-h)+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
     },
     {
       "id": "ALG2-1.7-I1",
@@ -5536,12 +5570,53 @@
       "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0]},
-        "h": { "min": -5, "max": 5, "exclude": [0]},
-        "k": { "min": -5, "max": 5, "exclude": [0]}
+        "a": { "values": [-2, -1, -0.5, -0.25, 0.25, 0.5, 1, 2], "format": "fraction" },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "reflectionText": { "formula": "a < 0 ? 'reflection over the x-axis; ' : ''" },
+        "scaleText": { "formula": "abs(a) > 1 ? 'vertical stretch by a factor of ' + abs(a) + '; ' : (abs(a) < 1 ? 'vertical compression by a factor of ' + (abs(a) === 0.25 ? '1/4' : '1/2') + '; ' : '')" },
+        "horizontalText": { "formula": "'shift ' + abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right; ' : 'left; ')" },
+        "verticalText": { "formula": "'shift ' + abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
       },
-      "question": "Given the parent function \\( f(x) = |x| \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}|x {h|sign}| {k|sign} \\). Describe the transformations applied.",
-      "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Vertex is at \\( ({h}, {k}) \\)."
+      "question": "The parent function \\( f(x) = x^3 \\) is shown. Graph \\( g(x) = {a|coef}(x {negH|sign})^3 {k|sign} \\) on the same coordinate plane and list its transformations.",
+      "answer": "Transformations: {reflectionText}{scaleText}{horizontalText}{verticalText}. The inflection point is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = x^3", "showInQuestion": true, "showInAnswer": true, "color": "#64748b" },
+        "eq2": { "relation": "y = a*(x-h)^3+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.7-I2",
+      "type": "template",
+      "objective": "1.7 Transform Graphs of Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-3, -2, -1, -0.5, 0.5, 1, 2, 3], "format": "fraction" },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "reflectionText": { "formula": "a < 0 ? 'reflection over the x-axis; ' : ''" },
+        "scaleText": { "formula": "abs(a) > 1 ? 'vertical stretch by a factor of ' + abs(a) + '; ' : (abs(a) < 1 ? 'vertical compression by a factor of 1/2; ' : '')" },
+        "horizontalText": { "formula": "'shift ' + abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right; ' : 'left; ')" },
+        "verticalText": { "formula": "'shift ' + abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
+      },
+      "question": "The parent function \\( f(x) = x^2 \\) is shown. Graph \\( g(x) = {a|coef}(x {negH|sign})^2 {k|sign} \\) on the same coordinate plane and list its transformations.",
+      "answer": "Transformations: {reflectionText}{scaleText}{horizontalText}{verticalText}. The vertex is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = x^2", "showInQuestion": true, "showInAnswer": true, "color": "#64748b" },
+        "eq2": { "relation": "y = a*(x-h)^2+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
     },
     {
       "id": "ALG2-1.7-A1",
@@ -5549,12 +5624,55 @@
       "objective": "1.7 Transform Graphs of Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0]},
-        "h": { "min": -5, "max": 5, "exclude": [0]},
-        "k": { "min": -5, "max": 5, "exclude": [0]}
+        "a": { "values": [-2, -1, -0.5, 0.5, 1, 2], "format": "fraction" },
+        "b": { "values": [-1, 1] },
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "reflectionText": { "formula": "a < 0 ? 'reflection over the x-axis; ' : ''" },
+        "scaleText": { "formula": "abs(a) > 1 ? 'vertical stretch by a factor of ' + abs(a) + '; ' : (abs(a) < 1 ? 'vertical compression by a factor of 1/2; ' : '')" },
+        "horizontalReflectionText": { "formula": "b < 0 ? 'reflection over the y-axis; ' : ''" },
+        "horizontalText": { "formula": "'shift ' + abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right; ' : 'left; ')" },
+        "verticalText": { "formula": "'shift ' + abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
       },
-      "question": "Given the parent function \\( f(x) = \\sqrt{x} \\), use a graphing calculator to graph the transformed function \\( g(x) = {a|coef}\\sqrt{x {h|sign}} {k|sign} \\). Describe the transformations applied.",
-      "answer": "The graph is {a < 0 ? 'reflected over the x-axis, ' : ''}{Math.abs(a) > 1 ? 'vertically stretched by a factor of ' + Math.abs(a) + ', ' : ''}{Math.abs(a) < 1 ? 'vertically compressed by a factor of ' + Math.abs(a) + ', ' : ''}shifted {h} units right and {k} units up. Starting point is at \\( ({h}, {k}) \\)."
+      "question": "Graph \\( g(x) = {a|coef}\\sqrt{{b|coef}(x {negH|sign})} {k|sign} \\) and list its transformations.",
+      "answer": "The parent function is \\(f(x)=\\sqrt{x}\\). Transformations: {horizontalReflectionText}{reflectionText}{scaleText}{horizontalText}{verticalText}. The starting point is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = a*sqrt(b*(x-h))+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
+    },
+    {
+      "id": "ALG2-1.7-A2",
+      "type": "template",
+      "objective": "1.7 Transform Graphs of Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-1, 1] },
+        "b": { "values": [-3, -2, -1, -0.5, -0.25, 0.25, 0.5, 1, 2, 3], "format": "fraction" },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
+        "negH": { "formula": "-h" },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "reflectionText": { "formula": "a < 0 ? 'reflection over the x-axis; ' : ''" },
+        "horizontalReflectionText": { "formula": "b < 0 ? 'reflection over the y-axis; ' : ''" },
+        "horizontalScaleText": { "formula": "abs(b) > 1 ? 'horizontal compression by a factor of 1/' + abs(b) + '; ' : (abs(b) < 1 ? 'horizontal stretch by a factor of ' + round(1/abs(b)) + '; ' : '')" },
+        "horizontalText": { "formula": "'shift ' + abs(h) + (abs(h) === 1 ? ' unit ' : ' units ') + (h > 0 ? 'right; ' : 'left; ')" },
+        "verticalText": { "formula": "'shift ' + abs(k) + (abs(k) === 1 ? ' unit ' : ' units ') + (k > 0 ? 'up' : 'down')" }
+      },
+      "question": "Graph \\( g(x) = {a|coef}\\left[{b|coef}(x {negH|sign})\\right]^3 {k|sign} \\) and list its transformations.",
+      "answer": "The parent function is \\(f(x)=x^3\\). Transformations: {horizontalReflectionText}{horizontalScaleText}{reflectionText}{horizontalText}{verticalText}. The inflection point is \\( ({h}, {k}) \\).",
+      "draw": {
+        "window": { "xMin": -10, "xMax": 10, "yMin": -10, "yMax": 10 },
+        "gridStep": 1,
+        "eq1": { "relation": "y = a*(b*(x-h))^3+k", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "pointRadius": 4, "fillColor": "#2563eb", "strokeColor": "#2563eb", "showInQuestion": false, "showInAnswer": true }
+        ]
+      }
     }
   ],
   "2: Linear Equations, Inequalities, and Systems": [
@@ -6426,14 +6544,39 @@
       "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0] },
-        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "a": { "min": -1, "max": 1, "exclude": [0] },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
         "k": { "min": -4, "max": 4, "exclude": [0] },
         "b": { "formula": "-2*a*h" },
-        "c": { "formula": "a*h*h + k" }
+        "c": { "formula": "a*h*h + k" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "xl1": { "formula": "h-1" },
+        "xr1": { "formula": "h+1" },
+        "xl2": { "formula": "h-2" },
+        "xr2": { "formula": "h+2" },
+        "ynear": { "formula": "k+a" },
+        "yfar": { "formula": "k+4*a" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Identify the vertex, axis of symmetry, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|signedCoef} \\).",        
-      "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
+      "question": "Identify the vertex and axis of symmetry, then graph \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\) on the coordinate plane provided. Plot at least two points on each side of the vertex.",
+      "answer": "Vertex: \\( ({h}, {k}) \\); axis of symmetry: \\( x = {h} \\). Symmetric points: \\( ({xl1}, {ynear}), ({xr1}, {ynear}), ({xl2}, {yfar}), ({xr2}, {yfar}) \\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "x = h", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626", "boundaryStyle": "dashed" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xl1", "y": "ynear", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xr1", "y": "ynear", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xl2", "y": "yfar", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xr2", "y": "yfar", "label": "", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.1-I1",
@@ -6441,14 +6584,39 @@
       "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b": { "min": -6, "max": 6, "exclude": [0,1,-1] },
-        "c": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+        "a": { "min": -3, "max": 3, "exclude": [0, 1, -1] },
+        "b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
+        "c": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
         "h": { "formula": "-b/(2*a)", "format": "fraction" },
-        "k": { "formula": "a*h*h + b*h + c", "format": "fraction" }
+        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "xl1": { "formula": "h-1" },
+        "xr1": { "formula": "h+1" },
+        "xl2": { "formula": "h-2" },
+        "xr2": { "formula": "h+2" },
+        "ynear": { "formula": "k+a" },
+        "yfar": { "formula": "k+4*a" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Identify the vertex, axis of symmetry, and then sketch the graph. Use a calculator approximation when needed. \\( f(x) = {a}x^2 {b|signedCoef}x {c|signedCoef} \\).",
-      "answer": "Vertex: \\( ({h}, {k}) \\); Axis of Symmetry: \\( x = {h} \\)."
+      "question": "Identify the vertex and axis of symmetry, then graph \\( f(x) = {a|coef}x^2 {b|signedCoef}x {c|sign} \\) on the coordinate plane provided. Plot at least two points on each side of the vertex.",
+      "answer": "Vertex: \\( ({h}, {k}) \\); axis of symmetry: \\( x = {h} \\). Symmetric points: \\( ({xl1}, {ynear}), ({xr1}, {ynear}), ({xl2}, {yfar}), ({xr2}, {yfar}) \\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "x = h", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626", "boundaryStyle": "dashed" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xl1", "y": "ynear", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xr1", "y": "ynear", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xl2", "y": "yfar", "label": "", "showInQuestion": false, "showInAnswer": true },
+          { "x": "xr2", "y": "yfar", "label": "", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.1-A1",
@@ -6458,12 +6626,30 @@
       "variables": {
         "b": { "min": 10, "max": 50 },
         "c": { "min": 2, "max": 10 },
-        "t": { "formula": "sqrt(b*b + 64*c)/32" },
-        "tmax": { "formula": "b/32" },
-        "hmax": { "formula": "-16*(tmax*tmax) + b*tmax + c" }
+        "t": { "formula": "round(landing*100)/100", "format": "decimal" },
+        "tmax": { "formula": "round(peakTime*100)/100", "format": "decimal" },
+        "hmax": { "formula": "round(peakHeight*100)/100", "format": "decimal" },
+        "landing": { "formula": "(b+sqrt(b*b+64*c))/32" },
+        "peakTime": { "formula": "max(0,b/32)" },
+        "peakHeight": { "formula": "-16*peakTime*peakTime+b*peakTime+c" },
+        "xmin": -0.25,
+        "xmax": { "formula": "ceil(landing+0.5)" },
+        "ymin": -5,
+        "ymax": { "formula": "ceil((peakHeight+5)/10)*10" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "A ball is thrown upwards by an initial velocity of {b} feet per second. The initial height was {c}. The height of the ball can be modeled by the function \\( h(t) = -16t^2 + {b}t +{c} \\). Find when the ball will hit the ground, and find when the ball will reach its maximum height and what that height is. Round your answers to the nearest hundredth if needed.",        
-      "answer": "The ball will hit the ground after \\( t = {t} \\) seconds. The ball will reach its maximum height of \\( h = {hmax} \\) feet after \\( t = {tmax} \\) seconds."
+      "question": "A ball is thrown upward at {b} feet per second from a height of {c} feet. Its height is \\( h(t)=-16t^2+{b}t+{c} \\). Find when it hits the ground, when it reaches its maximum height, and that maximum height. Sketch the model on the provided plane (horizontal axis: time in seconds; vertical axis: height in feet). Round to the nearest hundredth.",
+      "answer": "The ball hits the ground after approximately {t} seconds. Its maximum height is approximately {hmax} feet at {tmax} seconds.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = -16*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb", "domain": { "min": 0, "max": "landing" } },
+        "points": [
+          { "x": "landing", "y": 0, "label": "Ground", "showInQuestion": false, "showInAnswer": true },
+          { "x": "peakTime", "y": "peakHeight", "label": "Maximum", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.2-B1",
@@ -6471,15 +6657,65 @@
       "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "basic",
       "variables": {
-        "p": { "min": -7, "max": 7, "exclude": [0] },
+        "p": { "min": -4, "max": 4, "exclude": [0] },
         "negp": { "formula": "-1*p" },
-        "q": { "min": -7, "max": 7, "exclude": [0] },
+        "q": { "min": -4, "max": 4, "exclude": [0, "p"] },
         "negq": { "formula": "-1*q" },
-        "b": { "formula": "p + q" },
-        "c": { "formula": "p * q" }
+        "b": { "formula": "a*(p+q)" },
+        "c": { "formula": "a*p*q" },
+        "a": 1,
+        "left": { "formula": "min(-p,-q)" },
+        "right": { "formula": "max(-p,-q)" },
+        "h": { "formula": "-b/(2*a)" },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve for \\( x \\), simplify your answer: \\( x^2 {b|signedCoef}x {c|signedCoef} = 0 \\).",
-      "answer": "\\( x = {negp} \\) or \\( x = {negq} \\)"
+      "question": "Solve by graphing on the coordinate plane provided: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} = 0 \\).",
+      "answer": "The x-intercepts give \\( x={left} \\) or \\( x={right} \\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.2-B2",
+      "type": "template",
+      "objective": "3.2 Solving Quadratic Equations by Graphing",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "gap": 0,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h+gap)" },
+        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve by graphing on the coordinate plane provided: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} = 0 \\).",
+      "answer": "\\(x={h}\\) is a repeated root. The graph touches the x-axis at \\(({h},0)\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.2-I1",
@@ -6487,16 +6723,65 @@
       "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 1, "max": 5 },
-        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "a": { "values": [-3, -2, 2, 3] },
+        "p": { "min": -4, "max": 4, "exclude": [0] },
         "negp": { "formula": "-1*p" },
-        "q": { "min": -5, "max": 5, "exclude": [0,"p"] },
+        "q": { "min": -4, "max": 4, "exclude": [0, "p"] },
         "negq": { "formula": "-1*q" },
-        "b": { "formula": "-a*(p + q)" },
-        "c": { "formula": "a*p*q" }
+        "b": { "formula": "a*(p+q)" },
+        "c": { "formula": "a*p*q" },
+        "left": { "formula": "min(-p,-q)" },
+        "right": { "formula": "max(-p,-q)" },
+        "h": { "formula": "-b/(2*a)" },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve for \\( x \\), simplify your answer: \\( {a|coef}x^2 {c|signedCoef} = {b|coef}x \\).",
-      "answer": "\\( x = {negp} \\) or \\( x = {negq} \\)"
+      "question": "Solve by graphing on the coordinate plane provided: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} = 0 \\).",
+      "answer": "The x-intercepts give \\( x={left} \\) or \\( x={right} \\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.2-I2",
+      "type": "template",
+      "objective": "3.2 Solving Quadratic Equations by Graphing",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "gap": { "min": 1, "max": 4 },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h+gap)" },
+        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve by graphing on the coordinate plane provided: \\( {a|coef}x^2 {b|signedCoef}x {c|sign} = 0 \\).",
+      "answer": "No real solutions: the graph does not intersect the x-axis.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.2-A1",
@@ -6507,14 +6792,29 @@
         "x": { "min": 3, "max": 8 },
         "a": { "min": -2, "max": 5, "exclude": [0] },
         "b": { "min": 1, "max": 3 },
-        "c": { "min": -2, "max": 5, "exclude": ["a",0] },
+        "c": { "min": -2, "max": 5, "exclude": ["a", 0] },
         "area": { "formula": "b*x*x + c*x + b*a*x + a*c" },
-        "side1": { "formula": "x + a"  },
-        "side2": { "formula": "b*x + c"  }
-       
+        "side1": { "formula": "x + a" },
+        "side2": { "formula": "b*x + c" },
+        "lower": { "formula": "max(-a,-c/b)" },
+        "xmin": { "formula": "floor(min(-1,lower-1))" },
+        "xmax": { "formula": "x+2" },
+        "ymin": { "formula": "-ceil(area/5)" },
+        "ymax": { "formula": "ceil(area/5)" },
+        "other": { "formula": "-a-c/b-x", "format": "fraction" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "A rectangle has side lengths of \\( x {a|sign} \\) and \\( {b}x {c|sign} \\). If the area of the rectangle is {area} square units, find the side lengths.",
-      "answer": "The dimentions are \\( {side1} \\) by \\( {side2} \\)."
+      "question": "A rectangle has side lengths \\(x {a|sign}\\) and \\({b|coef}x {c|sign}\\). Its area is {area} square units. Graph \\(y=(x {a|sign})({b|coef}x {c|sign})-{area}\\) on the provided plane to find the physically valid value of \\(x\\), then find the side lengths. Both lengths must be positive.",
+      "answer": "\\(x={x}\\), so the dimensions are {side1} by {side2} units. Reject \\(x={other}\\), which does not give positive side lengths.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = (x+a)*(b*x+c)-area", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb", "domain": { "min": "lower", "max": "xmax" } },
+        "points": [
+          { "x": "x", "y": 0, "label": "Valid root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.3-B1",
@@ -6533,6 +6833,38 @@
       "answer": "\\( {real} {imag|signedCoef}i \\)"
     },
     {
+      "id": "ALG2-3.3-B2",
+      "type": "template",
+      "objective": "3.3 Complex Numbers",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": -8, "max": 8, "exclude": [0] },
+        "real": { "formula": "a+c", "format": "fraction" },
+        "imag": { "formula": "b+d", "format": "fraction" }
+      },
+      "question": "Simplify: \\(({a} {b|signedCoef}i) + ({c} {d|signedCoef}i)\\).",
+      "answer": "\\( {real} {imag|signedCoef}i \\)"
+    },
+    {
+      "id": "ALG2-3.3-B3",
+      "type": "template",
+      "objective": "3.3 Complex Numbers",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": -8, "max": 8, "exclude": [0] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "d": { "min": -8, "max": 8, "exclude": [0] },
+        "real": { "formula": "a-c", "format": "fraction" },
+        "imag": { "formula": "b-d", "format": "fraction" }
+      },
+      "question": "Simplify: \\(({a} {b|signedCoef}i) - ({c} {d|signedCoef}i)\\).",
+      "answer": "\\( {real} {imag|signedCoef}i \\)"
+    },
+    {
       "id": "ALG2-3.3-I1",
       "type": "template",
       "objective": "3.3 Complex Numbers",
@@ -6544,10 +6876,24 @@
         "d": { "min": -5, "max": 5, "exclude": [0] },
         "realnum": { "formula": "a*c + b*d" },
         "imagnum": { "formula": "b*c - a*d" },
-        "denom": { "formula": "c*c + d*d" }
+        "denom": { "formula": "c*c + d*d" },
+        "real": { "formula": "(a*c+b*d)/(c*c+d*d)", "format": "fraction" },
+        "imag": { "formula": "(b*c-a*d)/(c*c+d*d)", "format": "fraction" }
       },
       "question": "Divide and simplify: \\( \\frac{ {a} {b|signedCoef}i }{ {c} {d|signedCoef}i} \\).",
-      "answer": "\\( \\frac{ {realnum} }{ {denom} } + \\frac{ {imagnum} }{ {denom} } i \\)"
+      "answer": "\\( {real} {imag|signedCoef}i \\)"
+    },
+    {
+      "id": "ALG2-3.3-I2",
+      "type": "template",
+      "objective": "3.3 Complex Numbers",
+      "difficulty": "intermediate",
+      "variables": {
+        "n": { "min": 5, "max": 60 },
+        "result": { "formula": "['1','i','-1','-i'][n%4]" }
+      },
+      "question": "Simplify: \\(i^{n}\\).",
+      "answer": "\\({result}\\)"
     },
     {
       "id": "ALG2-3.4-B1",
@@ -6557,11 +6903,37 @@
       "variables": {
         "p": { "min": -9, "max": 9, "exclude": [0] },
         "q": { "min": -9, "max": 9, "exclude": [0, "p"] },
-        "b": { "formula": "p + q" },
+        "b": { "formula": "-(p+q)" },
         "c": { "formula": "p*q" }
       },
       "question": "Solve the quadratic equation by factoring: <br> \\( x^2 {b|signedCoef}x {c|sign} = 0 \\).",
       "answer": "\\( x = {p} \\) or \\( x = {q} \\)"
+    },
+    {
+      "id": "ALG2-3.4-B2",
+      "type": "template",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-4, -3, 2, 3, 4] },
+        "r": { "min": -7, "max": 7, "exclude": [0] },
+        "b": { "formula": "-a*r" }
+      },
+      "question": "Solve by factoring out the greatest common factor: \\({a|coef}x^2 {b|signedCoef}x=0\\).",
+      "answer": "\\(x=0\\) or \\(x={r}\\)."
+    },
+    {
+      "id": "ALG2-3.4-B3",
+      "type": "template",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
+      "difficulty": "basic",
+      "variables": {
+        "r": { "min": 2, "max": 9 },
+        "r2": { "formula": "r*r" },
+        "negr": { "formula": "-r" }
+      },
+      "question": "Solve by factoring: \\(x^2-{r2}=0\\).",
+      "answer": "\\(x={negr}\\) or \\(x={r}\\)."
     },
     {
       "id": "ALG2-3.4-I1",
@@ -6573,11 +6945,26 @@
         "p": { "min": -5, "max": 5, "exclude": [0] },
         "q": { "min": -5, "max": 5, "exclude": [0] },
         "r": { "formula": "-1*p*q" },
-        "negp": { "formula": "-1*p"  },
-        "negq": { "formula": "-1*q" }
+        "negp": { "formula": "-1*p" },
+        "negq": { "formula": "-1*q" },
+        "root": { "formula": "-p/a", "format": "fraction" }
       },
       "question": "Solve for \\(x\\) by factoring: <br> \\( {a}(x^2 {q|signedCoef} x) = {negp|coef} x {r|sign} \\).",
-      "answer": "\\( x = {negq} \\) or \\( x = \\frac{ {negp} }{ {a} } \\)"
+      "answer": "\\(x={negq}\\) or \\(x={root}\\)."
+    },
+    {
+      "id": "ALG2-3.4-I2",
+      "type": "template",
+      "objective": "3.4 Solving Quadratic Equations by Factoring",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [2, 3, 4] },
+        "r": { "min": -6, "max": 6, "exclude": [0] },
+        "b": { "formula": "-2*a*r" },
+        "c": { "formula": "a*r*r" }
+      },
+      "question": "Solve by factoring: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\(x={r}\\) is a repeated root."
     },
     {
       "id": "ALG2-3.4-A1",
@@ -6589,9 +6976,9 @@
         "p": { "min": 1, "max": 9 },
         "q": { "min": -10, "max": -5 },
         "b": { "formula": "-1*(a*q + p)" },
-        "area": { "formula": "-1*p*q"  },
-        "width": { "formula": "-1*q"  },
-        "length": { "formula": "a*width - b"  }
+        "area": { "formula": "-1*p*q" },
+        "width": { "formula": "-1*q" },
+        "length": { "formula": "a*width - b" }
       },
       "question": "The area of a rectangle is \\( {area} ft^2 \\). The length is \\( {b} ft\\) less than {a} times the width. Find the dimensions of the rectangle.",
       "answer": "\\( {length} ft\\) by \\( {width} ft\\)"
@@ -6602,14 +6989,21 @@
       "objective": "3.5 Solving Quadratic Equations by Completing the Square",
       "difficulty": "basic",
       "variables": {
-        "p": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "formula": "2*p" },
-        "square": { "values": [1,4,9,16,25,36,49,64,81,100] },
-        "randint": { "formula": "square - p*p" },
-        "c": { "formula": "p*p - randint"  }
+        "a": 1,
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": 1,
+        "deltaSign": 1,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
       },
-      "question": "Solve for \\( x \\) by completing the square: <br> \\( x^2 {b|signedCoef}x {c|signedCoef} = 0 \\).",
-      "answer": "\\( x = {p} + \\sqrt{{randint}} \\) or \\( x = {p} - \\sqrt{{randint}} \\)"
+      "question": "Solve by completing the square. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\((x {negh|sign})^2={rad}\\), so \\(x={left}\\) or \\(x={right}\\)."
     },
     {
       "id": "ALG2-3.5-I1",
@@ -6617,14 +7011,43 @@
       "objective": "3.5 Solving Quadratic Equations by Completing the Square",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 1, "max": 5 },
-        "p": { "min": -10, "max": 10, "exclude": [0] },
-        "b": { "formula": "2*a*p" },
-        "randint": { "min": 1, "max": 10 },
-        "c": { "formula": "a*p*p - randint"  }
+        "a": { "values": [2, 3, 4, 5] },
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": { "values": [2, 3, 5, 6, 7] },
+        "deltaSign": 1,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
       },
-      "question": "Solve for \\( x \\) by completing the square: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|signedCoef} = 0 \\).",
-      "answer": "\\( x = {p} + \\sqrt{{randint}/a} \\) or \\( x = {p} - \\sqrt{{randint}/a} \\)"
+      "question": "Solve by completing the square. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\((x {negh|sign})^2={rad}\\), so \\(x={h}\\pm {radicalCoef}\\sqrt{{d}}\\)."
+    },
+    {
+      "id": "ALG2-3.5-A1",
+      "type": "template",
+      "objective": "3.5 Solving Quadratic Equations by Completing the Square",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [2, 3, 4, 5] },
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": { "values": [2, 3, 5, 6, 7] },
+        "deltaSign": -1,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
+      },
+      "question": "Solve by completing the square. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\((x {negh|sign})^2={rad}\\), so \\(x={h}\\pm {radicalCoef}i\\sqrt{{d}}\\)."
     },
     {
       "id": "ALG2-3.6-B1",
@@ -6633,14 +7056,36 @@
       "difficulty": "basic",
       "variables": {
         "p": { "min": -10, "max": 10, "exclude": [0] },
-        "q": { "min": -10, "max": 10, "exclude": [0,"p"] },
+        "q": { "min": -10, "max": 10, "exclude": [0, "p"] },
         "b": { "formula": "-1*(p + q)" },
         "c": { "formula": "p*q" },
         "discriminant": { "formula": "b*b - 4*c" },
         "sqrtDisc": { "formula": "sqrt(discriminant)" }
       },
       "question": "Solve for \\( x \\) using the quadratic formula or the quadratic method: <br> \\( x^2 {b|signedCoef}x {c|sign} = 0 \\).",
-      "answer": "\\( x = \\frac{ {-b + sqrt({discriminant})} }{2} \\) or \\( x = \\frac{ {-b - sqrt({discriminant})} }{2} \\)"
+      "answer": "\\(x={p}\\) or \\(x={q}\\). The discriminant is \\({discriminant}\\)."
+    },
+    {
+      "id": "ALG2-3.6-B2",
+      "type": "template",
+      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
+      "difficulty": "basic",
+      "variables": {
+        "a": 1,
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": 1,
+        "deltaSign": 0,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
+      },
+      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\(x={h}\\) is a repeated root."
     },
     {
       "id": "ALG2-3.6-I1",
@@ -6648,13 +7093,43 @@
       "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 1, "max": 5 },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": -10, "max": 10, "exclude": [0] },
-        "discriminant": { "formula": "b*b - 4*a*c" }
+        "a": { "values": [2, 3, 4, 5] },
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": { "values": [2, 3, 5, 6, 7] },
+        "deltaSign": 1,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
       },
-      "question": "Solve for \\( x \\) using the quadratic formula or the quadratic method: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|sign} = 0 \\).",
-      "answer": "\\( x = \\frac{ {-b + sqrt({discriminant})} }{2*a} \\) or \\( x = \\frac{ {-b - sqrt({discriminant})} }{2*a} \\)"
+      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\(x={h}\\pm {radicalCoef}\\sqrt{{d}}\\)."
+    },
+    {
+      "id": "ALG2-3.6-I2",
+      "type": "template",
+      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "values": [2, 3, 4, 5] },
+        "h": { "min": -6, "max": 6, "exclude": [0] },
+        "s": { "min": 1, "max": 4 },
+        "d": { "values": [2, 3, 5, 6, 7] },
+        "deltaSign": -1,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
+        "negh": { "formula": "-h" },
+        "rad": { "formula": "deltaSign*s*s*d" },
+        "left": { "formula": "h-s" },
+        "right": { "formula": "h+s" },
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
+      },
+      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\(x={h}\\pm {radicalCoef}i\\sqrt{{d}}\\)."
     },
     {
       "id": "ALG2-3.6-A1",
@@ -6664,10 +7139,32 @@
       "variables": {
         "v_0": { "min": -50, "max": 50, "exclude": [0] },
         "p_0": { "min": 1, "max": 100 },
-        "t": { "formula": "(-v_0 + sqrt(v_0*v_0 + 64*p_0))/32" }
+        "t": { "formula": "round(landing*100)/100", "format": "decimal" },
+        "b": { "formula": "v_0" },
+        "c": { "formula": "p_0" },
+        "landing": { "formula": "(b+sqrt(b*b+64*c))/32" },
+        "peakTime": { "formula": "max(0,b/32)" },
+        "peakHeight": { "formula": "-16*peakTime*peakTime+b*peakTime+c" },
+        "tmax": { "formula": "round(peakTime*100)/100", "format": "decimal" },
+        "hmax": { "formula": "round(peakHeight*100)/100", "format": "decimal" },
+        "xmin": -0.25,
+        "xmax": { "formula": "ceil(landing+0.5)" },
+        "ymin": -5,
+        "ymax": { "formula": "ceil((peakHeight+5)/10)*10" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "A ball is thrown from the top of a building. The height of the ball in feet after t seconds is given by the equation \\( h(t) = -16t^2 {v_0|signedCoef}t + {p_0} \\). When will the ball hit the ground? Round your answers to the nearest hundredth if needed.",
-      "answer": "\\( t \\approx {t} \\) seconds."
+      "question": "A ball's height in feet after \\(t\\) seconds is \\( h(t)=-16t^2 {v_0|signedCoef}t+{p_0} \\). Use the quadratic formula to find when it hits the ground. Round to the nearest hundredth. The answer graph uses time in seconds horizontally and height in feet vertically.",
+      "answer": "The ball hits the ground after approximately {t} seconds. Discard the negative time.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = -16*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb", "domain": { "min": 0, "max": "landing" } },
+        "points": [
+          { "x": "landing", "y": 0, "label": "Ground", "showInQuestion": false, "showInAnswer": true },
+          { "x": "peakTime", "y": "peakHeight", "label": "Maximum", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.7-B1",
@@ -6675,13 +7172,23 @@
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "basic",
       "variables": {
-        "h" : { "min": -3, "max": 3, "exclude": [0] },
-        "k" : { "min": -3, "max": 3, "exclude": [0,"h"] },
-        "b" : { "formula": "-2*h" },
-        "c" : { "formula": "h*h+k" }
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*h*h+k" },
+        "opening": { "formula": "a>0 ? 'upward' : 'downward'" }
       },
-      "question": "Graph the quadratic inequality. Be sure to identify the vertex and the correct shaded region: <br> \\( x^2 {b|signedCoef}x {c|sign} < y \\).",
-      "answer": "\\(Vertex: ({h}, {k})\\) dotted curve opening upward, shaded below the curve."
+      "question": "Graph \\(y > {a|coef}x^2 {b|signedCoef}x {c|sign}\\) on the coordinate plane provided. Identify the vertex and shade the solution region.",
+      "answer": "Vertex: \\(({h},{k})\\). The parabola opens {opening}. Use a dashed (excluded) boundary and shade above the curve.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -10, "yMax": 10 },
+        "eq1": { "relation": "y > a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "fillColor": "#ffffff", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true
+      }
     },
     {
       "id": "ALG2-3.7-B2",
@@ -6689,13 +7196,71 @@
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "basic",
       "variables": {
-        "h" : { "min": -3, "max": 3, "exclude": [0] },
-        "k" : { "min": -3, "max": 3, "exclude": [0,"h"] },
-        "b" : { "formula": "-2*h" },
-        "c" : { "formula": "h*h+k" }
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*h*h+k" },
+        "opening": { "formula": "a>0 ? 'upward' : 'downward'" }
       },
-      "question": "Graph the quadratic inequality. Be sure to identify the vertex and the correct shaded region: <br> \\( x^2 {b|signedCoef}x {c|sign} > y \\).",
-      "answer": "\\(Vertex: ({h}, {k})\\) dotted curve opening upward, shaded above the curve."
+      "question": "Graph \\(y < {a|coef}x^2 {b|signedCoef}x {c|sign}\\) on the coordinate plane provided. Identify the vertex and shade the solution region.",
+      "answer": "Vertex: \\(({h},{k})\\). The parabola opens {opening}. Use a dashed (excluded) boundary and shade below the curve.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -10, "yMax": 10 },
+        "eq1": { "relation": "y < a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "fillColor": "#ffffff", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true
+      }
+    },
+    {
+      "id": "ALG2-3.7-B3",
+      "type": "template",
+      "objective": "3.7 Quadratic Inequalities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*h*h+k" },
+        "opening": { "formula": "a>0 ? 'upward' : 'downward'" }
+      },
+      "question": "Graph \\(y \\geq {a|coef}x^2 {b|signedCoef}x {c|sign}\\) on the coordinate plane provided. Identify the vertex and shade the solution region.",
+      "answer": "Vertex: \\(({h},{k})\\). The parabola opens {opening}. Use a solid (included) boundary and shade above the curve.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -10, "yMax": 10 },
+        "eq1": { "relation": "y >= a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true
+      }
+    },
+    {
+      "id": "ALG2-3.7-B4",
+      "type": "template",
+      "objective": "3.7 Quadratic Inequalities",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "values": [-2, -1, 1, 2] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*h*h+k" },
+        "opening": { "formula": "a>0 ? 'upward' : 'downward'" }
+      },
+      "question": "Graph \\(y \\leq {a|coef}x^2 {b|signedCoef}x {c|sign}\\) on the coordinate plane provided. Identify the vertex and shade the solution region.",
+      "answer": "Vertex: \\(({h},{k})\\). The parabola opens {opening}. Use a solid (included) boundary and shade below the curve.",
+      "draw": {
+        "window": { "xMin": -7, "xMax": 7, "yMin": -10, "yMax": 10 },
+        "eq1": { "relation": "y <= a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true
+      }
     },
     {
       "id": "ALG2-3.7-I1",
@@ -6703,14 +7268,38 @@
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "intermediate",
       "variables": {
-        "a" : { "min": -3, "max": 3, "exclude": [0,1] },
-        "p" : { "min": -5, "max": 5, "exclude": [0] },
-        "q" : { "min": -5, "max": 5, "exclude": [0,"p"] },
-        "b" : { "formula": "-1*(p + a*q)" },
-        "c" : { "formula": "p*q" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -4, "max": 4, "exclude": [0] },
+        "r": { "formula": "p/a", "format": "fraction", "exclude": ["q"] },
+        "b": { "formula": "-(p+a*q)" },
+        "c": { "formula": "p*q" },
+        "left": { "formula": "min(p/a,q)", "format": "fraction" },
+        "right": { "formula": "max(p/a,q)", "format": "fraction" },
+        "outside": { "formula": "a<0" },
+        "connector": { "formula": "outside ? '\\\\text{ or }' : '\\\\text{ and }'" },
+        "leftSign": { "formula": "outside ? '\\\\leq' : '\\\\geq'" },
+        "rightSign": { "formula": "outside ? '\\\\geq' : '\\\\leq'" },
+        "h": { "formula": "-b/(2*a)" },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve the quadratic inequality by any method: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|sign} \\leq 0 \\).",
-      "answer": "\\(x \\leq {q}, x \\geq \\frac{ {p} }{ {a} } \\)"
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} \\leq 0\\). Sketch the parabola on the provided plane to justify your solution.",
+      "answer": "\\(x {leftSign} {left} {connector} x {rightSign} {right}\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.7-I2",
@@ -6718,14 +7307,38 @@
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "intermediate",
       "variables": {
-        "a" : { "min": -3, "max": 3, "exclude": [0,1] },
-        "p" : { "min": -5, "max": 5, "exclude": [0] },
-        "q" : { "min": -5, "max": 5, "exclude": [0,"p"] },
-        "b" : { "formula": "-1*(p + a*q)" },
-        "c" : { "formula": "p*q" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "p": { "min": -5, "max": 5, "exclude": [0] },
+        "q": { "min": -4, "max": 4, "exclude": [0] },
+        "r": { "formula": "p/a", "format": "fraction", "exclude": ["q"] },
+        "b": { "formula": "-(p+a*q)" },
+        "c": { "formula": "p*q" },
+        "left": { "formula": "min(p/a,q)", "format": "fraction" },
+        "right": { "formula": "max(p/a,q)", "format": "fraction" },
+        "outside": { "formula": "a>0" },
+        "connector": { "formula": "outside ? '\\\\text{ or }' : '\\\\text{ and }'" },
+        "leftSign": { "formula": "outside ? '<' : '>'" },
+        "rightSign": { "formula": "outside ? '>' : '<'" },
+        "h": { "formula": "-b/(2*a)" },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve the quadratic inequality by any method: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|sign} > 0 \\).",
-      "answer": "\\(x > {q}, x < \\frac{ {p} }{ {a} } \\)"
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} > 0\\). Sketch the parabola on the provided plane to justify your solution.",
+      "answer": "\\(x {leftSign} {left} {connector} x {rightSign} {right}\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.7-A1",
@@ -6733,29 +7346,135 @@
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "advanced",
       "variables": {
-        "a" : { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b" : { "min": -10, "max": 10, "exclude": [0] },
-        "c" : { "min": -10, "max": 10, "exclude": [0] },
-        "zero1": { "formula": "(-b + sqrt(b*b - 4*a*c))/(2*a)" },
-        "zero2": { "formula": "(-b - sqrt(b*b - 4*a*c))/(2*a)" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-d)" },
+        "left": { "formula": "h-sqrt(d)" },
+        "right": { "formula": "h+sqrt(d)" },
+        "outside": { "formula": "a>0" },
+        "connector": { "formula": "outside ? '\\\\text{ or }' : '\\\\text{ and }'" },
+        "leftSign": { "formula": "outside ? '<' : '>'" },
+        "rightSign": { "formula": "outside ? '>' : '<'" },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" },
+        "d": { "values": [2, 3, 5, 6, 7] }
       },
-      "question": "Solve the quadratic inequality by any method: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|sign} > 0 \\).",
-      "answer": "\\(x > {zero1}, x < {zero2} \\) If there are errors, the solution is all real numbers or no solution."
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} > 0\\). Give exact endpoints. Sketch the parabola on the provided plane to justify your solution.",
+      "answer": "\\(x {leftSign} ({h}-\\sqrt{{d}}) {connector} x {rightSign} ({h}+\\sqrt{{d}})\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
-      "id": "ALG2-3.7-A1",
+      "id": "ALG2-3.7-A2",
       "type": "template",
       "objective": "3.7 Quadratic Inequalities",
       "difficulty": "advanced",
       "variables": {
-        "a" : { "min": -3, "max": 3, "exclude": [0,1,-1] },
-        "b" : { "min": -10, "max": 10, "exclude": [0] },
-        "c" : { "min": -10, "max": 10, "exclude": [0] },
-        "zero1": { "formula": "(-b + sqrt(b*b - 4*a*c))/(2*a)" },
-        "zero2": { "formula": "(-b - sqrt(b*b - 4*a*c))/(2*a)" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-d)" },
+        "left": { "formula": "h-sqrt(d)" },
+        "right": { "formula": "h+sqrt(d)" },
+        "outside": { "formula": "a<0" },
+        "connector": { "formula": "outside ? '\\\\text{ or }' : '\\\\text{ and }'" },
+        "leftSign": { "formula": "outside ? '<' : '>'" },
+        "rightSign": { "formula": "outside ? '>' : '<'" },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "formula": "a*h*h+b*h+c" },
+        "xmin": { "formula": "floor(min(-1,left-2))" },
+        "xmax": { "formula": "ceil(max(1,right+2))" },
+        "ymin": { "formula": "floor(min(-2,k-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" },
+        "d": { "values": [2, 3, 5, 6, 7] }
       },
-      "question": "Solve the quadratic inequality by any method: <br> \\( {a|coef}x^2 {b|signedCoef}x {c|sign} < 0 \\).",
-      "answer": "\\(x < {zero1}, x > {zero2} \\) If there are errors, the solution is all real numbers or no solution."
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} < 0\\). Give exact endpoints. Sketch the parabola on the provided plane to justify your solution.",
+      "answer": "\\(x {leftSign} ({h}-\\sqrt{{d}}) {connector} x {rightSign} ({h}+\\sqrt{{d}})\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "left", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "Root", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.7-A3",
+      "type": "template",
+      "objective": "3.7 Quadratic Inequalities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-3, -2, 2, 3] },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
+        "gap": { "min": 1, "max": 5 },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h+gap)" },
+        "result": { "formula": "a>0 ? 'All real numbers.' : 'No solution.'" },
+        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} > 0\\). Use the provided plane to justify your answer.",
+      "answer": "{result}",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.7-A4",
+      "type": "template",
+      "objective": "3.7 Quadratic Inequalities",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-3, -2, 2, 3] },
+        "h": { "min": -4, "max": 4, "exclude": [0] },
+        "gap": 0,
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h+gap)" },
+        "result": { "formula": "a>0 ? 'x = '+h+'.' : 'All real numbers.'" },
+        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "xmin": { "formula": "floor(min(-1,h-4))" },
+        "xmax": { "formula": "ceil(max(1,h+4))" },
+        "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
+        "ymax": { "formula": "ceil(max(2,k+2,k+4*a+2))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve \\({a|coef}x^2 {b|signedCoef}x {c|sign} \\leq 0\\). Use the provided plane to justify your answer.",
+      "answer": "{result}",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "points": [
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.8-B1",
@@ -6763,17 +7482,82 @@
       "objective": "3.8 Solving Nonlinear Systems of Equations",
       "difficulty": "basic",
       "variables": {
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0,"p"] },
-        "m": { "min": 1, "max": 10 },
-        "d": { "min": 1, "max": 10 },
+        "p": { "min": -3, "max": 3, "exclude": [0] },
+        "q": { "min": -3, "max": 3, "exclude": [0, "p"] },
+        "m": { "values": [-2, -1, 1, 2] },
+        "d": { "min": -3, "max": 3 },
         "b": { "formula": "m-1*(p + q)" },
-        "c": { "formula": "p*q + d"  },
-        "y1": { "formula": "m*p + d"  },
-        "y2": { "formula": "m*q + d"  }
+        "c": { "formula": "p*q + d" },
+        "y1": { "formula": "m*p + d" },
+        "y2": { "formula": "m*q + d" },
+        "a1": 1,
+        "b1": { "formula": "b" },
+        "c1": { "formula": "c" },
+        "a2": 0,
+        "b2": { "formula": "m" },
+        "c2": { "formula": "d" },
+        "root1": { "formula": "p" },
+        "root2": { "formula": "q" },
+        "v1": { "formula": "-b1/(2*a1)" },
+        "w1": { "formula": "a1*v1*v1+b1*v1+c1" },
+        "xmin": { "formula": "floor(min(-1,root1-2,root2-2,v1-2))" },
+        "xmax": { "formula": "ceil(max(1,root1+2,root2+2,v1+2))" },
+        "ymin": { "formula": "floor(min(-2,y1-3,y2-3,w1-3))" },
+        "ymax": { "formula": "ceil(max(2,y1+3,y2+3,w1+3))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve the system of equations. Show your work. (if you solved with the graph, make a sketch): <br> \\( y = x^2 {b|signedCoef}x {c|sign} \\) <br> \\( y = {m|coef}x {d|sign} \\)",
-      "answer": "\\( ({p}, {y1}) \\) or \\( ({q}, {y2}) \\)"
+      "question": "Solve the system. Show algebraic work and sketch both graphs on the provided coordinate plane:<br>\\(y={a1|coef}x^2 {b1|signedCoef}x {c1|sign}\\)<br>\\(y={a2|coef}x^2 {b2|signedCoef}x {c2|sign}\\)",
+      "answer": "\\(({root1},{y1})\\) and \\(({root2},{y2})\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a1*x^2+b1*x+c1", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a2*x^2+b2*x+c2", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626" },
+        "points": [
+          { "x": "root1", "y": "y1", "label": "Intersection", "showInQuestion": false, "showInAnswer": true },
+          { "x": "root2", "y": "y2", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.8-B2",
+      "type": "template",
+      "objective": "3.8 Solving Nonlinear Systems of Equations",
+      "difficulty": "basic",
+      "variables": {
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "a1": { "values": [-2, -1, 1, 2] },
+        "b2": { "values": [-2, -1, 1, 2] },
+        "c2": { "min": -3, "max": 3 },
+        "a2": 0,
+        "gap": 0,
+        "b1": { "formula": "b2-2*a1*h" },
+        "c1": { "formula": "c2+a1*(h*h+gap)" },
+        "root1": { "formula": "h" },
+        "root2": { "formula": "h" },
+        "y1": { "formula": "b2*h+c2" },
+        "y2": { "formula": "y1" },
+        "v1": { "formula": "-b1/(2*a1)" },
+        "w1": { "formula": "a1*v1*v1+b1*v1+c1" },
+        "xmin": { "formula": "floor(min(-1,root1-2,root2-2,v1-2))" },
+        "xmax": { "formula": "ceil(max(1,root1+2,root2+2,v1+2))" },
+        "ymin": { "formula": "floor(min(-2,y1-3,y2-3,w1-3))" },
+        "ymax": { "formula": "ceil(max(2,y1+3,y2+3,w1+3))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve the system. Show algebraic work and sketch both graphs on the provided coordinate plane:<br>\\(y={a1|coef}x^2 {b1|signedCoef}x {c1|sign}\\)<br>\\(y={a2|coef}x^2 {b2|signedCoef}x {c2|sign}\\)",
+      "answer": "One solution: \\(({root1},{y1})\\). The line is tangent to the parabola.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a1*x^2+b1*x+c1", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a2*x^2+b2*x+c2", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626" },
+        "points": [
+          { "x": "root1", "y": "y1", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     },
     {
       "id": "ALG2-3.8-I1",
@@ -6781,25 +7565,78 @@
       "objective": "3.8 Solving Nonlinear Systems of Equations",
       "difficulty": "intermediate",
       "variables": {
-        "leadingCoef": { "min": 2, "max": 5 },
-        "p": { "min": -5, "max": 5, "exclude": [0] },
-        "q": { "min": -5, "max": 5, "exclude": [0, "p"] },
-
-        "a2": { "min": -5, "max": 5 },
-        "b2": { "min": -10, "max": 10 },
-        "c2": { "min": -10, "max": 10 },
-
-        "a1": { "formula": "leadingCoef + a2" },
+        "leadingCoef": { "values": [2, 3] },
+        "p": { "min": -3, "max": 3, "exclude": [0] },
+        "q": { "min": -3, "max": 3, "exclude": [0] },
+        "a2": { "values": [-3, -2, -1, 1, 2] },
+        "b2": { "min": -3, "max": 3 },
+        "c2": { "min": -3, "max": 3 },
+        "a1": { "formula": "leadingCoef + a2", "exclude": [0] },
         "b1": { "formula": "b2-(leadingCoef*q+p)" },
         "c1": { "formula": "p*q+c2" },
-
-        "y1": { "formula": "a1*Math.pow(p/a1,2) + b1*(p/a1) + c1" },
-        "y2": { "formula": "a1*q*q + b1*q + c1" }
+        "y1": { "formula": "a1*root1*root1+b1*root1+c1", "format": "fraction" },
+        "y2": { "formula": "a1*q*q + b1*q + c1" },
+        "root1": { "formula": "p/leadingCoef", "format": "fraction", "exclude": ["q"] },
+        "root2": { "formula": "q" },
+        "v1": { "formula": "-b1/(2*a1)" },
+        "w1": { "formula": "a1*v1*v1+b1*v1+c1" },
+        "xmin": { "formula": "floor(min(-1,root1-2,root2-2,v1-2))" },
+        "xmax": { "formula": "ceil(max(1,root1+2,root2+2,v1+2))" },
+        "ymin": { "formula": "floor(min(-2,y1-3,y2-3,w1-3))" },
+        "ymax": { "formula": "ceil(max(2,y1+3,y2+3,w1+3))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "Solve the system of equations. Show your work. (if you solved with the graph, make a sketch): <br> \\( y = {a1|coef}x^2 {b1|signedCoef}x {c1|sign} \\) <br> \\( y = {a2|coef}x^2 {b2|signedCoef}x {c2|sign} \\)",
-      "answer": "\\( (\\frac{ {p} }{ {leadingCoef} }, {y1}) \\) or \\( ({q}, {y2}) \\)"
+      "question": "Solve the system. Show algebraic work and sketch both graphs on the provided coordinate plane:<br>\\(y={a1|coef}x^2 {b1|signedCoef}x {c1|sign}\\)<br>\\(y={a2|coef}x^2 {b2|signedCoef}x {c2|sign}\\)",
+      "answer": "\\(({root1},{y1})\\) and \\(({root2},{y2})\\).",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a1*x^2+b1*x+c1", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a2*x^2+b2*x+c2", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626" },
+        "points": [
+          { "x": "root1", "y": "y1", "label": "Intersection", "showInQuestion": false, "showInAnswer": true },
+          { "x": "root2", "y": "y2", "label": "Intersection", "showInQuestion": false, "showInAnswer": true }
+        ],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
+    },
+    {
+      "id": "ALG2-3.8-I2",
+      "type": "template",
+      "objective": "3.8 Solving Nonlinear Systems of Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "a1": { "values": [-2, -1, 1, 2] },
+        "b2": { "values": [-2, -1, 1, 2] },
+        "c2": { "min": -3, "max": 3 },
+        "a2": 0,
+        "gap": { "min": 1, "max": 4 },
+        "b1": { "formula": "b2-2*a1*h" },
+        "c1": { "formula": "c2+a1*(h*h+gap)" },
+        "root1": { "formula": "h" },
+        "root2": { "formula": "h" },
+        "y1": { "formula": "b2*h+c2" },
+        "y2": { "formula": "y1" },
+        "v1": { "formula": "-b1/(2*a1)" },
+        "w1": { "formula": "a1*v1*v1+b1*v1+c1" },
+        "xmin": { "formula": "floor(min(-1,root1-2,root2-2,v1-2))" },
+        "xmax": { "formula": "ceil(max(1,root1+2,root2+2,v1+2))" },
+        "ymin": { "formula": "floor(min(-2,y1-3,y2-3,w1-3))" },
+        "ymax": { "formula": "ceil(max(2,y1+3,y2+3,w1+3))" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+      },
+      "question": "Solve the system. Show algebraic work and sketch both graphs on the provided coordinate plane:<br>\\(y={a1|coef}x^2 {b1|signedCoef}x {c1|sign}\\)<br>\\(y={a2|coef}x^2 {b2|signedCoef}x {c2|sign}\\)",
+      "answer": "No real solution: the graphs do not intersect.",
+      "draw": {
+        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a1*x^2+b1*x+c1", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "eq2": { "relation": "y = a2*x^2+b2*x+c2", "showInQuestion": false, "showInAnswer": true, "color": "#dc2626" },
+        "points": [],
+        "showAxisLabels": true,
+        "gridStep": { "x": 1, "y": "gridY" }
+      }
     }
-
   ],
   "4: Polynomial Functions": [
     {

@@ -263,19 +263,21 @@ class DrawingEngine {
 
     const bounds = this.normalizeWindow(windowConfig || this.defaultWindow, variables || {});
     const env = this.setupCanvas(ctx.canvas, bounds);
-    this.drawGrid(env, 1);
+    const drawConfig = options?.drawConfig || {};
+    this.drawGrid(env, drawConfig.gridStep || 1, drawConfig, variables || {});
   }
 
-  drawGrid(env, step = 1) {
+  drawGrid(env, step = 1, options = {}, variables = {}) {
     const { ctx, xMin, xMax, yMin, yMax } = env;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    const gridStep = Math.max(0.1, Number(step) || 1);
+    const xStep = Math.max(0.1, this.resolveNumericValue(typeof step === 'object' ? step.x : step, variables, 1));
+    const yStep = Math.max(0.1, this.resolveNumericValue(typeof step === 'object' ? step.y : step, variables, 1));
     ctx.strokeStyle = "#e0e0e0";
     ctx.lineWidth = 1;
 
-    const startX = Math.ceil(xMin / gridStep) * gridStep;
-    for (let x = startX; x <= xMax + 1e-9; x += gridStep) {
+    const startX = Math.ceil(xMin / xStep) * xStep;
+    for (let x = startX; x <= xMax + 1e-9; x += xStep) {
       const px = this.xToPixel(x, env);
       ctx.beginPath();
       ctx.moveTo(px, 0);
@@ -283,8 +285,8 @@ class DrawingEngine {
       ctx.stroke();
     }
 
-    const startY = Math.ceil(yMin / gridStep) * gridStep;
-    for (let y = startY; y <= yMax + 1e-9; y += gridStep) {
+    const startY = Math.ceil(yMin / yStep) * yStep;
+    for (let y = startY; y <= yMax + 1e-9; y += yStep) {
       const py = this.yToPixel(y, env);
       ctx.beginPath();
       ctx.moveTo(0, py);
@@ -310,6 +312,31 @@ class DrawingEngine {
       ctx.lineTo(ctx.canvas.width, py);
       ctx.stroke();
     }
+    if (options.showAxisLabels) this.drawAxisLabels(env, xStep, yStep);
+  }
+
+  drawAxisLabels(env, xStep, yStep) {
+    const { ctx, xMin, xMax, yMin, yMax } = env;
+    ctx.save();
+    ctx.fillStyle = '#555';
+    ctx.font = '10px sans-serif';
+    const xLabelStep = xStep * Math.max(1, Math.ceil(36 / (env.xScale * xStep)));
+    const yLabelStep = yStep * Math.max(1, Math.ceil(20 / (env.yScale * yStep)));
+    const label = value => String(Number(value.toFixed(6)));
+    const axisY = Math.max(12, Math.min(ctx.canvas.height - 12, this.yToPixel(0, env) + 12));
+    const axisX = Math.max(22, Math.min(ctx.canvas.width - 22, this.xToPixel(0, env) - 5));
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let x = Math.ceil(xMin / xLabelStep) * xLabelStep; x < xMax; x += xLabelStep) {
+      const px = this.xToPixel(x, env);
+      if (Math.abs(x) > 1e-9 && px > 12 && px < ctx.canvas.width - 12) ctx.fillText(label(x), px, axisY);
+    }
+    ctx.textAlign = 'right';
+    for (let y = Math.ceil(yMin / yLabelStep) * yLabelStep; y < yMax; y += yLabelStep) {
+      const py = this.yToPixel(y, env);
+      if (Math.abs(y) > 1e-9 && py > 8 && py < ctx.canvas.height - 8) ctx.fillText(label(y), axisX, py);
+    }
+    ctx.restore();
   }
 
   drawPolarGrid(env, polarConfig) {
@@ -889,6 +916,7 @@ class DrawingEngine {
       ctx.lineTo(this.xToPixel(segment.max, env), py);
       ctx.stroke();
     }
+
     ctx.setLineDash([]);
     for (const segment of segments) {
       if (segment.y < env.yMin || segment.y > env.yMax) continue;
@@ -1172,7 +1200,7 @@ class DrawingEngine {
     const gridStep = drawConfig.gridStep || 1;
 
     if (showGrid) {
-      this.drawGrid(env, gridStep);
+      this.drawGrid(env, gridStep, drawConfig, variables);
     }
 
     const rawEquations = this.extractEquationConfigs(drawConfig);

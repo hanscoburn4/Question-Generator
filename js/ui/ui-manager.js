@@ -6,7 +6,9 @@ class UIManager {
   constructor() {
     this.selectedQuestions = [];
     this.showAnswers = false;
-    this.customTitle = "SMWYK - Name: ____________";
+    this.studentName = "";
+    this.assignmentDate = "";
+    this.customTitle = "Course - Module/Unit - Lessons - Name: ______________";
     this.questionColumns = 1;
     this.questionSpacing = 20;
     this.pxToPtRatio = 0.75;
@@ -61,9 +63,13 @@ class UIManager {
       this.savePdf();
     });
 
-    // Custom title input
+    // The name is editable; the rest of the title follows selected questions.
     document.getElementById("customTitle").addEventListener("input", (e) => {
-      this.customTitle = e.target.value || "SMWYK - Name: ____________";
+      this.studentName = e.target.value;
+      this.updateDisplayedTitle();
+    });
+    document.getElementById("assignmentDate").addEventListener("input", (e) => {
+      this.assignmentDate = e.target.value;
       this.updateDisplayedTitle();
     });
 
@@ -365,6 +371,7 @@ class UIManager {
    * Render preview section
    */
   renderPreview() {
+    this.updateDisplayedTitle();
     const preview = document.getElementById("assignmentPreview");
     preview.innerHTML = "";
 
@@ -556,9 +563,30 @@ class UIManager {
    * Update the displayed title
    */
   updateDisplayedTitle() {
-    const titleElement = document.getElementById("displayTitle");
-    if (titleElement) {
-      titleElement.textContent = this.customTitle;
+    const sortUnique = values => [...new Set(values.filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+    const courses = sortUnique(this.selectedQuestions.map(q => q.course));
+    const chapters = sortUnique(this.selectedQuestions.map(q => {
+      const chapter = q.chapter || "";
+      return /^\d+\s*:/.test(chapter) ? `Unit ${chapter}` : chapter;
+    }));
+    const lessons = sortUnique(this.selectedQuestions.flatMap(q => {
+      // IDs include ALG1-4.1 & 4.2-B1, PC-1.1a-B1, and G.1.1-B1.
+      const lesson = String(q.lesson || q.id || "");
+      return lesson.match(/\d+\.\d+[a-z]?/gi) || [];
+    }));
+    this.titleHeading = `${courses.join(", ") || "Course"} - ${chapters.join(", ") || "Module/Unit"}`;
+    this.titleLessons = lessons.length ? `Lessons ${lessons.join(", ")}` : "Lessons";
+    this.titleName = `Name: ${this.studentName.trim() || "______________"}`;
+    this.titleDate = `Date: ${this.assignmentDate.trim() || "__________"}`;
+    this.customTitle = `${this.titleHeading} - ${this.titleLessons} - ${this.titleName} - ${this.titleDate}`;
+    for (const [id, text] of Object.entries({
+      generatedTitle: this.titleHeading, generatedLessons: this.titleLessons,
+      displayTitle: this.titleHeading, displayLessons: this.titleLessons,
+      displayName: this.titleName, displayDate: this.titleDate
+    })) {
+      const element = document.getElementById(id);
+      if (element) element.textContent = text;
     }
   }
 
@@ -638,6 +666,7 @@ class UIManager {
    * Display final assignment with questions and answers
    */
   displayFinalAssignment() {
+    this.updateDisplayedTitle();
     const output = document.getElementById("output");
     output.innerHTML = "";
 
@@ -665,7 +694,27 @@ class UIManager {
     // Add custom title
     const titleDiv = document.createElement("div");
     titleDiv.className = "assignment-title";
-    titleDiv.innerHTML = `<h2 id="displayTitle">${this.customTitle}</h2>`;
+    const heading = document.createElement("h2");
+    heading.id = "displayTitle";
+    heading.textContent = this.titleHeading;
+    titleDiv.appendChild(heading);
+    const details = document.createElement("div");
+    details.className = "assignment-details";
+    const lessons = document.createElement("span");
+    lessons.id = "displayLessons";
+    lessons.className = "assignment-lessons";
+    lessons.textContent = this.titleLessons;
+    details.appendChild(lessons);
+    const student = document.createElement("div");
+    student.className = "assignment-student";
+    for (const [id, text] of [["displayName", this.titleName], ["displayDate", this.titleDate]]) {
+      const field = document.createElement("span");
+      field.id = id;
+      field.textContent = text;
+      student.appendChild(field);
+    }
+    details.appendChild(student);
+    titleDiv.appendChild(details);
     output.appendChild(titleDiv);
 
     // Re-bind the toggle event after creating the button

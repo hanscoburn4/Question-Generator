@@ -183,7 +183,11 @@ class QuestionGenerator {
   getQuestionsFromChapters(course, chapters) {
     if (!this.questionBank[course]) return [];
     return chapters.flatMap(chapter =>
-      this.questionBank[course][chapter] || []
+      (this.questionBank[course][chapter] || []).map(question => ({
+        ...question,
+        course,
+        chapter
+      }))
     );
   }
 
