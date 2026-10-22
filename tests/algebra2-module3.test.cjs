@@ -46,7 +46,9 @@ function canvas() {
 
 test('Module 3 has unique IDs, dynamic coverage, and fully resolved finite examples', () => {
   assert.equal(new Set(templates.map(q => q.id)).size, templates.length);
-  assert.equal(templates.length, 42);
+  for (let section=1;section<=8;section++) {
+    assert.ok(templates.some(q=>q.id.startsWith(`ALG2-3.${section}-`)),`missing section 3.${section}`);
+  }
   for (const t of templates) {
     assert.ok(Object.values(t.variables).some(v => v?.min !== undefined || v?.values), t.id);
     for (let i = 0; i < 100; i++) {
@@ -58,6 +60,30 @@ test('Module 3 has unique IDs, dynamic coverage, and fully resolved finite examp
         assert.ok(!q.answer.includes(`{${key}`), `${t.id} answer: ${key}`);
       }
       assert.doesNotMatch(q.answer, /NaN|undefined|If there are errors|sqrt\(/, t.id);
+    }
+  }
+});
+
+test('3.1 and 3.2 intermediate vertices are integral for every allowed input combination', () => {
+  for (const t of templates.filter(q=>/^ALG2-3\.[12]-I/.test(q.id))) {
+    assert.deepEqual(t.variables.a.values,[-3,-2,2,3]);
+    const varying=t.id==='ALG2-3.1-I1' ? 'k' : t.id==='ALG2-3.2-I1' ? 'offset' : 'gap';
+    for(const a of t.variables.a.values) for(let h=t.variables.h.min;h<=t.variables.h.max;h++) {
+      if(t.variables.h.exclude?.includes(h)) continue;
+      for(let n=t.variables[varying].min;n<=t.variables[varying].max;n++) {
+        if(t.variables[varying].exclude?.some(ex=>ex===n || ex==='h'&&n===h || ex==='-h'&&n===-h)) continue;
+        const fixed=structuredClone(t);
+        fixed.variables.a={values:[a]};fixed.variables.h={values:[h]};fixed.variables[varying]={values:[n]};
+        const {variables:v,variableErrors}=generate(fixed);
+        assert.equal(variableErrors.length,0,t.id);
+        assert.ok(Number.isInteger(v.h)&&Number.isInteger(v.k),t.id);
+        close(-v.b/(2*v.a),v.h,t.id);
+        close(v.a*v.h*v.h+v.b*v.h+v.c,v.k,t.id);
+        if(t.id==='ALG2-3.2-I1') for(const x of [v.left,v.right]) {
+          assert.ok(Number.isInteger(x),t.id);
+          close(v.a*x*x+v.b*x+v.c,0,t.id);
+        }
+      }
     }
   }
 });
@@ -101,6 +127,35 @@ test('all graph questions keep solutions hidden and render answer curves within 
   }
 });
 
+test('3.2 advanced requires rearrangement and student graphing before reading roots', () => {
+  const template=templates.find(q=>q.id==='ALG2-3.2-A1');
+  for(const a of [-2,-1,1,2]) for(const h of [-2,-1,1,2]) for(const offset of [1,2,3].filter(n=>n!==Math.abs(h))) {
+    const fixed=structuredClone(template);
+    fixed.variables.a={values:[a]};fixed.variables.h={values:[h]};fixed.variables.offset={values:[offset]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    assert.doesNotMatch(q.questionText,/=\s*0|bridge|arch/i);
+    assert.match(q.questionText,/Solve by graphing/);
+    for(const key of ['lhsA','lhsB','lhsC','rhsA','rhsB','rhsC']) assert.notEqual(v[key],0,key);
+    close(v.lhsA-v.rhsA,v.a,q.id);close(v.lhsB-v.rhsB,v.b,q.id);close(v.lhsC-v.rhsC,v.c,q.id);
+    const curve=engine.compileExpression('a*x^2+b*x+c',v);
+    close(curve({x:h}),v.k,q.id);
+    for(const x of [v.left,v.right]) {
+      close(curve({x}),0,q.id);
+      close(v.lhsA*x*x+v.lhsB*x+v.lhsC,v.rhsA*x*x+v.rhsB*x+v.rhsC,q.id);
+    }
+    const bounds=engine.normalizeWindow(q.draw.window,v);
+    assert.ok(bounds.xMin<v.left&&bounds.xMax>v.right&&bounds.yMin<Math.min(0,v.k)&&bounds.yMax>Math.max(0,v.k));
+    assert.equal(q.draw.eq1.showInQuestion,false);
+    assert.ok(q.draw.points.every(p=>p.showInQuestion===false));
+    const student=canvas(),answer=canvas();
+    const result=engine.draw(student.c,{...q.draw,showGrid:false},v,{context:'question'});
+    assert.equal(result.errors.length,0);assert.equal(result.renderedCount,0);
+    const solution=engine.draw(answer.c,{...q.draw,showGrid:false},v,{context:'answer'});
+    assert.equal(solution.errors.length,0);assert.equal(solution.renderedCount,4);
+  }
+});
+
 test('projectile roots, maxima and hundredth rounding agree with the height model', () => {
   for (const id of ['ALG2-3.1-A1','ALG2-3.6-A1']) {
     const t = templates.find(q=>q.id===id);
@@ -125,7 +180,6 @@ test('factoring, graphing and exact quadratic roots satisfy their equations', ()
     if(t.id==='ALG2-3.4-B1') for(const x of [v.p,v.q]) close(x*x+v.b*x+v.c,0,t.id);
     if(t.id==='ALG2-3.4-I1') for(const x of [-v.q,-v.p/v.a]) close(v.a*(x*x+v.q*x),-v.p*x-v.p*v.q,t.id);
     if(t.id==='ALG2-3.4-A1') { close(v.length*v.width,v.area,t.id);assert.ok(v.length>0&&v.width>0); }
-    if(t.id==='ALG2-3.2-A1') { close(v.side1*v.side2,v.area,t.id);assert.ok(v.other<=v.lower); }
     if(v.deltaSign!==undefined) {
       const magnitude=v.s*Math.sqrt(v.d);
       if(v.deltaSign>=0) for(const x of [v.h-magnitude*v.deltaSign,v.h+magnitude*v.deltaSign]) close(poly(x),0,t.id);

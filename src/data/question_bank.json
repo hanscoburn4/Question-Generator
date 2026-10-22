@@ -4501,23 +4501,7 @@
       "objective": "G.2.1 Angle Measurement and Relationships",
       "difficulty": "basic",
       "variables": {
-        "angle": { "values": [15, 25, 30, 45, 60, 75, 80, 90, 105, 120, 135, 140, 150, 170] },
-        "endX": { "formula": "round((205+150*cos(angle*PI/180))*1000)/1000", "format": "decimal" },
-        "endY": { "formula": "round((185-150*sin(angle*PI/180))*1000)/1000", "format": "decimal" },
-        "arcX": { "formula": "round((205+35*cos(angle*PI/180))*1000)/1000", "format": "decimal" },
-        "arcY": { "formula": "round((185-35*sin(angle*PI/180))*1000)/1000", "format": "decimal" },
-        "classification": { "formula": "angle < 90 ? 'acute' : angle === 90 ? 'right' : angle < 180 ? 'obtuse' : 'straight'" }
-        },
-      "question": "Use a protractor to measure the marked angle to the nearest degree. Classify it as acute, right, obtuse, or straight. The diagram is drawn to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 225' width='420' style='max-width:100%;height:auto' role='img' aria-label='Two rays meet at O. Measure the angle marked by the arc above the horizontal ray.'><path d='M{endX} {endY} L205 185 H355 M240 185 A35 35 0 0 0 {arcX} {arcY}' fill='none' stroke='black' stroke-width='2'/><text x='205' y='210' text-anchor='middle' font-size='16' fill='black'>O</text></svg>",
-      "answer": "The marked angle is <strong>{angle}&deg;</strong>, so it is <strong>{classification}</strong>."
-    },
-    {
-      "id": "G.2.1-B2",
-      "type": "template",
-      "objective": "G.2.1 Angle Measurement and Relationships",
-      "difficulty": "basic",
-      "variables": {
-        "angle": { "min": 15, "max": 75 },
+        "angle": { "min": 10, "max": 85 },
         "complement": { "formula": "90-angle", "format": "decimal" },
         "supplement": { "formula": "180-angle", "format": "decimal" }
         },
@@ -4525,10 +4509,10 @@
       "answer": "a) 90&deg; &minus; {angle}&deg; = <strong>{complement}&deg;</strong>.<br>b) 180&deg; &minus; {angle}&deg; = <strong>{supplement}&deg;</strong>."
     },
     {
-      "id": "G.2.1-I1",
+      "id": "G.2.1-B2",
       "type": "template",
       "objective": "G.2.1 Angle Measurement and Relationships",
-      "difficulty": "intermediate",
+      "difficulty": "basic",
       "variables": {
         "angle": { "min": 25, "max": 70 },
         "adjacent": { "formula": "180-angle", "format": "decimal" }
@@ -4542,11 +4526,27 @@
       "objective": "G.2.1 Angle Measurement and Relationships",
       "difficulty": "intermediate",
       "variables": {
-        "angle": { "min": 25, "max": 70 },
-        "obtuse": { "formula": "180-angle", "format": "decimal" }
+        "alpha": { "min": 25, "max": 40 },
+        "beta": { "min": 35, "max": 55 },
+        "angleABO": { "formula": "beta", "format": "decimal" },
+        "angleAOB": { "formula": "180-alpha-angleABO", "format": "decimal" },
+        "angleCOD": { "formula": "angleAOB", "format": "decimal" },
+        "angleCOB": { "formula": "180-angleCOD", "format": "decimal" },
+        "aX": { "formula": "340-120/tan(alpha*PI/180)", "format": "decimal" },
+        "cX": { "formula": "340+120/tan(alpha*PI/180)", "format": "decimal" },
+        "dX": { "formula": "340-120/tan(beta*PI/180)", "format": "decimal" },
+        "bX": { "formula": "340+120/tan(beta*PI/180)", "format": "decimal" },
+        "aArcX": { "formula": "aX+40*cos(alpha*PI/180)", "format": "decimal" },
+        "aArcY": { "formula": "310-40*sin(alpha*PI/180)", "format": "decimal" },
+        "aStartX": { "formula": "aX+40", "format": "decimal" },
+        "aLabelX": { "formula": "aX+65", "format": "decimal" },
+        "dStartX": { "formula": "dX+40", "format": "decimal" },
+        "dArcX": { "formula": "dX+40*cos(beta*PI/180)", "format": "decimal" },
+        "dArcY": { "formula": "70+40*sin(beta*PI/180)", "format": "decimal" },
+        "dLabelX": { "formula": "dX+65", "format": "decimal" }
         },
-      "question": "The two rails are parallel. Find angles x and y where the straight brace crosses the rails. Explain the relationships you use. The sketch is not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Two parallel horizontal rails crossed by a rising diagonal. The upper-right angle at rail 1 is {angle} degrees; x is upper-right at rail 2 and y is upper-left at rail 2. Not to scale.'><path d='M30 65 H410 M30 155 H410 M105 205 L285 15' fill='none' stroke='black' stroke-width='2'/><text x='300' y='50' text-anchor='middle' font-size='16' fill='black'>{angle}&deg;</text><text x='215' y='140' text-anchor='middle' font-size='16' fill='black'>x</text><text x='85' y='140' text-anchor='middle' font-size='16' fill='black'>y</text><text x='390' y='90' text-anchor='middle' font-size='16' fill='black'>rail 1</text><text x='390' y='180' text-anchor='middle' font-size='16' fill='black'>rail 2</text></svg>",
-      "answer": "<strong>x = {angle}&deg;</strong> by corresponding angles. <strong>y = 180&deg; &minus; {angle}&deg; = {obtuse}&deg;</strong> because x and y form a straight angle along rail 2."
+      "question": "The truss rails are parallel. Straight braces AC and DB cross at O. Given &ang;OAB = {alpha}&deg; and &ang;CDO = {beta}&deg;, find:<br>a) &ang;ABO<br>b) &ang;AOB, using triangle AOB<br>c) &ang;COD<br>d) &ang;COB<br>Show your steps and name the angle relationship used in each part. Give exact answers in degrees.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 395' width='720' style='max-width:100%;height:auto' role='img' aria-label='Parallel top and bottom rails crossed by straight braces AC and DB at O. A and B are on the bottom, D and C on the top. Angle OAB is {alpha} degrees and angle CDO is {beta} degrees.'><path d='M35 70 H685 M35 310 H685 M{aX} 310 L{cX} 70 M{dX} 70 L{bX} 310' fill='none' stroke='black' stroke-width='2' /><path d='M640 63 L650 70 L640 77 M640 303 L650 310 L640 317' fill='none' stroke='black' stroke-width='2' /><text x='{aX}' y='338' font-size='16' text-anchor='middle' fill='black'>A</text><text x='{bX}' y='338' font-size='16' text-anchor='middle' fill='black'>B</text><text x='{cX}' y='54' font-size='16' text-anchor='middle' fill='black'>C</text><text x='{dX}' y='54' font-size='16' text-anchor='middle' fill='black'>D</text><text x='359' y='209' font-size='16' text-anchor='middle' fill='black'>O</text><circle cx='340' cy='190' r='3' fill='black'/><path d='M{aStartX} 310 A40 40 0 0 0 {aArcX} {aArcY}' fill='none' stroke='black' stroke-width='2' /><text x='{aLabelX}' y='296' font-size='16' text-anchor='middle' fill='black'>{alpha}&deg;</text><path d='M{dStartX} 70 A40 40 0 0 1 {dArcX} {dArcY}' fill='none' stroke='black' stroke-width='2' /><text x='{dLabelX}' y='103' font-size='16' text-anchor='middle' fill='black'>{beta}&deg;</text><text x='360' y='375' font-size='15' text-anchor='middle' fill='black'>Parallel rails; straight braces AC and DB</text></svg>",
+      "answer": "a) <strong>&ang;ABO = {angleABO}&deg;</strong> (alternate interior angles between parallel rails).<br>b) <strong>&ang;AOB = 180&deg; &minus; {alpha}&deg; &minus; {angleABO}&deg; = {angleAOB}&deg;</strong> (triangle angle sum).<br>c) <strong>&ang;COD = {angleCOD}&deg;</strong> (vertical to &ang;AOB).<br>d) <strong>&ang;COB = 180&deg; &minus; {angleCOD}&deg; = {angleCOB}&deg;</strong> (supplementary to &ang;COD along straight brace DB)."
     },
     {
       "id": "G.2.1-A",
@@ -4554,54 +4554,36 @@
       "objective": "G.2.1 Angle Measurement and Relationships",
       "difficulty": "advanced",
       "variables": {
-        "angle": { "min": 25, "max": 65 },
-        "wallAngle": { "formula": "90-angle", "format": "decimal" },
-        "outside": { "formula": "180-angle", "format": "decimal" }
+        "given": { "min": 140, "max": 155 },
+        "beta": { "min": 25, "max": 40 },
+        "alpha": { "formula": "180-given", "format": "decimal" },
+        "angleCOE": { "formula": "90-alpha", "format": "decimal" },
+        "angleDOC": { "formula": "beta+angleCOE", "format": "decimal" },
+        "angleAOB": { "formula": "angleDOC", "format": "decimal" },
+        "angleCOB": { "formula": "180-angleAOB", "format": "decimal" },
+        "aX": { "formula": "340-120/tan(alpha*PI/180)", "format": "decimal" },
+        "cX": { "formula": "340+120/tan(alpha*PI/180)", "format": "decimal" },
+        "dX": { "formula": "340-120*tan(beta*PI/180)", "format": "decimal" },
+        "bX": { "formula": "340+120*tan(beta*PI/180)", "format": "decimal" },
+        "aArcX": { "formula": "aX+40*cos(alpha*PI/180)", "format": "decimal" },
+        "aArcY": { "formula": "310-40*sin(alpha*PI/180)", "format": "decimal" },
+        "aStartX": { "formula": "aX-40", "format": "decimal" },
+        "aLabelX": { "formula": "aX-38", "format": "decimal" },
+        "betaX": { "formula": "340-45*sin(beta*PI/180)", "format": "decimal" },
+        "betaY": { "formula": "190-45*cos(beta*PI/180)", "format": "decimal" },
+        "xSolution": { "min": 8, "max": 12 },
+        "betaOffset": { "formula": "beta-2*xSolution", "format": "decimal" },
+        "lowerOffset": { "formula": "angleAOB-3*xSolution", "format": "decimal" },
+        "perpendicular": { "formula": "angleCOB === 90 ? 'Yes' : 'No'" }
         },
-      "question": "A rectangular frame has a straight diagonal brace. The top rail extends past the right upright. Determine x, the angle between the brace and right upright, and y, the angle between the brace and the rightward extension of the top rail. Justify your answers from the layout. The sketch is not to scale.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 220' width='440' style='max-width:100%;height:auto' role='img' aria-label='Rectangular frame with a brace from bottom-left to top-right. At bottom-left the brace makes {angle} degrees with the bottom. At top-right x is between brace and right upright; y is between the brace ray toward bottom-left and the extension of the top rail to the right. Not to scale.'><path d='M70 35 V185 H365 V35 Z M70 185 L365 35 M365 35 H415 M70 165 H90 V185 M345 185 V165 H365' fill='none' stroke='black' stroke-width='2'/><text x='147' y='174' text-anchor='middle' font-size='16' fill='black'>{angle}&deg;</text><text x='354' y='78' text-anchor='middle' font-size='16' fill='black'>x</text><text x='398' y='63' text-anchor='middle' font-size='16' fill='black'>y</text></svg>",
-      "answer": "The rectangular frame has parallel top and bottom rails, so the acute brace-to-rail angle is {angle}&deg;. The upright is perpendicular to the rails: <strong>x = 90&deg; &minus; {angle}&deg; = {wallAngle}&deg;</strong>. The brace and rightward rail extension form the supplementary angle: <strong>y = 180&deg; &minus; {angle}&deg; = {outside}&deg;</strong>."
+      "question": "The rails are parallel, and post EF is perpendicular to them. Straight braces AC and DB cross at O. L lies left of A on the bottom rail.<br>Given &ang;LAO = {given}&deg;, &ang;EOD = (2x + {betaOffset})&deg;, and &ang;AOB = (3x + {lowerOffset})&deg;:<br>a) Find &ang;OAB.<br>b) Use part (a) to find &ang;COE.<br>c) Use angle addition and vertical angles to write an equation and solve for x.<br>d) Find &ang;EOD, &ang;AOB, and &ang;COB.<br>e) Are the two braces perpendicular? Justify using a calculated angle.<br>Show the angle relationships used. Give exact answers in degrees; do not measure the diagram.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 425' width='720' style='max-width:100%;height:auto' role='img' aria-label='Parallel top and bottom rails crossed by straight braces AC and DB at O. A and B are on the bottom, D and C on the top. Post EF passes through O and is perpendicular to the rails. L is left of A on the bottom rail. Angle LAO is {given} degrees and angle EOD is (2x + {betaOffset}) degrees and angle AOB is (3x + {lowerOffset}) degrees. Diagram not to scale.'><path d='M35 70 H685 M35 310 H685 M{aX} 310 L{cX} 70 M{dX} 70 L{bX} 310' fill='none' stroke='black' stroke-width='2' /><path d='M640 63 L650 70 L640 77 M640 303 L650 310 L640 317' fill='none' stroke='black' stroke-width='2' /><text x='{aX}' y='338' font-size='16' text-anchor='middle' fill='black'>A</text><text x='{bX}' y='338' font-size='16' text-anchor='middle' fill='black'>B</text><text x='{cX}' y='54' font-size='16' text-anchor='middle' fill='black'>C</text><text x='{dX}' y='54' font-size='16' text-anchor='middle' fill='black'>D</text><text x='359' y='209' font-size='16' text-anchor='middle' fill='black'>O</text><circle cx='340' cy='190' r='3' fill='black'/><path d='M340 70 V310 M340 86 H356 V70' fill='none' stroke='black' stroke-width='2' /><text x='340' y='51' font-size='16' text-anchor='middle' fill='black'>E</text><text x='340' y='338' font-size='16' text-anchor='middle' fill='black'>F</text><text x='36' y='338' font-size='16' text-anchor='middle' fill='black'>L</text><path d='M{aStartX} 310 A40 40 0 0 1 {aArcX} {aArcY}' fill='none' stroke='black' stroke-width='2' /><text x='{aLabelX}' y='273' font-size='16' text-anchor='middle' fill='black'>{given}&deg;</text><path d='M340 145 A45 45 0 0 0 {betaX} {betaY}' fill='none' stroke='black' stroke-width='2' /><path d='M315 150 L270 115 H165' fill='none' stroke='black' stroke-width='1'/><text x='210' y='106' font-size='15' text-anchor='middle' fill='black'>(2x + {betaOffset})&deg;</text><text x='360' y='402' font-size='15' text-anchor='middle' fill='black'>&ang;AOB = (3x + {lowerOffset})&deg;</text><text x='360' y='375' font-size='15' text-anchor='middle' fill='black'>Parallel rails; straight braces AC and DB; not to scale</text></svg>",
+      "answer": "a) <strong>&ang;OAB = 180&deg; &minus; {given}&deg; = {alpha}&deg;</strong> (supplementary angles).<br>b) AC makes {alpha}&deg; with the parallel rails. The post is perpendicular to the rails, so <strong>&ang;COE = 90&deg; &minus; {alpha}&deg; = {angleCOE}&deg;</strong> (complementary angles).<br>c) &ang;DOC = &ang;EOD + &ang;COE, and &ang;AOB = &ang;DOC (vertical angles). Thus 3x + {lowerOffset} = (2x + {betaOffset}) + {angleCOE}. Solving gives <strong>x = {xSolution}</strong>.<br>d) <strong>&ang;EOD = 2({xSolution}) + {betaOffset} = {beta}&deg;</strong>.<br><strong>&ang;AOB = 3({xSolution}) + {lowerOffset} = {angleAOB}&deg;</strong>.<br><strong>&ang;COB = 180&deg; &minus; {angleAOB}&deg; = {angleCOB}&deg;</strong> (supplementary angles along AC).<br>e) <strong>{perpendicular}.</strong> The braces are perpendicular exactly when &ang;COB is 90&deg;; here it is {angleCOB}&deg;."
     },
     {
-      "id": "G.2.2-B1",
+      "id": "G.2.2-B",
       "type": "template",
       "objective": "G.2.2 Pythagorean Theorem",
       "difficulty": "basic",
-      "variables": {
-        "legA": { "min": 12, "max": 32 },
-        "legB": { "min": 18, "max": 42 },
-        "hypotenuseExact": { "formula": "sqrt(legA*legA+legB*legB)", "format": "decimal" },
-        "hypotenuse": { "formula": "round(hypotenuseExact*16)/16", "format": "decimal" },
-        "hypotenuseWhole": { "formula": "floor(hypotenuse)", "format": "decimal" },
-        "hypotenuseNumerator": { "formula": "round((hypotenuse-hypotenuseWhole)*16)", "format": "decimal" },
-        "hypotenuseDivisor": { "formula": "hypotenuseNumerator % 8 === 0 ? 8 : hypotenuseNumerator % 4 === 0 ? 4 : hypotenuseNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
-        "hypotenuseText": { "formula": "hypotenuseNumerator === 0 ? String(hypotenuseWhole) : (hypotenuseWhole === 0 ? '' : hypotenuseWhole + ' ') + (hypotenuseNumerator/hypotenuseDivisor) + '/' + (16/hypotenuseDivisor)" }
-        },
-      "question": "A right triangle has perpendicular legs of {legA} in. and {legB} in. Find the hypotenuse. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
-      "answer": "By the Pythagorean theorem, c = &radic;({legA}<sup>2</sup> + {legB}<sup>2</sup>) &asymp; <strong>{hypotenuseText} in.</strong>"
-    },
-    {
-      "id": "G.2.2-B2",
-      "type": "template",
-      "objective": "G.2.2 Pythagorean Theorem",
-      "difficulty": "basic",
-      "variables": {
-        "hypotenuse": { "min": 30, "max": 50 },
-        "leg": { "min": 12, "max": 24 },
-        "missingExact": { "formula": "sqrt(hypotenuse*hypotenuse-leg*leg)", "format": "decimal" },
-        "missing": { "formula": "round(missingExact*16)/16", "format": "decimal" },
-        "missingWhole": { "formula": "floor(missing)", "format": "decimal" },
-        "missingNumerator": { "formula": "round((missing-missingWhole)*16)", "format": "decimal" },
-        "missingDivisor": { "formula": "missingNumerator % 8 === 0 ? 8 : missingNumerator % 4 === 0 ? 4 : missingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
-        "missingText": { "formula": "missingNumerator === 0 ? String(missingWhole) : (missingWhole === 0 ? '' : missingWhole + ' ') + (missingNumerator/missingDivisor) + '/' + (16/missingDivisor)" }
-        },
-      "question": "A right triangle has a hypotenuse of {hypotenuse} in. and one leg of {leg} in. Find the other leg. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
-      "answer": "The unknown leg is &radic;({hypotenuse}<sup>2</sup> &minus; {leg}<sup>2</sup>) &asymp; <strong>{missingText} in.</strong>"
-    },
-    {
-      "id": "G.2.2-I",
-      "type": "template",
-      "objective": "G.2.2 Pythagorean Theorem",
-      "difficulty": "intermediate",
       "variables": {
         "length": { "values": [48, 60, 72, 84, 96] },
         "width": { "values": [24, 30, 36, 42] },
@@ -4616,24 +4598,65 @@
       "answer": "Adjacent sides of a rectangle are perpendicular, so they and the diagonal form a right triangle. Brace length = &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) &asymp; <strong>{diagonalText} in.</strong>"
     },
     {
+      "id": "G.2.2-I1",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "intermediate",
+      "variables": {
+        "legA": { "min": 12, "max": 32 },
+        "legB": { "min": 18, "max": 42 },
+        "hypotenuseExact": { "formula": "sqrt(legA*legA+legB*legB)", "format": "decimal" },
+        "hypotenuse": { "formula": "round(hypotenuseExact*16)/16", "format": "decimal" },
+        "hypotenuseWhole": { "formula": "floor(hypotenuse)", "format": "decimal" },
+        "hypotenuseNumerator": { "formula": "round((hypotenuse-hypotenuseWhole)*16)", "format": "decimal" },
+        "hypotenuseDivisor": { "formula": "hypotenuseNumerator % 8 === 0 ? 8 : hypotenuseNumerator % 4 === 0 ? 4 : hypotenuseNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "hypotenuseText": { "formula": "hypotenuseNumerator === 0 ? String(hypotenuseWhole) : (hypotenuseWhole === 0 ? '' : hypotenuseWhole + ' ') + (hypotenuseNumerator/hypotenuseDivisor) + '/' + (16/hypotenuseDivisor)" }
+        },
+      "question": "A right triangle has perpendicular legs of {legA} in. and {legB} in. Draw and label the triangle, mark the right angle, and find the hypotenuse. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "Sketch: perpendicular legs {legA} in. and {legB} in.; the unknown hypotenuse is opposite the right angle.<br>By the Pythagorean theorem, c = &radic;({legA}<sup>2</sup> + {legB}<sup>2</sup>) &asymp; <strong>{hypotenuseText} in.</strong>"
+    },
+    {
+      "id": "G.2.2-I2",
+      "type": "template",
+      "objective": "G.2.2 Pythagorean Theorem",
+      "difficulty": "intermediate",
+      "variables": {
+        "hypotenuse": { "min": 30, "max": 50 },
+        "leg": { "min": 12, "max": 24 },
+        "missingExact": { "formula": "sqrt(hypotenuse*hypotenuse-leg*leg)", "format": "decimal" },
+        "missing": { "formula": "round(missingExact*16)/16", "format": "decimal" },
+        "missingWhole": { "formula": "floor(missing)", "format": "decimal" },
+        "missingNumerator": { "formula": "round((missing-missingWhole)*16)", "format": "decimal" },
+        "missingDivisor": { "formula": "missingNumerator % 8 === 0 ? 8 : missingNumerator % 4 === 0 ? 4 : missingNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "missingText": { "formula": "missingNumerator === 0 ? String(missingWhole) : (missingWhole === 0 ? '' : missingWhole + ' ') + (missingNumerator/missingDivisor) + '/' + (16/missingDivisor)" }
+        },
+      "question": "A right triangle has a hypotenuse of {hypotenuse} in. and one leg of {leg} in. Draw and label the triangle, mark the right angle, and find the other leg. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
+      "answer": "Sketch: {hypotenuse} in. is opposite the right angle; {leg} in. and the unknown side are the perpendicular legs.<br>The unknown leg is &radic;({hypotenuse}<sup>2</sup> &minus; {leg}<sup>2</sup>) &asymp; <strong>{missingText} in.</strong>"
+    },
+    {
       "id": "G.2.2-A",
       "type": "template",
       "objective": "G.2.2 Pythagorean Theorem",
       "difficulty": "advanced",
       "variables": {
-        "scale": { "min": 4, "max": 12 },
-        "length": { "formula": "4*scale", "format": "decimal" },
-        "width": { "formula": "3*scale", "format": "decimal" },
-        "expected": { "formula": "5*scale", "format": "decimal" },
-        "offset": { "values": [-1, 0, 1] },
-        "measured": { "formula": "expected+offset", "format": "decimal" },
-        "sideSum": { "formula": "length*length+width*width", "format": "decimal" },
-        "diagonalSquare": { "formula": "measured*measured", "format": "decimal" },
-        "verdict": { "formula": "offset === 0 ? 'Yes' : 'No'" },
-        "reasoning": { "formula": "offset === 0 ? 'The diagonal squared equals the sum of the adjacent side squares, so the converse of the Pythagorean theorem gives a right angle.' : 'The diagonal squared differs from the sum of the adjacent side squares, so the included angle is not a right angle.'" }
+        "length": { "values": [60, 72, 84, 96] },
+        "floorDiagonal": { "values": [108, 120, 132, 144] },
+        "height": { "values": [36, 48, 60, 72] },
+        "widthExact": { "formula": "sqrt(floorDiagonal*floorDiagonal-length*length)", "format": "decimal" },
+        "width": { "formula": "round(widthExact*16)/16", "format": "decimal" },
+        "widthWhole": { "formula": "floor(width)", "format": "decimal" },
+        "widthNumerator": { "formula": "round((width-widthWhole)*16)", "format": "decimal" },
+        "widthDivisor": { "formula": "widthNumerator % 8 === 0 ? 8 : widthNumerator % 4 === 0 ? 4 : widthNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "widthText": { "formula": "widthNumerator === 0 ? String(widthWhole) : (widthWhole === 0 ? '' : widthWhole + ' ') + (widthNumerator/widthDivisor) + '/' + (16/widthDivisor)" },
+        "braceExact": { "formula": "sqrt(widthExact*widthExact+height*height)", "format": "decimal" },
+        "brace": { "formula": "round(braceExact*16)/16", "format": "decimal" },
+        "braceWhole": { "formula": "floor(brace)", "format": "decimal" },
+        "braceNumerator": { "formula": "round((brace-braceWhole)*16)", "format": "decimal" },
+        "braceDivisor": { "formula": "braceNumerator % 8 === 0 ? 8 : braceNumerator % 4 === 0 ? 4 : braceNumerator % 2 === 0 ? 2 : 1", "format": "decimal" },
+        "braceText": { "formula": "braceNumerator === 0 ? String(braceWhole) : (braceWhole === 0 ? '' : braceWhole + ' ') + (braceNumerator/braceDivisor) + '/' + (16/braceDivisor)" }
         },
-      "question": "A flat, convex four-sided layout ABCD has AB = CD = {length} in. and BC = DA = {width} in. Its diagonal AC is {measured} in. Treat these given measurements as exact. Find the diagonal required for a rectangle, then decide whether this layout is rectangular. Support your decision mathematically. Round final lengths to the nearest 1/16 inch and simplify fractions. Keep full precision until the final answer.",
-      "answer": "Expected diagonal = &radic;({length}<sup>2</sup> + {width}<sup>2</sup>) = <strong>{expected} in.</strong> Measured AC squared is {diagonalSquare}, while the sum of adjacent side squares is {sideSum}. <strong>Rectangular: {verdict}.</strong> {reasoning} Both pairs of opposite sides are equal, so the convex layout is a parallelogram; a right angle would make it a rectangle."
+      "question": "A rectangular platform is {length} in. long with a floor diagonal of {floorDiagonal} in. A vertical rectangular frame spans the platform's full width at one end and is {height} in. tall.<br>a) Sketch a top view of the platform and an end view of the frame. Label the shared unknown width.<br>b) Find the platform width.<br>c) Find the diagonal brace length across the end frame, using your width from part (b).<br>Ignore joint allowances. Round final lengths to the nearest 1/16 in.; simplify fractions. Use the unrounded width in part (c).",
+      "answer": "a) Top view: a rectangle with length {length} in., unknown width w, and diagonal {floorDiagonal} in. End view: a rectangle with width w, height {height} in., and unknown diagonal brace b. Mark the right angle in each triangle.<br>b) w<sup>2</sup> + {length}<sup>2</sup> = {floorDiagonal}<sup>2</sup>, so w = &radic;({floorDiagonal}<sup>2</sup> &minus; {length}<sup>2</sup>) &asymp; <strong>{widthText} in.</strong><br>c) b<sup>2</sup> = w<sup>2</sup> + {height}<sup>2</sup>. Using the unrounded width, b = &radic;({floorDiagonal}<sup>2</sup> &minus; {length}<sup>2</sup> + {height}<sup>2</sup>) &asymp; <strong>{braceText} in.</strong>."
     },
     {
       "id": "G.2.3-B",
@@ -6584,11 +6607,11 @@
       "objective": "3.1 Graphing Quadratic Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0, 1, -1] },
-        "b": { "min": -6, "max": 6, "exclude": [0, 1, -1] },
-        "c": { "min": -8, "max": 8, "exclude": [0, 1, -1] },
-        "h": { "formula": "-b/(2*a)", "format": "fraction" },
-        "k": { "formula": "a*h*h+b*h+c", "format": "fraction" },
+        "a": { "values": [-3, -2, 2, 3] },
+        "h": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*h*h+k" },
         "xmin": { "formula": "floor(min(-1,h-4))" },
         "xmax": { "formula": "ceil(max(1,h+4))" },
         "ymin": { "formula": "floor(min(-2,k-2,k+4*a-2))" },
@@ -6693,7 +6716,7 @@
       "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "basic",
       "variables": {
-        "a": { "values": [-2, -1, 1, 2] },
+        "a": { "values": [-1, 1] },
         "h": { "min": -3, "max": 3, "exclude": [0] },
         "gap": 0,
         "b": { "formula": "-2*a*h" },
@@ -6724,15 +6747,16 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "values": [-3, -2, 2, 3] },
-        "p": { "min": -4, "max": 4, "exclude": [0] },
+        "h": { "min": -2, "max": 2 },
+        "offset": { "min": 1, "max": 3, "exclude": ["h", "-h"] },
+        "p": { "formula": "-h-offset" },
         "negp": { "formula": "-1*p" },
-        "q": { "min": -4, "max": 4, "exclude": [0, "p"] },
+        "q": { "formula": "-h+offset" },
         "negq": { "formula": "-1*q" },
         "b": { "formula": "a*(p+q)" },
         "c": { "formula": "a*p*q" },
         "left": { "formula": "min(-p,-q)" },
         "right": { "formula": "max(-p,-q)" },
-        "h": { "formula": "-b/(2*a)" },
         "k": { "formula": "a*h*h+b*h+c" },
         "xmin": { "formula": "floor(min(-1,left-2))" },
         "xmax": { "formula": "ceil(max(1,right+2))" },
@@ -6759,7 +6783,7 @@
       "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "values": [-2, -1, 1, 2] },
+        "a": { "values": [-3, -2, 2, 3] },
         "h": { "min": -3, "max": 3, "exclude": [0] },
         "gap": { "min": 1, "max": 4 },
         "b": { "formula": "-2*a*h" },
@@ -6789,28 +6813,35 @@
       "objective": "3.2 Solving Quadratic Equations by Graphing",
       "difficulty": "advanced",
       "variables": {
-        "x": { "min": 3, "max": 8 },
-        "a": { "min": -2, "max": 5, "exclude": [0] },
-        "b": { "min": 1, "max": 3 },
-        "c": { "min": -2, "max": 5, "exclude": ["a", 0] },
-        "area": { "formula": "b*x*x + c*x + b*a*x + a*c" },
-        "side1": { "formula": "x + a" },
-        "side2": { "formula": "b*x + c" },
-        "lower": { "formula": "max(-a,-c/b)" },
-        "xmin": { "formula": "floor(min(-1,lower-1))" },
-        "xmax": { "formula": "x+2" },
-        "ymin": { "formula": "-ceil(area/5)" },
-        "ymax": { "formula": "ceil(area/5)" },
-        "other": { "formula": "-a-c/b-x", "format": "fraction" },
+        "a": { "values": [-3, -2, 2, 3] },
+        "h": { "min": -2, "max": 2, "exclude": [0] },
+        "offset": { "min": 1, "max": 3, "exclude": ["h", "-h"] },
+        "b": { "formula": "-2*a*h" },
+        "c": { "formula": "a*(h*h-offset*offset)" },
+        "rhsA": { "min": 1, "max": 3 },
+        "rhsB": { "min": -6, "max": 6, "exclude": [0] },
+        "rhsC": { "min": -8, "max": 8, "exclude": [0] },
+        "lhsA": { "formula": "a+rhsA", "exclude": [0] },
+        "lhsB": { "formula": "b+rhsB", "exclude": [0] },
+        "lhsC": { "formula": "c+rhsC", "exclude": [0] },
+        "left": { "formula": "h-offset" },
+        "right": { "formula": "h+offset" },
+        "k": { "formula": "-a*offset*offset" },
+        "xmin": { "formula": "min(-1,left-2)" },
+        "xmax": { "formula": "max(1,right+2)" },
+        "ymin": { "formula": "min(-3,k-3)" },
+        "ymax": { "formula": "max(3,k+3)" },
         "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
       },
-      "question": "A rectangle has side lengths \\(x {a|sign}\\) and \\({b|coef}x {c|sign}\\). Its area is {area} square units. Graph \\(y=(x {a|sign})({b|coef}x {c|sign})-{area}\\) on the provided plane to find the physically valid value of \\(x\\), then find the side lengths. Both lengths must be positive.",
-      "answer": "\\(x={x}\\), so the dimensions are {side1} by {side2} units. Reject \\(x={other}\\), which does not give positive side lengths.",
+      "question": "Solve by graphing: \\({lhsA|coef}x^2 {lhsB|signedCoef}x {lhsC|sign} = {rhsA|coef}x^2 {rhsB|signedCoef}x {rhsC|sign}\\)",
+      "answer": "Rearrange to \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\). Graph \\(y={a|coef}x^2 {b|signedCoef}x {c|sign}\\). The vertex is \\(({h},{k})\\), and the x-intercepts are \\(({left},0)\\) and \\(({right},0)\\). Therefore, \\(x={left}\\) or \\(x={right}\\).",
       "draw": {
         "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
-        "eq1": { "relation": "y = (x+a)*(b*x+c)-area", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb", "domain": { "min": "lower", "max": "xmax" } },
+        "eq1": { "relation": "y = a*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
         "points": [
-          { "x": "x", "y": 0, "label": "Valid root", "showInQuestion": false, "showInAnswer": true }
+          { "x": "left", "y": 0, "label": "({left}, 0)", "labelOffsetY": -16, "showInQuestion": false, "showInAnswer": true },
+          { "x": "right", "y": 0, "label": "({right}, 0)", "labelOffsetY": -16, "showInQuestion": false, "showInAnswer": true },
+          { "x": "h", "y": "k", "label": "Vertex", "showInQuestion": false, "showInAnswer": true }
         ],
         "showAxisLabels": true,
         "gridStep": { "x": 1, "y": "gridY" }
