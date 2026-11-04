@@ -318,8 +318,56 @@ test('3.2 advanced requires rearrangement and student graphing before reading ro
   }
 });
 
+test('one 3.6 intermediate template generates both irrational and complex solutions', () => {
+  const intermediate=templates.filter(q=>q.id.startsWith('ALG2-3.6-')&&q.difficulty==='intermediate');
+  assert.equal(intermediate.length,1);
+  const t=intermediate[0];
+  assert.deepEqual(t.variables.deltaSign.values,[-1,1]);
+  for(const deltaSign of [-1,1]) for(const a of t.variables.a.values) for(const d of t.variables.d.values) for(const s of [1,2,3,4]) {
+    const fixed=structuredClone(t);
+    for(const [key,value] of Object.entries({deltaSign,a,d,s})) fixed.variables[key]={values:[value]};
+    const q=generate(fixed),v=q.variables,offset=s*Math.sqrt(d);
+    assert.equal(q.variableErrors.length,0);
+    assert.equal(Math.sign(v.b*v.b-4*a*v.c),deltaSign);
+    assert.equal(q.answer.includes('i\\sqrt'),deltaSign<0);
+    assert.equal(q.answer,`\\(x=${v.h}\\pm ${s===1?'':s}${deltaSign<0?'i':''}\\sqrt{${d}}\\).`);
+    if(deltaSign>0) for(const x of [v.h-offset,v.h+offset]) close(a*x*x+v.b*x+v.c,0,q.id);
+    else {
+      close(a*(v.h*v.h-offset*offset)+v.b*v.h+v.c,0,q.id);
+      close((2*a*v.h+v.b)*offset,0,q.id);
+    }
+  }
+});
+
+test('3.6 advanced rearranges to a primitive nonmonic quadratic with irrational or complex roots', () => {
+  const t=templates.find(q=>q.id==='ALG2-3.6-A1');
+  assert.equal(t.draw,undefined);
+  const seen=new Set(),gcd=(a,b)=>b ? gcd(b,a%b) : Math.abs(a);
+  for(let j=0;j<400;j++) {
+    const q=generate(t),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    for(const key of ['lhsA','lhsB','lhsC','rhsA','rhsB','rhsC']) assert.notEqual(v[key],0);
+    close(v.lhsA-v.rhsA,v.a,q.id);close(v.lhsB-v.rhsB,v.b,q.id);close(v.lhsC-v.rhsC,v.c,q.id);
+    assert.ok(Math.abs(v.a)>1);assert.equal(gcd(gcd(v.a,v.b),v.c),1);
+    const D=v.b*v.b-4*v.a*v.c;
+    assert.ok(D<0||!Number.isInteger(Math.sqrt(D)));
+    assert.equal(v.radicalFactor*v.radicalFactor*v.radicand,Math.abs(D));
+    for(let n=2;n*n<=v.radicand;n++) assert.notEqual(v.radicand%(n*n),0);
+    const center=v.numerator/v.denominator,offset=v.radicalFactor*Math.sqrt(v.radicand)/v.denominator;
+    if(D>0) {
+      seen.add('irrational');assert.ok(!q.answer.includes('i\\sqrt'));
+      for(const x of [center-offset,center+offset]) close(v.a*x*x+v.b*x+v.c,0,q.id);
+    } else {
+      seen.add('complex');assert.ok(v.radicalText.includes('i'));
+      close(v.a*(center*center-offset*offset)+v.b*center+v.c,0,q.id);
+      close((2*v.a*center+v.b)*offset,0,q.id);
+    }
+  }
+  assert.deepEqual([...seen].sort(),['complex','irrational']);
+});
+
 test('projectile roots, maxima and hundredth rounding agree with the height model', () => {
-  for (const id of ['ALG2-3.1-A1','ALG2-3.6-A1']) {
+  for (const id of ['ALG2-3.1-A1']) {
     const t = templates.find(q=>q.id===id);
     for(let i=0;i<100;i++) {
       const {variables:v}=generate(t);

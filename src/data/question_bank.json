@@ -7261,36 +7261,14 @@
       "difficulty": "basic",
       "variables": {
         "p": { "min": -10, "max": 10, "exclude": [0] },
-        "q": { "min": -10, "max": 10, "exclude": [0, "p"] },
+        "q": { "min": -10, "max": 10, "exclude": [0] },
         "b": { "formula": "-1*(p + q)" },
         "c": { "formula": "p*q" },
         "discriminant": { "formula": "b*b - 4*c" },
         "sqrtDisc": { "formula": "sqrt(discriminant)" }
       },
-      "question": "Solve for \\( x \\) using the quadratic formula or the quadratic method: <br> \\( x^2 {b|signedCoef}x {c|sign} = 0 \\).",
-      "answer": "\\(x={p}\\) or \\(x={q}\\). The discriminant is \\({discriminant}\\)."
-    },
-    {
-      "id": "ALG2-3.6-B2",
-      "type": "template",
-      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
-      "difficulty": "basic",
-      "variables": {
-        "a": 1,
-        "h": { "min": -6, "max": 6, "exclude": [0] },
-        "s": { "min": 1, "max": 4 },
-        "d": 1,
-        "deltaSign": 0,
-        "b": { "formula": "-2*a*h" },
-        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
-        "negh": { "formula": "-h" },
-        "rad": { "formula": "deltaSign*s*s*d" },
-        "left": { "formula": "h-s" },
-        "right": { "formula": "h+s" },
-        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
-      },
-      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
-      "answer": "\\(x={h}\\) is a repeated root."
+      "question": "Solve for \\( x \\) using the quadratic formula or the quadratic method (you can use a different method to check your answer): <br> \\( x^2 {b|signedCoef}x {c|sign} = 0 \\).",
+      "answer": "\\(x={p}\\) or \\(x={q}\\)."
     },
     {
       "id": "ALG2-3.6-I1",
@@ -7302,39 +7280,18 @@
         "h": { "min": -6, "max": 6, "exclude": [0] },
         "s": { "min": 1, "max": 4 },
         "d": { "values": [2, 3, 5, 6, 7] },
-        "deltaSign": 1,
+        "deltaSign": { "values": [-1, 1] },
         "b": { "formula": "-2*a*h" },
         "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
         "negh": { "formula": "-h" },
         "rad": { "formula": "deltaSign*s*s*d" },
         "left": { "formula": "h-s" },
         "right": { "formula": "h+s" },
-        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
+        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" },
+        "imaginaryUnit": { "formula": "deltaSign < 0 ? 'i' : ''" }
       },
-      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
-      "answer": "\\(x={h}\\pm {radicalCoef}\\sqrt{{d}}\\)."
-    },
-    {
-      "id": "ALG2-3.6-I2",
-      "type": "template",
-      "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
-      "difficulty": "intermediate",
-      "variables": {
-        "a": { "values": [2, 3, 4, 5] },
-        "h": { "min": -6, "max": 6, "exclude": [0] },
-        "s": { "min": 1, "max": 4 },
-        "d": { "values": [2, 3, 5, 6, 7] },
-        "deltaSign": -1,
-        "b": { "formula": "-2*a*h" },
-        "c": { "formula": "a*(h*h-deltaSign*s*s*d)" },
-        "negh": { "formula": "-h" },
-        "rad": { "formula": "deltaSign*s*s*d" },
-        "left": { "formula": "h-s" },
-        "right": { "formula": "h+s" },
-        "radicalCoef": { "formula": "s === 1 ? '' : String(s)" }
-      },
-      "question": "Solve by the quadratic formula. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
-      "answer": "\\(x={h}\\pm {radicalCoef}i\\sqrt{{d}}\\)."
+      "question": "Solve by the quadratic formula or the quadratic method. Give exact simplified answers: \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\).",
+      "answer": "\\(x={h}\\pm {radicalCoef}{imaginaryUnit}\\sqrt{{d}}\\)."
     },
     {
       "id": "ALG2-3.6-A1",
@@ -7342,34 +7299,25 @@
       "objective": "3.6 Solving Quadratics with the Formula or Quadratic Method",
       "difficulty": "advanced",
       "variables": {
-        "v_0": { "min": -50, "max": 50, "exclude": [0] },
-        "p_0": { "min": 1, "max": 100 },
-        "t": { "formula": "round(landing*100)/100", "format": "decimal" },
-        "b": { "formula": "v_0" },
-        "c": { "formula": "p_0" },
-        "landing": { "formula": "(b+sqrt(b*b+64*c))/32" },
-        "peakTime": { "formula": "max(0,b/32)" },
-        "peakHeight": { "formula": "-16*peakTime*peakTime+b*peakTime+c" },
-        "tmax": { "formula": "round(peakTime*100)/100", "format": "decimal" },
-        "hmax": { "formula": "round(peakHeight*100)/100", "format": "decimal" },
-        "xmin": -0.25,
-        "xmax": { "formula": "ceil(landing+0.5)" },
-        "ymin": -5,
-        "ymax": { "formula": "ceil((peakHeight+5)/10)*10" },
-        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" }
+        "a": { "values": [-5, -3, -2, 2, 3, 5] },
+        "b": { "values": [-7, -1, 1, 7] },
+        "c": { "min": -8, "max": 8, "exclude": [0] },
+        "rhsA": { "min": -4, "max": 4, "exclude": [0] },
+        "rhsB": { "min": -6, "max": 6, "exclude": [0] },
+        "rhsC": { "min": -8, "max": 8, "exclude": [0] },
+        "lhsA": { "formula": "a+rhsA", "exclude": [0] },
+        "lhsB": { "formula": "b+rhsB", "exclude": [0] },
+        "lhsC": { "formula": "c+rhsC", "exclude": [0] },
+        "discriminant": { "formula": "b*b-4*a*c" },
+        "validDiscriminant": { "formula": "discriminant<0 || (discriminant>0 && sqrt(discriminant)!==floor(sqrt(discriminant))) ? 1 : 0", "exclude": [0] },
+        "radicalFactor": { "formula": "(()=>{let factor=1;for(let n=2;n*n<=abs(discriminant);n++){if(abs(discriminant)%(n*n)===0)factor=n;}return factor;})()" },
+        "radicand": { "formula": "abs(discriminant)/(radicalFactor*radicalFactor)" },
+        "numerator": { "formula": "a>0 ? -b : b" },
+        "denominator": { "formula": "2*abs(a)" },
+        "radicalText": { "formula": "(radicalFactor===1 ? '' : String(radicalFactor))+(discriminant<0 ? 'i' : '')+(radicand===1 ? '' : '\\\\sqrt{'+radicand+'}')" }
       },
-      "question": "A ball's height in feet after \\(t\\) seconds is \\( h(t)=-16t^2 {v_0|signedCoef}t+{p_0} \\). Use the quadratic formula to find when it hits the ground. Round to the nearest hundredth. The answer graph uses time in seconds horizontally and height in feet vertically.",
-      "answer": "The ball hits the ground after approximately {t} seconds. Discard the negative time.",
-      "draw": {
-        "window": { "xMin": "xmin", "xMax": "xmax", "yMin": "ymin", "yMax": "ymax" },
-        "eq1": { "relation": "y = -16*x^2+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb", "domain": { "min": 0, "max": "landing" } },
-        "points": [
-          { "x": "landing", "y": 0, "label": "Ground", "showInQuestion": false, "showInAnswer": true },
-          { "x": "peakTime", "y": "peakHeight", "label": "Maximum", "showInQuestion": false, "showInAnswer": true }
-        ],
-        "showAxisLabels": true,
-        "gridStep": { "x": 0.5, "y": "gridY" }
-      }
+      "question": "Solve using the quadratic formula. Give exact simplified solutions, real or complex: \\({lhsA|coef}x^2 {lhsB|signedCoef}x {lhsC|sign} = {rhsA|coef}x^2 {rhsB|signedCoef}x {rhsC|sign}\\).",
+      "answer": "Rearrange to \\({a|coef}x^2 {b|signedCoef}x {c|sign}=0\\). Solutions: \\(x=\\frac{{numerator}\\pm {radicalText}}{{denominator}}\\)."
     },
     {
       "id": "ALG2-3.7-B1",
