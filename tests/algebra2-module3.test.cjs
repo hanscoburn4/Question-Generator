@@ -88,6 +88,168 @@ test('3.1 and 3.2 intermediate vertices are integral for every allowed input com
   }
 });
 
+test('3.3 adds three-factor products and multistep powers with correct complex answers', () => {
+  const byId=id=>templates.find(q=>q.id===`ALG2-3.3-${id}`);
+  const multiply=([a,b],[c,d])=>[a*c-b*d,a*d+b*c];
+  const power=n=>{ let z=[1,0];for(let j=0;j<n;j++) z=multiply(z,[0,1]);return z; };
+  const fixed=(t,values)=>{ const q=structuredClone(t);for(const [key,value] of Object.entries(values)) q.variables[key]={values:[value]};return generate(q); };
+  assert.equal(byId('B4').difficulty,'basic');
+  for(let n=5;n<=60;n++) {
+    const q=fixed(byId('B4'),{n});
+    const [real,imag]=power(n);
+    assert.equal(q.variables.result,imag ? (imag===1?'i':'-i') : String(real));
+  }
+  for(let n=8;n<12;n++) for(let m=16;m<20;m++) {
+    const q=fixed(byId('I2'),{n,m}),v=q.variables;
+    const z=multiply([v.a,v.b],power(n)),w=multiply([v.c,v.d],power(m));
+    close(v.real,z[0]+w[0],q.id);close(v.imag,z[1]+w[1],q.id);
+    assert.equal(q.variableErrors.length,0);
+  }
+  for(let j=0;j<150;j++) {
+    const q=generate(byId('I3')),v=q.variables;
+    const expected=multiply([v.a,v.b],multiply([v.c,v.d],[v.e,v.f]));
+    close(v.real,expected[0],q.id);close(v.imag,expected[1],q.id);
+    assert.equal(q.variableErrors.length,0);
+  }
+  for(const [values,result] of [
+    [{a:1,b:1,c:-1,d:-1},'0'],
+    [{a:1,b:2,c:-1,d:-1},'i'],
+    [{a:1,b:1,c:-1,d:-2},'-i'],
+    [{a:2,b:1,c:1,d:-1},'3'],
+    [{a:1,b:1,c:-1,d:2},'3i']
+  ]) {
+    const q=fixed(byId('I2'),{...values,n:8,m:12});
+    assert.equal(q.answer,`\\(${result}\\)`);
+  }
+  assert.equal(fixed(byId('I3'),{a:1,b:1,c:1,d:2,e:3,f:-1}).answer,'\\(10i\\)');
+  assert.equal(fixed(byId('I3'),{a:1,b:1,c:1,d:2,e:1,f:3}).answer,'\\(-10\\)');
+});
+
+test('3.4 I2 stays nonmonic after removing common factors and has the stated repeated root', () => {
+  const t=templates.find(q=>q.id==='ALG2-3.4-I2');
+  const gcd=(a,b)=>b ? gcd(b,a%b) : Math.abs(a);
+  for(const m of t.variables.m.values) for(const r of t.variables.r.values) {
+    const fixed=structuredClone(t);fixed.variables.m={values:[m]};fixed.variables.r={values:[r]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    assert.ok(v.a/gcd(gcd(v.a,v.b),v.c)>1);
+    assert.equal(v.b*v.b-4*v.a*v.c,0);
+    close(v.a*v.root*v.root+v.b*v.root+v.c,0,q.id);
+    assert.ok(!Number.isInteger(v.root));
+  }
+});
+
+test('3.4 advanced context models give positive dimensions and reject invalid roots', () => {
+  const gcd=(a,b)=>b ? gcd(b,a%b) : Math.abs(a);
+  const path=templates.find(q=>q.id==='ALG2-3.4-A2');
+  for(let base=3;base<=8;base++) for(const gap of [3,5,7]) for(let width=2;width<=6;width++) {
+    const fixed=structuredClone(path);fixed.variables.base={values:[base]};fixed.variables.gap={values:[gap]};fixed.variables.width={values:[width]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    assert.notEqual(v.gardenWidth,v.gardenLength);
+    assert.equal((v.gardenWidth+2*width)*(v.gardenLength+2*width),v.area);
+    for(const x of [width,v.other]) close(v.a*x*x+v.b*x+v.c,0,q.id);
+    assert.ok(v.other<0&&width>0);
+    assert.equal(v.factorConstant-2*v.width,v.b);
+    assert.equal(-v.width*v.factorConstant,v.c);
+    assert.equal(gcd(gcd(v.a,v.b),v.c),1);
+    assert.ok(v.a>1);
+  }
+  const triangle=templates.find(q=>q.id==='ALG2-3.4-A3');
+  for(const triple of triangle.variables.triple.values) for(let scale=1;scale<=3;scale++) {
+    const fixed=structuredClone(triangle);fixed.variables.triple={values:[triple]};fixed.variables.scale={values:[scale]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    assert.equal(v.short*v.short+v.long*v.long,v.hypotenuse*v.hypotenuse);
+    assert.equal(2*v.short-v.long,v.difference);
+    for(const x of [v.short,v.other]) close(v.a*x*x+v.b*x+v.c,0,q.id);
+    assert.ok(v.short>0&&v.long>v.short&&v.other<0);
+    assert.equal(-v.short*v.factorConstant,v.c);
+    assert.equal(v.factorConstant-5*v.short,v.b);
+    assert.equal(gcd(gcd(v.a,v.b),v.c),1);
+    assert.ok(v.a>1);
+  }
+});
+
+test('3.5 vertex forms match the original functions and solution types match each level', () => {
+  const section=templates.filter(q=>q.id.startsWith('ALG2-3.5-'));
+  assert.equal(section.length,5);
+  assert.equal(section.filter(q=>q.difficulty==='basic').length,1);
+  assert.equal(section.filter(q=>q.difficulty==='intermediate').length,1);
+  for(const t of section) for(let j=0;j<80;j++) {
+    const q=generate(t),v=q.variables;
+    assert.equal(q.variableErrors.length,0,t.id);
+    assert.match(q.questionText,/vertex form/i,t.id);
+    assert.match(q.answer,/Vertex form:/,t.id);
+    assert.match(q.answer,/Vertex:/,t.id);
+    const poly=x=>v.a*x*x+v.b*x+v.c;
+    close(-v.b/(2*v.a),v.h,t.id);
+    for(const x of [-3,0,2,v.h]) close(poly(x),v.a*(x-v.h)**2+v.k,t.id);
+    if(t.difficulty!=='advanced') {
+      assert.ok(Number.isInteger(v.h)&&Number.isInteger(v.k),t.id);
+      const square=-v.k/v.a;
+      if(square>=0) {
+        const offset=Math.sqrt(square);
+        for(const x of [v.h-offset,v.h+offset]) {
+          close(poly(x),0,t.id);
+          if(t.difficulty==='basic') assert.ok(Number.isInteger(x),t.id);
+          else if(v.kind===2||v.kind===3) assert.ok(!Number.isInteger(x),t.id);
+        }
+      } else {
+        assert.equal(t.id,'ALG2-3.5-I1');
+        const imag=Math.sqrt(-square);
+        close(v.a*(v.h*v.h-imag*imag)+v.b*v.h+v.c,0,t.id);
+        close(2*v.a*v.h*imag+v.b*imag,0,t.id);
+        assert.match(q.answer,/i\\sqrt/);
+      }
+    }
+    if(t.id==='ALG2-3.5-A1') {
+      assert.ok(v.a<0&&v.h>0&&v.c>0);
+      close(poly(v.landing),0,t.id);
+      close(poly(v.h-Math.sqrt(v.d)),0,t.id);
+      assert.ok(v.h-Math.sqrt(v.d)<0);
+      close(v.landingRounded,Math.round(v.landing*100)/100,t.id);
+      assert.match(q.answer,/negative zero is outside/);
+    }
+    if(t.id==='ALG2-3.5-A2'||t.id==='ALG2-3.5-A3') {
+      for(const x of [v.left,v.right]) { close(poly(x),0,t.id);assert.ok(!Number.isInteger(x),t.id); }
+      assert.ok(v.left>0&&v.left<v.h&&v.h<v.right);
+      if(t.id.endsWith('A2')) { assert.ok(v.a<0&&v.k>0);assert.match(q.answer,/breaks even/); }
+      else { assert.ok(v.a>0&&v.k<0);close(v.depth,-v.k,t.id);close(v.width,v.right-v.left,t.id); }
+    }
+  }
+});
+
+test('3.5 consolidated templates support every root type without changing question wording', () => {
+  const basic=templates.find(q=>q.id==='ALG2-3.5-B1');
+  const inter=templates.find(q=>q.id==='ALG2-3.5-I1');
+  for(const s of [0,1,2,3,4]) {
+    const fixed=structuredClone(basic);fixed.variables.s={values:[s]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    assert.ok(Number.isInteger(v.left)&&Number.isInteger(v.right));
+    assert.equal(q.answer.includes('repeated'),s===0);
+    close(v.a*v.left*v.left+v.b*v.left+v.c,0,q.id);
+  }
+  for(const kind of inter.variables.kind.values) for(const direction of [-1,1]) for(const m of [2,3,4]) for(const s of [1,5]) for(const h of [-2,0,3]) {
+    const fixed=structuredClone(inter);
+    for(const [key,value] of Object.entries({kind,direction,m,s,h})) fixed.variables[key]={values:[value]};
+    const q=generate(fixed),v=q.variables;
+    assert.equal(q.variableErrors.length,0);
+    for(const key of ['a','b','c','h','k']) assert.ok(Number.isInteger(v[key]),key);
+    const offset=kind===0 ? 0 : s*Math.sqrt(v.d)/v.den;
+    if(kind===4) {
+      close(v.a*(h*h-offset*offset)+v.b*h+v.c,0,q.id);
+      close(2*v.a*h*offset+v.b*offset,0,q.id);
+      assert.match(q.answer,/i\\sqrt/);
+    } else for(const x of [h-offset,h+offset]) close(v.a*x*x+v.b*x+v.c,0,q.id);
+    assert.equal(q.answer.includes('repeated'),kind===0);
+    if(kind===2) assert.ok(q.answer.includes(`\\frac{${s}}{${m}}`));
+    if(kind===3) assert.match(q.answer,/\\sqrt/);
+    assert.doesNotMatch(q.questionText,/kind|root type|repeated|irrational/);
+  }
+});
+
 test('scaled grids use the same labeled steps for student and answer canvases', () => {
   const draw={window:{xMin:-1,xMax:4,yMin:-10,yMax:100},gridStep:{x:0.5,y:'scaleY'},showAxisLabels:true};
   const blank=canvas(),answer=canvas(),variables={scaleY:10};
