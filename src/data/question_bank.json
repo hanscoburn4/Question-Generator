@@ -4820,6 +4820,445 @@
       "question": "Sketch rhombus ABCD with diagonals meeting at O.<br>&ang;BAC = (2x + {a})&deg;; &ang;CAD = (3x &minus; {b})&deg;.<br>AB = (2y + x) in.; BC = (5y &minus; {c}) in.<br>a) Solve for x, then y.<br>b) Label all four side lengths and interior angles.<br>c) Find &ang;AOB, &ang;ABO, and the perimeter. Show the properties used.",
       "answer": "a) AC bisects &ang;BAD: 2x + {a} = 3x &minus; {b}, so <strong>x = {solution}</strong>.<br>All rhombus sides are equal: 2y + {solution} = 5y &minus; {c}, so <strong>y = {ySolution}</strong>.<br>b) <strong>AB = BC = CD = DA = {side} in.</strong><br>Each half of &ang;A is {halfA}&deg;, so <strong>A = C = {angleA}&deg;</strong>. Adjacent angles are supplementary: <strong>B = D = {angleB}&deg;</strong>.<br>c) Rhombus diagonals are perpendicular: <strong>&ang;AOB = 90&deg;</strong>.<br>In triangle AOB, &ang;ABO = 180&deg; &minus; 90&deg; &minus; {halfA}&deg; = <strong>{halfB}&deg;</strong>.<br>Perimeter = 4({side}) = <strong>{perimeter} in.</strong>."
     }
+  ],
+  "3: Slope, Similarity and Right-Triangle Trigonometry": [
+    {
+      "id": "G.3.1-B1",
+      "type": "template",
+      "objective": "G.3.1 Slope, Rise and Run",
+      "difficulty": "basic",
+      "variables": {
+        "rise": { "values": [3, 4, 6, 8, 9, 12] },
+        "run": { "values": [24, 36, 48, 60] },
+        "slope": { "formula": "rise/run", "format": "fraction" },
+        "percent": { "formula": "round(1000*rise/run)/10", "format": "decimal" }
+        },
+      "question": "Find the slope (rise/run) and percent grade. Simplify ratios; round percent grade to the nearest tenth.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {run} in., vertical rise {rise} in., sloping hypotenuse . Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{run} in.</text><text x='405' y='102'>{rise} in.</text><text x='185' y='76'></text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Slope = \\( {slope} \\). Grade = 100({rise}/{run}) &asymp; <strong>{percent}%</strong>."
+    },
+    {
+      "id": "G.3.1-B2",
+      "type": "template",
+      "objective": "G.3.1 Slope, Rise and Run",
+      "difficulty": "basic",
+      "variables": {
+        "x1": { "min": 1, "max": 5 },
+        "y1": { "min": 5, "max": 10 },
+        "run": { "min": 4, "max": 10 },
+        "change": { "values": [-4, -2, 2, 4] },
+        "x2": { "formula": "x1+run", "format": "decimal" },
+        "y2": { "formula": "y1+change", "format": "decimal" },
+        "slope": { "formula": "change/run", "format": "fraction" },
+        "direction": { "formula": "change>0?'rises':'falls'" }
+        },
+      "question": "On a plan, a line runs from A({x1}, {y1}) to B({x2}, {y2}); coordinates are in feet. Find its horizontal change, vertical change, and slope from A to B. Does it rise or fall?",
+      "answer": "Horizontal change = <strong>{run} ft</strong>; vertical change = <strong>{change} ft</strong>. Slope = \\( {slope} \\). It <strong>{direction}</strong> from A to B."
+    },
+    {
+      "id": "G.3.1-I",
+      "type": "template",
+      "objective": "G.3.1 Slope, Rise and Run",
+      "difficulty": "intermediate",
+      "variables": {
+        "start": { "min": 3, "max": 6 },
+        "increase": { "values": [1, 2] },
+        "extra": { "values": [3, 6, 9] },
+        "end": { "formula": "start+increase", "format": "decimal" },
+        "runFeet": { "values": [12, 16, 20, 24] },
+        "rise": { "formula": "12*increase+extra", "format": "decimal" },
+        "run": { "formula": "12*runFeet", "format": "decimal" },
+        "slope": { "formula": "rise/run", "format": "fraction" }
+        },
+      "question": "A sloping rail starts {start} ft above a level baseline and ends {end} ft {extra} in. above it. Horizontal distance: {runFeet} ft.<br>a) Find the rise in inches.<br>b) Find the slope.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {runFeet} ft, vertical rise rise = ?, sloping hypotenuse rail. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{runFeet} ft</text><text x='405' y='102'>rise = ?</text><text x='185' y='76'>rail</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "a) Rise = 12({end} &minus; {start}) + {extra} = <strong>{rise} in.</strong><br>b) Run = {run} in. Slope = \\( {slope} \\)."
+    },
+    {
+      "id": "G.3.1-A",
+      "type": "template",
+      "objective": "G.3.1 Slope, Rise and Run",
+      "difficulty": "advanced",
+      "variables": {
+        "run1": { "min": 10, "max": 18 },
+        "run2": { "min": 8, "max": 16 },
+        "pitch1": { "min": 1, "max": 3 },
+        "pitch2": { "min": 4, "max": 6 },
+        "rise1": { "formula": "run1*pitch1", "format": "decimal" },
+        "rise2": { "formula": "run2*pitch2", "format": "decimal" },
+        "totalRise": { "formula": "rise1+rise2", "format": "decimal" },
+        "slope2": { "formula": "pitch2/12", "format": "fraction" },
+        "overall": { "formula": "totalRise/(12*(run1+run2))", "format": "fraction" },
+        "slope1": { "formula": "pitch1/12", "format": "fraction" }
+        },
+      "question": "Two rails connect end to end, both rising in the direction of travel.<br><strong>Rail 1:</strong> horizontal run {run1} ft; slope \\( {slope1} \\).<br><strong>Rail 2:</strong> horizontal run {run2} ft; slope unknown.<br>The end of Rail 2 is {totalRise} in. higher than the start of Rail 1.<br>a) Find the rise of Rail 1 and the rise of Rail 2, each in inches.<br>b) Find Rail 2's slope (rise/horizontal run).<br>c) Find the overall slope from the start of Rail 1 to the end of Rail 2. Which rail is steeper?",
+      "answer": "a) Rail 1 rise = \\( 12({run1})({slope1}) \\) = <strong>{rise1} in.</strong><br>Rail 2 rise = combined rise &minus; Rail 1 rise = {totalRise} &minus; {rise1} = <strong>{rise2} in.</strong><br>b) Rail 2 slope = \\( \\frac{{rise2}}{12({run2})} = {slope2} \\).<br>c) Overall slope = combined rise / combined horizontal run = \\( \\frac{{totalRise}}{12({run1}+{run2})} = {overall} \\). <strong>Rail 2 is steeper</strong> because \\( {slope2} > {slope1} \\)."
+    },
+    {
+      "id": "G.3.2-B",
+      "type": "template",
+      "objective": "G.3.2 Similar Triangles and Proportional Reasoning",
+      "difficulty": "basic",
+      "variables": {
+        "smallRun": { "min": 6, "max": 12 },
+        "smallRise": { "min": 3, "max": 8 },
+        "factor": { "min": 2, "max": 5 },
+        "largeRun": { "formula": "factor*smallRun", "format": "decimal" },
+        "largeRise": { "formula": "factor*smallRise", "format": "decimal" }
+        },
+      "question": "The two right triangles are similar; their horizontal sides correspond. Find the scale factor from small to large and the missing rise.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {smallRun} in., vertical rise {smallRise} in., sloping hypotenuse small. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{smallRun} in.</text><text x='405' y='102'>{smallRise} in.</text><text x='185' y='76'>small</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg><br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {largeRun} in., vertical rise ?, sloping hypotenuse large. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{largeRun} in.</text><text x='405' y='102'>?</text><text x='185' y='76'>large</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Scale factor = {largeRun}/{smallRun} = <strong>{factor}</strong>. Large rise = {smallRise}({factor}) = <strong>{largeRise} in.</strong>"
+    },
+    {
+      "id": "G.3.2-I",
+      "type": "template",
+      "objective": "G.3.2 Similar Triangles and Proportional Reasoning",
+      "difficulty": "intermediate",
+      "variables": {
+        "scale": { "min": 2, "max": 5 },
+        "factor": { "values": [1.5, 2.5, 3.5] },
+        "smallRun": { "formula": "4*scale", "format": "decimal" },
+        "smallRise": { "formula": "3*scale", "format": "decimal" },
+        "smallBrace": { "formula": "5*scale", "format": "decimal" },
+        "largeRise": { "formula": "smallRise*factor", "format": "decimal" },
+        "runExact": { "formula": "smallRun*factor", "format": "decimal" },
+        "run": { "formula": "round(runExact*16)/16", "format": "decimal" },
+        "runWhole": { "formula": "floor(run)", "format": "decimal" },
+        "runN": { "formula": "round((run-runWhole)*16)", "format": "decimal" },
+        "runD": { "formula": "runN%8===0?8:runN%4===0?4:runN%2===0?2:1", "format": "decimal" },
+        "runText": { "formula": "runN===0?String(runWhole):(runWhole===0?'':runWhole+' ')+(runN/runD)+'/'+(16/runD)" },
+        "braceExact": { "formula": "smallBrace*factor", "format": "decimal" },
+        "brace": { "formula": "round(braceExact*16)/16", "format": "decimal" },
+        "braceWhole": { "formula": "floor(brace)", "format": "decimal" },
+        "braceN": { "formula": "round((brace-braceWhole)*16)", "format": "decimal" },
+        "braceD": { "formula": "braceN%8===0?8:braceN%4===0?4:braceN%2===0?2:1", "format": "decimal" },
+        "braceText": { "formula": "braceN===0?String(braceWhole):(braceWhole===0?'':braceWhole+' ')+(braceN/braceD)+'/'+(16/braceD)" }
+        },
+      "question": "Two triangular brackets are similar. The small bracket has rise {smallRise} in., run {smallRun} in., and brace {smallBrace} in. The large bracket's corresponding rise is {largeRise} in.<br>Find its run and brace length using proportions. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {smallRun} in., vertical rise {smallRise} in., sloping hypotenuse {smallBrace} in.. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{smallRun} in.</text><text x='405' y='102'>{smallRise} in.</text><text x='185' y='76'>{smallBrace} in.</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg><br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run run = ?, vertical rise {largeRise} in., sloping hypotenuse brace = ?. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>run = ?</text><text x='405' y='102'>{largeRise} in.</text><text x='185' y='76'>brace = ?</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Scale factor = {largeRise}/{smallRise} = {factor}.<br>Run = {smallRun}({factor}) = <strong>{runText} in.</strong>; brace = {smallBrace}({factor}) = <strong>{braceText} in.</strong>"
+    },
+    {
+      "id": "G.3.2-A",
+      "type": "template",
+      "objective": "G.3.2 Similar Triangles and Proportional Reasoning",
+      "difficulty": "advanced",
+      "variables": {
+        "span": { "values": [192, 216, 240, 288] },
+        "height": { "values": [72, 84, 96] },
+        "level": { "values": [24, 36, 48] },
+        "beamFraction": { "values": [0.25, 0.375, 0.5] },
+        "beamWidth": { "formula": "span*beamFraction", "format": "decimal" },
+        "tieExact": { "formula": "span*(height-level)/height", "format": "decimal" },
+        "tie": { "formula": "round(tieExact*16)/16", "format": "decimal" },
+        "tieWhole": { "formula": "floor(tie)", "format": "decimal" },
+        "tieN": { "formula": "round((tie-tieWhole)*16)", "format": "decimal" },
+        "tieD": { "formula": "tieN%8===0?8:tieN%4===0?4:tieN%2===0?2:1", "format": "decimal" },
+        "tieText": { "formula": "tieN===0?String(tieWhole):(tieWhole===0?'':tieWhole+' ')+(tieN/tieD)+'/'+(16/tieD)" },
+        "beamHeightExact": { "formula": "height*(1-beamFraction)", "format": "decimal" },
+        "beamHeight": { "formula": "round(beamHeightExact*16)/16", "format": "decimal" },
+        "beamHeightWhole": { "formula": "floor(beamHeight)", "format": "decimal" },
+        "beamHeightN": { "formula": "round((beamHeight-beamHeightWhole)*16)", "format": "decimal" },
+        "beamHeightD": { "formula": "beamHeightN%8===0?8:beamHeightN%4===0?4:beamHeightN%2===0?2:1", "format": "decimal" },
+        "beamHeightText": { "formula": "beamHeightN===0?String(beamHeightWhole):(beamHeightWhole===0?'':beamHeightWhole+' ')+(beamHeightN/beamHeightD)+'/'+(16/beamHeightD)" }
+        },
+      "question": "A triangular roof section has span {span} in. and rise {height} in. Horizontal ties are parallel to its base.<br>a) Sketch the similar triangles. Find the tie length {level} in. above the base.<br>b) A second tie is {beamWidth} in. long. Find its height above the base. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.",
+      "answer": "a) The small triangle above the tie has height {height} &minus; {level}. Tie/{span} = ({height} &minus; {level})/{height}, so tie = <strong>{tieText} in.</strong><br>b) Let h be height above the base. {beamWidth}/{span} = ({height} &minus; h)/{height}; h = <strong>{beamHeightText} in.</strong>"
+    },
+    {
+      "id": "G.3.3-B1",
+      "type": "template",
+      "objective": "G.3.3 Right-Triangle Trigonometry: Lengths",
+      "difficulty": "basic",
+      "variables": {
+        "theta": { "min": 25, "max": 50 },
+        "known": { "values": [36, 48, 60, 72] },
+        "unknownExact": { "formula": "known*sin(theta*PI/180)", "format": "decimal" },
+        "unknown": { "formula": "round(unknownExact*16)/16", "format": "decimal" },
+        "unknownWhole": { "formula": "floor(unknown)", "format": "decimal" },
+        "unknownN": { "formula": "round((unknown-unknownWhole)*16)", "format": "decimal" },
+        "unknownD": { "formula": "unknownN%8===0?8:unknownN%4===0?4:unknownN%2===0?2:1", "format": "decimal" },
+        "unknownText": { "formula": "unknownN===0?String(unknownWhole):(unknownWhole===0?'':unknownWhole+' ')+(unknownN/unknownD)+'/'+(16/unknownD)" }
+        },
+      "question": "Find the vertical rise. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run run, vertical rise ?, sloping hypotenuse {known} in.. Angle {theta}&deg; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>run</text><text x='405' y='102'>?</text><text x='185' y='76'>{known} in.</text><text x='112' y='145'>{theta}&deg;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Vertical rise = {known} sin({theta}&deg;) &asymp; <strong>{unknownText} in.</strong>"
+    },
+    {
+      "id": "G.3.3-B2",
+      "type": "template",
+      "objective": "G.3.3 Right-Triangle Trigonometry: Lengths",
+      "difficulty": "basic",
+      "variables": {
+        "theta": { "min": 25, "max": 50 },
+        "known": { "values": [36, 48, 60, 72] },
+        "unknownExact": { "formula": "known*cos(theta*PI/180)", "format": "decimal" },
+        "unknown": { "formula": "round(unknownExact*16)/16", "format": "decimal" },
+        "unknownWhole": { "formula": "floor(unknown)", "format": "decimal" },
+        "unknownN": { "formula": "round((unknown-unknownWhole)*16)", "format": "decimal" },
+        "unknownD": { "formula": "unknownN%8===0?8:unknownN%4===0?4:unknownN%2===0?2:1", "format": "decimal" },
+        "unknownText": { "formula": "unknownN===0?String(unknownWhole):(unknownWhole===0?'':unknownWhole+' ')+(unknownN/unknownD)+'/'+(16/unknownD)" }
+        },
+      "question": "Find the horizontal run. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run ?, vertical rise rise, sloping hypotenuse {known} in.. Angle {theta}&deg; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>?</text><text x='405' y='102'>rise</text><text x='185' y='76'>{known} in.</text><text x='112' y='145'>{theta}&deg;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Horizontal run = {known} cos({theta}&deg;) &asymp; <strong>{unknownText} in.</strong>"
+    },
+    {
+      "id": "G.3.3-B3",
+      "type": "template",
+      "objective": "G.3.3 Right-Triangle Trigonometry: Lengths",
+      "difficulty": "basic",
+      "variables": {
+        "theta": { "min": 25, "max": 50 },
+        "known": { "values": [36, 48, 60, 72] },
+        "unknownExact": { "formula": "known*tan(theta*PI/180)", "format": "decimal" },
+        "unknown": { "formula": "round(unknownExact*16)/16", "format": "decimal" },
+        "unknownWhole": { "formula": "floor(unknown)", "format": "decimal" },
+        "unknownN": { "formula": "round((unknown-unknownWhole)*16)", "format": "decimal" },
+        "unknownD": { "formula": "unknownN%8===0?8:unknownN%4===0?4:unknownN%2===0?2:1", "format": "decimal" },
+        "unknownText": { "formula": "unknownN===0?String(unknownWhole):(unknownWhole===0?'':unknownWhole+' ')+(unknownN/unknownD)+'/'+(16/unknownD)" }
+        },
+      "question": "Find the vertical rise. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {known} in., vertical rise ?, sloping hypotenuse brace. Angle {theta}&deg; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{known} in.</text><text x='405' y='102'>?</text><text x='185' y='76'>brace</text><text x='112' y='145'>{theta}&deg;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Vertical rise = {known} tan({theta}&deg;) &asymp; <strong>{unknownText} in.</strong>"
+    },
+    {
+      "id": "G.3.3-I",
+      "type": "template",
+      "objective": "G.3.3 Right-Triangle Trigonometry: Lengths",
+      "difficulty": "intermediate",
+      "variables": {
+        "rise": { "values": [24, 30, 36, 42] },
+        "theta": { "min": 25, "max": 50 },
+        "runExact": { "formula": "rise/tan(theta*PI/180)", "format": "decimal" },
+        "run": { "formula": "round(runExact*16)/16", "format": "decimal" },
+        "runWhole": { "formula": "floor(run)", "format": "decimal" },
+        "runN": { "formula": "round((run-runWhole)*16)", "format": "decimal" },
+        "runD": { "formula": "runN%8===0?8:runN%4===0?4:runN%2===0?2:1", "format": "decimal" },
+        "runText": { "formula": "runN===0?String(runWhole):(runWhole===0?'':runWhole+' ')+(runN/runD)+'/'+(16/runD)" },
+        "braceExact": { "formula": "rise/sin(theta*PI/180)", "format": "decimal" },
+        "brace": { "formula": "round(braceExact*16)/16", "format": "decimal" },
+        "braceWhole": { "formula": "floor(brace)", "format": "decimal" },
+        "braceN": { "formula": "round((brace-braceWhole)*16)", "format": "decimal" },
+        "braceD": { "formula": "braceN%8===0?8:braceN%4===0?4:braceN%2===0?2:1", "format": "decimal" },
+        "braceText": { "formula": "braceN===0?String(braceWhole):(braceWhole===0?'':braceWhole+' ')+(braceN/braceD)+'/'+(16/braceD)" }
+        },
+      "question": "A brace reaches a height of {rise} in. at {theta}&deg; above horizontal. Find its horizontal run and length. State each trig ratio used. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run run = ?, vertical rise {rise} in., sloping hypotenuse brace = ?. Angle {theta}&deg; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>run = ?</text><text x='405' y='102'>{rise} in.</text><text x='185' y='76'>brace = ?</text><text x='112' y='145'>{theta}&deg;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "tan({theta}&deg;) = {rise}/run, so run = <strong>{runText} in.</strong><br>sin({theta}&deg;) = {rise}/brace, so brace = <strong>{braceText} in.</strong>"
+    },
+    {
+      "id": "G.3.3-A",
+      "type": "template",
+      "objective": "G.3.3 Right-Triangle Trigonometry: Lengths",
+      "difficulty": "advanced",
+      "variables": {
+        "spanFeet": { "values": [16, 18, 20, 24] },
+        "wall": { "values": [96, 108, 120] },
+        "overhang": { "values": [12, 18, 24] },
+        "theta": { "min": 25, "max": 45 },
+        "halfRun": { "formula": "spanFeet*6", "format": "decimal" },
+        "roofRiseExact": { "formula": "halfRun*tan(theta*PI/180)", "format": "decimal" },
+        "roofRise": { "formula": "round(roofRiseExact*16)/16", "format": "decimal" },
+        "roofRiseWhole": { "formula": "floor(roofRise)", "format": "decimal" },
+        "roofRiseN": { "formula": "round((roofRise-roofRiseWhole)*16)", "format": "decimal" },
+        "roofRiseD": { "formula": "roofRiseN%8===0?8:roofRiseN%4===0?4:roofRiseN%2===0?2:1", "format": "decimal" },
+        "roofRiseText": { "formula": "roofRiseN===0?String(roofRiseWhole):(roofRiseWhole===0?'':roofRiseWhole+' ')+(roofRiseN/roofRiseD)+'/'+(16/roofRiseD)" },
+        "ridgeExact": { "formula": "wall+roofRiseExact", "format": "decimal" },
+        "ridge": { "formula": "round(ridgeExact*16)/16", "format": "decimal" },
+        "ridgeWhole": { "formula": "floor(ridge)", "format": "decimal" },
+        "ridgeN": { "formula": "round((ridge-ridgeWhole)*16)", "format": "decimal" },
+        "ridgeD": { "formula": "ridgeN%8===0?8:ridgeN%4===0?4:ridgeN%2===0?2:1", "format": "decimal" },
+        "ridgeText": { "formula": "ridgeN===0?String(ridgeWhole):(ridgeWhole===0?'':ridgeWhole+' ')+(ridgeN/ridgeD)+'/'+(16/ridgeD)" },
+        "rafterExact": { "formula": "(halfRun+overhang)/cos(theta*PI/180)", "format": "decimal" },
+        "rafter": { "formula": "round(rafterExact*16)/16", "format": "decimal" },
+        "rafterWhole": { "formula": "floor(rafter)", "format": "decimal" },
+        "rafterN": { "formula": "round((rafter-rafterWhole)*16)", "format": "decimal" },
+        "rafterD": { "formula": "rafterN%8===0?8:rafterN%4===0?4:rafterN%2===0?2:1", "format": "decimal" },
+        "rafterText": { "formula": "rafterN===0?String(rafterWhole):(rafterWhole===0?'':rafterWhole+' ')+(rafterN/rafterD)+'/'+(16/rafterD)" },
+        "tailExact": { "formula": "wall-overhang*tan(theta*PI/180)", "format": "decimal" },
+        "tail": { "formula": "round(tailExact*16)/16", "format": "decimal" },
+        "tailWhole": { "formula": "floor(tail)", "format": "decimal" },
+        "tailN": { "formula": "round((tail-tailWhole)*16)", "format": "decimal" },
+        "tailD": { "formula": "tailN%8===0?8:tailN%4===0?4:tailN%2===0?2:1", "format": "decimal" },
+        "tailText": { "formula": "tailN===0?String(tailWhole):(tailWhole===0?'':tailWhole+' ')+(tailN/tailD)+'/'+(16/tailD)" }
+        },
+      "question": "A symmetric roof spans {spanFeet} ft between wall tops, each {wall} in. above a level floor. Rafters slope {theta}&deg; above horizontal and extend {overhang} in. horizontally beyond each wall.<br>Sketch and find the ridge height, full ridge-to-tail rafter length, and tail height above the floor. Ignore member thickness. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.",
+      "answer": "Half-span = {halfRun} in. Roof rise = {halfRun} tan({theta}&deg;) &asymp; {roofRiseText} in.<br>Ridge height = {wall} + unrounded rise = <strong>{ridgeText} in.</strong><br>Full rafter = ({halfRun} + {overhang})/cos({theta}&deg;) = <strong>{rafterText} in.</strong><br>Tail height = {wall} &minus; {overhang} tan({theta}&deg;) = <strong>{tailText} in.</strong>"
+    },
+    {
+      "id": "G.3.4-B1",
+      "type": "template",
+      "objective": "G.3.4 Right-Triangle Trigonometry: Angles",
+      "difficulty": "basic",
+      "variables": {
+        "leg": { "values": [18, 24, 30] },
+        "other": { "values": [42, 48, 54, 60] },
+        "thetaExact": { "formula": "asin(leg/other)*180/PI", "format": "decimal" },
+        "theta": { "formula": "round(thetaExact*10)/10", "format": "decimal" }
+        },
+      "question": "Find the marked angle using an inverse trig function. Round angles to the nearest 0.1 degree; keep full precision between steps.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run run, vertical rise {leg} in., sloping hypotenuse {other} in.. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>run</text><text x='405' y='102'>{leg} in.</text><text x='185' y='76'>{other} in.</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "sin<sup>&minus;1</sup>({leg}/{other}) &asymp; <strong>{theta}&deg;</strong>."
+    },
+    {
+      "id": "G.3.4-B2",
+      "type": "template",
+      "objective": "G.3.4 Right-Triangle Trigonometry: Angles",
+      "difficulty": "basic",
+      "variables": {
+        "leg": { "values": [18, 24, 30] },
+        "other": { "values": [42, 48, 54, 60] },
+        "thetaExact": { "formula": "acos(leg/other)*180/PI", "format": "decimal" },
+        "theta": { "formula": "round(thetaExact*10)/10", "format": "decimal" }
+        },
+      "question": "Find the marked angle using an inverse trig function. Round angles to the nearest 0.1 degree; keep full precision between steps.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {leg} in., vertical rise rise, sloping hypotenuse {other} in.. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{leg} in.</text><text x='405' y='102'>rise</text><text x='185' y='76'>{other} in.</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "cos<sup>&minus;1</sup>({leg}/{other}) &asymp; <strong>{theta}&deg;</strong>."
+    },
+    {
+      "id": "G.3.4-B3",
+      "type": "template",
+      "objective": "G.3.4 Right-Triangle Trigonometry: Angles",
+      "difficulty": "basic",
+      "variables": {
+        "leg": { "values": [18, 24, 30] },
+        "other": { "values": [42, 48, 54, 60] },
+        "thetaExact": { "formula": "atan(leg/other)*180/PI", "format": "decimal" },
+        "theta": { "formula": "round(thetaExact*10)/10", "format": "decimal" }
+        },
+      "question": "Find the marked angle using an inverse trig function. Round angles to the nearest 0.1 degree; keep full precision between steps.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {other} in., vertical rise {leg} in., sloping hypotenuse brace. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{other} in.</text><text x='405' y='102'>{leg} in.</text><text x='185' y='76'>brace</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "tan<sup>&minus;1</sup>({leg}/{other}) &asymp; <strong>{theta}&deg;</strong>."
+    },
+    {
+      "id": "G.3.4-I",
+      "type": "template",
+      "objective": "G.3.4 Right-Triangle Trigonometry: Angles",
+      "difficulty": "intermediate",
+      "variables": {
+        "width": { "values": [72, 84, 96] },
+        "height": { "values": [24, 30, 36, 42] },
+        "thetaExact": { "formula": "atan(height/width)*180/PI", "format": "decimal" },
+        "theta": { "formula": "round(thetaExact*10)/10", "format": "decimal" },
+        "verticalExact": { "formula": "90-thetaExact", "format": "decimal" },
+        "vertical": { "formula": "round(verticalExact*10)/10", "format": "decimal" },
+        "crossingExact": { "formula": "2*thetaExact", "format": "decimal" },
+        "crossing": { "formula": "round(crossingExact*10)/10", "format": "decimal" }
+        },
+      "question": "A {width} in. wide, {height} in. high rectangular frame has both diagonal braces.<br>Find a diagonal's angle with the bottom rail, its angle with an upright, and the acute angle between the two braces. Round angles to the nearest 0.1 degree; keep full precision between steps.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 200' width='440' style='max-width:100%;height:auto' role='img' aria-label='Rectangle {width} inches wide and {height} inches high with both diagonals. Not to scale.'><path d='M55 45 H335 V155 H55 Z M55 45 L335 155 M55 155 L335 45 M55 140 H70 V155' fill='none' stroke='black' stroke-width='2'/><g text-anchor='middle' font-size='15'><text x='195' y='30'>{width} in.</text><text x='389' y='106'>{height} in.</text><text x='210' y='190'>Not to scale</text></g></svg>",
+      "answer": "Bottom angle = tan<sup>&minus;1</sup>({height}/{width}) &asymp; <strong>{theta}&deg;</strong>.<br>Upright angle = 90&deg; &minus; unrounded bottom angle &asymp; <strong>{vertical}&deg;</strong>.<br>The diagonals have equal and opposite slopes. Their acute angle is twice the bottom angle: <strong>{crossing}&deg;</strong>."
+    },
+    {
+      "id": "G.3.4-A",
+      "type": "template",
+      "objective": "G.3.4 Right-Triangle Trigonometry: Angles",
+      "difficulty": "advanced",
+      "variables": {
+        "brace": { "values": [72, 84, 96] },
+        "leftRun": { "values": [24, 30, 36] },
+        "rightRun": { "values": [42, 48, 54, 60] },
+        "heightExact": { "formula": "sqrt(brace*brace-leftRun*leftRun)", "format": "decimal" },
+        "height": { "formula": "round(heightExact*16)/16", "format": "decimal" },
+        "heightWhole": { "formula": "floor(height)", "format": "decimal" },
+        "heightN": { "formula": "round((height-heightWhole)*16)", "format": "decimal" },
+        "heightD": { "formula": "heightN%8===0?8:heightN%4===0?4:heightN%2===0?2:1", "format": "decimal" },
+        "heightText": { "formula": "heightN===0?String(heightWhole):(heightWhole===0?'':heightWhole+' ')+(heightN/heightD)+'/'+(16/heightD)" },
+        "leftAngleExact": { "formula": "acos(leftRun/brace)*180/PI", "format": "decimal" },
+        "leftAngle": { "formula": "round(leftAngleExact*10)/10", "format": "decimal" },
+        "rightAngleExact": { "formula": "atan(heightExact/rightRun)*180/PI", "format": "decimal" },
+        "rightAngle": { "formula": "round(rightAngleExact*10)/10", "format": "decimal" },
+        "topAngleExact": { "formula": "180-leftAngleExact-rightAngleExact", "format": "decimal" },
+        "topAngle": { "formula": "round(topAngleExact*10)/10", "format": "decimal" }
+        },
+      "question": "Two braces meet at the top of a vertical post. Their anchors are on opposite sides, on level ground. The left brace is {brace} in. long with setback {leftRun} in.; the right setback is {rightRun} in.<br>Sketch and find each brace's angle above ground and the angle between the braces at the top. Show how you find the shared height. Round angles to the nearest 0.1 degree; keep full precision between steps.",
+      "answer": "Shared height h = &radic;({brace}<sup>2</sup> &minus; {leftRun}<sup>2</sup>) (keep unrounded).<br>Left angle = cos<sup>&minus;1</sup>({leftRun}/{brace}) &asymp; <strong>{leftAngle}&deg;</strong>.<br>Right angle = tan<sup>&minus;1</sup>(h/{rightRun}) &asymp; <strong>{rightAngle}&deg;</strong>.<br>Top angle = 180&deg; &minus; both unrounded ground angles &asymp; <strong>{topAngle}&deg;</strong>."
+    },
+    {
+      "id": "G.3.5-B",
+      "type": "template",
+      "objective": "G.3.5 Applied Right-Triangle Problem Solving",
+      "difficulty": "basic",
+      "variables": {
+        "run": { "values": [24, 30, 36, 42] },
+        "rise": { "values": [18, 24, 30] },
+        "braceExact": { "formula": "sqrt(run*run+rise*rise)", "format": "decimal" },
+        "brace": { "formula": "round(braceExact*16)/16", "format": "decimal" },
+        "braceWhole": { "formula": "floor(brace)", "format": "decimal" },
+        "braceN": { "formula": "round((brace-braceWhole)*16)", "format": "decimal" },
+        "braceD": { "formula": "braceN%8===0?8:braceN%4===0?4:braceN%2===0?2:1", "format": "decimal" },
+        "braceText": { "formula": "braceN===0?String(braceWhole):(braceWhole===0?'':braceWhole+' ')+(braceN/braceD)+'/'+(16/braceD)" },
+        "thetaExact": { "formula": "atan(rise/run)*180/PI", "format": "decimal" },
+        "theta": { "formula": "round(thetaExact*10)/10", "format": "decimal" }
+        },
+      "question": "Find the brace length and its angle above horizontal. Name the method used for each. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers. Round angles to the nearest 0.1 degree; keep full precision between steps.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {run} in., vertical rise {rise} in., sloping hypotenuse brace = ?. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{run} in.</text><text x='405' y='102'>{rise} in.</text><text x='185' y='76'>brace = ?</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Pythagorean theorem: brace = &radic;({run}<sup>2</sup> + {rise}<sup>2</sup>) &asymp; <strong>{braceText} in.</strong><br>Inverse tangent: angle = tan<sup>&minus;1</sup>({rise}/{run}) &asymp; <strong>{theta}&deg;</strong>."
+    },
+    {
+      "id": "G.3.5-I",
+      "type": "template",
+      "objective": "G.3.5 Applied Right-Triangle Problem Solving",
+      "difficulty": "intermediate",
+      "variables": {
+        "frameWidth": { "values": [36, 48, 60] },
+        "frameDiagonal": { "values": [84, 96, 108] },
+        "theta": { "min": 20, "max": 35 },
+        "heightExact": { "formula": "sqrt(frameDiagonal*frameDiagonal-frameWidth*frameWidth)", "format": "decimal" },
+        "height": { "formula": "round(heightExact*16)/16", "format": "decimal" },
+        "heightWhole": { "formula": "floor(height)", "format": "decimal" },
+        "heightN": { "formula": "round((height-heightWhole)*16)", "format": "decimal" },
+        "heightD": { "formula": "heightN%8===0?8:heightN%4===0?4:heightN%2===0?2:1", "format": "decimal" },
+        "heightText": { "formula": "heightN===0?String(heightWhole):(heightWhole===0?'':heightWhole+' ')+(heightN/heightD)+'/'+(16/heightD)" },
+        "rampRunExact": { "formula": "heightExact/tan(theta*PI/180)", "format": "decimal" },
+        "rampRun": { "formula": "round(rampRunExact*16)/16", "format": "decimal" },
+        "rampRunWhole": { "formula": "floor(rampRun)", "format": "decimal" },
+        "rampRunN": { "formula": "round((rampRun-rampRunWhole)*16)", "format": "decimal" },
+        "rampRunD": { "formula": "rampRunN%8===0?8:rampRunN%4===0?4:rampRunN%2===0?2:1", "format": "decimal" },
+        "rampRunText": { "formula": "rampRunN===0?String(rampRunWhole):(rampRunWhole===0?'':rampRunWhole+' ')+(rampRunN/rampRunD)+'/'+(16/rampRunD)" },
+        "rampExact": { "formula": "heightExact/sin(theta*PI/180)", "format": "decimal" },
+        "ramp": { "formula": "round(rampExact*16)/16", "format": "decimal" },
+        "rampWhole": { "formula": "floor(ramp)", "format": "decimal" },
+        "rampN": { "formula": "round((ramp-rampWhole)*16)", "format": "decimal" },
+        "rampD": { "formula": "rampN%8===0?8:rampN%4===0?4:rampN%2===0?2:1", "format": "decimal" },
+        "rampText": { "formula": "rampN===0?String(rampWhole):(rampWhole===0?'':rampWhole+' ')+(rampN/rampD)+'/'+(16/rampD)" }
+        },
+      "question": "A rectangular frame supports a platform at its top. A ramp reaches that height at {theta}&deg; above the same level floor.<br>Use the two views to find platform height, ramp run, and ramp length. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.<br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run {frameWidth} in., vertical rise height = ?, sloping hypotenuse {frameDiagonal} in.. Angle &theta; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>{frameWidth} in.</text><text x='405' y='102'>height = ?</text><text x='185' y='76'>{frameDiagonal} in.</text><text x='112' y='145'>&theta;</text><text x='235' y='202'>Not to scale</text></g></svg><br><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 205' width='480' style='max-width:100%;height:auto' role='img' aria-label='Right triangle: horizontal run ramp run = ?, vertical rise same height, sloping hypotenuse ramp = ?. Angle {theta}&deg; is at the left base. Not to scale.'><path d='M55 155 H345 V40 Z M327 155 V137 H345 M90 155 A35 35 0 0 0 87 142' fill='none' stroke='black' stroke-width='2'/><g font-size='15' text-anchor='middle' fill='black'><text x='200' y='181'>ramp run = ?</text><text x='405' y='102'>same height</text><text x='185' y='76'>ramp = ?</text><text x='112' y='145'>{theta}&deg;</text><text x='235' y='202'>Not to scale</text></g></svg>",
+      "answer": "Height h = &radic;({frameDiagonal}<sup>2</sup> &minus; {frameWidth}<sup>2</sup>) &asymp; <strong>{heightText} in.</strong><br>Using unrounded h: run = h/tan({theta}&deg;) = <strong>{rampRunText} in.</strong>; ramp length = h/sin({theta}&deg;) = <strong>{rampText} in.</strong>"
+    },
+    {
+      "id": "G.3.5-A",
+      "type": "template",
+      "objective": "G.3.5 Applied Right-Triangle Problem Solving",
+      "difficulty": "advanced",
+      "variables": {
+        "spanFeet": { "values": [18, 20, 22, 24] },
+        "leftAngle": { "min": 25, "max": 35 },
+        "rightAngle": { "min": 40, "max": 50 },
+        "span": { "formula": "spanFeet*12", "format": "decimal" },
+        "leftRunExact": { "formula": "span*tan(rightAngle*PI/180)/(tan(leftAngle*PI/180)+tan(rightAngle*PI/180))", "format": "decimal" },
+        "leftRun": { "formula": "round(leftRunExact*16)/16", "format": "decimal" },
+        "leftRunWhole": { "formula": "floor(leftRun)", "format": "decimal" },
+        "leftRunN": { "formula": "round((leftRun-leftRunWhole)*16)", "format": "decimal" },
+        "leftRunD": { "formula": "leftRunN%8===0?8:leftRunN%4===0?4:leftRunN%2===0?2:1", "format": "decimal" },
+        "leftRunText": { "formula": "leftRunN===0?String(leftRunWhole):(leftRunWhole===0?'':leftRunWhole+' ')+(leftRunN/leftRunD)+'/'+(16/leftRunD)" },
+        "rightRunExact": { "formula": "span-leftRunExact", "format": "decimal" },
+        "rightRun": { "formula": "round(rightRunExact*16)/16", "format": "decimal" },
+        "rightRunWhole": { "formula": "floor(rightRun)", "format": "decimal" },
+        "rightRunN": { "formula": "round((rightRun-rightRunWhole)*16)", "format": "decimal" },
+        "rightRunD": { "formula": "rightRunN%8===0?8:rightRunN%4===0?4:rightRunN%2===0?2:1", "format": "decimal" },
+        "rightRunText": { "formula": "rightRunN===0?String(rightRunWhole):(rightRunWhole===0?'':rightRunWhole+' ')+(rightRunN/rightRunD)+'/'+(16/rightRunD)" },
+        "riseExact": { "formula": "leftRunExact*tan(leftAngle*PI/180)", "format": "decimal" },
+        "rise": { "formula": "round(riseExact*16)/16", "format": "decimal" },
+        "riseWhole": { "formula": "floor(rise)", "format": "decimal" },
+        "riseN": { "formula": "round((rise-riseWhole)*16)", "format": "decimal" },
+        "riseD": { "formula": "riseN%8===0?8:riseN%4===0?4:riseN%2===0?2:1", "format": "decimal" },
+        "riseText": { "formula": "riseN===0?String(riseWhole):(riseWhole===0?'':riseWhole+' ')+(riseN/riseD)+'/'+(16/riseD)" },
+        "leftRafterExact": { "formula": "leftRunExact/cos(leftAngle*PI/180)", "format": "decimal" },
+        "leftRafter": { "formula": "round(leftRafterExact*16)/16", "format": "decimal" },
+        "leftRafterWhole": { "formula": "floor(leftRafter)", "format": "decimal" },
+        "leftRafterN": { "formula": "round((leftRafter-leftRafterWhole)*16)", "format": "decimal" },
+        "leftRafterD": { "formula": "leftRafterN%8===0?8:leftRafterN%4===0?4:leftRafterN%2===0?2:1", "format": "decimal" },
+        "leftRafterText": { "formula": "leftRafterN===0?String(leftRafterWhole):(leftRafterWhole===0?'':leftRafterWhole+' ')+(leftRafterN/leftRafterD)+'/'+(16/leftRafterD)" },
+        "rightRafterExact": { "formula": "rightRunExact/cos(rightAngle*PI/180)", "format": "decimal" },
+        "rightRafter": { "formula": "round(rightRafterExact*16)/16", "format": "decimal" },
+        "rightRafterWhole": { "formula": "floor(rightRafter)", "format": "decimal" },
+        "rightRafterN": { "formula": "round((rightRafter-rightRafterWhole)*16)", "format": "decimal" },
+        "rightRafterD": { "formula": "rightRafterN%8===0?8:rightRafterN%4===0?4:rightRafterN%2===0?2:1", "format": "decimal" },
+        "rightRafterText": { "formula": "rightRafterN===0?String(rightRafterWhole):(rightRafterWhole===0?'':rightRafterWhole+' ')+(rightRafterN/rightRafterD)+'/'+(16/rightRafterD)" }
+        },
+      "question": "An unequal-pitch roof spans {spanFeet} ft between wall tops at the same height. Its left and right rafters slope {leftAngle}&deg; and {rightAngle}&deg; above horizontal.<br>Sketch and find both horizontal runs, the ridge rise above the walls, and both rafter lengths. Ignore overhangs and member thickness. Give lengths in inches to the nearest 1/16; simplify fractions. Round only final answers.",
+      "answer": "Let x be the left run in inches; the right run is {span} &minus; x. Equal ridge rises give x tan({leftAngle}&deg;) = ({span} &minus; x) tan({rightAngle}&deg;).<br>Thus x = {span} tan({rightAngle}&deg;)/(tan({leftAngle}&deg;) + tan({rightAngle}&deg;)).<br><strong>Left run: {leftRunText} in.; right run: {rightRunText} in.</strong><br>Using unrounded runs: rise = x tan({leftAngle}&deg;) = <strong>{riseText} in.</strong><br>Rafters = run/cos(angle): <strong>left {leftRafterText} in.; right {rightRafterText} in.</strong>"
+    }
   ]
 },
 "Algebra 2": {
@@ -7795,90 +8234,159 @@
     {
       "id": "ALG2-4.1-B1",
       "type": "template",
-      "objective": "4.1 Polynomial Functions",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 4 },
-        "b": { "min": -6, "max": 6, "exclude": [0] },
-        "c": { "min": -8, "max": 8, "exclude": [0] },
-        "d": { "min": -3, "max": 3, "exclude": [0] },
-        "e": { "min": -6, "max": 6, "exclude": [0] },
-        "deg": { "formula": "a + 2" },
-        "leadingCoef": { "formula": "b * d" },
-        "xDegMinus1": { "formula": "deg - 1" },
-        "xDegMinus2": { "formula": "deg - 2" },
-        "xDegMinus1Coef": { "formula": "b*e + c*d" },
-        "xDegMinus2Coef": { "formula": "c*e" }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "n": { "min": 2, "max": 5 },
+        "actualTurns": { "formula": "n%2===0 ? 1 : 0" },
+        "symmetry": { "formula": "n%2===0 ? 'symmetric about the y-axis' : 'symmetric about the origin'" },
+        "turnDescription": { "formula": "n%2!==0 ? 'The origin is not a turning point; the graph continues in the same direction through it.' : (a>0 ? 'The origin is a minimum.' : 'The origin is a maximum.')" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = x^{a|coef} ({b|coef}x {c|sign})({d|coef}x {e|sign}) \\).",
-      "answer": "Standard form: \\( f(x) = {leadingCoef|coef}x^{deg|coef} {xDegMinus1Coef|signedCoef}x^{xDegMinus1|coef} {xDegMinus2Coef|signedCoef}x^{xDegMinus2|coef} \\); Degree: {deg}; Leading coefficient: {leadingCoef}"
+      "question": "For the power function \\(f(x)={a|coef}x^{n}\\): State the degree and coefficient a. Use the degree (even or odd) and the sign of a to describe the end behavior. Identify the symmetry and the number of turning points of this power function, then sketch it on the coordinate plane provided.",
+      "answer": "Degree: {n}; coefficient: \\(a={a}\\). Symmetry: {symmetry}. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\). This power function has {actualTurns} turning point(s). {turnDescription}",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": -15, "yMax": 15 },
+        "eq1": { "relation": "y = a*x^n", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": 2 }
+      }
     },
     {
       "id": "ALG2-4.1-B2",
       "type": "template",
-      "objective": "4.1 Polynomial Functions",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 1, "max": 5 },
-        "b": { "min": -6, "max": 6, "exclude": [0] },
-        "c": { "min": -8, "max": 8, "exclude": [0] },
-        "d": { "min": -10, "max": 10 },
-        "e": { "min": -5, "max": 5 },
-        "x4Coef": { "formula": "a*b" },
-        "x2Coef": { "formula": "a*c" }
+        "a": { "values": [-2, -1, 1, 2] },
+        "n": { "min": 2, "max": 4 },
+        "b": { "min": -3, "max": 3, "exclude": [0] },
+        "c": { "min": -4, "max": 4, "exclude": [0] },
+        "maxTurns": { "formula": "n-1" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Expand the polynomial function and identify the degree and leading coefficient: \\( f(x) = {a|coef}x^2({b|coef}x^2 {c|sign}) {d|signedCoef}x {e|sign} \\).",
-      "answer": "Standard form: \\( f(x) = {x4Coef|coef}x^4 {x2Coef|signedCoef}x^2 {d|signedCoef}x {e|sign} \\); Degree: 4"
+      "question": "For the polynomial function \\(f(x)={a|coef}x^{n} {b|signedCoef}x {c|sign}\\): Identify the leading term, degree, and leading coefficient. State the maximum possible number of turning points for a polynomial of this degree. Use the leading term to describe both ends of the graph, then sketch the function on the coordinate plane provided.",
+      "answer": "Leading term: \\({a|coef}x^{n}\\); degree: {n}; leading coefficient: \\({a}\\). A degree-{n} polynomial has at most {maxTurns} turning points. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\).",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": -15, "yMax": 15 },
+        "eq1": { "relation": "y = a*x^n+b*x+c", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": 2 }
+      }
     },
     {
       "id": "ALG2-4.1-I1",
       "type": "template",
-      "objective": "4.1 Polynomial Functions",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -5, "max": 5 },
-        "b": { "min": -4, "max": 4, "exclude": [0] },
-        "c": { "min": -6, "max": 6, "exclude": [0] },
-        "d": { "min": -3, "max": 3, "exclude": [0] },
-        "e": { "min": -6, "max": 6, "exclude": [0] }
+        "numerator": { "values": [-3, -1, 1, 3] },
+        "denominator": { "values": [2, 4] },
+        "a": { "formula": "numerator/denominator", "format": "fraction" },
+        "n": { "min": 2, "max": 6 },
+        "actualTurns": { "formula": "n%2===0 ? 1 : 0" },
+        "reflection": { "formula": "a<0 ? 'Reflect across the x-axis. ' : 'No reflection. '" },
+        "scaling": { "formula": "abs(a)>1 ? 'Vertically stretch' : 'Vertically compress'" },
+        "factor": { "formula": "abs(a)", "format": "fraction" },
+        "symmetry": { "formula": "n%2===0 ? 'symmetric about the y-axis' : 'symmetric about the origin'" },
+        "turnDescription": { "formula": "n%2!==0 ? 'The origin is not a turning point; the graph continues in the same direction through it.' : (a>0 ? 'The origin is a minimum.' : 'The origin is a maximum.')" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Describe the end-behavior of \\( f(x) = {a|coef}x^4 {b|signedCoef}x^3 {c|signedCoef}x^2 {d|signedCoef}x {e|sign} \\).",
-      "answer": "Since the leading coefficient is {a|sign} and the degree is even, as \\( x \\to -\\infty \\), \\( f(x) \\to \\infty \\) and as \\( x \\to \\infty \\), \\( f(x) \\to \\infty \\)."
+      "question": "For the power function \\(f(x)={a|coef}x^{n}\\): State the degree and coefficient a. Use the degree (even or odd) and the sign of a to describe the end behavior. Identify the symmetry and the number of turning points of this power function, then sketch it on the coordinate plane provided. Also describe the transformations from \\(y=x^{n}\\).",
+      "answer": "Degree: {n}; coefficient: \\(a={a}\\). Symmetry: {symmetry}. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\). This power function has {actualTurns} turning point(s). {turnDescription} {reflection}{scaling} by a factor of \\({factor}\\). The dashed gray curve is the parent function; the blue curve is \\(f\\).",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": -15, "yMax": 15 },
+        "eq1": { "relation": "y = a*x^n", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": 2 },
+        "eq2": { "relation": "y = x^n", "showInQuestion": false, "showInAnswer": true, "color": "#64748b", "boundaryStyle": "dashed" }
+      }
     },
     {
       "id": "ALG2-4.1-I2",
       "type": "template",
-      "objective": "4.1 Polynomial Functions",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": -5, "max": 5 },
-        "b": { "min": -4, "max": 4, "exclude": [0] },
-        "c": { "min": -6, "max": 6, "exclude": [0] },
-        "d": { "min": -3, "max": 3, "exclude": [0] },
-        "n": { "min": 3, "max": 5 },
-        "m": { "formula": "n - 1" },
-        "o": { "formula": "n - 2"  }
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "n": { "min": 3, "max": 6 },
+        "m": { "formula": "n-1" },
+        "p": { "formula": "n-2" },
+        "b": { "min": -3, "max": 3, "exclude": [0] },
+        "c": { "min": -3, "max": 3, "exclude": [0] },
+        "d": { "min": -4, "max": 4, "exclude": [0] },
+        "maxTurns": { "formula": "n-1" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Describe the end-behavior of \\( f(x) = {a|coef}x^{n} {b|signedCoef}x^{m} {c|signedCoef}x^{o|coef} {d|sign} \\).",
-      "answer": "Check the leading coefficient and degree."
+      "question": "The terms of \\(f(x)={d} {c|signedCoef}x^{p} {a|signedCoef}x^{n} {b|signedCoef}x^{m}\\) are not in standard order. Identify the leading term, degree, and leading coefficient. State the maximum possible number of turning points for a polynomial of this degree. Use the leading term to describe both ends of the graph, then sketch the function on the coordinate plane provided.",
+      "answer": "Leading term: \\({a|coef}x^{n}\\); degree: {n}; leading coefficient: \\({a}\\). A degree-{n} polynomial has at most {maxTurns} turning points. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\).",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": -25, "yMax": 25 },
+        "eq1": { "relation": "y = a*x^n+b*x^m+c*x^p+d", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": 2 }
+      }
     },
     {
       "id": "ALG2-4.1-A1",
       "type": "template",
-      "objective": "4.1 Polynomial Functions",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": -3, "max": 3, "exclude": [0] },
-        "b": { "min": -5, "max": 5, "exclude": [0] },
-        "c": { "min": -5, "max": 5, "exclude": [0] },
-        "d": { "min": -10, "max": 10, "exclude": [0] },
-        "x1": { "formula": "(-2*b + sqrt(4*b*b - 12*a*c))/(6*a)" },
-        "y1": { "formula": "a*x1*x1*x1 + b*x1*x1 + c*x1 + d" },
-        "x2": { "formula": "(-2*b - sqrt(4*b*b - 12*a*c))/(6*a)" },
-        "y2": { "formula": "a*x2*x2*x2 + b*x2*x2 + c*x2 + d" }
+        "a": { "values": [-2, -1, 1, 2] },
+        "p": { "min": 1, "max": 3 },
+        "n": { "formula": "p+2" },
+        "r1": { "values": [-2, -1] },
+        "r2": { "values": [1, 2] },
+        "negR1": { "formula": "-r1" },
+        "negR2": { "formula": "-r2" },
+        "maxTurns": { "formula": "n-1" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
       },
-      "question": "Use a calculator to find all the extrema, then state the end-behavior of the polynomial function: \\( f(x) = {a|coef}x^3 {b|signedCoef}x^2 {c|signedCoef}x {d|sign} \\).",
-      "answer": "Extrema: \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\). Answers will vary based on the specific values."
+      "question": "For \\(f(x)={a|coef}x^{p}(x {negR1|sign})(x {negR2|sign})\\), identify the leading term without fully expanding. State the degree, leading coefficient, and maximum possible number of turning points. Describe both ends of the graph from the leading term. Find the x-intercepts and use them to sketch the function on the provided plane.",
+      "answer": "Leading term: \\({a|coef}x^{n}\\); degree: {n}; leading coefficient: \\({a}\\). A degree-{n} polynomial has at most {maxTurns} turning points. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\). The x-intercepts are \\(({r1},0)\\), \\((0,0)\\), and \\(({r2},0)\\). The bound of {maxTurns} turning points is a maximum, not a claim that every such polynomial has that many.",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": -25, "yMax": 25 },
+        "eq1": { "relation": "y = a*x^p*(x-r1)*(x-r2)", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": 2 },
+        "points": [{ "x": "r1", "y": 0, "label": "", "showInQuestion": false, "showInAnswer": true }, { "x": 0, "y": 0, "label": "", "showInQuestion": false, "showInAnswer": true }, { "x": "r2", "y": 0, "label": "", "showInQuestion": false, "showInAnswer": true }]
+      }
+    },
+    {
+      "id": "ALG2-4.1-A2",
+      "type": "template",
+      "objective": "4.1 Graph and Analyze Power and Polynomial Functions",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "values": [-3, -2, -1, 1, 2, 3] },
+        "n": { "min": 2, "max": 4 },
+        "px": { "values": [-2, 2] },
+        "py": { "formula": "a*pow(px,n)" },
+        "actualTurns": { "formula": "n%2===0 ? 1 : 0" },
+        "ymax": { "formula": "abs(py)+4" },
+        "ymin": { "formula": "-ymax" },
+        "gridY": { "formula": "max(1,ceil((ymax-ymin)/20))" },
+        "symmetry": { "formula": "n%2===0 ? 'symmetric about the y-axis' : 'symmetric about the origin'" },
+        "turnDescription": { "formula": "n%2!==0 ? 'The origin is not a turning point; the graph continues in the same direction through it.' : (a>0 ? 'The origin is a minimum.' : 'The origin is a maximum.')" },
+        "leftEnd": { "formula": "a*(n%2===0 ? 1 : -1)>0 ? '\\\\infty' : '-\\\\infty'" },
+        "rightEnd": { "formula": "a>0 ? '\\\\infty' : '-\\\\infty'" }
+      },
+      "question": "A power function has the form \\(f(x)=ax^{n}\\) and passes through \\(({px},{py})\\). Determine its equation. State the degree and coefficient a. Use the degree (even or odd) and the sign of a to describe the end behavior. Identify the symmetry and the number of turning points of this power function, then sketch it on the coordinate plane provided.",
+      "answer": "Substitute the point: \\({py}=a({px})^{n}\\), so \\(a={a}\\) and \\(f(x)={a|coef}x^{n}\\). Degree: {n}; coefficient: \\(a={a}\\). Symmetry: {symmetry}. As \\(x\\to-\\infty\\), \\(f(x)\\to {leftEnd}\\); as \\(x\\to\\infty\\), \\(f(x)\\to {rightEnd}\\). This power function has {actualTurns} turning point(s). {turnDescription}",
+      "draw": {
+        "window": { "xMin": -3, "xMax": 3, "yMin": "ymin", "yMax": "ymax" },
+        "eq1": { "relation": "y = a*x^n", "showInQuestion": false, "showInAnswer": true, "color": "#2563eb" },
+        "showAxisLabels": true,
+        "gridStep": { "x": 0.5, "y": "gridY" },
+        "points": [{ "x": "px", "y": "py", "label": "Given point", "showInQuestion": false, "showInAnswer": true }]
+      }
     },
     {
       "id": "ALG2-4.2-B1",
